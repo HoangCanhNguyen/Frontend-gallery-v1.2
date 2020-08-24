@@ -1,0 +1,45 @@
+<a (click)="onShowReply()" class="show-more">{{
+  isReply ? "Ẩn phản hồi" : "Hiện phản hồi"
+}}</a>
+<div class="cmt" [class.show-replies]="isReply">
+  <div class="reply-sections row w-100 m-0" *ngFor="let reply of reply_list">
+    <div class="img-profile col-sm-1">
+      <img
+        src="https://www.w3schools.com/w3images/girl.jpg"
+        class="rounded-circle"
+        width="45px"
+        height="45px"
+      />
+    </div>
+    <div class="actual-reply col-sm-11">
+      <h4>
+        {{ reply.username }}
+        <span>{{ reply.posted }}</span>
+      </h4>
+      <p>
+        {{ reply.content }}
+      </p>
+    </div>
+  </div>
+
+  <form
+    class="row"
+    [formGroup]="replyForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="username"
+  >
+    <img
+      src="https://www.w3schools.com/w3images/boy.jpg"
+      class="rounded-circle"
+      width="45px"
+      height="45px"
+    />
+    <span class="user-input">
+      <mat-form-field appearance="standard" class="full-width-input">
+        <mat-label>Viết phản hồi</mat-label>
+        <input matInput placeholder="Hi" formControlName="content" />
+      </mat-form-field>
+    </span>
+  </form>
+  <div *ngIf="username == ''">Đăng nhập để xử dụng tính năng bình luận</div>
+</div>

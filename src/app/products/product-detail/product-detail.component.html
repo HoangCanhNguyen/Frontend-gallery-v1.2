@@ -1,0 +1,127 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row tabs-detail-product">
+      <mat-tab-group
+        mat-align-tabs="center"
+        animationDuration="500ms"
+        dynamicHeight
+      >
+        <mat-tab label="TỔNG QUAN">
+          <div class="d-flex mt-5">
+            <div class="col-sm-6 d-flex align-items-center pl-0">
+              <img
+                class="img-fluid mx-auto d-block"
+                src="{{ pic_info.imageLink }}"
+              />
+            </div>
+            <div class="col-sm-6 pr-0">
+              <h1 class="product-name mt-3 mb-2">{{ pic_info.title }}</h1>
+              <h3 class="artist">
+                Tác giả: <span>{{ pic_info.artist }}</span>
+              </h3>
+              <p
+                class="product-price"
+                style="
+                  font-family: EB Garamond, serif;
+                  font-size: 2.3rem;
+                  opacity: 0.7;
+                "
+              >
+                {{ pic_info.price | currency: " ":"code":"3.0" }}
+                <span>$</span>
+              </p>
+              <p class="stars-wrapper mb-4">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i><span>(2 đánh giá)</span>
+              </p>
+
+              <p
+                style="
+                  font-family: EB Garamond, serif;
+                  margin-top: 2rem;
+                  font-size: 1.3rem;
+                "
+              >
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco lab oris
+                nisi ut.
+              </p>
+              <a
+                class="btn btn-light text-dark view-more"
+                style="z-index: 1000; margin-top: 2rem; margin-bottom: 2.5rem;"
+                [routerLink]="['/cart']"
+                routerLinkActive="router-link-active"
+              >
+                <svg height="52" width="178">
+                  <rect height="52" width="178"></rect>
+                </svg>
+                <span>CHỌN MUA</span>
+              </a>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th>
+                      Khối lượng
+                    </th>
+                    <td>
+                      2 kg
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Kích thước
+                    </th>
+                    <td>
+                      20 × 10 × 5 cm
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="additional-info pl-3 mt-4">
+                <p>Người đăng bán: <span>Tuấn Anh</span></p>
+                <p>Thể loại: <span>Tranh sơn dầu</span></p>
+                <ul class="list-group social-media mt-3">
+                  <li class="list-group-item">
+                    <i
+                      class="fa fa-facebook"
+                      placement="top"
+                      ngbTooltip="Share on Facebook"
+                    ></i>
+                  </li>
+                  <li class="list-group-item">
+                    <i
+                      class="fa fa-twitter"
+                      placement="top"
+                      ngbTooltip="Share on Twitter"
+                    ></i>
+                  </li>
+                  <li class="list-group-item">
+                    <i
+                      class="fa fa-instagram"
+                      placement="top"
+                      ngbTooltip="Share on Instagram"
+                    ></i>
+                  </li>
+                  <li class="list-group-item">
+                    <i
+                      class="fa fa-pinterest"
+                      placement="top"
+                      ngbTooltip="Share on Pinterest"
+                    ></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Đánh giá của khách hàng">
+          <br /><br />
+          <app-product-comment [parent_id]="pic_id"></app-product-comment>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+.mat-form-field {
+  width: 100%;
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+}
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  /* change color of the label when input is focued */
+  font-size: 1.3rem;
+  color: black;
+  opacity: 0.5;
+}
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: black !important;
+}
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: black !important;
+}
+
+.title {
+  text-transform: uppercase;
+  color: #525252;
+  padding-left: 0;
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.15rem;
+}
+.list-group {
+  font-family: "EB Garamond", serif;
+}
+.list-group-item {
+  border: none !important;
+  background-color: transparent !important;
+  text-align: left;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.list-group-item:hover {
+  color: #c9ab81;
+}
+.list-group-item:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+button.expand-button {
+  text-decoration: underline;
+  color: #c9ab81;
+}
+button.expand-button:hover {
+  color: #f0c07c;
+}
+.mat-expansion-panel {
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+.mat-expansion-panel-header {
+  padding: 0;
+  font-family: "EB Garamond", serif;
+}
+.mat-expansion-panel-header:hover {
+  background-color: transparent !important;
+}
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+/* move the expansion-panel-header to the bottom after the panel is expanded */
+.mat-expansion-panel {
+  display: flex !important;
+  flex-direction: column;
+}
+::ng-deep .mat-expansion-panel-header {
+  order: 2;
+}
+
+button.view-more {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  position: relative;
+  width: auto;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  font-family: open sans;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 2rem;
+  letter-spacing: 0.07rem;
+  color: white;
+  padding: 4px 43px 5px;
+  cursor: pointer;
+  box-shadow: none !important;
+  outline: none !important;
+  text-align: center;
+  border-radius: 0 !important;
+}
+button.view-more svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+button.view-more svg rect {
+  fill: transparent;
+  stroke: #c9ab81;
+  stroke-width: 2px;
+  transition: 2s;
+  stroke-dashoffset: 240%;
+  stroke-dasharray: 330% 25;
+}
+button.view-more span {
+  padding: 0;
+  margin: 0;
+}
+button.view-more:hover svg rect {
+  stroke-dashoffset: -110%;
+}
+button.view-more:hover {
+  transition: all 0.4s ease-in-out;
+}
+.view-more:hover span {
+  color: black;
+}
+
+::ng-deep .ng5-slider {
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+}
+::ng-deep .ng5-slider .ng5-slider-bar {
+  background: #f0c07c !important;
+  height: 2px;
+}
+::ng-deep .ng5-slider .ng5-slider-selection {
+  background: #c9ab81 !important;
+}
+::ng-deep .ng5-slider .ng5-slider-pointer {
+  background-color: #dabb65 !important;
+}
+::ng-deep .ng5-slider .ng5-slider-pointer:focus {
+  outline: none !important;
+  border: none !important;
+}
+::ng-deep .ng5-slider .ng5-slider-pointer.ng5-slider-active::after {
+  background-color: white !important;
+}
+.price-filter {
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+}

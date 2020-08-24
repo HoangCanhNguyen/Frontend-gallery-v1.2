@@ -1,0 +1,86 @@
+<div class="col-sm-4 mb-5 picture-item" style="max-width: 100%;">
+  <div class="img-wrapper">
+    <img
+      [src]="picture.imageLink"
+      class="img-fluid"
+      [routerLink]="[picture.pic_id, picture.category, picture.title]"
+    />
+    <!-- <div class="overlay">
+        <div class="icon-wrapper">
+          <mat-icon
+            [routerLink]="['/detail']"
+            routerLinkActive="router-link-active"
+            placement="top"
+            ngbTooltip="Xem thêm"
+            >{{ "visibility" }}</mat-icon
+          >
+          <i
+            class="fa fa-heart"
+            placement="top"
+            ngbTooltip="Thêm vào yêu thích"
+          ></i>
+        </div>
+        <a
+          class="btn btn-light text-dark view-more"
+          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active"
+        >
+          <svg height="52" width="178">
+            <rect height="52" width="178"></rect>
+          </svg>
+          <span>CHỌN MUA</span>
+        </a>
+      </div> -->
+  </div>
+  <div
+    class="info-wrapper"
+    [routerLink]="[picture.pic_id, picture.category, picture.title]"
+  >
+    <h5 class="pic-title">{{ picture.title }}</h5>
+    <div class="pic-price-stars">
+      <div class="price-stars">
+        <p class="stars-wrapper">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i
+          ><i class="fa fa-star"></i><i class="fa fa-star"></i
+          ><i class="fa fa-star"></i>
+        </p>
+        <p
+          class="product-price"
+          style="
+            font-family: EB Garamond, serif;
+            font-size: 1.3rem;
+            opacity: 0.7;
+          "
+        >
+          {{ picture.price | currency: " ":"code":"3.0" }}
+          <span>$</span>
+        </p>
+      </div>
+      <div class="overlay-info">
+        <a
+          class="btn btn-light text-dark view-more2"
+          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
+          [routerLink]="['/cart']"
+          routerLinkActive="router-link-active"
+        >
+          <svg height="52" width="120">
+            <rect height="52" width="120"></rect>
+          </svg>
+          <span>CHỌN MUA</span>
+        </a>
+        <a
+          class="btn btn-light text-dark view-more2"
+          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
+          [routerLink]="[picture.pic_id, picture.category, picture.title]"
+          routerLinkActive="router-link-active"
+        >
+          <svg height="52" width="120">
+            <rect height="52" width="120"></rect>
+          </svg>
+          <span>XEM THÊM</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

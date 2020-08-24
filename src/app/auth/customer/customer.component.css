@@ -1,0 +1,105 @@
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0 25px !important;
+  height: auto !important;
+}
+
+::ng-deep .mat-dialog-content {
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+}
+
+.example-margin {
+  margin: 1em 0 1em 9em;
+  font: 300 18px/30px Roboto, "Helvetica Neue", sans-serif;
+}
+
+.checkbox {
+  margin-left: 9em;
+}
+
+.col-md-6 {
+  text-align: center !important;
+}
+
+.col-md-6 img {
+  margin-top: 2em;
+}
+
+.user-signup-header {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.content {
+  max-width: 350px;
+  margin-left: 2.5em;
+  font-weight: 400;
+}
+.user-signup {
+  padding: 0 !important;
+}
+
+.jumbotron {
+  background-color: #f8f8f8;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.primary {
+  background-color: #d5a770;
+  color: #fff !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  margin: 3em 0 0 5px;
+  padding: 15px 45px;
+  transition: all 0.1s;
+}
+.primary:hover {
+  background-color: #d19961;
+}
+
+hr {
+  border-color: #ddd8d8;
+  border-style: solid none none;
+  border-width: 1px 0px 0px;
+  margin-left: 3.5em;
+  max-width: 25em;
+  color: #333333;
+  font-size: 14px;
+  font-weight: 300;
+  gap: normal;
+  line-height: 20px;
+  text-align: center;
+}
+
+.artist-side {
+  margin-top: 4.3em !important;
+}
+
+.message {
+  font-weight: 300;
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sign-in {
+  text-transform: uppercase;
+  text-decoration: underline !important;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 20px !important;
+}
+
+.button a:hover {
+  color: #d19961 !important;
+  transition: all 0.2s;
+}

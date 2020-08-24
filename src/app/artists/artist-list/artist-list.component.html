@@ -1,0 +1,105 @@
+<mdb-carousel
+  class="artists-list-carousel carousel slide carousel-fade"
+  [animation]="'fade'"
+>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img
+        class="d-block w-100"
+        src="https://cdn.singulart.com/artists/pictures/cropped/studio/base/artist_studio_1336_b218a515705f5bd5f4064d4eae833287.jpeg"
+        alt="First slide"
+      />
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img
+        class="d-block w-100"
+        src="https://cdn.singulart.com/artists/v2/pictures/cropped/studio/base/437_studio_8bece682b26ab93cc460cae0a2e91179.jpeg"
+        alt="Second slide"
+      />
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img
+        class="d-block w-100"
+        src="https://cdn.singulart.com/artists/pictures/cropped/studio/base/artist_studio_1035_ec7318d42deb4a353dfe93079a300220.jpeg"
+        alt="Third slide"
+      />
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img
+        class="d-block w-100"
+        src="https://cdn.singulart.com/artists/v2/pictures/cropped/studio/base/1686_studio_d84dd1b5ae4f4c05d126dd48f8177b4d.jpeg"
+        alt="Fourth slide"
+      />
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img
+        class="d-block w-100"
+        src="https://cdn.singulart.com/artists/pictures/cropped/studio/base/artist_studio_165_722b165ba6a09b04bbd9ad42a136f1eb.jpeg"
+        alt="Fifth slide"
+      />
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
+<section class="filter-wrapper">
+  <div class="container mt-0">
+    <div class="row filter-area">
+      <div class="col-sm-4 offset-2">
+        <form>
+          <mat-form-field class="select-country">
+            <mat-label>Country</mat-label>
+            <mat-select>
+              <mat-option>None</mat-option>
+              <mat-option
+                *ngFor="let country of countries"
+                [value]="country.code"
+              >
+                {{ country.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-sm-4" style="border: none;">
+        <form>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by name"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container my-0">
+    <div class="row">
+      <app-artist-info
+        *ngFor="let artist of artist_list"
+        [artist]="artist"
+      ></app-artist-info>
+    </div>
+  </div>
+</div>

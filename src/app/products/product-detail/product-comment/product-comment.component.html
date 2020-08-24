@@ -1,0 +1,144 @@
+<div class="rating-container">
+  <div class="rating">
+    <h4 class="title">Đánh giá trung bình</h4>
+    <h4 class="score">5/5</h4>
+    <p class="stars-wrapper" style="font-size: 20px; color: #ffc107;">
+      <i class="fa fa-star"></i><i class="fa fa-star"></i
+      ><i class="fa fa-star"></i><i class="fa fa-star"></i
+      ><i class="fa fa-star"></i>
+    </p>
+  </div>
+  <div class="rating-detail">
+    <div class="star-progress-bar">
+      <p class="star-number"><span>5</span> <i class="fa fa-star"></i></p>
+      <div class="progress-bar">
+        <div class="progress progress-5" style="width: 85%;"></div>
+      </div>
+      <p class="percent">85%</p>
+    </div>
+    <div class="star-progress-bar">
+      <p class="star-number"><span>4</span> <i class="fa fa-star"></i></p>
+      <div class="progress-bar">
+        <div class="progress progress-4" style="width: 8%;"></div>
+      </div>
+      <p class="percent">8%</p>
+    </div>
+    <div class="star-progress-bar">
+      <p class="star-number"><span>3</span> <i class="fa fa-star"></i></p>
+      <div class="progress-bar">
+        <div class="progress progress-3" style="width: 7%;"></div>
+      </div>
+      <p class="percent">7%</p>
+    </div>
+    <div class="star-progress-bar">
+      <p class="star-number"><span>2</span> <i class="fa fa-star"></i></p>
+      <div class="progress-bar">
+        <div class="progress progress-2" style="width: 0%;"></div>
+      </div>
+      <p class="percent">0%</p>
+    </div>
+    <div class="star-progress-bar">
+      <p class="star-number"><span>1</span> <i class="fa fa-star"></i></p>
+      <div class="progress-bar">
+        <div class="progress progress-1" style="width: 0%;"></div>
+      </div>
+      <p class="percent">0%</p>
+    </div>
+  </div>
+  <div class="your-cmt">
+    <button
+      class="btn btn-light text-dark view-more"
+      style="height: 52px;"
+      (click)="onCreateComment()"
+      *ngIf="!isComment"
+    >
+      <svg height="52" width="200">
+        <rect height="52" width="200"></rect>
+      </svg>
+      <span> Viết nhận xét của bạn </span>
+    </button>
+    <button
+      class="btn btn-light text-dark view-more"
+      style="height: 52px;"
+      (click)="onCreateComment()"
+      *ngIf="isComment"
+    >
+      <svg height="52" width="200">
+        <rect height="52" width="200"></rect>
+      </svg>
+      <span> Đóng</span>
+    </button>
+  </div>
+</div>
+<div
+  class="comment-container col-sm-10 offset-1"
+  [class.show-cmt-area]="isComment"
+>
+  <form #cmtForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="commentForm">
+    <mat-form-field appearance="standard" class="full-width-input">
+      <mat-label>Đánh giá của bạn về tác phẩm</mat-label>
+      <input
+        matInput
+        placeholder="Viết gì đó"
+        formControlName="content"
+        required
+      />
+      <mat-error *ngIf="commentForm.get('content').invalid"
+        >Xin hãy chia sẻ cảm nhận của bạn về tác phẩm này</mat-error
+      >
+    </mat-form-field>
+    <ngb-rating [(rate)]="currentRate" [max]="5">
+      <ng-template let-fill="fill" let-index="index">
+        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+    <br /><br />
+    <button
+      class="btn btn-light text-dark view-more"
+      [disabled]="!commentForm.valid"
+      type="submit"
+    >
+      <svg height="52" width="120">
+        <rect height="52" width="120"></rect>
+      </svg>
+      <span>Đăng</span>
+    </button>
+  </form>
+</div>
+
+<div class="clients-cmt col-sm-10 offset-1" *ngIf="cmt_list != null">
+  <div
+    class="compliment row"
+    *ngFor="let cmt of cmt_list.slice().reverse(); let i = index"
+  >
+    <div class="client client1 col-sm-1">
+      <div class="img-profile">
+        <img
+          src="https://www.w3schools.com/w3images/girl.jpg"
+          class="rounded-circle"
+          width="50px"
+          height="50px"
+        />
+      </div>
+    </div>
+    <div class="cmt cmt1 col-sm-11">
+      <h4>
+        {{ cmt.username }}
+        <span>{{ cmt.posted }}</span>
+      </h4>
+      <p>
+        {{ cmt.content }}
+      </p>
+    </div>
+    <div class="col-sm-11 offset-1 p-0">
+      <app-product-reply [replyInfo]="onSetReply(i)"></app-product-reply>
+    </div>
+  </div>
+</div>
+
+<div
+  class="first-comment-noti"
+  [class.hide-first-cmt-noti]="!(cmt_list.length == 0 && !isComment)"
+>
+  Hãy là người đầu tiên bình luận cho bức tranh này
+</div>

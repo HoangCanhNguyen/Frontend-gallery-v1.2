@@ -1,0 +1,75 @@
+.jumbotron {
+  background-color: #f8f8f8 !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* KHONG DUOC XOA PHAN NAY, DE THAM KHAO VE SAU */
+
+/* .mat-form-field {
+  margin-bottom: 3rem;
+  width: 30%;
+  padding: 0;
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+}
+.mat-form-field .mat-select {
+  font-family: "EB Garamond", serif;
+}
+.mat-option:hover {
+  color: #c9ab81;
+  background-color: transparent !important;
+}
+.mat-option.mat-active {
+  background-color: transparent !important;
+}
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #c9ab81 !important;
+  background-color: transparent !important;
+}
+::ng-deep .mat-option-text {
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+}
+::ng-deep .mat-form-field-flex {
+  background-color: rgba(0, 0, 0, 0) !important;
+} */
+
+::ng-deep .page-link {
+  color: black !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+::ng-deep .page-item.active {
+  color: #525252 !important;
+  border: 1px solid #c9ab81 !important;
+  background-color: transparent !important;
+}
+
+h1.search-content {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+  color: #525252;
+  letter-spacing: 0.15rem;
+  text-align: center;
+}
+p.search-result {
+  margin-bottom: 1rem;
+  font-family: "EB Garamond", serif;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #c9ab81;
+  font-style: italic;
+}
+
+.mat-chip {
+  font-family: "EB Garamond", serif;
+  color: #525252;
+  font-size: 1.2rem;
+}
+::ng-deep .mat-chip-container .mat-chip-list-wrapper {
+  margin: 0 !important;
+}

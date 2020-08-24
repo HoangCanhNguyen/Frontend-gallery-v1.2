@@ -1,0 +1,189 @@
+.container {
+  max-width: 1300px !important;
+  margin-top: 2em;
+}
+
+.jumbotron {
+  background-color: #f8f8f8 !important;
+  box-shadow: none !important;
+  margin: 0;
+}
+.search-bar {
+  margin-top: 13em !important;
+}
+
+html,
+body,
+.view,
+.carousel,
+.carousel-inner {
+  height: 88vh;
+}
+::ng-deep .artists-list-carousel.carousel {
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+.carousel-item {
+  transition: opacity 0.6s ease-in-out !important;
+}
+.carousel-indicators {
+  display: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+}
+.cover-img {
+  left: 0% !important;
+  right: 0% !important;
+  top: 0%;
+  bottom: 0%;
+  position: absolute !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0;
+  font-weight: 500;
+}
+.cover-img p {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: #d7d7d7;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.cover-img h1,
+.cover-img h3 {
+  font-family: "EB Garamond", serif;
+}
+.cover-img h1 {
+  letter-spacing: 0.8rem;
+  text-transform: uppercase;
+  line-height: 5.5rem;
+  font-size: 4.5rem;
+  padding: 0;
+  margin-bottom: 3rem;
+  color: white;
+}
+.cover-img h3 {
+  font-style: italic;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  padding: 0;
+  color: rgb(201, 171, 129);
+}
+.view {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  overflow: hidden;
+}
+
+.filter-wrapper {
+  background-color: #383838;
+}
+.filter-area {
+  height: 10vh;
+  background-color: #383838;
+}
+.filter-area .col-sm-4 {
+  display: flex;
+  align-items: center;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+.input-group {
+  align-self: center;
+  width: 100%;
+}
+.input-group .input-group-prepend .input-group-text {
+  border-radius: 0% !important;
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 1.5rem;
+  color: #bfbfbf;
+}
+.input-group input {
+  background-color: transparent !important;
+  border: none !important;
+  color: #bfbfbf;
+  font-size: 1.2rem;
+  font-family: "EB Garamond", serif;
+}
+input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.mat-form-field {
+  width: 220%;
+  padding: 0;
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+  color: #bfbfbf;
+}
+.mat-form-field.mat-focused .mat-form-field-underline {
+  display: none !important;
+}
+.mat-form-field .mat-select {
+  font-family: "EB Garamond", serif;
+  color: #bfbfbf !important;
+}
+.mat-option:hover {
+  background-color: #c9ab81 !important;
+}
+.mat-option.mat-active {
+  background-color: #c9ab81 !important;
+}
+::ng-deep
+  .select-country.mat-form-field.mat-form-field-should-float
+  .mat-form-field-label-wrapper
+  label {
+  display: none !important;
+}
+::ng-deep .select-country .mat-form-field-label-wrapper label {
+  color: #bfbfbf !important;
+  font-weight: 600;
+}
+::ng-deep .select-country .mat-select-arrow {
+  color: #bfbfbf !important;
+}
+::ng-deep .select-country .mat-select-value {
+  color: #bfbfbf !important;
+  font-weight: 600 !important;
+}
+::ng-deep .mat-select-panel {
+  padding: 0;
+  background-color: black;
+  max-height: 500px !important;
+}
+::ng-deep .mat-option-text {
+  font-family: "EB Garamond", serif;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 600;
+}
+::ng-deep .select-country .mat-form-field-underline {
+  display: none !important;
+}
+::ng-deep .select-country .mat-form-field-underline .mat-form-field-ripple {
+  height: 0px !important;
+}
+/* width */
+::ng-deep .mat-select-panel::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Handle */
+::ng-deep .mat-select-panel::-webkit-scrollbar-thumb {
+  background: #c9ab81;
+}
+
+/* Handle on hover */
+::ng-deep .mat-select-panel::-webkit-scrollbar-thumb:hover {
+  background: white;
+}

@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="user-icon">
+    <img
+      src="https://image.flaticon.com/icons/png/512/224/224609.png"
+      alt=""
+      width="100vw"
+      height="100vh"
+    />
+  </div>
+  <h2>Đăng nhập</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Tên đăng nhập</mat-label>
+      <input formControlName="username" matInput placeholder="nDaniel" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mật khẩu</mat-label>
+      <input formControlName="password" [type]="hide ? 'password' : 'text'" matInput placeholder="bí mật" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button class="btn primary" type="submit">Đăng nhập</button>
+  </form>
+  <div class="forget-password">
+    <a class="sign-up">Bạn quên mật khẩu?</a>
+  </div>
+  <hr style="border-color: #eeeeee !important;" />
+  <div class="message">
+    Bạn chưa có tài khoản?
+  </div>
+  <div class="button">
+    <a class="sign-up" (click)="onOpenSignUp()">Đăng ký ngay</a>
+  </div>
+</div>

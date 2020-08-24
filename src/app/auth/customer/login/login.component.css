@@ -1,0 +1,84 @@
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.example-margin {
+  /* margin: 1em 0 1em 9em; */
+  font-weight: 500;
+  color: #181818;
+  font-size: 17px;
+}
+.example-margin span {
+  color: #d5a770;
+}
+
+.container-fluid {
+  text-align: center !important;
+}
+
+.primary {
+  background-color: #d5a770;
+  color: #fff !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  margin: .5em 0 0 0;
+  padding: 20px 9.5em;
+  transition: all 0.1s;
+}
+.primary:hover {
+  background-color: #d19961;
+}
+
+.user-icon {
+  margin-top: 2em;
+}
+
+.checkbox {
+  text-align: left !important;
+}
+
+h2 {
+  margin: 0.6em 0 ;
+  font-weight: 500;
+}
+
+.forget-password {
+  margin-top: 10px;
+}
+
+hr {
+  border-color: #ddd8d8;
+  border-style: solid none none;
+  border-width: 1px 0px 0px;
+  margin-left: 2.5em;
+  max-width: 25em;
+  color: #333333;
+  font-size: 14px;
+  font-weight: 300;
+  gap: normal;
+  line-height: 20px;
+  text-align: center;
+}
+
+.message {
+  font-weight: 300;
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sign-up {
+  text-transform: uppercase;
+  text-decoration: underline !important;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 20px !important;
+}
+
+.button a:hover {
+  color: #d19961 !important;
+  transition: all .2s;
+}

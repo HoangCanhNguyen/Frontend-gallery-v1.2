@@ -1,0 +1,70 @@
+::ng-deep button:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+::ng-deep button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+::ng-deep mat-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.acc-basic-info,
+.professional-info {
+  padding: 0 2rem;
+  margin-top: 2rem;
+}
+.acc-basic-info .mat-form-field,
+.professional-info .mat-form-field {
+  width: 100%;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.next-step {
+  background-color: #d19961 !important;
+  padding: 4px 35px !important;
+  line-height: 45px;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.register-form {
+  align-self: center;
+}
+::ng-deep .register-form .mat-tab-label-content {
+  font-size: 1.3rem;
+  font-family: "Open Sans", sans-serif;
+  color: black;
+  text-transform: capitalize;
+}
+::ng-deep .register-form .mat-tab-label-active .mat-tab-label-content {
+  color: #d5a770;
+}
+::ng-deep .register-form .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #d5a770 !important;
+}
+
+.img-blur-zoom-wrapper {
+  overflow: hidden;
+  height: auto;
+}
+.blur-zoom {
+  animation-name: blurZoom;
+  animation-duration: 10s;
+  transform-origin: center;
+  overflow: hidden;
+}
+@keyframes blurZoom {
+  from {
+    filter: blur(3px);
+    transform: scale(1.2);
+  }
+  to {
+    filter: blur(0);
+    transform: scale(1);
+  }
+}

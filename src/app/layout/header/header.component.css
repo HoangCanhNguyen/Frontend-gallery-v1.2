@@ -1,0 +1,108 @@
+.navbar {
+  margin-bottom: 0;
+  padding: 0.5em 0 0.7em 0;
+  background-color: transparent;
+  height: 9em;
+  opacity: 1;
+  transition: background-color 0.5s ease-in-out;
+}
+.navbar.sticky {
+  background-color: white;
+  border-bottom: 1px solid #e1e1e1 !important;
+  color: black;
+  height: 5em;
+  transition: all 0.5s ease-in-out;
+}
+::ng-deep .navbar.sticky .nav-item a {
+  color: black !important;
+  font-weight: 400 !important;
+}
+.navbar-brand {
+  margin: 0.2em 0 0 1.5em;
+}
+
+.navbar-collapse {
+  margin: 1em 0;
+}
+
+.navbar-collapse {
+  margin: 1em 0;
+}
+
+.nav-item a {
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  font-size: 14px;
+  padding: 0;
+  padding-bottom: 5px;
+  margin: 0 1em;
+  display: inline-block;
+  position: relative;
+  font-family: eb garamond;
+}
+.nav-item a:hover {
+  color: white;
+  text-decoration: none;
+}
+::ng-deep .navbar-light .navbar-nav .nav-link:focus {
+  color: white;
+  border: none !important;
+  outline: none !important;
+}
+.nav-item a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #c9ab81;
+  transition: width 0.5s ease 0s, left 0.5s ease 0s;
+  width: 0;
+}
+
+.nav-item a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-item {
+  cursor: pointer;
+  letter-spacing: 0.235em;
+}
+a.nav-link:hover {
+  background-color: transparent !important;
+}
+.toolbar {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  padding-top: 0.3em;
+}
+
+.menu-items {
+  color: black;
+  text-transform: uppercase;
+  font-family: eb garamond;
+}
+
+.auth-menu span {
+  vertical-align: middle;
+}
+
+::ng-deep .mat-menu-panel {
+  opacity: 1 !important;
+  margin-top: 1.35em !important;
+  border-radius: 1px !important;
+}
+::ng-deep .mat-menu-panel a {
+  font-weight: 600;
+}
+::ng-deep .mat-menu-panel a:hover {
+  color: #c9ab81;
+  background-color: white !important;
+}

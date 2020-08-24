@@ -1,0 +1,176 @@
+.slowly-showed {
+  animation-name: slowlyShow;
+  animation-duration: 2s;
+  transform-origin: center;
+  overflow: hidden;
+}
+@keyframes slowlyShow {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100vh;
+  }
+}
+.jumbotron-fluid {
+  background-color: #f8f8f8 !important;
+  margin: 0;
+  padding: 0;
+}
+
+.picsum-img-wrapper {
+  background-image: url("https://cutewallpaper.org/21/artist-wallpaper/Tithi-Luadthong-Digital-Art-HD-Artist-4k-Wallpapers-.jpg");
+  height: 870px;
+  width: 100%;
+  background-position: center;
+}
+.container {
+  text-align: center !important;
+}
+
+.cover-img {
+  left: 0% !important;
+  right: 0% !important;
+  top: 0%;
+  bottom: 30%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-caption.reviews {
+  height: 100%;
+  width: 55%;
+  bottom: 0;
+  left: 22.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  color: #525252;
+}
+
+.cover-img h1 {
+  text-transform: uppercase;
+  font-size: 4rem;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  font-family: inherit;
+  font-weight: 500 !important;
+  color: #f8f8f8 !important;
+}
+.cover-img p {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: #f8f8f8;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 500;
+  max-width: 60em;
+}
+
+.title {
+  color: rgb(51, 51, 51);
+  font-style: italic;
+  margin-top: 1em;
+}
+
+.art-icon {
+  margin-top: 2em;
+}
+
+.news-headers {
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #c9ab81;
+  line-height: 0.1em;
+  margin: 50px 20px;
+}
+
+.news {
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 8px;
+  font-size: 30px;
+  background: #f8f8f8;
+  font-family: "EB Garamond", serif;
+  padding: 0 1.5em;
+  color: #525252;
+}
+
+.commitment-content {
+  margin-top: 1em;
+  text-align: center;
+  max-width: 12em;
+}
+.commitment {
+  text-align: center;
+  padding-left: 8.5em;
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.commitment-detail {
+  margin-right: 8em;
+}
+.vertical-line {
+  border-left: 2px solid #d5a770;
+  height: 80px;
+  margin:4em 0 3em 35em;
+}
+
+.roadmap-title {
+  font-size: 38px;
+  font-weight: 350 !important;
+  font-weight: 1.1;
+}
+.step {
+  width: 55px;
+  height: 55px;
+  background-color: #d5a770;
+  color: #fff;
+  text-align: center;
+  border-radius: 55px;
+  display: block;
+  position: relative;
+  margin: 0 auto 20px;
+  /* padding-top: 15px */
+  line-height: 60px;
+}
+
+.stepper-content {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.three-steps {
+  margin-bottom: 3em;
+}
+
+.stepper {
+  margin-top: 3em;
+  margin-left: 10em;
+}
+.button {
+  margin: 3em 0 !important;
+  background-color: #d5a770;
+  color:  #fff !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 50px !important;
+  border-radius: 3px !important;
+  font-weight: 500 !important;
+  text-align: center;
+  letter-spacing: normal;
+  transition: all .5s;
+}
+.button:hover {
+  background-color: #d19961;
+}

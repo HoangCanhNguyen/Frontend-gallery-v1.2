@@ -1,0 +1,237 @@
+<div class="jumbotron jumbotron-fluid m-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="acc-preview" *ngIf="user">
+          <img
+            [src]="imageURL"
+            *ngIf="imageURL"
+            class="rounded-circle d-block mx-auto"
+            width="70px"
+            height="70px"
+          />
+          <div class="default-photo" *ngIf="!imageURL">
+            {{ user.username[0] | uppercase }}
+          </div>
+          <h1 class="my-2">Hello {{ user.username }}</h1>
+          <h4>
+            Tranh Việt collector since {{ user.created_at | date: "longDate" }}
+          </h4>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="tabs mt-5">
+          <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Tài khoản của tôi">
+              <div class="d-flex acc-info" *ngIf="user">
+                <div class="col-sm-5 basic-info">
+                  <h4 class="text-center mb-4" style="color: #95989a;">
+                    Thông tin tài khoản
+                  </h4>
+                  <form>
+                    <div
+                      class="form-group row"
+                      ngbTooltip="Bạn chỉ có thể thay đổi 1 lần duy nhất"
+                    >
+                      <label class="col-sm-3 col-form-label p-0"
+                        >Tên tài khoản</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          value="{{ user.username }}"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="form-group row"
+                      ngbTooltip="Bạn không thể thay đổi email"
+                    >
+                      <label class="col-sm-3 col-form-label p-0">Email</label>
+                      <div class="col-sm-9">
+                        <input
+                          class="form-control disabled"
+                          value="{{ user.email }}"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label p-0"
+                        >Ảnh đại diện</label
+                      >
+                      <div class="col-sm-9">
+                        <div class="acc-preview" id="upload-avatar">
+                          <p>Profile Photo</p>
+                          <hr class="mb-0" />
+                          <img
+                            [src]="imageURL"
+                            class="rimg-fluid d-block mx-auto"
+                            *ngIf="imageURL"
+                            width="100%"
+                            height="250px"
+                          />
+                          <div
+                            class="default-photo mb-4"
+                            *ngIf="!imageURL"
+                          >
+                            {{ user.username[0] | uppercase }}
+                          </div>
+                          <hr class="mb-0" *ngIf="!imageURL" />
+                          <label
+                            for="file-upload"
+                            class="btn btn-light btn-block custom-file-upload mb-0"
+                            style="border-radius: 0%; border: none;"
+                          >
+                            {{ !imageURL ? "Tải ảnh lên" : "Thay đổi" }}
+                          </label>
+                          <input #file id="file-upload" type="file" (change) = "preview(file.files)"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row d-flex justify-content-end pr-3">
+                      <button
+                        class="btn btn-light text-dark view-more"
+                        style="margin-top: 0.5rem; margin-bottom: 1rem;"
+                        type="submit"
+                        (click)="uploadFile($event)"
+                      >
+                        <svg height="52" width="110">
+                          <rect height="52" width="110"></rect>
+                        </svg>
+                        <span>LƯU</span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-sm-7 shipping-info">
+                  <h4 class="text-center mb-4" style="color: #95989a;">
+                    Thông tin giao hàng
+                  </h4>
+                  <form
+                    #shippingInfoForm="ngForm"
+                    (ngSubmit)="onSubmitShippingForm(shippingInfoForm)"
+                  >
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Họ & tên</label>
+                      <div class="col-sm-9 pr-0">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="fullName"
+                          ngModel
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"
+                        >Số điện thoại</label
+                      >
+                      <div class="col-sm-9 pr-0">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="phoneNumber"
+                          ngModel
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label"
+                        >Tỉnh/Thành phố</label
+                      >
+                      <div class="col-sm-9 pr-0">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="city"
+                          ngModel
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Quận/Huyện</label>
+                      <div class="col-sm-9 pr-0">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="district"
+                          ngModel
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Phường/Xã</label>
+                      <div class="col-sm-9 pr-0">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="town"
+                          ngModel
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Địa chỉ</label>
+                      <div class="col-sm-9 pr-0">
+                        <textarea
+                          class="form-control"
+                          id="exampleFormControlTextarea1"
+                          rows="3"
+                          name="address"
+                          ngModel
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row d-flex justify-content-end">
+                      <button
+                        class="btn btn-light text-dark view-more"
+                        style="margin-top: 0.5rem; margin-bottom: 1rem;"
+                        type="submit"
+                      >
+                        <svg height="52" width="160">
+                          <rect height="52" width="160"></rect>
+                        </svg>
+                        <span>CẬP NHẬT</span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Họa sĩ yêu thích">
+              <div class="favourite favourite-art-works">
+                <div class="info-icon">
+                  <span>i</span>
+                </div>
+                <h4>
+                  Hiện tại bạn chưa thêm họa sĩ nào vào mục này
+                </h4>
+              </div>
+            </mat-tab>
+            <mat-tab label="Tác phẩm yêu thích">
+              <div class="favourite favourite-art-works">
+                <div class="info-icon">
+                  <span>i</span>
+                </div>
+                <h4>
+                  Hiện tại bạn chưa thêm tác phẩm nào vào mục này
+                </h4>
+              </div>
+            </mat-tab>
+            <mat-tab label="Đơn hàng của tôi">
+              <div class="favourite favourite-art-works">
+                <div class="info-icon">
+                  <span>i</span>
+                </div>
+                <h4>
+                  Hiện tại bạn chưa có đơn hàng nào
+                </h4>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

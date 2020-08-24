@@ -1,0 +1,239 @@
+<div class="container">
+  <div
+    class="row my-5 p-5"
+    style="
+      border-radius: 5px;
+      background-color: #f8f8f8;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    "
+  >
+    <div class="col-sm-6">
+      <div class="img-blur-zoom-wrapper">
+        <img
+          src="https://cdn.singulart.com/artworks/v2/cropped/7079/main/fhd/718427_fde03cd014615937c13d95335d329374.jpeg"
+          class="d-block w-100 rounded blur-zoom"
+          style="height: 700px;"
+        />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="register-form">
+        <mat-tab-group
+          mat-align-tabs="center"
+          [selectedIndex]="selectedIndex"
+          dynamicHeight
+        >
+          <mat-tab label="Thông tin tài khoản">
+            <form
+              class="acc-basic-info"
+              #basicInfoForm="ngForm"
+              (ngSubmit)="onSubmitBasicInfoForm(basicInfoForm)"
+            >
+              <mat-form-field>
+                <mat-label>Tên đăng nhập</mat-label>
+                <input
+                  matInput
+                  placeholder="nDaniel"
+                  ngModel
+                  name="username"
+                  required
+                  #fullName="ngModel"
+                />
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error *ngIf="fullName.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Địa chỉ email</mat-label>
+                <input
+                  matInput
+                  placeholder="example@example.com"
+                  ngModel
+                  name="email"
+                  required
+                  email
+                  #email="ngModel"
+                />
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="email.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+                <mat-error *ngIf="email.errors?.email"
+                  >Địa chỉ email không hợp lệ</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Số điện thoại</mat-label>
+                <input
+                  matInput
+                  placeholder="0943598888"
+                  ngModel
+                  name="phoneNumber"
+                  required
+                  #phoneNumber="ngModel"
+                />
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="phoneNumber.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Ngày sinh</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker1"
+                  placeholder="8/13/2020"
+                  ngModel
+                  required
+                  name="dateOfBirth"
+                  #dateOfBirth="ngModel"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker1"
+                  style="font-size: larger;"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="dateOfBirth.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Mật khẩu</mat-label>
+                <input
+                  [type]="hide ? 'password' : 'text'"
+                  matInput
+                  placeholder="bí mật"
+                  ngModel
+                  name="password"
+                  required
+                  minlength="6"
+                  #password="ngModel"
+                />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                  type="button"
+                >
+                  <mat-icon style="font-size: larger;">{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+                <mat-error align="start" *ngIf="password.errors?.minlength"
+                  >Mật khẩu của bạn cần có ít nhất 6 kí tự</mat-error
+                >
+              </mat-form-field>
+              <button
+                type="submit"
+                class="btn btn-warning mt-4 text-white next-step"
+                [disabled]="basicInfoForm.invalid"
+              >
+                Bước tiếp theo
+              </button>
+            </form>
+          </mat-tab>
+
+          <mat-tab label="Giới thiệu bản thân" [disabled]="verified">
+            <form
+              #professionalInfoForm="ngForm"
+              (ngSubmit)="onSubmitProfessionalInfoForm(professionalInfoForm)"
+              class="professional-info"
+            >
+              <mat-form-field>
+                <mat-label>Họ & tên</mat-label>
+                <input
+                  matInput
+                  ngModel
+                  name="fullname"
+                  required
+                  #category="ngModel"
+                />
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error *ngIf="category.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Tên trường phái</mat-label>
+                <input
+                  matInput
+                  ngModel
+                  name="artForm"
+                  required
+                  #artForm="ngModel"
+                />
+                <mat-icon matSuffix>list</mat-icon>
+                <mat-error *ngIf="artForm.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Thể loại</mat-label>
+                <input
+                  matInput
+                  ngModel
+                  name="category"
+                  required
+                  #category="ngModel"
+                />
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error *ngIf="category.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Mô tả về bản thân</mat-label>
+                <textarea
+                  matInput
+                  rows="5"
+                  ngModel
+                  required
+                  name="selfIntroduction"
+                  #selfIntroduction="ngModel"
+                ></textarea>
+                <mat-error *ngIf="selfIntroduction.errors?.required"
+                  >Vui lòng mô tả đôi điều về bản thân</mat-error
+                >
+              </mat-form-field>
+              <br />
+              <mat-form-field>
+                <mat-label>Facebook</mat-label>
+                <input
+                  matInput
+                  ngModel
+                  name="facebookLink"
+                  #facebookLink="ngModel"
+                />
+                <mat-icon matSuffix>facebook</mat-icon>
+                <mat-hint
+                  >Vui lòng cung cấp đường dẫn tới trang Facebook cá nhân nếu
+                  có</mat-hint
+                >
+              </mat-form-field>
+              <button
+                type="submit"
+                class="btn btn-warning mt-4 text-white next-step"
+                [disabled]="professionalInfoForm.invalid"
+              >
+                Tạo tài khoản
+              </button>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

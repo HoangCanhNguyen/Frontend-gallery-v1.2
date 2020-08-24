@@ -1,0 +1,127 @@
+.example-card {
+  max-width: 400px;
+  /* font-family: eb garamond; */
+  width: 400px;
+}
+
+.mat-card {
+  border-radius: 10px;
+  box-shadow: 0 10px 50px -9px rgba(0, 0, 0, 0.5);
+  padding-bottom: 0;
+  font-family: "EB Garamond", serif;
+}
+
+.example-header-image {
+  background-size: cover;
+  border: 2px solid #c9ab81;
+  height: 70px;
+  width: 70px;
+  box-shadow: 0 10px 50px -9px rgba(0, 0, 0, 0.6);
+}
+
+.example-header-image:hover {
+  cursor: pointer;
+}
+
+.artist-card {
+  margin-bottom: 2em;
+}
+
+.mat-card-header .mat-card-title {
+  font-size: 25px;
+  margin-bottom: 3px;
+  font-weight: 300;
+}
+.mat-card-header:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+.mat-card-title:hover {
+  cursor: pointer;
+  color: #d5a770;
+  transition: all 0.3s ease-in-out;
+}
+
+.mat-card-subtitle:hover {
+  cursor: pointer;
+  color: #d5a770;
+  transition: all 1s ease-in-out;
+}
+
+.mat-card-subtitle,
+.mat-card-content {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.mat-standard-chip {
+  min-height: 20px !important;
+  min-width: 15px !important;
+  padding: 4px 8px !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: #fff !important;
+}
+
+.mat-chip {
+  background-color: #666 !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.mat-chip:hover {
+  background-color: #d5a770 !important;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+::ng-deep .mat-chip-list-wrapper {
+  margin: 0 0 40px 5em !important;
+}
+
+.mat-card-image {
+  border-radius: 0 0 10px 10px;
+}
+
+.mat-card-image:hover {
+  cursor: pointer;
+}
+.mat-card-image:focus {
+  border: none;
+  outline: none;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 7em;
+  overflow: hidden;
+  background-color: #323232;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 0.5em 2em;
+  opacity: 0;
+  font-family: eb garamond;
+  font-weight: 300;
+  width: 200px;
+}
+
+.artist-card:hover .overlay {
+  opacity: 1;
+  bottom: 3em !important;
+  cursor: pointer;
+}
+.overlay:hover {
+  background-color: #d5a770;
+}
+.overlay:focus {
+  border: none;
+  outline: none;
+}
