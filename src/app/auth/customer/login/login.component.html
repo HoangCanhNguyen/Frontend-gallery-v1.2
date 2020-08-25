@@ -10,14 +10,24 @@
   <h2>Đăng nhập</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
-      <mat-label>Tên đăng nhập</mat-label>
-      <input formControlName="username" matInput placeholder="nDaniel" />
+      <mat-label>Địa chỉ email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="example@example.com"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Mật khẩu</mat-label>
-      <input formControlName="password" [type]="hide ? 'password' : 'text'" matInput placeholder="bí mật" />
+      <input
+        formControlName="raw_password"
+        [type]="hide ? 'password' : 'text'"
+        matInput
+        placeholder="bí mật"
+      />
       <button
+        type="button"
         mat-icon-button
         matSuffix
         (click)="hide = !hide"

@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     document.getElementById('fixed').classList.add('fixed-top');
     document.getElementById('fixed').classList.remove('sticky');
-    this.picServivce.getNewPics().subscribe(pic => {
-      this.new_pic_list = pic;
-    });
+    // this.picServivce.getNewPics().subscribe(pic => {
+    //   this.new_pic_list = pic;
+    // });
   }
 
   ngAfterViewInit(): void {

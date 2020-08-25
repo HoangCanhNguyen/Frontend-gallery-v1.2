@@ -93,12 +93,6 @@ export class HeaderComponent implements OnInit {
   onSubmit(): void { }
 
   onLogOut(): void {
-    this.authService.loggedOut();
-    this._snackBar.open('ĐĂNG XUẤT', 'THÀNH CÔNG', {
-      duration: 2500,
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
   }
 
   @HostListener('window:scroll', ['$event'])

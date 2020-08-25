@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
     this.signUpForm = new FormGroup({
       username: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [
+      raw_password: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
       ]),
@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
   //   }
   // }
   onSubmit(): void {
-      this.authService.setUserInfo(this.signUpForm).subscribe(
+      this.authService.onUserRegister(this.signUpForm).subscribe(
         (res) => {
           this.snackbarService.onStart('ĐĂNG KÝ');
           this.dialogRef.close();

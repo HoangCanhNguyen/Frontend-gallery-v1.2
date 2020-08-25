@@ -22,14 +22,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl()
+      email: new FormControl(),
+      raw_password: new FormControl()
     });
-    this.authService.logged.subscribe((data) => {
-      if (data) {
-        this.dialogRef.close()
-      }
-    })
   }
 
   onOpenSignUp(): void {
@@ -44,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.onLogin(this.loginForm).subscribe(
+    this.authService.onUserLogin(this.loginForm).subscribe(
       (res) => {
         this.snackbarSerivce.onStart('ĐĂNG NHẬP');
         this.dialogRef.close()
