@@ -43,9 +43,9 @@ export class BasicProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getCarouselHeight.getCarouselHeight(0);
     document.getElementById('fixed').classList.add('sticky');
-    this.authService.onGetUserById(this.id).subscribe((res) => {
-      this.user = res;
-    });
+    // this.authService.onGetUserById(this.id).subscribe((res) => {
+    //   this.user = res;
+    // });
   }
 
   onSubmitShippingForm(form: NgForm): void {
