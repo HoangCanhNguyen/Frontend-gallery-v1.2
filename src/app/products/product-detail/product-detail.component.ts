@@ -12,10 +12,9 @@ import { PicturesService } from 'src/app/shared/service/pictures.service';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   pic_info: any;
-  pic_id: any;
+  id: any;
   pic_name: any;
   pic_category: any;
-  id_interface: pic_id;
   sub: Subscription;
 
   constructor(
@@ -27,18 +26,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getCarouselHeight.getCarouselHeight(0);
     this.sub = this.route.params.subscribe((params: Params) => {
-      this.pic_id = params.pic_id;
+      this.id = params.id;
       this.pic_category = params.pic_category;
       this.pic_name = params.pic_name;
     });
-    this.id_interface = {
-      pic_id: this.pic_id,
-    };
-    this.pic_info = this.picService.getPicById(this.id_interface).subscribe(
+    this.pic_info = this.picService.getPicById({"id": this.id}).subscribe(
       (res) => {
         this.pic_info = res;
       }
     );
+    
   }
 
   ngOnDestroy(): void {
@@ -46,6 +43,4 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 }
 
-interface pic_id {
-  pic_id: string;
-}
+

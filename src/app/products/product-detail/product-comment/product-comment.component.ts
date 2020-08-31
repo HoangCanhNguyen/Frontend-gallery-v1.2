@@ -30,7 +30,6 @@ export class ProductCommentComponent implements OnInit {
   username: string;
   loginStatus = false;
 
-  pic_id: Id;
   @Input() parent_id: any;
 
   constructor(
@@ -40,20 +39,11 @@ export class ProductCommentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.authService.logged.subscribe((status) => {
-    //   this.isLogged = status;
-    // });
-    // console.log(this.isLogged);
-
     this.commentForm = new FormGroup({
       content: new FormControl(),
     });
 
-    this.pic_id = {
-      pic_id: this.parent_id,
-    };
-
-    this.commentService.getComment(this.pic_id).subscribe((res) => {
+    this.commentService.getComment({"pic_id": this.parent_id}).subscribe((res) => {
       this.cmt_list = res;
     });
 
@@ -74,7 +64,7 @@ export class ProductCommentComponent implements OnInit {
     }
   }
 
-  onSetComment() {
+  onSetCommentInformation() {
     this.comment = {
       username: this.username,
       pic_id: this.parent_id,
@@ -93,15 +83,14 @@ export class ProductCommentComponent implements OnInit {
   }
 
   onSubmit() {
-    this.onSetComment();
-    this.commentService.setComment(this.comment).subscribe((res) => {
-      this.cmt_list.push(res);
-      this.isComment = false;
-      this.commentForm.reset();
-    });
+    this.onSetCommentInformation();
+    console.log(this.comment);
+    
+    // this.commentService.setComment(this.comment).subscribe((res) => {
+    //   this.cmt_list.push(res);
+    //   this.isComment = false;
+    //   this.commentForm.reset();
+    // });
   }
 }
 
-interface Id {
-  pic_id: string;
-}

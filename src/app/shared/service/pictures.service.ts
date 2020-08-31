@@ -11,8 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class PicturesService {
   picturesList: Picture[] = [];
 
-  GET_ALL_URL = `${API_URL}/pictures`;
-  GET_BY_ID_URL = `${API_URL}/getbyid`;
+  GET_PICTURE_URL = `${API_URL}/pictures`;
   GET_NEW_PIC_URL = `${API_URL}/newpics`;
   constructor(private httpClient: HttpClient) {}
 
@@ -25,12 +24,12 @@ export class PicturesService {
 
   getData(): Observable<any> {
     return this.httpClient
-      .get(this.GET_ALL_URL)
+      .get(this.GET_PICTURE_URL)
       .pipe(catchError(async (error) => new Error(error)));
   }
 
-  getPicById(id) {
-    return this.httpClient.post(this.GET_BY_ID_URL, id, this.httpOptions);
+  getPicById(id): Observable<any> {
+    return this.httpClient.post(this.GET_PICTURE_URL, id);
   }
 
   getNewPics(): Observable<any> {

@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
     path: 'home/:pic_id/:category/:pic_name',
-    redirectTo: 'list/:pic_id/:category/:pic_name',
+    redirectTo: 'list/:id/:category/:pic_name',
     pathMatch: 'full',
   },
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ProductListComponent },
       {
-        path: ':pic_id/:category/:pic_name',
+        path: ':id/:category/:pic_name',
         component: ProductDetailComponent,
       },
     ],

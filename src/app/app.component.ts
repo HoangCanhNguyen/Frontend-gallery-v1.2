@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticateService } from './shared/service/authenticate.service';
+import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor(private authenticate: AuthenticateService) {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      this.authenticate.onGetUserInfo();
+    }
+  }
 }
