@@ -3,7 +3,7 @@
     <img
       [src]="picture.imageLink"
       class="img-fluid"
-      [routerLink]="[picture.pic_id, picture.category, picture.title]"
+      [routerLink]="[picture.id, picture.category, picture.title]"
     />
     <!-- <div class="overlay">
         <div class="icon-wrapper">
@@ -35,7 +35,7 @@
   </div>
   <div
     class="info-wrapper"
-    [routerLink]="[picture.pic_id, picture.category, picture.title]"
+    [routerLink]="[picture.id, picture.category, picture.title]"
   >
     <h5 class="pic-title">{{ picture.title }}</h5>
     <div class="pic-price-stars">
@@ -72,7 +72,7 @@
         <a
           class="btn btn-light text-dark view-more2"
           style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
-          [routerLink]="[picture.pic_id, picture.category, picture.title]"
+          [routerLink]="[picture.id, picture.category, picture.title]"
           routerLinkActive="router-link-active"
         >
           <svg height="52" width="120">

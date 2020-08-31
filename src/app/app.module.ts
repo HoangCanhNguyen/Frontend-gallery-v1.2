@@ -28,6 +28,9 @@ import { LoginComponent } from './auth/customer/login/login.component';
 import { SignupComponent } from './auth/customer/signup/signup.component';
 import { PictureFilterPipe } from 'src/app/products/product-list/filter.pipe';
 
+import { HeadersInterceptor } from 'src/app/JWT-token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 // third-party libraries
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIconModule } from '@angular/material/icon';
@@ -56,7 +59,6 @@ import { CustomerComponent } from './auth/customer/customer.component';
 import { VendorComponent } from './auth/vendor/vendor.component';
 import { SignUpComponent } from './auth/vendor/sign-up/sign-up.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
 
 @NgModule({
   declarations: [
@@ -117,13 +119,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatChipsModule,
     AngularFireStorageModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -9,7 +9,7 @@ import { API_URL } from '../../env';
 })
 export class ReplyService {
   SET_REPLY_URL = `${API_URL}/reply`;
-  GET_REPLY_URL = `${API_URL}/getreply`;
+  GET_REPLY_URL = `${API_URL}/reply`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

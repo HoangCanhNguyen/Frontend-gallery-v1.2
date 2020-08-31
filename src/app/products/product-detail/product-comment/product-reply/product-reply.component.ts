@@ -14,11 +14,14 @@ export class ProductReplyComponent implements OnInit {
   reply_list: ReplyResponse[] = [];
   @Input() replyInfo: any;
 
-  reply: SetReply
+  reply: SetReply;
   replyForm: FormGroup;
 
-  username: string
-  constructor(private replyService: ReplyService, private authService: AuthenticateService) {}
+  username: string;
+  constructor(
+    private replyService: ReplyService,
+    private authService: AuthenticateService
+  ) {}
 
   ngOnInit(): void {
     this.replyForm = new FormGroup({
@@ -35,31 +38,33 @@ export class ProductReplyComponent implements OnInit {
 
   onSetReply() {
     this.reply = {
-      reply_id: "0",
+      reply_id: '0',
       username: this.username,
       cmt_id: this.replyInfo.cmt_id,
       pic_id: this.replyInfo.pic_id,
-      content: this.replyForm.get("content").value,
-      posted: "0",
-      user_id: "0"
-    }
+      content: this.replyForm.get('content').value,
+      posted: '0',
+      user_id: '0',
+    };
   }
 
   onShowReply() {
     this.isReply = !this.isReply;
     if (this.isReply) {
-      this.replyService.getReply(this.replyInfo).subscribe((res) => {
-        this.reply_list = res;
-      });
+      this.replyService
+        .getReply({ cmt_id: this.replyInfo.cmt_id })
+        .subscribe((res) => {
+          this.reply_list = res;
+        });
     }
   }
 
   onSubmit() {
-    this.onSetReply()
-    this.replyService.setReply(this.reply).subscribe(res => {
-      this.reply_list.push(res)
-      this.replyForm.reset()
-    })
+    this.onSetReply();
+    this.replyService.setReply(this.reply).subscribe((res) => {
+      this.reply_list.push(res);
+      this.replyForm.reset();
+    });
   }
 }
 
