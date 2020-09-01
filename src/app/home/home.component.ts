@@ -1,17 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
-import { GetCarouselHeightService } from '../shared/service/get-carousel-height.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PicturesService } from '../shared/service/pictures.service';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { map, finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
   new_pic_list: any = [];
 
@@ -20,7 +17,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   downloadURL: Observable<string>;
 
   constructor(
-    private getCarouselHeight: GetCarouselHeightService,
     private router: Router,
     private picServivce: PicturesService,
     private storage: AngularFireStorage
@@ -29,12 +25,4 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-    const imageHeight = window.innerHeight;
-    this.getCarouselHeight.getCarouselHeight(imageHeight);
-  }
-
-  ngOnDestroy() {
-    this.getCarouselHeight.getCarouselHeight(0);
-  }
 }

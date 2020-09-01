@@ -1,11 +1,6 @@
 import {
   Component,
   OnInit,
-  HostListener,
-  ViewChild,
-  ElementRef,
-  OnChanges,
-  AfterViewInit,
 } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -13,10 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CustomerComponent } from 'src/app/auth/customer/customer.component';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
-import { Route, ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { UserModule } from 'src/app/shared/model/user.model';
-import { Subject } from 'rxjs';
-import { GetCarouselHeightService } from 'src/app/shared/service/get-carousel-height.service';
 
 @Component({
   selector: 'app-header',
