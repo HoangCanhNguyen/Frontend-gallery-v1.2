@@ -48,38 +48,38 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        switch (this.activatedRoute.firstChild.snapshot.routeConfig.path) {
-          case "home":
-            this.fixed_top_class = true;
-            this.sticky_class = false;
-            break;
-          case "list":
-            this.fixed_top_class = false;
-            this.sticky_class = true;
-            break;
-          case "artists":
-            this.fixed_top_class = true;
-            this.sticky_class = false;
-            break;
-          default:
-            this.fixed_top_class = false;
-            this.sticky_class = true;
-        }
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     switch (this.activatedRoute.firstChild.snapshot.routeConfig.path) {
+    //       case "home":
+    //         this.fixed_top_class = true;
+    //         this.sticky_class = false;
+    //         break;
+    //       case "list":
+    //         this.fixed_top_class = false;
+    //         this.sticky_class = true;
+    //         break;
+    //       case "artists":
+    //         this.fixed_top_class = true;
+    //         this.sticky_class = false;
+    //         break;
+    //       default:
+    //         this.fixed_top_class = false;
+    //         this.sticky_class = true;
+    //     }
+    //   }
+    // });
 
-    this.getCarouselHeight.carouselHeight.subscribe((height) => {
-      if (height > 0) {
-        this.carouselHeight = height;
-      }
-      else {
-        this.carouselHeight = 0;
-        this.sticky_class = true;
-        this.fixed_top_class = false;
-      }
-    });
+    // this.getCarouselHeight.carouselHeight.subscribe((height) => {
+    //   if (height > 0) {
+    //     this.carouselHeight = height;
+    //   }
+    //   else {
+    //     this.carouselHeight = 0;
+    //     this.sticky_class = true;
+    //     this.fixed_top_class = false;
+    //   }
+    // });
 
 
     this.authService.currentUser.subscribe((data) => {
@@ -105,20 +105,20 @@ export class HeaderComponent implements OnInit {
     this.authService.onUserLogout()
   }
 
-  @HostListener('window:scroll', ['$event'])
-  handleScroll(): void {
-    if (this.carouselHeight > 0 && window.scrollY >= this.carouselHeight) {
-      this.sticky_class = true;
-      this.fixed_top_class = false;
-      this.fixedNav = true;
-    }
-    else if (this.carouselHeight > 0 && window.scrollY < this.carouselHeight) {
-      this.sticky_class = false;
-      this.fixed_top_class = true;
-      this.fixedNav = false;
-    }
-    else {
-      this.fixedNav = false;
-    }
-  }
+  // @HostListener('window:scroll', ['$event'])
+  // handleScroll(): void {
+  //   if (this.carouselHeight > 0 && window.scrollY >= this.carouselHeight) {
+  //     this.sticky_class = true;
+  //     this.fixed_top_class = false;
+  //     this.fixedNav = true;
+  //   }
+  //   else if (this.carouselHeight > 0 && window.scrollY < this.carouselHeight) {
+  //     this.sticky_class = false;
+  //     this.fixed_top_class = true;
+  //     this.fixedNav = false;
+  //   }
+  //   else {
+  //     this.fixedNav = false;
+  //   }
+  // }
 }

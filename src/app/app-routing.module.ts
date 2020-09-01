@@ -18,56 +18,67 @@ import { InformationComponent } from './console/information/information.componen
 import { BiographyComponent } from './console/biography/biography.component';
 import { ArtworksComponent } from './console/artworks/artworks.component';
 import { ArtistCollectorLoginComponent } from './console/artist-collector-login/artist-collector-login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
   {
-    path: 'home/:pic_id/:category/:pic_name',
-    redirectTo: 'list/:id/:category/:pic_name',
-    pathMatch: 'full',
-  },
-  {
-    path: 'list',
-    component: ProductsComponent,
+    path: '',
+    component: LayoutComponent,
     children: [
-      { path: '', component: ProductListComponent },
+      { path: 'home', component: HomeComponent },
       {
-        path: ':id/:category/:pic_name',
-        component: ProductDetailComponent,
+        path: 'home/:pic_id/:category/:pic_name',
+        redirectTo: 'list/:id/:category/:pic_name',
+        pathMatch: 'full',
       },
-    ],
-  },
-  {
-    path: 'artists',
-    component: ArtistsComponent,
-    children: [
-      { path: '', component: ArtistListComponent },
-      { path: ':artist_id/:artist_name', component: ArtistDetailComponent },
-    ],
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    children: [
       {
-        path: 'customer/:role/:id/:username',
-        component: BasicProfileComponent,
+        path: 'list',
+        component: ProductsComponent,
+        children: [
+          { path: '', component: ProductListComponent },
+          {
+            path: ':id/:category/:pic_name',
+            component: ProductDetailComponent,
+          },
+        ],
       },
-      { path: ':role/:id/:username', component: ArtistProfileComponent },
+      {
+        path: 'artists',
+        component: ArtistsComponent,
+        children: [
+          { path: '', component: ArtistListComponent },
+          { path: ':artist_id/:artist_name', component: ArtistDetailComponent },
+        ],
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        children: [
+          {
+            path: 'customer/:role/:id/:username',
+            component: BasicProfileComponent,
+          },
+          { path: ':role/:id/:username', component: ArtistProfileComponent },
+        ],
+      },
+      { path: 'vendor/register', component: VendorComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
-  { path: 'vendor/register', component: VendorComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
+
   {
-    path: 'console', component: ConsoleComponent, children: [
+    path: 'console',
+    component: ConsoleComponent,
+    children: [
       { path: '', component: ArtistCollectorLoginComponent },
       { path: 'info', component: InformationComponent },
       { path: 'biography', component: BiographyComponent },
-      { path: 'artworks', component: ArtworksComponent }
-    ]
+      { path: 'artworks', component: ArtworksComponent },
+    ],
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'home' },
+
 ];
 
 @NgModule({
@@ -76,4 +87,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
