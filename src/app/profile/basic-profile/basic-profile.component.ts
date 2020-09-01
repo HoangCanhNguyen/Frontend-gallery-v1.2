@@ -1,5 +1,4 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { GetCarouselHeightService } from 'src/app/shared/service/getCarouselHeight.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
@@ -29,7 +28,6 @@ export class BasicProfileComponent implements OnInit {
   downloadURL: Observable<string>;
 
   constructor(
-    private getCarouselHeight: GetCarouselHeightService,
     private route: ActivatedRoute,
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
@@ -41,11 +39,6 @@ export class BasicProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCarouselHeight.getCarouselHeight(0);
-    document.getElementById('fixed').classList.add('sticky');
-    // this.authService.onGetUserById(this.id).subscribe((res) => {
-    //   this.user = res;
-    // });
   }
 
   onSubmitShippingForm(form: NgForm): void {

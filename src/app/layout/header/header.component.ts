@@ -4,6 +4,8 @@ import {
   HostListener,
   ViewChild,
   ElementRef,
+  OnChanges,
+  AfterViewInit,
 } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -11,9 +13,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CustomerComponent } from 'src/app/auth/customer/customer.component';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
-import { GetCarouselHeightService } from 'src/app/shared/service/getCarouselHeight.service';
-import { Route, ActivatedRoute, Params } from '@angular/router';
+import { Route, ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { UserModule } from 'src/app/shared/model/user.model';
+import { Subject } from 'rxjs';
+import { GetCarouselHeightService } from 'src/app/shared/service/get-carousel-height.service';
 
 @Component({
   selector: 'app-header',
@@ -21,11 +24,9 @@ import { UserModule } from 'src/app/shared/model/user.model';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('stickyHeader') stickyHeader: HTMLElement;
-  sticky = false;
-  logoImage =
-    'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-light.png';
-
+  fixed_top_class = true;
+  sticky_class = false;
+  fixedNav = false;
   carouselHeight = 0;
 
   showModal: boolean;
@@ -33,34 +34,60 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn = false;
   user: UserModule;
-  username: any;
+  userInfo: any;
+  username: string;
   id: any;
 
   constructor(
     public matDialog: MatDialog,
     public authService: AuthenticateService,
     private _snackBar: MatSnackBar,
-    private getCarouselHeightService: GetCarouselHeightService,
-    private route: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private getCarouselHeight: GetCarouselHeightService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.getCarouselHeightService.carouselHeight.subscribe((height) => {
-      if (height > 0) {
-        this.carouselHeight = height;
-        this.logoImage =
-          'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-light.png';
-      } else {
-        this.carouselHeight = 0;
-        this.sticky = true;
-        this.logoImage =
-          'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-dark.png';
-        document.getElementById('fixed').classList.remove('fixed-top');
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        switch (this.activatedRoute.firstChild.snapshot.routeConfig.path) {
+          case "home":
+            this.fixed_top_class = true;
+            this.sticky_class = false;
+            break;
+          case "list":
+            this.fixed_top_class = false;
+            this.sticky_class = true;
+            break;
+          case "artists":
+            this.fixed_top_class = true;
+            this.sticky_class = false;
+            break;
+          default:
+            this.fixed_top_class = false;
+            this.sticky_class = true;
+        }
       }
     });
-    this.authService.currentUser.subscribe((data) => {
-      this.username = data;
+
+    this.getCarouselHeight.carouselHeight.subscribe((height) => {
+      if (height > 0) {
+        this.carouselHeight = height;
+      }
+      else {
+        this.carouselHeight = 0;
+        this.sticky_class = true;
+        this.fixed_top_class = false;
+      }
     });
+
+
+    this.authService.currentUser.subscribe((data) => {
+      this.userInfo = data;
+      this.username = this.userInfo["username"];
+      this.role = this.userInfo.role;
+    });
+
   }
 
   openCustomerModal(): void {
@@ -72,7 +99,7 @@ export class HeaderComponent implements OnInit {
     const modalDialog = this.matDialog.open(CustomerComponent, dialogConfig);
   }
 
-  onSubmit(): void {}
+  onSubmit(): void { }
 
   onLogOut(): void {
     this.authService.onUserLogout()
@@ -80,23 +107,18 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   handleScroll(): void {
-    if (
-      (this.carouselHeight > 0 &&
-        document.body.scrollTop > this.carouselHeight) ||
-      (this.carouselHeight > 0 &&
-        document.documentElement.scrollTop > this.carouselHeight) ||
-      (this.carouselHeight === 0 &&
-        document.body.scrollTop === this.carouselHeight) ||
-      (this.carouselHeight === 0 &&
-        document.documentElement.scrollTop === this.carouselHeight)
-    ) {
-      this.sticky = true;
-      this.logoImage =
-        'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-dark.png';
-    } else {
-      this.sticky = false;
-      this.logoImage =
-        'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-light.png';
+    if (this.carouselHeight > 0 && window.scrollY >= this.carouselHeight) {
+      this.sticky_class = true;
+      this.fixed_top_class = false;
+      this.fixedNav = true;
+    }
+    else if (this.carouselHeight > 0 && window.scrollY < this.carouselHeight) {
+      this.sticky_class = false;
+      this.fixed_top_class = true;
+      this.fixedNav = false;
+    }
+    else {
+      this.fixedNav = false;
     }
   }
 }

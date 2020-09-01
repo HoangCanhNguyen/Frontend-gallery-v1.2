@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PicturesService } from '../../shared/service/pictures.service';
 import { Picture } from 'src/app/shared/model/picture.model';
-import { GetCarouselHeightService } from 'src/app/shared/service/getCarouselHeight.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterService } from '../../shared/service/filter.service';
@@ -24,15 +23,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   constructor(
     private pictureService: PicturesService,
-    private getCarouselHeight: GetCarouselHeightService,
     private filterService: FilterService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getCarouselHeight.getCarouselHeight(0);
-    document.getElementById('fixed').classList.add('sticky');
 
     this.pictureService.getData().subscribe((data) => {
       this.filteredList = data;

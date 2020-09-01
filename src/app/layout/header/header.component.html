@@ -1,12 +1,10 @@
 <nav
   class="navbar navbar-expand-lg navbar-light fixed-top"
-  id="fixed"
-  [class.sticky]="sticky"
-  #stickyHeader
+  *ngIf="fixed_top_class"
 >
   <a class="navbar-brand">
     <img
-      [src]="logoImage"
+      src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-light.png"
       width="50"
       height="44"
       id="logo"
@@ -67,7 +65,7 @@
           ><i
             class="fa fa-user-o"
             aria-hidden="true"
-            style="color: #c9ab81; font-size: 2rem; padding-bottom: 10px;"
+            style="color: #c9ab81; font-size: 2rem; padding-bottom: 10px"
           ></i>
         </a>
       </li>
@@ -78,7 +76,7 @@
           [matMenuTriggerFor]="menu"
           style="padding-bottom: 0; color: white"
           #trigger="matMenuTrigger"
-          >{{ username["username"] }}
+          >{{ username }}
           <span class="material-icons" style="padding-bottom: 4px">
             expand_more
           </span></a
@@ -110,7 +108,124 @@
           >
           <a mat-menu-item class="menu-items" (click)="onLogOut()">Đăng xuất</a>
         </mat-menu>
-      </li> 
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav
+  class="navbar navbar-expand-lg navbar-light sticky"
+  [ngClass]="{ 'position-fixed': fixedNav }"
+  *ngIf="sticky_class"
+  style="z-index: 10; width: 100%"
+>
+  <a class="navbar-brand">
+    <img
+      src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-dark.png"
+      width="50"
+      height="44"
+      id="logo"
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer"
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav toolbar mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive
+          style="margin-left: 2em"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+          >Trang chủ</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/list']"
+          routerLinkActive="router-link-active"
+          >Tác Phẩm</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/artists']">Họa sĩ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Diễn đàn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Danh sách yêu thích</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto tool-bar">
+      <li *ngIf="!username" class="nav-item">
+        <a
+          class="nav-link auth-menu"
+          mat-button
+          style="padding-bottom: 0; color: white"
+          (click)="openCustomerModal()"
+          ><i
+            class="fa fa-user-o"
+            aria-hidden="true"
+            style="color: #c9ab81; font-size: 2rem; padding-bottom: 10px"
+          ></i>
+        </a>
+      </li>
+      <li *ngIf="username" class="nav-item">
+        <a
+          class="nav-link auth-menu"
+          mat-button
+          [matMenuTriggerFor]="menu"
+          style="padding-bottom: 0; color: white"
+          #trigger="matMenuTrigger"
+          >{{ username }}
+          <span class="material-icons" style="padding-bottom: 4px">
+            expand_more
+          </span></a
+        >
+
+        <mat-menu #menu="matMenu" class="menu">
+          <a
+            mat-menu-item
+            class="menu-items"
+            *ngIf="!isLoggedIn"
+            href="https://tranhviet.shop/"
+            >TRANH VIET</a
+          >
+          <a
+            mat-menu-item
+            class="menu-items"
+            *ngIf="(role === 'artist' || role === 'admin') && username !== ''"
+            [routerLink]="['/profile', role, id, username]"
+            routerLinkActive="router-link-active"
+            >Trang cá nhân</a
+          >
+          <a
+            mat-menu-item
+            class="menu-items"
+            *ngIf="role === 'user' && username !== ''"
+            [routerLink]="['profile/customer', role, id, username]"
+            routerLinkActive="router-link-active"
+            >Trang cá nhân</a
+          >
+          <a mat-menu-item class="menu-items" (click)="onLogOut()">Đăng xuất</a>
+        </mat-menu>
+      </li>
     </ul>
   </div>
 </nav>

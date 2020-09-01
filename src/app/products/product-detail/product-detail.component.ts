@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { GetCarouselHeightService } from 'src/app/shared/service/getCarouselHeight.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
@@ -18,13 +17,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   constructor(
-    private getCarouselHeight: GetCarouselHeightService,
     private route: ActivatedRoute,
     private picService: PicturesService
   ) {}
 
   ngOnInit(): void {
-    this.getCarouselHeight.getCarouselHeight(0);
     this.sub = this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.pic_category = params.pic_category;

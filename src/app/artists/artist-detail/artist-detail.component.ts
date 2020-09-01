@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ArtistService } from 'src/app/shared/service/artist.service';
 import { Subscription } from 'rxjs';
-import { GetCarouselHeightService } from 'src/app/shared/service/getCarouselHeight.service';
 
 @Component({
   selector: 'app-artist-detail',
@@ -15,7 +14,7 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
   artist_name: string;
   artist_id: any;
   artist_info: any;
-  constructor(private route: ActivatedRoute, private artistService: ArtistService, private getCarouselHeight: GetCarouselHeightService) { }
+  constructor(private route: ActivatedRoute, private artistService: ArtistService) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params: Params) => {
@@ -25,10 +24,6 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
     this.artistService.getArtistById({ id: this.artist_id }).subscribe(artist => {
       this.artist_info = artist;
     });
-
-    this.getCarouselHeight.getCarouselHeight(0);
-    document.getElementById('fixed').classList.add('sticky');
-
   }
 
   ngOnDestroy(): void {

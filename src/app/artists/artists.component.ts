@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GetCarouselHeightService } from '../shared/service/getCarouselHeight.service';
 
 @Component({
   selector: 'app-artists',
@@ -8,11 +7,9 @@ import { GetCarouselHeightService } from '../shared/service/getCarouselHeight.se
 })
 export class ArtistsComponent implements OnInit {
 
-  constructor(private getCarouselHeight: GetCarouselHeightService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getCarouselHeight.getCarouselHeight(0);
-    document.getElementById('fixed').classList.add('sticky');
   }
 
 }
