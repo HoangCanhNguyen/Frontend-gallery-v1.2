@@ -1,14 +1,13 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArtistService } from 'src/app/shared/service/artist.service';
-import { GetCarouselHeightService } from 'src/app/shared/service/get-carousel-height.service';
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
   styleUrls: ['./artist-list.component.css']
 })
-export class ArtistListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ArtistListComponent implements OnInit {
 
-  constructor(private artistService: ArtistService, private getCarouselHeight: GetCarouselHeightService) { }
+  constructor(private artistService: ArtistService) { }
 
   artist_list: any = [];
 
@@ -261,15 +260,6 @@ export class ArtistListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.artistService.getArtistInfo().subscribe(artist => {
       this.artist_list = artist;
     });
-  }
-
-  ngAfterViewInit(): void {
-    const imageHeight = window.innerHeight;
-    this.getCarouselHeight.getCarouselHeight(imageHeight);
-  }
-
-  ngOnDestroy() {
-    this.getCarouselHeight.getCarouselHeight(0);
   }
 
 }

@@ -83,17 +83,17 @@ input[type="file"] {
 
 /* style the form */
 form label {
-  color: #d19961;
+  color: #937641;
   font-size: 1.1rem;
 }
 form input:focus {
   outline: none !important;
-  border: 1px solid #c9ab81;
+  border: 1px solid #937641;
   box-shadow: none !important;
 }
 form textarea:focus {
   outline: none !important;
-  border: 1px solid #c9ab81;
+  border: 1px solid #937641;
   box-shadow: none !important;
 }
 
@@ -164,7 +164,7 @@ form textarea:focus {
   color: #c9ab81;
   font-family: "EB Garamond", serif;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 1.5em;
   font-weight: 300;
   margin-top: 3rem;
@@ -174,7 +174,7 @@ form textarea:focus {
   font-family: "EB Garamond", serif;
   text-transform: uppercase;
   color: #525252;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   letter-spacing: 0.15em;
 }
 ::ng-deep .carousel-indicators > li {
@@ -191,6 +191,10 @@ form textarea:focus {
 ::ng-deep .review-wrapper .carousel .carousel-control-prev-icon {
   background-image: url("https://cdn0.iconfinder.com/data/icons/thin-basic-ui/32/left-512.png");
   filter: invert(100%);
+}
+button:disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
 }
 
 h1.best-pictures-header {
@@ -221,50 +225,157 @@ h1.best-pictures-header {
   color: #181818;
 }
 .artist-background h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 .artist-background p {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
-ul.list-group {
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  top: 30%;
-  right: 0;
-  z-index: 1000;
+input[type="file"] {
+  display: none;
 }
-ul.list-group .list-group-item {
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 16px;
   cursor: pointer;
-  margin: 0.5rem;
-  padding: 0;
-  background-color: transparent !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white !important;
+  border-radius: 6px !important;
+  border: none;
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+  z-index: 100;
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.custom-file-upload:hover {
+  background-color: #aaa;
+}
+
+.change-avatar {
+  position: absolute;
+  right: 0;
+  bottom: 12%;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
-  border: none !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-ul.list-group i {
-  width: 100%;
-  height: 100%;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.35rem;
-  background-color: #ebebeb;
-  color: #878787;
-  transition: all 0.3s ease-in-out;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.4s;
 }
-ul.list-group .list-group-item:hover i {
-  background-color: #c9ab81 !important;
-  color: white !important;
+.change-avatar label {
+  cursor: pointer;
+  margin-bottom: 0;
 }
-::ng-deep ul.social-media-icons.list-group .show.tooltip {
-  width: 100px;
+.change-avatar:hover {
+  background-color: #aaa;
 }
 
+.edit-quote-icon {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+  font-size: 1.3rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #d3d3d3;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.edit-quote-icon:hover {
+  background-color: #aaa;
+}
 
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
+  padding: 70px 60px 50px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #b49871;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+}
+.form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: skewX(-26deg);
+  transform-origin: bottom left;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.form .input-group {
+  position: relative;
+}
+.form .input-group input,
+.form .input-group textarea {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #937641;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+}
+.form .input-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: 0.3s ease-out;
+}
+.form .input-group input:focus + label,
+.form .input-group input:valid + label,
+.form .input-group textarea:focus + label,
+.form .input-group textarea:valid + label {
+  transform: translateY(-1rem);
+  color: #937641;
+  font-size: 0.9rem;
+}
+.submit-btn {
+  /* display: block; */
+  margin-left: auto;
+  border: none;
+  outline: none;
+  background: #d19a4d;
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+.submit-btn:hover {
+  background-color: #c9ab81;
+}

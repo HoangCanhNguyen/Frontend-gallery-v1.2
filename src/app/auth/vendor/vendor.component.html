@@ -30,11 +30,13 @@
       great again
     </h2>
 
-    <div style="margin: 5em 0;">
-      <i class="fa fa-arrow-down" style="font-size: 120px; color: #c9ab81;"></i>
+    <div style="margin: 5em 0">
+      <i class="fa fa-arrow-down" style="font-size: 120px; color: #c9ab81"></i>
     </div>
 
-    <h1 class="news-headers"><span class="news" *ngIf="!isOpened">cam kết từ chúng tôi</span></h1>
+    <h1 class="news-headers">
+      <span class="news" *ngIf="!isOpened">cam kết từ chúng tôi</span>
+    </h1>
     <div class="row commitment" *ngIf="!isOpened">
       <div class="commitment-detail">
         <img
@@ -43,9 +45,7 @@
           height="70px"
           width="70px"
         />
-        <div class="commitment-content">
-          Thành công trên thị trường online
-        </div>
+        <div class="commitment-content">Thành công trên thị trường online</div>
       </div>
       <div class="commitment-detail">
         <img
@@ -54,9 +54,7 @@
           height="70px"
           width="70px"
         />
-        <div class="commitment-content">
-          Giao dịch nhanh chóng
-        </div>
+        <div class="commitment-content">Giao dịch nhanh chóng</div>
       </div>
       <div class="commitment-detail">
         <img
@@ -65,9 +63,7 @@
           height="70px"
           width="70px"
         />
-        <div class="commitment-content">
-          Bảo mật an toàn
-        </div>
+        <div class="commitment-content">Bảo mật an toàn</div>
       </div>
     </div>
 
@@ -78,29 +74,25 @@
       <div class="row stepper" *ngIf="!isOpened">
         <div class="commitment-detail">
           <div class="step">1</div>
-          <div class="stepper-content">
-            Đăng ký tài khoản
-          </div>
+          <div class="stepper-content">Đăng ký tài khoản</div>
         </div>
         <div class="commitment-detail">
           <div class="step">2</div>
 
-          <div class="stepper-content">
-            Thiết lập thông tin cá nhân
-          </div>
+          <div class="stepper-content">Thiết lập thông tin cá nhân</div>
         </div>
         <div class="commitment-detail">
           <div class="step">3</div>
 
-          <div class="stepper-content">
-            Tận hưởng sự tiện lợi
-          </div>
+          <div class="stepper-content">Tận hưởng sự tiện lợi</div>
         </div>
       </div>
     </div>
 
     <a class="button" (click)="onOpenRegister()" *ngIf="!isOpened">BẮT ĐẦU </a>
-    <a class="button" (click)="onOpenRegister()" *ngIf="isOpened">1.  ĐĂNG KÝ TÀI KHOẢN</a>
+    <a class="button" (click)="onOpenRegister()" *ngIf="isOpened"
+      >1. ĐĂNG KÝ TÀI KHOẢN</a
+    >
   </div>
   <div *ngIf="isOpened" class="slowly-showed">
     <app-sign-up></app-sign-up>
