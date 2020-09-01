@@ -1,0 +1,267 @@
+<div class="row">
+  <div class="col-sm-4 basic-info">
+    <h4 class="text-center mb-4" style="color: #95989a">Thông tin tài khoản</h4>
+
+    <form>
+      <div
+        class="form-group"
+        ngbTooltip="Bạn chỉ có thể thay đổi 1 lần duy nhất"
+      >
+        <label>Tên tài khoản</label>
+        <input type="text" class="form-control" value="Ross" />
+      </div>
+      <div class="form-group" ngbTooltip="Bạn không thể thay đổi email">
+        <label>Email</label>
+        <input
+          type="email"
+          class="form-control disabled"
+          value="tuananhngyen218@gmail.com"
+        />
+      </div>
+      <div class="form-group" ngbTooltip="Bạn không thể thay đổi số điện thoại">
+        <label>Số điện thoại</label>
+        <input type="text" class="form-control disabled" value="0949764200" />
+      </div>
+      <div class="form-group">
+        <label>Câu nói yêu thích</label>
+        <textarea rows="3" class="form-control"></textarea>
+      </div>
+      <div class="change-images">
+        <div class="row">
+          <div class="col-sm-6">
+            <label
+              for="file-upload"
+              class="btn btn-light btn-block custom-file-upload mb-0"
+            >
+              Thay đổi ảnh đại diện
+            </label>
+            <input #file id="file-upload" type="file" />
+          </div>
+          <div class="col-sm-6">
+            <label
+              for="file-upload"
+              class="btn btn-light btn-block custom-file-upload mb-0"
+            >
+              Thay đổi ảnh bìa
+            </label>
+            <input #file id="file-upload" type="file" />
+          </div>
+        </div>
+      </div>
+      <br />
+      <button
+        type="submit"
+        class="btn btn-warning btn-block mt-4 text-white next-step"
+      >
+        Cập nhật
+      </button>
+    </form>
+  </div>
+  <div class="col-sm-8">
+    <p>Preview</p>
+    <div class="jumbotron jumbotron-fluid m-0 p-0">
+      <div
+        class="container-fluid p-0"
+        style="margin-bottom: 8rem; position: relative"
+      >
+        <div class="rounded-img circle-image">
+          <img
+            src="https://cdn.singulart.com/artists/pictures/cropped/artwork/base/artist_artwork_1647_ba964e906901ecde5a3fc4496de3d90f.jpeg"
+            class="rounded-circle"
+            width="150px"
+            height="150px"
+            style="
+              box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+              border: 3px solid black;
+            "
+          />
+        </div>
+        <ngb-carousel
+          [showNavigationArrows]="false"
+          [showNavigationIndicators]="false"
+        >
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img
+                class="img-fluid"
+                src="https://cdn.singulart.com/artists/pictures/cropped/studio/base/artist_studio_1647_86d10186556c5e046c57e679ab7e736e.jpeg"
+              />
+            </div>
+            <div class="carousel-caption cover-img">
+              <h3>SƠN DẦU | VIỆT NAM</h3>
+              <h1>BÙI VĂN PHÁI</h1>
+              <p>Born in 1948</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+
+      <div class="container">
+        <h1
+          class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center best-pictures-header mb-5"
+        >
+          <hr
+            class="animate__animated animate__fadeInRight"
+            style="background-color: grey; width: 150px; margin-right: 2rem"
+          />
+          Thông tin về họa sĩ
+          <hr
+            class="animate__animated animate__fadeInLeft"
+            style="background-color: grey; width: 150px; margin-left: 2rem"
+          />
+        </h1>
+
+        <div class="row">
+          <div class="col-sm-4 artist-background">
+            <h3>From cinema to plastic art</h3>
+            <p>
+              After having worked in several technical professions in the film
+              industry, Brat became a director before turning to plastic art to
+              express his vision of the world. He feeds on all forms of art
+              every day, from painting to music, including comics, photography,
+              architecture and even design, in order to shape his universe and
+              observe the world and its changes. permanent. Working in a
+              figurative style, he paints in acrylic, synthetic or glitter on
+              rigid materials such as pléxi, wood fiber, metal, cardboard or
+              even on skateboards glued to each other.
+            </p>
+          </div>
+          <div class="col-sm-4 artist-background">
+            <h3>The collective unconscious</h3>
+            <p>
+              Brat's artistic reflection revolves around the collective
+              unconscious. Each of his paintings and sculptures aims to give
+              rise to intimate feelings and to bring the viewer to transpose his
+              own vision of the world around him. Often depicting winged figures
+              as in the series “Metamorphosis”, the artist's compositions draw a
+              parallel between the world and the very existence of human beings
+              and symbolize the allegorical transformation of the soul freed
+              from all vanity.
+            </p>
+            <br />
+            <h3>An international artist</h3>
+            <p>
+              The artist's committed works have earned him an exhibition in
+              France, Switzerland, the United Kingdom, Poland, the United Arab
+              Emirates and even Malaysia, China, Mexico and Belgium on the
+              occasion of the Affordable Art Fair.
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <img
+              src="https://cdn.singulart.com/artists/pictures/cropped/body/base/artist_body_1647_30201306009efd5afa7773aecde0f861.jpeg"
+              width="100%"
+              height="100%"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1
+          class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center best-pictures-header"
+        >
+          <hr
+            class="animate__animated animate__fadeInRight"
+            style="background-color: grey; width: 150px; margin-right: 2rem"
+          />
+          Các tác phẩm nổi bật
+          <hr
+            class="animate__animated animate__fadeInLeft"
+            style="background-color: grey; width: 150px; margin-left: 2rem"
+          />
+        </h1>
+        <div class="best-pictures">
+          <div class="row" style="height: 400px">
+            <div class="col-sm-4 h-100">
+              <img
+                src="https://cdn.singulart.com/artworks/v2/cropped/7079/main/fhd/699155_7a44ada093de4188001d2ee6acd716a1.jpeg"
+                class="img-fluid h-100"
+              />
+            </div>
+            <div
+              class="col-sm-4 h-100 d-flex flex-column justify-content-between"
+            >
+              <img
+                src="https://cdn.singulart.com/artworks/v2/cropped/20719/main/fhd/689727_84868fb97cf1fd297c11970d59acff75.jpeg"
+                class="w-100"
+                height="185px"
+              />
+              <img
+                src="https://cdn.singulart.com/artworks/v2/cropped/20719/main/fhd/689677_5cd51f20d4712d9dc2aed89c96957c08.jpeg"
+                class="w-100"
+                height="185px"
+              />
+            </div>
+            <div class="col-sm-4 h-100">
+              <img
+                src="https://cdn.singulart.com/artworks/v2/cropped/7079/main/fhd/718427_fde03cd014615937c13d95335d329374.jpeg"
+                class="img-fluid h-100"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <mdb-carousel
+          class="review-wrapper"
+          [animation]="'slide'"
+          [interval]="'50000000000'"
+        >
+          <mdb-carousel-item>
+            <div class="mask d-block w-100"></div>
+            <div class="carousel-caption reviews">
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="24.615px"
+                height="18.233px"
+                viewBox="0 0 24.615 18.233"
+                enable-background="new 0 0 24.615 18.233"
+                xml:space="preserve"
+              >
+                <g>
+                  <path
+                    fill="#4E4E4E"
+                    d="M19.542,0.007c-1.33,0.165-1.92,0.869-3,3.15v0.75c0,0,3.899,1.604,4.283,4.476
+                                    c0.383,2.862-0.953,6.567-7.658,8.499v1.352c0,0,7.399-1.41,10.342-7.426C27.035,3.596,21.148-0.192,19.542,0.007z"
+                  ></path>
+                  <path
+                    fill="#4E4E4E"
+                    d="M6.375,0.007c-1.33,0.165-1.92,0.869-3,3.15v0.75c0,0,3.899,1.604,4.283,4.476
+                                    C8.041,11.245,6.705,14.95,0,16.882v1.352c0,0,7.399-1.41,10.342-7.426C13.868,3.596,7.981-0.192,6.375,0.007z"
+                  ></path>
+                </g>
+              </svg>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua ut
+                enimad minim veniam quis nostrud exerci tation ullamco
+              </p>
+              <h6>Isabel Tillman</h6>
+            </div>
+          </mdb-carousel-item>
+        </mdb-carousel>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="mobile_nav">
+  <div class="nav_bar">
+    <img src="1.png" class="mobile_profile_image" alt="" />
+    <i class="fa fa-bars nav_btn"></i>
+  </div>
+  <div class="mobile_nav_items">
+    <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+    <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
+    <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
+    <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
+    <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
+    <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+  </div>
+</div> -->

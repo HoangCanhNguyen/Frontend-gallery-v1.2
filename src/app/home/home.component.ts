@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
-import { GetCarouselHeightService } from '../shared/service/getCarouselHeight.service';
+import { GetCarouselHeightService } from '../shared/service/get-carousel-height.service';
 import { Router } from '@angular/router';
 import { PicturesService } from '../shared/service/pictures.service';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { map, finalize } from 'rxjs/operators';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   new_pic_list: any = [];
 
@@ -27,15 +27,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    document.getElementById('fixed').classList.add('fixed-top');
-    document.getElementById('fixed').classList.remove('sticky');
-    // this.picServivce.getNewPics().subscribe(pic => {
-    //   this.new_pic_list = pic;
-    // });
   }
 
   ngAfterViewInit(): void {
     const imageHeight = window.innerHeight;
     this.getCarouselHeight.getCarouselHeight(imageHeight);
+  }
+
+  ngOnDestroy() {
+    this.getCarouselHeight.getCarouselHeight(0);
   }
 }

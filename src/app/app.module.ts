@@ -59,6 +59,11 @@ import { CustomerComponent } from './auth/customer/customer.component';
 import { VendorComponent } from './auth/vendor/vendor.component';
 import { SignUpComponent } from './auth/vendor/sign-up/sign-up.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ConsoleComponent } from './console/console.component';
+import { InformationComponent } from './console/information/information.component';
+import { BiographyComponent } from './console/biography/biography.component';
+import { ArtworksComponent } from './console/artworks/artworks.component';
+import { ArtistCollectorLoginComponent } from './console/artist-collector-login/artist-collector-login.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +93,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CustomerComponent,
     VendorComponent,
     SignUpComponent,
+    ConsoleComponent,
+    InformationComponent,
+    BiographyComponent,
+    ArtworksComponent,
+    ArtistCollectorLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,4 +139,4 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent],
 })
-export class AppModule {}
+export class AppModule { }

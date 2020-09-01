@@ -1,0 +1,270 @@
+h1,
+h2,
+h3,
+h4,
+p {
+  font-family: "Open Sans", sans-serif;
+}
+.jumbotron {
+  background-color: #f8f8f8 !important;
+}
+
+.next-step {
+  background-color: #c9ab81 !important;
+  padding: 4px 35px !important;
+  line-height: 45px;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+.next-step:hover {
+  background-color: #d19961 !important;
+}
+
+.acc-preview {
+  background-color: white;
+  border: 1px solid #c9ab81;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
+#upload-avatar {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 0;
+}
+#upload-avatar p {
+  text-align: center;
+  margin-top: 1rem;
+}
+.default-photo {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(
+    171deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(182, 64, 64, 1) 0%,
+    rgba(252, 176, 69, 0.8127626050420168) 81%
+  );
+  border-radius: 70px;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto;
+}
+.acc-preview h1 {
+  font-size: 2.7rem;
+  text-align: center;
+  font-weight: 600;
+}
+.acc-preview h4 {
+  font-weight: 300;
+  color: #939294;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* style upload file buttons */
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 16px;
+  cursor: pointer;
+  background-color: #aaa;
+  color: white !important;
+  border-radius: 50px !important;
+}
+.custom-file-upload:hover {
+  background-color: #888;
+}
+
+/* style the form */
+form label {
+  color: #d19961;
+  font-size: 1.1rem;
+}
+form input:focus {
+  outline: none !important;
+  border: 1px solid #c9ab81;
+  box-shadow: none !important;
+}
+form textarea:focus {
+  outline: none !important;
+  border: 1px solid #c9ab81;
+  box-shadow: none !important;
+}
+
+.change-images {
+  margin-top: 2rem;
+}
+
+/* style preview section */
+.jumbotron {
+  background-color: #f8f8f8 !important;
+}
+
+.cover-img {
+  left: 0% !important;
+  right: 0% !important;
+  top: 0%;
+  bottom: 0%;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+}
+
+.cover-img h3 {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: #ffb45a;
+  font-weight: 500;
+}
+.cover-img h1 {
+  font-size: 2.5rem;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  font-family: inherit;
+  font-weight: 500 !important;
+}
+.cover-img p {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  color: #d7d7d7;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.mask {
+  height: 500px;
+  background-color: transparent !important;
+  color: #525252;
+}
+.carousel-caption.reviews {
+  height: 100%;
+  width: 55%;
+  bottom: 0;
+  left: 22.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  color: #525252;
+}
+.reviews p {
+  color: #c9ab81;
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5em;
+  font-weight: 300;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.reviews h6 {
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+  color: #525252;
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+}
+::ng-deep .carousel-indicators > li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0.5rem;
+  background-color: #525252;
+}
+::ng-deep .review-wrapper .carousel .carousel-control-next-icon {
+  background-image: url("https://cdn0.iconfinder.com/data/icons/thin-basic-ui/32/left-512.png");
+  filter: invert(100%);
+}
+::ng-deep .review-wrapper .carousel .carousel-control-prev-icon {
+  background-image: url("https://cdn0.iconfinder.com/data/icons/thin-basic-ui/32/left-512.png");
+  filter: invert(100%);
+}
+
+h1.best-pictures-header {
+  font-size: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+  color: #525252;
+  letter-spacing: 0.15rem;
+  text-align: center;
+  opacity: 0.7 !important;
+}
+.best-pictures img {
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+}
+
+.circle-image {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20%;
+  z-index: 100;
+}
+
+.artist-background {
+  font-family: "EB Garamond", serif;
+  color: #181818;
+}
+.artist-background h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.artist-background p {
+  font-size: 0.8rem;
+}
+
+ul.list-group {
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 30%;
+  right: 0;
+  z-index: 1000;
+}
+ul.list-group .list-group-item {
+  cursor: pointer;
+  margin: 0.5rem;
+  padding: 0;
+  background-color: transparent !important;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+ul.list-group i {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.35rem;
+  background-color: #ebebeb;
+  color: #878787;
+  transition: all 0.3s ease-in-out;
+}
+ul.list-group .list-group-item:hover i {
+  background-color: #c9ab81 !important;
+  color: white !important;
+}
+::ng-deep ul.social-media-icons.list-group .show.tooltip {
+  width: 100px;
+}
+
+

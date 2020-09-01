@@ -1,14 +1,14 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { GetCarouselHeightService } from 'src/app/shared/service/getCarouselHeight.service';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ArtistService } from 'src/app/shared/service/artist.service';
+import { GetCarouselHeightService } from 'src/app/shared/service/get-carousel-height.service';
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
   styleUrls: ['./artist-list.component.css']
 })
-export class ArtistListComponent implements OnInit, AfterViewInit {
+export class ArtistListComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor(private getCarouselHeight: GetCarouselHeightService, private artistService: ArtistService) { }
+  constructor(private artistService: ArtistService, private getCarouselHeight: GetCarouselHeightService) { }
 
   artist_list: any = [];
 
@@ -258,14 +258,6 @@ export class ArtistListComponent implements OnInit, AfterViewInit {
     ];
 
   ngOnInit(): void {
-    if (document.querySelector('#fixed').classList.contains('sticky')) {
-      document.querySelector('#fixed').classList.add('fixed-top');
-      document.querySelector('#fixed').classList.remove('sticky');
-    } else if (document.querySelector('#fixed').classList.contains('fixed-top')) {
-      document.querySelector('#fixed').classList.remove('fixed-top');
-      document.querySelector('#fixed').classList.add('sticky');
-    }
-
     this.artistService.getArtistInfo().subscribe(artist => {
       this.artist_list = artist;
     });
@@ -274,6 +266,10 @@ export class ArtistListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const imageHeight = window.innerHeight;
     this.getCarouselHeight.getCarouselHeight(imageHeight);
+  }
+
+  ngOnDestroy() {
+    this.getCarouselHeight.getCarouselHeight(0);
   }
 
 }
