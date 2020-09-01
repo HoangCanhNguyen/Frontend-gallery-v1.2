@@ -64,6 +64,7 @@ import { InformationComponent } from './console/information/information.componen
 import { BiographyComponent } from './console/biography/biography.component';
 import { ArtworksComponent } from './console/artworks/artworks.component';
 import { ArtistCollectorLoginComponent } from './console/artist-collector-login/artist-collector-login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { ArtistCollectorLoginComponent } from './console/artist-collector-login/
     BiographyComponent,
     ArtworksComponent,
     ArtistCollectorLoginComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

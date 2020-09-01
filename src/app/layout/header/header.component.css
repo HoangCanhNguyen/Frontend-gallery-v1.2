@@ -1,8 +1,8 @@
 .navbar {
   margin-bottom: 0;
-  padding: 0.5em 0 0.7em 0;
+  padding: 0.8em 0 0.8em 0;
   background-color: transparent;
-  height: 9em;
+  height: 4em;
   opacity: 1;
   transition: background-color 0.5s ease-in-out;
 }
