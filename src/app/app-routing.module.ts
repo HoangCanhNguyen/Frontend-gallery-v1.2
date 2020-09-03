@@ -50,11 +50,11 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'profile',
+        path: 'account/profile',
         component: ProfileComponent,
         children: [
           {
-            path: 'customer/:role/:id/:username',
+            path: 'user',
             component: BasicProfileComponent,
           },
           { path: ':role/:id/:username', component: ArtistProfileComponent },

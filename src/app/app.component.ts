@@ -18,5 +18,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Adding stuff
   }
 }

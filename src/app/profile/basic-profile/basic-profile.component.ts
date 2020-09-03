@@ -32,14 +32,9 @@ export class BasicProfileComponent implements OnInit {
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
     private zone: NgZone
-  ) {
-    this.sub = this.route.params.subscribe((params: Params) => {
-      this.id = { id: params.id };
-    });
-  }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmitShippingForm(form: NgForm): void {
     console.log(form);
