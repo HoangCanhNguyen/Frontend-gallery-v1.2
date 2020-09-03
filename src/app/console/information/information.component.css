@@ -23,78 +23,6 @@ select:-webkit-autofill:focus {
   background-color: #f8f8f8 !important;
 }
 
-.next-step {
-  background-color: #c9ab81 !important;
-  padding: 4px 35px !important;
-  line-height: 45px;
-  text-transform: uppercase;
-  font-size: 1rem;
-}
-.next-step:hover {
-  background-color: #d19961 !important;
-}
-
-.acc-preview {
-  background-color: white;
-  border: 1px solid #c9ab81;
-  padding: 2rem 1rem;
-  border-radius: 10px;
-}
-#upload-avatar {
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  padding: 0;
-}
-#upload-avatar p {
-  text-align: center;
-  margin-top: 1rem;
-}
-.default-photo {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(
-    171deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(182, 64, 64, 1) 0%,
-    rgba(252, 176, 69, 0.8127626050420168) 81%
-  );
-  border-radius: 70px;
-  color: white;
-  font-size: 2.5rem;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1.5rem auto;
-}
-.acc-preview h1 {
-  font-size: 2.7rem;
-  text-align: center;
-  font-weight: 600;
-}
-.acc-preview h4 {
-  font-weight: 300;
-  color: #939294;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-/* style upload file buttons */
-input[type="file"] {
-  display: none;
-}
-.custom-file-upload {
-  display: inline-block;
-  padding: 12px 16px;
-  cursor: pointer;
-  background-color: #aaa;
-  color: white !important;
-  border-radius: 50px !important;
-}
-.custom-file-upload:hover {
-  background-color: #888;
-}
-
 /* style the form */
 form label {
   color: #937641;
@@ -116,10 +44,6 @@ form textarea:focus {
 }
 
 /* style preview section */
-.jumbotron {
-  background-color: #f8f8f8 !important;
-}
-
 .cover-img {
   left: 0% !important;
   right: 0% !important;
@@ -190,30 +114,6 @@ form textarea:focus {
   color: #525252;
   font-size: 1.4rem;
   letter-spacing: 0.15em;
-}
-::ng-deep .carousel-indicators > li {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin: 0.5rem;
-  background-color: #525252;
-}
-::ng-deep .review-wrapper .carousel .carousel-control-next-icon {
-  background-image: url("https://cdn0.iconfinder.com/data/icons/thin-basic-ui/32/left-512.png");
-  filter: invert(100%);
-}
-::ng-deep .review-wrapper .carousel .carousel-control-prev-icon {
-  background-image: url("https://cdn0.iconfinder.com/data/icons/thin-basic-ui/32/left-512.png");
-  filter: invert(100%);
-}
-button:disabled {
-  cursor: not-allowed !important;
-  pointer-events: all !important;
-}
-button.mat-button:focus {
-  box-shadow: none !important;
-  outline: none !important;
-  border: none !important;
 }
 
 h1.best-pictures-header {
@@ -320,10 +220,7 @@ input[type="file"] {
 }
 
 .form {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+  position: relative;
   margin: auto;
   width: 100%;
   max-width: 600px;
@@ -350,6 +247,7 @@ input[type="file"] {
 
 .form .input-group {
   position: relative;
+  margin-bottom: 2rem;
 }
 .form .input-group input,
 .form .input-group textarea {
@@ -377,13 +275,11 @@ input[type="file"] {
 .form .input-group input:valid + label,
 .form .input-group textarea:focus + label,
 .form .input-group textarea:valid + label {
-  transform: translateY(-1rem);
-  color: #937641;
-  font-size: 0.9rem;
+  transform: translateY(-2.5rem) !important;
+  color: #796a37;
+  font-size: 1.3rem;
 }
 .submit-btn {
-  /* display: block; */
-  margin-left: auto;
   border: none;
   outline: none;
   background: #d19a4d;
@@ -394,7 +290,6 @@ input[type="file"] {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 2rem;
 }
 .submit-btn:hover {
   background-color: #c9ab81;
@@ -420,44 +315,14 @@ input[type="file"] {
   background-color: #aaa;
 }
 
-button.expand-button {
-  background-color: #c9ab81;
-  color: white;
-  margin: auto;
-  display: block;
-  padding: 0.8rem 1.3rem;
-  font-size: 1.2rem;
-  transition: all 0.4s ease-in-out;
-}
-button.expand-button:hover {
-  background-color: #c89d60;
-}
 button:focus {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
 }
-.mat-expansion-panel {
-  box-shadow: none !important;
-  background-color: transparent !important;
-}
-.mat-expansion-panel-header {
-  padding: 0;
-  font-family: "EB Garamond", serif;
-}
-.mat-expansion-panel-header:hover {
-  background-color: transparent !important;
-}
-::ng-deep .mat-expansion-panel-body {
-  padding: 0 !important;
-}
-/* move the expansion-panel-header to the bottom after the panel is expanded */
-.mat-expansion-panel {
-  display: flex !important;
-  flex-direction: column;
-}
-::ng-deep .mat-expansion-panel-header {
-  order: 2;
+button:disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
 }
 
 .alt-line {
@@ -570,4 +435,10 @@ span.text {
   line-height: 1.58em;
   letter-spacing: 0;
   color: #5f5f5f;
+}
+
+/* style workflow edit form */
+.editWorkflowForm {
+  max-width: none;
+  margin: 0;
 }

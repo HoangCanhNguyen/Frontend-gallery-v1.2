@@ -45,9 +45,9 @@
       let scrollRef = 0;
       AOS.init({
         delay: 50,
-        duration: 1000,
+        duration: 800,
         easing: "ease-in-out",
-        once: false,
+        once: true,
       });
       window.addEventListener("scroll", function () {
         scrollRef <= 10 ? scrollRef++ : AOS.refresh();

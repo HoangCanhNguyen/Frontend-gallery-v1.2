@@ -49,13 +49,17 @@
   </div>
 
   <div class="container position-relative p-0">
-    <div class="desc pb-5" data-aos="fade-up" *ngIf="!editDescription">
+    <div
+      class="desc position-relative pb-5"
+      data-aos="fade-up"
+      *ngIf="!editDescription"
+    >
       <div
         class="edit-description-icon"
         placement="bottom"
         ngbTooltip="Chỉnh sửa"
         *ngIf="!editDescription"
-        (click)="onEditDescription()"
+        (click)="editDescription = true"
       >
         <i class="fa fa-pencil" aria-hidden="true"></i>
       </div>
@@ -95,11 +99,11 @@
         </div>
       </div>
     </div>
-    <div class="edit-des-form" data-aos="fade-up" *ngIf="editDescription">
+    <div class="edit-des-form pb-5" data-aos="fade-up" *ngIf="editDescription">
       <form
         class="form"
         #editDescForm="ngForm"
-        (ngSubmit)="saveEdittedDes(editDescForm)"
+        (ngSubmit)="onSaveEditedContent('des', editDescForm)"
       >
         <div class="input-group">
           <textarea
@@ -130,126 +134,35 @@
             <i class="fa fa-user mr-1"></i> Sự kiện nghệ thuật nổi bật</label
           >
         </div>
-        <button type="submit" class="submit-btn mr-4">Cập nhật</button>
-        <button
-          type="button"
-          class="submit-btn"
-          (click)="onCancelEditDescription()"
-        >
-          Hủy bỏ
-        </button>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+          <button
+            type="button"
+            class="submit-btn"
+            (click)="editDescription = false"
+          >
+            Hủy bỏ
+          </button>
+        </div>
       </form>
     </div>
 
-    <div class="workflow position-relative">
-      <span class="alt-line" data-aos="fade-down"></span>
-      <span class="main-line"></span>
-      <div class="workflow-item">
-        <div class="row workflow-item-content">
-          <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
-            <img
-              src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
-              class="img-fluid"
-              data-aos="fade-right"
-            />
-          </div>
-          <div class="col-sm-6 workflow-text">
-            <span class="circle"></span>
-            <span class="circle-line" data-aos="zoom-in"></span>
-            <div class="year">2001</div>
-            <div class="main-text" data-aos="fade-left">
-              <span class="workflow-caption">History of the Museum</span>
-              <h2>The Archive</h2>
-              <span class="text"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se
-                sed do se eiusmod tempor incididunt ut labore et sa nes in
-                dolore si magna aliqua. Ut enim ad minim veniam, in qu is
-                nostrud e exercitation ullamco laboris nisi ut sen don nins
-                aliquip ex ea commodo consequat. Duis aute irure do dolor eu est
-                laborum. Sed ut perspic iatis unde omnis iste natus i error sit
-                don eu fugiat est nulla duis aute.<br />
-                Voluptatem accusantium doloremque laudantium, intota rem
-                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no
-                architecto beatae vitae dicta sunt explicabo men enim ipsam
-                volupt</span
-              >
-            </div>
-          </div>
+    <div class="workflow-editable">
+      <div class="workflow position-relative" *ngIf="!editWorkflow">
+        <div
+          class="edit-description-icon"
+          style="right: 7%; top: 1.5%; z-index: 1"
+          placement="bottom"
+          ngbTooltip="Chỉnh sửa"
+          *ngIf="!editWorkflow"
+          (click)="editWorkflow = true"
+        >
+          <i class="fa fa-pencil" aria-hidden="true"></i>
         </div>
-      </div>
-      <div class="workflow-item">
-        <div class="row workflow-item-content">
-          <div class="col-sm-6 workflow-text">
-            <span class="circle-2"></span>
-            <span class="circle-line-2" data-aos="zoom-in"></span>
-            <div class="year-2">2010</div>
-            <div class="main-text" data-aos="fade-right">
-              <span class="workflow-caption">Moving in</span>
-              <h2>NEW HOME</h2>
-              <span class="text"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se
-                sed do se eiusmod tempor incididunt ut labore et sa nes in
-                dolore si magna aliqua. Ut enim ad minim veniam, in qu is
-                nostrud e exercitation ullamco laboris nisi ut sen don nins
-                aliquip ex ea commodo consequat. Duis aute irure do dolor eu est
-                laborum. Sed ut perspic iatis unde omnis iste natus i error sit
-                don eu fugiat est nulla duis aute.<br />
-                Voluptatem accusantium doloremque laudantium, intota rem
-                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no
-                architecto beatae vitae dicta sunt explicabo men enim ipsam
-                volupt</span
-              >
-            </div>
-          </div>
-          <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
-            <img
-              src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
-              class="img-fluid"
-              data-aos="fade-left"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="workflow-item">
-        <div class="row workflow-item-content">
-          <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
-            <img
-              src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
-              class="img-fluid"
-              data-aos="fade-right"
-            />
-          </div>
-          <div class="col-sm-6 workflow-text">
-            <span class="circle"></span>
-            <span class="circle-line" data-aos="zoom-in"></span>
-            <div class="year">2019</div>
-            <div class="main-text" data-aos="fade-left">
-              <span class="workflow-caption">Art & Science</span>
-              <h2>EVENTS</h2>
-              <span class="text"
-                >Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se
-                sed do se eiusmod tempor incididunt ut labore et sa nes in
-                dolore si magna aliqua. Ut enim ad minim veniam, in qu is
-                nostrud e exercitation ullamco laboris nisi ut sen don nins
-                aliquip ex ea commodo consequat. Duis aute irure do dolor eu est
-                laborum. Sed ut perspic iatis unde omnis iste natus i error sit
-                don eu fugiat est nulla duis aute.<br />
-                Voluptatem accusantium doloremque laudantium, intota rem
-                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no
-                architecto beatae vitae dicta sunt explicabo men enim ipsam
-                volupt</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <mat-expansion-panel hideToggle>
-      <div class="workflow position-relative">
-        <span class="alt-line"></span>
+        <span class="alt-line" data-aos="fade-down"></span>
         <span class="main-line"></span>
         <div class="workflow-item">
-            <div class="row workflow-item-content">
+          <div class="row workflow-item-content">
             <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
               <img
                 src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
@@ -259,99 +172,218 @@
             </div>
             <div class="col-sm-6 workflow-text">
               <span class="circle"></span>
-              <span class="circle-line"></span>
-              <div class="year">2001</div>
+              <span class="circle-line" data-aos="zoom-in"></span>
+              <div class="year">{{ stages[0] }}</div>
               <div class="main-text" data-aos="fade-left">
-                <span class="workflow-caption">History of the Museum</span>
-                <h2>The Archive</h2>
-                <span class="text"
-                  >Lorem ipsum dolor sit amet, consectetur adipisicing et elit,
-                  se sed do se eiusmod tempor incididunt ut labore et sa nes in
-                  dolore si magna aliqua. Ut enim ad minim veniam, in qu is
-                  nostrud e exercitation ullamco laboris nisi ut sen don nins
-                  aliquip ex ea commodo consequat. Duis aute irure do dolor eu
-                  est laborum. Sed ut perspic iatis unde omnis iste natus i
-                  error sit don eu fugiat est nulla duis aute.<br />
-                  Voluptatem accusantium doloremque laudantium, intota rem
-                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                  no architecto beatae vitae dicta sunt explicabo men enim ipsam
-                  volupt</span
-                >
+                <span class="workflow-caption">{{ workflowTitle1[0] }}</span>
+                <h2>{{ workflowTitle2[0] }}</h2>
+                <span class="text">{{ workflowDescription[0] }}</span>
               </div>
             </div>
           </div>
         </div>
         <div class="workflow-item">
-            <div class="row workflow-item-content">
+          <div class="row workflow-item-content">
             <div class="col-sm-6 workflow-text">
               <span class="circle-2"></span>
-              <span class="circle-line-2"></span>
-              <div class="year-2">2010</div>
-              <div class="main-text">
-                <span class="workflow-caption">Moving in</span>
-                <h2>NEW HOME</h2>
-                <span class="text"
-                  >Lorem ipsum dolor sit amet, consectetur adipisicing et elit,
-                  se sed do se eiusmod tempor incididunt ut labore et sa nes in
-                  dolore si magna aliqua. Ut enim ad minim veniam, in qu is
-                  nostrud e exercitation ullamco laboris nisi ut sen don nins
-                  aliquip ex ea commodo consequat. Duis aute irure do dolor eu
-                  est laborum. Sed ut perspic iatis unde omnis iste natus i
-                  error sit don eu fugiat est nulla duis aute.<br />
-                  Voluptatem accusantium doloremque laudantium, intota rem
-                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                  no architecto beatae vitae dicta sunt explicabo men enim ipsam
-                  volupt</span
-                >
+              <span class="circle-line-2" data-aos="zoom-in"></span>
+              <div class="year-2">{{ stages[1] }}</div>
+              <div class="main-text" data-aos="fade-right">
+                <span class="workflow-caption">{{ workflowTitle1[1] }}</span>
+                <h2>{{ workflowTitle2[1] }}</h2>
+                <span class="text">{{ workflowDescription[1] }}</span>
               </div>
             </div>
             <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
               <img
                 src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
                 class="img-fluid"
+                data-aos="fade-left"
               />
             </div>
           </div>
         </div>
         <div class="workflow-item">
-            <div class="row workflow-item-content">
+          <div class="row workflow-item-content">
             <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
               <img
                 src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
                 class="img-fluid"
+                data-aos="fade-right"
               />
             </div>
             <div class="col-sm-6 workflow-text">
               <span class="circle"></span>
-              <span class="circle-line"></span>
-              <div class="year">2019</div>
-              <div class="main-text">
-                <span class="workflow-caption">Art & Science</span>
-                <h2>EVENTS</h2>
-                <span class="text"
-                  >Lorem ipsum dolor sit amet, consectetur adipisicing et elit,
-                  se sed do se eiusmod tempor incididunt ut labore et sa nes in
-                  dolore si magna aliqua. Ut enim ad minim veniam, in qu is
-                  nostrud e exercitation ullamco laboris nisi ut sen don nins
-                  aliquip ex ea commodo consequat. Duis aute irure do dolor eu
-                  est laborum. Sed ut perspic iatis unde omnis iste natus i
-                  error sit don eu fugiat est nulla duis aute.<br />
-                  Voluptatem accusantium doloremque laudantium, intota rem
-                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                  no architecto beatae vitae dicta sunt explicabo men enim ipsam
-                  volupt</span
-                >
+              <span class="circle-line" data-aos="zoom-in"></span>
+              <div class="year">{{ stages[2] }}</div>
+              <div class="main-text" data-aos="fade-left">
+                <span class="workflow-caption">{{ workflowTitle1[2] }}</span>
+                <h2>{{ workflowTitle2[2] }}</h2>
+                <span class="text">{{ workflowDescription[2] }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <button class="expand-button btn">Xem thêm</button>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel> -->
+      <div class="edit-des-form py-5" data-aos="fade-up" *ngIf="editWorkflow">
+        <form
+          class="form editWorkflowForm"
+          #editWorkflowForm="ngForm"
+          (ngSubmit)="onSaveEditedContent('workflow', editWorkflowForm)"
+        >
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="input-group">
+                <input type="text" name="stage1" [(ngModel)]="stages[0]" />
+                <label
+                  ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
+                  sự kiện 1</label
+                >
+              </div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="minititle1"
+                  [(ngModel)]="workflowTitle1[0]"
+                />
+                <label>
+                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề nhỏ
+                  1</label
+                >
+              </div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="bigTitle1"
+                  [(ngModel)]="workflowTitle2[0]"
+                />
+                <label>
+                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
+                  Tiêu đề lớn 1</label
+                >
+              </div>
+              <div class="input-group">
+                <textarea
+                  type="text"
+                  name="des1"
+                  rows="4"
+                  [(ngModel)]="workflowDescription[0]"
+                ></textarea>
+                <label>
+                  <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô tả
+                  1</label
+                >
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group">
+                <input type="text" name="stage2" [(ngModel)]="stages[1]" />
+                <label
+                  ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
+                  sự kiện 2</label
+                >
+              </div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="minititle2"
+                  [(ngModel)]="workflowTitle1[1]"
+                />
+                <label>
+                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i>
+                  Tiêu đề nhỏ 2</label
+                >
+              </div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="bigTitle2"
+                  [(ngModel)]="workflowTitle2[1]"
+                />
+                <label>
+                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i> Tiêu
+                  đề lớn 2</label
+                >
+              </div>
+              <div class="input-group">
+                <textarea
+                  type="text"
+                  name="des2"
+                  rows="4"
+                  [(ngModel)]="workflowDescription[1]"
+                ></textarea>
+                <label>
+                  <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô tả
+                  2</label
+                >
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="input-group">
+                <input type="text" name="stage3" [(ngModel)]="stages[2]" />
+                <label
+                  ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
+                  sự kiện 3</label
+                >
+              </div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="minititle3"
+                  [(ngModel)]="workflowTitle1[2]"
+                />
+                <label>
+                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i>
+                  Tiêu đề nhỏ 3</label
+                >
+              </div>
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="bigTitle3"
+                  [(ngModel)]="workflowTitle2[2]"
+                />
+                <label>
+                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i> Tiêu
+                  đề lớn 3</label
+                >
+              </div>
+              <div class="input-group">
+                <textarea
+                  type="text"
+                  name="des3"
+                  rows="4"
+                  [(ngModel)]="workflowDescription[2]"
+                ></textarea>
+                <label>
+                  <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô tả
+                  3</label
+                >
+              </div>
+            </div>
+            <div class="col-sm-12 text-center">
+              <p
+                class="text-center"
+                style="margin-bottom: 2.5rem; font-size: 1.3rem"
+              >
+                Hãy lựa chọn 3 sự kiện nổi bật nhất trong sự nghiệp nghệ thuật
+                của bạn
+              </p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+            <button
+              type="button"
+              class="submit-btn"
+              (click)="editWorkflow = false"
+            >
+              Hủy bỏ
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <div class="container" data-aos="fade-up">
@@ -392,7 +424,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container py-5">
     <mdb-carousel
       class="review-wrapper"
       [animation]="'slide'"
@@ -405,7 +437,7 @@
           placement="bottom"
           ngbTooltip="Chỉnh sửa"
           *ngIf="!editQuote"
-          (click)="onEditQuote()"
+          (click)="editQuote = true"
           data-aos="fade-up"
         >
           <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -453,7 +485,7 @@
           <form
             class="form"
             #editQuoteForm="ngForm"
-            (ngSubmit)="saveEdittedQuote(editQuoteForm)"
+            (ngSubmit)="onSaveEditedContent('quote', editQuoteForm)"
           >
             <div class="input-group">
               <textarea
@@ -477,7 +509,7 @@
             <button
               type="button"
               class="submit-btn"
-              (click)="onCancelEditQuote()"
+              (click)="editQuote = false"
             >
               Hủy bỏ
             </button>

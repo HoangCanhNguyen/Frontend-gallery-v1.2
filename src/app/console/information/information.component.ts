@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-information',
@@ -7,8 +8,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./information.component.css']
 })
 export class InformationComponent implements OnInit {
-
-  imageURL: string = "https://cdn.singulart.com/artists/v2/pictures/cropped/studio/base/1686_studio_d84dd1b5ae4f4c05d126dd48f8177b4d.jpeg";
 
   editQuote = false;
   quote = "You’ve gotta dance like there’s nobody watching, love like you’ll never be hurt, sing like there’s nobody listening, and live like there is heaven on earth"
@@ -19,33 +18,36 @@ export class InformationComponent implements OnInit {
   pointOfView = "Brat's artistic reflection revolves around the collective unconscious. Each of his paintings and sculptures aims to give rise to intimate feelings and to bring the viewer to transpose his own vision of the world around him. Often depicting winged figures as in the series “Metamorphosis”, the artist's compositions draw a parallel between the world and the very existence of human beings and symbolize the allegorical transformation of the soul freed from all vanity."
   events = "The artist's committed works have earned him an exhibition in France, Switzerland, the United Kingdom, Poland, the United Arab Emirates and even Malaysia, China, Mexico and Belgium on the occasion of the Affordable Art Fair."
 
+  editWorkflow = false;
+  stages = [2001, 2010, 2020];
+  workflowTitle1 = ['History of the Museum', 'Moving in', 'Art & Science'];
+  workflowTitle2 = ['The Archive', 'New Home', 'Event'];
+  workflowDescription = [
+    'Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se sed do se eiusmod tempor incididunt ut labore et sa nes in dolore si magna aliqua. Ut enim ad minim veniam, in qu is nostrud e exercitation ullamco laboris nisi ut sen don nins aliquip ex ea commodo consequat. Duis aute irure do dolor eu est laborum. Sed ut perspic iatis unde omnis iste natus i error sit don eu fugiat est nulla duis aute. Voluptatem accusantium doloremque laudantium, intota rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no architecto beatae vitae dicta sunt explicabo men enim ipsam volupt',
+
+    'Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se sed do se eiusmod tempor incididunt ut labore et sa nes in dolore si magna aliqua. Ut enim ad minim veniam, in qu is nostrud e exercitation ullamco laboris nisi ut sen don nins aliquip ex ea commodo consequat. Duis aute irure do dolor eu est laborum. Sed ut perspic iatis unde omnis iste natus i error sit don eu fugiat est nulla duis aute. Voluptatem accusantium doloremque laudantium, intota rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no architecto beatae vitae dicta sunt explicabo men enim ipsam volupt',
+
+    'Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se sed do se eiusmod tempor incididunt ut labore et sa nes in dolore si magna aliqua. Ut enim ad minim veniam, in qu is nostrud e exercitation ullamco laboris nisi ut sen don nins aliquip ex ea commodo consequat. Duis aute irure do dolor eu est laborum. Sed ut perspic iatis unde omnis iste natus i error sit don eu fugiat est nulla duis aute.Voluptatem accusantium doloremque laudantium, intota rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no architecto beatae vitae dicta sunt explicabo men enim ipsam volupt'
+  ]
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onEditQuote() {
-    this.editQuote = true;
-  }
-  onCancelEditQuote() {
-    this.editQuote = false;
-  }
-  saveEdittedQuote(form: NgForm) {
-    this.editQuote = false;
-    this.quote = form.value.quote
-    this.quoteAuthor = form.value.author
-  }
-
-  onEditDescription() {
-    this.editDescription = true;
-  }
-  onCancelEditDescription() {
-    this.editDescription = false;
-  }
-  saveEdittedDes(form: NgForm) {
-    this.editDescription = false;
-    this.background = form.value.background;
-    this.pointOfView = form.value.pointOfView;
-    this.events = form.value.events;
+  onSaveEditedContent(content: string, form: NgForm) {
+    console.log(form.value);
+    switch (content) {
+      case 'des':
+        this.editDescription = false;
+        break;
+      case 'workflow':
+        this.editWorkflow = false;
+        break;
+      case 'quote':
+        this.editQuote = false;
+        break
+    }
   }
 }
