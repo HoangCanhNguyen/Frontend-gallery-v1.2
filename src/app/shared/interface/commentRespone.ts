@@ -6,4 +6,5 @@ export interface CommentResponse {
   posted: string;
   user_id: string;
   star: string;
+  avatarURL: string
 }

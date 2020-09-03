@@ -9,6 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class CommentService {
   COMMENT_URL = `${API_URL}/comments`;
+  COMMENT_CREATION_URL = `${API_URL}/comment/create`
 
 
 
@@ -21,8 +22,8 @@ export class CommentService {
 
   constructor(private httpClient: HttpClient) {}
 
-  setComment(cmt): Observable<any> {
-    return this.httpClient.post(this.COMMENT_URL, cmt, this.httpOptions);
+  onCreateComment(cmt): Observable<any> {
+    return this.httpClient.post(this.COMMENT_CREATION_URL, cmt, this.httpOptions);
   }
 
   getComment(pic_id): Observable<any> {

@@ -5,10 +5,7 @@ import { Subscription, Observable } from 'rxjs';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
-
-declare var ImageCompressor: any;
-
-const compressor = new ImageCompressor();
+import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
   selector: 'app-basic-profile',
@@ -28,13 +25,17 @@ export class BasicProfileComponent implements OnInit {
   downloadURL: Observable<string>;
 
   constructor(
-    private route: ActivatedRoute,
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
-    private zone: NgZone
+    private useService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.currentUser.subscribe((res) => {
+      this.user = res;
+      this.imageURL = this.user.avatarURL
+    });
+  }
 
   onSubmitShippingForm(form: NgForm): void {
     console.log(form);
@@ -50,15 +51,6 @@ export class BasicProfileComponent implements OnInit {
     };
   }
 
-  // onUploadAvatar(event): void {
-  //   this.zone.runOutsideAngular(() => {
-  //     const promises: Promise<Blob>[] = [];
-  //     promises.push(compressor.compress(this.selectedFile, { quality: 0.5 }));
-
-  //     Promise.all(promises).then(_file => this.uploadFile(_file));
-  //   });
-  // }
-
   protected uploadFile(file) {
     const n = Date.now();
     const filePath = `UserAvatar/${n}`;
@@ -73,6 +65,9 @@ export class BasicProfileComponent implements OnInit {
           this.downloadURL.subscribe((url) => {
             if (url) {
               console.log(url);
+              this.useService.onUploadAvatar({"avatarURL": url}).subscribe((res) => {
+                this.authService.onGetUserInfo()
+              })
             }
           });
         })

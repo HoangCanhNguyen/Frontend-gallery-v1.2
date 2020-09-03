@@ -18,6 +18,9 @@ export class ProductReplyComponent implements OnInit {
   replyForm: FormGroup;
 
   username: string;
+  currentUser_avatar: string;
+  currentUser_id: string
+
   constructor(
     private replyService: ReplyService,
     private authService: AuthenticateService
@@ -27,25 +30,16 @@ export class ProductReplyComponent implements OnInit {
     this.replyForm = new FormGroup({
       content: new FormControl(),
     });
+
     this.authService.currentUser.subscribe((user) => {
-      if (user == null) {
+      if (user.username == '') {
         this.username = '';
       } else {
         this.username = user.username;
+        this.currentUser_avatar = user.avatarURL;
+        this.currentUser_id = user.id
       }
     });
-  }
-
-  onSetReply() {
-    this.reply = {
-      reply_id: '0',
-      username: this.username,
-      cmt_id: this.replyInfo.cmt_id,
-      pic_id: this.replyInfo.pic_id,
-      content: this.replyForm.get('content').value,
-      posted: '0',
-      user_id: '0',
-    };
   }
 
   onShowReply() {
@@ -59,6 +53,18 @@ export class ProductReplyComponent implements OnInit {
     }
   }
 
+  onSetReply() {
+    this.reply = {
+      id: (this.reply_list.length + 1).toString(),
+      username: this.username,
+      cmt_id: this.replyInfo.cmt_id,
+      pic_id: this.replyInfo.pic_id,
+      content: this.replyForm.get('content').value,
+      user_id: this.currentUser_id,
+      avatarURL: this.currentUser_avatar
+    };
+  }
+
   onSubmit() {
     this.onSetReply();
     this.replyService.setReply(this.reply).subscribe((res) => {
@@ -70,10 +76,10 @@ export class ProductReplyComponent implements OnInit {
 
 interface SetReply {
   username: string;
-  reply_id: string;
+  id: string;
   cmt_id: string;
   pic_id: string;
   content: string;
-  posted: string;
   user_id: string;
+  avatarURL: string
 }

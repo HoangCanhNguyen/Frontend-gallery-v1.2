@@ -8,7 +8,7 @@ import { API_URL } from '../../env';
   providedIn: 'root',
 })
 export class ReplyService {
-  SET_REPLY_URL = `${API_URL}/reply`;
+  SET_REPLY_URL = `${API_URL}/reply/create`;
   GET_REPLY_URL = `${API_URL}/reply`;
   httpOptions = {
     headers: new HttpHeaders({

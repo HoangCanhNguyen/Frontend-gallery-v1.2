@@ -6,4 +6,5 @@ export interface ReplyResponse {
   content: string;
   posted: string;
   user_id: string;
+  avatarURL: string
 }
