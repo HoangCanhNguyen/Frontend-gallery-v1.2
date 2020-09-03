@@ -49,7 +49,7 @@
     <button
       class="btn btn-light text-dark view-more"
       style="height: 52px;"
-      (click)="onCreateComment()"
+      (click)="onOpenCommentSection()"
       *ngIf="!isComment"
     >
       <svg height="52" width="200">
@@ -60,7 +60,7 @@
     <button
       class="btn btn-light text-dark view-more"
       style="height: 52px;"
-      (click)="onCreateComment()"
+      (click)="onOpenCommentSection()"
       *ngIf="isComment"
     >
       <svg height="52" width="200">
@@ -112,7 +112,7 @@
     *ngFor="let cmt of cmt_list.slice().reverse(); let i = index"
   >
     <div class="client client1 col-sm-1">
-      <div class="img-profile">
+      <div class="img-profile" *ngIf="!cmt.avatarURL">
         <img
           src="https://www.w3schools.com/w3images/girl.jpg"
           class="rounded-circle"
@@ -120,6 +120,16 @@
           height="50px"
         />
       </div>
+
+      <div class="img-profile" *ngIf="cmt.avatarURL">
+        <img
+          src="{{cmt.avatarURL}}"
+          class="rounded-circle"
+          width="50px"
+          height="50px"
+        />
+      </div>
+
     </div>
     <div class="cmt cmt1 col-sm-11">
       <h4>

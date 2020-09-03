@@ -3,9 +3,17 @@
 }}</a>
 <div class="cmt" [class.show-replies]="isReply">
   <div class="reply-sections row w-100 m-0" *ngFor="let reply of reply_list">
-    <div class="img-profile col-sm-1">
+    <div class="img-profile col-sm-1" *ngIf="!currentUser_avatar">
       <img
         src="https://www.w3schools.com/w3images/girl.jpg"
+        class="rounded-circle"
+        width="45px"
+        height="45px"
+      />
+    </div>
+    <div class="img-profile col-sm-1" *ngIf="currentUser_avatar">
+      <img
+        src="{{reply.avatarURL}}"
         class="rounded-circle"
         width="45px"
         height="45px"
@@ -33,6 +41,14 @@
       class="rounded-circle"
       width="45px"
       height="45px"
+      *ngIf="!currentUser_avatar"
+    />
+    <img
+      src="{{ currentUser_avatar }}"
+      class="rounded-circle"
+      width="45px"
+      height="45px"
+      *ngIf="currentUser_avatar"
     />
     <span class="user-input">
       <mat-form-field appearance="standard" class="full-width-input">

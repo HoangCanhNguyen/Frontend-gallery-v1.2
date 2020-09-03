@@ -40,8 +40,10 @@ export class HeaderComponent implements OnInit {
     this.authService.currentUser.subscribe((data) => {
       this.userInfo = data;
       this.username = this.userInfo["username"];
-      this.role = this.userInfo.role;
+      this.role = this.userInfo.role
+      this.id = this.userInfo.id
     });
+
 
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
+
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
 import { CommentModule } from '../../../shared/model/comment.model';
@@ -15,6 +16,7 @@ import { CommentResponse } from '../../../shared/interface/commentRespone';
 })
 export class ProductCommentComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
+  @Input() parent_id: any;
 
   currentRate = 5;
   isComment = false;
@@ -25,12 +27,10 @@ export class ProductCommentComponent implements OnInit {
   reply: Reply;
   cmt_list: CommentResponse[] = [];
 
-  isEmpty = false;
-
+  currentUser_avatar_url: string;
+  currentUser_id: string;
   username: string;
   loginStatus = false;
-
-  @Input() parent_id: any;
 
   constructor(
     private authService: AuthenticateService,
@@ -43,12 +43,14 @@ export class ProductCommentComponent implements OnInit {
       content: new FormControl(),
     });
 
-    this.commentService.getComment({"pic_id": this.parent_id}).subscribe((res) => {
-      this.cmt_list = res;
-    });
+    this.commentService
+      .getComment({ pic_id: this.parent_id })
+      .subscribe((res) => {
+        this.cmt_list = res;
+      });
 
     this.authService.currentUser.subscribe((user) => {
-      if (user == null) {
+      if (user == '') {
         this.username = '';
       } else {
         this.username = user.username;
@@ -56,8 +58,8 @@ export class ProductCommentComponent implements OnInit {
     });
   }
 
-  onCreateComment() {
-    if (this.username != '') {
+  onOpenCommentSection() {
+    if (this.username !== '') {
       this.isComment = !this.isComment;
     } else {
       this.snackbarService.onLoginError();
@@ -65,12 +67,18 @@ export class ProductCommentComponent implements OnInit {
   }
 
   onSetCommentInformation() {
+    this.authService.currentUser.subscribe((user) => {
+      this.currentUser_avatar_url = user.avatarURL;
+      this.currentUser_id = user.id;
+    });
+
     this.comment = {
       username: this.username,
       pic_id: this.parent_id,
       content: this.commentForm.get('content').value,
-      user_id: '0',
+      user_id: this.currentUser_id,
       star: this.currentRate.toString(),
+      avatarURL: this.currentUser_avatar_url,
     };
   }
 
@@ -84,13 +92,10 @@ export class ProductCommentComponent implements OnInit {
 
   onSubmit() {
     this.onSetCommentInformation();
-    console.log(this.comment);
-    
-    // this.commentService.setComment(this.comment).subscribe((res) => {
-    //   this.cmt_list.push(res);
-    //   this.isComment = false;
-    //   this.commentForm.reset();
-    // });
+    this.commentService.onCreateComment(this.comment).subscribe((res) => {
+      this.cmt_list.push(res);
+      this.commentForm.reset();
+      this.isComment = false;
+    });
   }
 }
-
