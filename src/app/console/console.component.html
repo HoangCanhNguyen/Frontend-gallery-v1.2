@@ -69,16 +69,13 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p>
-      <button
-        mat-button
-        (click)="sidenav.toggle()"
-        class="fixed-top"
-        style="z-index: 1000000"
-      >
-        Toggle
-      </button>
-    </p>
+    <button
+      (click)="sidenav.toggle(); isOpened = !isOpened"
+      class="btn btn-collapsible position-fixed"
+    >
+      <i class="fa fa-bars" aria-hidden="true" *ngIf="!isOpened"></i>
+      <i class="fa fa-times" aria-hidden="true" *ngIf="isOpened"></i>
+    </button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

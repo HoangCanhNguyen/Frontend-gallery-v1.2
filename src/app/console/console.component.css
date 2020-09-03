@@ -65,3 +65,17 @@ label {
 .mat-drawer-side {
   border-right: none !important;
 }
+
+/* style toggle sidebar button */
+.btn-collapsible {
+  z-index: 1000000;
+  display: block;
+  top: 0;
+  color: #d5a966;
+  font-size: 2rem;
+}
+button.btn-collapsible:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
