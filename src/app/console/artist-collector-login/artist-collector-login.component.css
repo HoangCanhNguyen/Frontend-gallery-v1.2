@@ -126,3 +126,22 @@ a {
 a:hover {
   color: #c9ab81 !important;
 }
+
+.fadeInDown {
+  animation-name: fadeInDown;
+  animation-duration: 1s;
+  transform-origin: center;
+  overflow: visible;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

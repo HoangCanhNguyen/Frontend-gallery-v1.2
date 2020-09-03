@@ -61,10 +61,11 @@ import { SignUpComponent } from './auth/vendor/sign-up/sign-up.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ConsoleComponent } from './console/console.component';
 import { InformationComponent } from './console/information/information.component';
-import { BiographyComponent } from './console/biography/biography.component';
 import { ArtworksComponent } from './console/artworks/artworks.component';
 import { ArtistCollectorLoginComponent } from './console/artist-collector-login/artist-collector-login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -96,7 +97,6 @@ import { LayoutComponent } from './layout/layout.component';
     SignUpComponent,
     ConsoleComponent,
     InformationComponent,
-    BiographyComponent,
     ArtworksComponent,
     ArtistCollectorLoginComponent,
     LayoutComponent,
@@ -132,6 +132,7 @@ import { LayoutComponent } from './layout/layout.component';
     AngularFireStorageModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSidenavModule
   ],
   providers: [
     MatDatepickerModule,

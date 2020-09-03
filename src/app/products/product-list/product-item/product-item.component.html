@@ -1,37 +1,19 @@
-<div class="col-sm-4 mb-5 picture-item" style="max-width: 100%;">
+<div
+  class="col-sm-4 mb-5 picture-item"
+  data-aos="fade-up"
+  data-aos-offset="-200"
+  data-aos-duration="1000"
+  data-aos-easing="ease-in-out"
+  data-aos-once="true"
+  data-aos-anchor-placement="top-center"
+  style="max-width: 100%"
+>
   <div class="img-wrapper">
     <img
       [src]="picture.imageLink"
       class="img-fluid"
       [routerLink]="[picture.id, picture.category, picture.title]"
     />
-    <!-- <div class="overlay">
-        <div class="icon-wrapper">
-          <mat-icon
-            [routerLink]="['/detail']"
-            routerLinkActive="router-link-active"
-            placement="top"
-            ngbTooltip="Xem thêm"
-            >{{ "visibility" }}</mat-icon
-          >
-          <i
-            class="fa fa-heart"
-            placement="top"
-            ngbTooltip="Thêm vào yêu thích"
-          ></i>
-        </div>
-        <a
-          class="btn btn-light text-dark view-more"
-          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
-          [routerLink]="['/cart']"
-          routerLinkActive="router-link-active"
-        >
-          <svg height="52" width="178">
-            <rect height="52" width="178"></rect>
-          </svg>
-          <span>CHỌN MUA</span>
-        </a>
-      </div> -->
   </div>
   <div
     class="info-wrapper"
@@ -60,7 +42,7 @@
       <div class="overlay-info">
         <a
           class="btn btn-light text-dark view-more2"
-          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
+          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem"
           [routerLink]="['/cart']"
           routerLinkActive="router-link-active"
         >
@@ -71,7 +53,7 @@
         </a>
         <a
           class="btn btn-light text-dark view-more2"
-          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem;"
+          style="z-index: 1000; margin-top: 0.5rem; margin-bottom: 0.5rem"
           [routerLink]="[picture.id, picture.category, picture.title]"
           routerLinkActive="router-link-active"
         >
