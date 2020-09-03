@@ -19,7 +19,7 @@
       >
         <hr
           class="animate__animated animate__fadeInRight animate__delay-2s"
-          style="background-color: grey; width: 150px; margin-right: 7rem;"
+          style="background-color: grey; width: 100px; margin-right: 7rem;"
         />
         Discover Beauty
         <hr
@@ -120,12 +120,12 @@
   <div class="container section-news">
     <div class="row" style="position: relative;">
       <span class="tranh-viet-news">Tranh việt news</span>
-      <h1 class="news-headers"><span class="news"> tin tức </span></h1>
+      <h1 class="news-headers  col-md-12 col-sm-12 col-12"><span class="news"> tin tức </span></h1>
       <br />
     </div>
 
     <div class="row">
-      <div class="col-sm 4 news-post">
+      <div class="col-sm-12 col-md-4 news-post">
         <img
           src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/main-blog-list-img-1.jpg"
           alt=""
@@ -153,7 +153,7 @@
           <span style="color: #383737;">View more</span>
         </a>
       </div>
-      <div class="col-sm 4 news-post">
+      <div class="col-sm-12 col-md-4 news-post">
         <img
           src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/main-blog-list-img-2.jpg"
           alt=""
@@ -181,7 +181,7 @@
           <span style="color: #383737;">View more</span>
         </a>
       </div>
-      <div class="col-sm 4 news-post">
+      <div class="col-sm-12 col-md-4 news-post">
         <img
           src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/main-blog-list-img-3.jpg"
           alt=""
@@ -212,86 +212,4 @@
     </div>
   </div>
   <br />
-  <!-- <div class="container section-news">
-    <div class="row" style="position: relative;">
-      <span class="tranh-viet-news">Tác phẩm</span>
-      <h1 class="news-headers"><span class="news"> các tác phẩm mới </span></h1>
-      <br />
-    </div>
-    <div class="row">
-      <div *ngFor="let picture of new_pic_list" class="col-md-4">
-        <div class="mb-5 picture-item" style="max-width: 90%;">
-          <div class="img-wrapper">
-            <img
-              [src]="picture.imageLink"
-              class="img-fluid"
-              [routerLink]="[picture.pic_id, picture.category, picture.title]"
-            />
-          </div>
-          <div
-            class="info-wrapper"
-            [routerLink]="[picture.pic_id, picture.category, picture.title]"
-          >
-            <h5 class="pic-title">{{ picture.title }}</h5>
-            <div class="pic-price-stars">
-              <div class="price-stars">
-                <p class="stars-wrapper">
-                  <i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
-                  ><i class="fa fa-star"></i>
-                </p>
-                <p
-                  class="product-price"
-                  style="
-                    font-family: EB Garamond, serif;
-                    font-size: 1.3rem;
-                    opacity: 0.7;
-                  "
-                >
-                  {{ picture.price | currency: " ":"code":"3.0" }}
-                  <span>$</span>
-                </p>
-              </div>
-              <div class="overlay-info">
-                <a
-                  class="btn btn-light text-dark view-more2"
-                  style="
-                    z-index: 1000;
-                    margin-top: 0.5rem;
-                    margin-bottom: 0.5rem;
-                  "
-                  [routerLink]="['/cart']"
-                  routerLinkActive="router-link-active"
-                >
-                  <svg height="52" width="120">
-                    <rect height="52" width="120"></rect>
-                  </svg>
-                  <span>CHỌN MUA</span>
-                </a>
-                <a
-                  class="btn btn-light text-dark view-more2"
-                  style="
-                    z-index: 1000;
-                    margin-top: 0.5rem;
-                    margin-bottom: 0.5rem;
-                  "
-                  [routerLink]="[
-                    picture.pic_id,
-                    picture.category,
-                    picture.title
-                  ]"
-                  routerLinkActive="router-link-active"
-                >
-                  <svg height="52" width="120">
-                    <rect height="52" width="120"></rect>
-                  </svg>
-                  <span>XEM THÊM</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </div>
