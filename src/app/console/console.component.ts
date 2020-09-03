@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./console.component.css']
 })
 export class ConsoleComponent implements OnInit {
-  showFiller = false;
+  isOpened = true;
   constructor() { }
 
   ngOnInit(): void {

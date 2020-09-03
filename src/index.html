@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Frontend</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,8 +35,23 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <app-root></app-root>
+    <!-- add element on scrolling using AOS library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      let scrollRef = 0;
+      AOS.init({
+        delay: 50,
+        duration: 1000,
+        easing: "ease-in-out",
+        once: false,
+      });
+      window.addEventListener("scroll", function () {
+        scrollRef <= 10 ? scrollRef++ : AOS.refresh();
+      });
+    </script>
   </body>
 </html>
