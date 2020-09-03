@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from './shared/service/authenticate.service';
-import { throwIfEmpty } from 'rxjs/operators';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-
+import * as AOS from 'aos'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +11,7 @@ export class AppComponent implements OnInit {
   showHeader = true;
   showFooter = true;
 
-  constructor(private authenticate: AuthenticateService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private authenticate: AuthenticateService) {
     const token = localStorage.getItem('access_token');
     if (token) {
       this.authenticate.onGetUserInfo();
@@ -21,17 +19,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // delete Header and Footer in Console page
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        if (this.activatedRoute.firstChild.snapshot.routeConfig.path === "console") {
-          this.showHeader = false;
-          this.showFooter = false;
-        } else {
-          this.showHeader = true;
-          this.showFooter = true;
-        }
-      }
+    //add element on scrolling using AOS library
+    let scrollRef = 0;
+    AOS.init({
+      delay: 50,
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
     });
+    window.addEventListener("scroll", function () {
+      scrollRef <= 10 ? scrollRef++ : AOS.refresh();
+    });
+
   }
 }

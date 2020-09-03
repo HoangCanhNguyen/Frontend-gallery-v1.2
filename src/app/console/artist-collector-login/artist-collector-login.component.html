@@ -1,32 +1,37 @@
-<div class="login position-relative">
+<div class="login">
   <div class="blur-bg">
     <img
       src="https://wallpapercart.com/wp-content/uploads/2019/03/Download-Paris-Desktop-Backgrounds.jpg"
-      style="height: 100vh"
+      style="height: 100vh; width: 100%"
       class="img-fluid"
     />
   </div>
-  <form
-    class="form"
-    #signInFormArtistCollector="ngForm"
-    (ngSubmit)="onSubmitLogInForm(signInFormArtistCollector)"
+  <div
+    class="position-absolute fadeInDown"
+    style="top: 0; width: 100%; height: 100%"
   >
-    <img
-      src="https://p7.hiclipart.com/preview/304/305/226/web-development-computer-icons-avatar-business-user-profile.jpg"
-      class="img-fluid"
-    />
-    <h2>WELCOME</h2>
-    <div class="input-group">
-      <input type="text" required email name="email" ngModel />
-      <label for="loginUser"> <i class="fa fa-user mr-1"></i> Email</label>
-    </div>
-    <div class="input-group">
-      <input type="password" required name="pwd" ngModel />
-      <label for="loginPassword"
-        ><i class="fa fa-lock mr-1"></i> Mật khẩu</label
-      >
-    </div>
-    <a class="forgot-pw">Bạn quên mật khẩu?</a>
-    <input type="submit" value="Đăng nhập" class="submit-btn btn-block" />
-  </form>
+    <form
+      class="form"
+      #signInFormArtistCollector="ngForm"
+      (ngSubmit)="onSubmitLogInForm(signInFormArtistCollector)"
+    >
+      <img
+        src="https://p7.hiclipart.com/preview/304/305/226/web-development-computer-icons-avatar-business-user-profile.jpg"
+        class="img-fluid"
+      />
+      <h2>WELCOME</h2>
+      <div class="input-group">
+        <input type="text" required email name="email" ngModel />
+        <label for="loginUser"> <i class="fa fa-user mr-1"></i> Email</label>
+      </div>
+      <div class="input-group">
+        <input type="password" required name="pwd" ngModel />
+        <label for="loginPassword"
+          ><i class="fa fa-lock mr-1"></i> Mật khẩu</label
+        >
+      </div>
+      <a class="forgot-pw">Bạn quên mật khẩu?</a>
+      <input type="submit" value="Đăng nhập" class="submit-btn btn-block" />
+    </form>
+  </div>
 </div>

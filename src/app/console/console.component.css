@@ -11,16 +11,15 @@ label {
 }
 .sidebar {
   z-index: 1;
-  top: 0;
+  /* top: 0; */
   background: #2f323a;
-  padding-top: 2.5rem;
-  position: fixed;
-  left: 0;
-  width: 16.67%;
+  /* position: absolute; */
+  width: 100%;
+  /* left: 0; */
+  padding-top: 3rem;
+  /* width: 16.67%; */
   height: 100%;
-  transition: 0.5s;
-  transition-property: left;
-  overflow-y: auto;
+  transition: all 1s ease-in-out;
 }
 
 .profile_info {
@@ -49,7 +48,7 @@ label {
   width: 100%;
   line-height: 60px;
   text-decoration: none;
-  padding-left: 40px;
+  padding: 0 3rem;
   box-sizing: border-box;
   transition: 0.5s;
   transition-property: background;
@@ -63,14 +62,6 @@ label {
   padding-right: 10px;
 }
 
-label #sidebar_btn {
-  z-index: 1;
-  color: #fff;
-  position: fixed;
-  cursor: pointer;
-  left: 300px;
-  font-size: 20px;
-  margin: 5px 0;
-  transition: 0.5s;
-  transition-property: color;
+.mat-drawer-side {
+  border-right: none !important;
 }

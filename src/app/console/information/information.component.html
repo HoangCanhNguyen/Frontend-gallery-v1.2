@@ -48,79 +48,319 @@
     </ngb-carousel>
   </div>
 
-  <div class="container">
-    <h1
-      class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center best-pictures-header mb-5"
-    >
-      <hr
-        class="animate__animated animate__fadeInRight"
-        style="background-color: grey; width: 150px; margin-right: 2rem"
-      />
-      Thông tin về họa sĩ
-      <hr
-        class="animate__animated animate__fadeInLeft"
-        style="background-color: grey; width: 150px; margin-left: 2rem"
-      />
-    </h1>
+  <div class="container position-relative p-0">
+    <div class="desc pb-5" data-aos="fade-up" *ngIf="!editDescription">
+      <div
+        class="edit-description-icon"
+        placement="bottom"
+        ngbTooltip="Chỉnh sửa"
+        *ngIf="!editDescription"
+        (click)="onEditDescription()"
+      >
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </div>
+      <h1
+        class="d-flex justify-content-between align-items-center best-pictures-header mb-5"
+        *ngIf="!editDescription"
+      >
+        <hr style="background-color: grey; width: 150px; margin-right: 2rem" />
+        Giới thiệu
+        <hr style="background-color: grey; width: 150px; margin-left: 2rem" />
+      </h1>
 
-    <div class="row">
-      <div class="col-sm-4 artist-background">
-        <h3>From cinema to plastic art</h3>
-        <p>
-          After having worked in several technical professions in the film
-          industry, Brat became a director before turning to plastic art to
-          express his vision of the world. He feeds on all forms of art every
-          day, from painting to music, including comics, photography,
-          architecture and even design, in order to shape his universe and
-          observe the world and its changes. permanent. Working in a figurative
-          style, he paints in acrylic, synthetic or glitter on rigid materials
-          such as pléxi, wood fiber, metal, cardboard or even on skateboards
-          glued to each other.
-        </p>
-      </div>
-      <div class="col-sm-4 artist-background">
-        <h3>The collective unconscious</h3>
-        <p>
-          Brat's artistic reflection revolves around the collective unconscious.
-          Each of his paintings and sculptures aims to give rise to intimate
-          feelings and to bring the viewer to transpose his own vision of the
-          world around him. Often depicting winged figures as in the series
-          “Metamorphosis”, the artist's compositions draw a parallel between the
-          world and the very existence of human beings and symbolize the
-          allegorical transformation of the soul freed from all vanity.
-        </p>
-        <br />
-        <h3>An international artist</h3>
-        <p>
-          The artist's committed works have earned him an exhibition in France,
-          Switzerland, the United Kingdom, Poland, the United Arab Emirates and
-          even Malaysia, China, Mexico and Belgium on the occasion of the
-          Affordable Art Fair.
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <img
-          src="https://cdn.singulart.com/artists/pictures/cropped/body/base/artist_body_1647_30201306009efd5afa7773aecde0f861.jpeg"
-          width="100%"
-          height="100%"
-        />
+      <div class="row" *ngIf="!editDescription">
+        <div class="col-sm-4 artist-background">
+          <h3>Tiểu sử</h3>
+          <p>
+            {{ background }}
+          </p>
+        </div>
+        <div class="col-sm-4 artist-background">
+          <h3>Quan điểm nghệ thuật</h3>
+          <p>
+            {{ pointOfView }}
+          </p>
+          <br />
+          <h3>Sự kiện nghệ thuật nổi bật</h3>
+          <p>
+            {{ events }}
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img
+            src="https://cdn.singulart.com/artists/pictures/cropped/body/base/artist_body_1647_30201306009efd5afa7773aecde0f861.jpeg"
+            width="100%"
+            height="100%"
+          />
+        </div>
       </div>
     </div>
+    <div class="edit-des-form" data-aos="fade-up" *ngIf="editDescription">
+      <form
+        class="form"
+        #editDescForm="ngForm"
+        (ngSubmit)="saveEdittedDes(editDescForm)"
+      >
+        <div class="input-group">
+          <textarea
+            type="text"
+            rows="4"
+            name="background"
+            [(ngModel)]="background"
+          ></textarea>
+          <label> <i class="fa fa-user mr-1"></i> Tiểu sử</label>
+        </div>
+        <div class="input-group">
+          <textarea
+            type="text"
+            rows="4"
+            name="pointOfView"
+            [(ngModel)]="pointOfView"
+          ></textarea>
+          <label> <i class="fa fa-user mr-1"></i> Quan điểm nghệ thuật</label>
+        </div>
+        <div class="input-group">
+          <textarea
+            type="text"
+            rows="4"
+            name="events"
+            [(ngModel)]="events"
+          ></textarea>
+          <label>
+            <i class="fa fa-user mr-1"></i> Sự kiện nghệ thuật nổi bật</label
+          >
+        </div>
+        <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+        <button
+          type="button"
+          class="submit-btn"
+          (click)="onCancelEditDescription()"
+        >
+          Hủy bỏ
+        </button>
+      </form>
+    </div>
+
+    <div class="workflow position-relative">
+      <span class="alt-line" data-aos="fade-down"></span>
+      <span class="main-line"></span>
+      <div class="workflow-item">
+        <div class="row workflow-item-content">
+          <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
+            <img
+              src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
+              class="img-fluid"
+              data-aos="fade-right"
+            />
+          </div>
+          <div class="col-sm-6 workflow-text">
+            <span class="circle"></span>
+            <span class="circle-line" data-aos="zoom-in"></span>
+            <div class="year">2001</div>
+            <div class="main-text" data-aos="fade-left">
+              <span class="workflow-caption">History of the Museum</span>
+              <h2>The Archive</h2>
+              <span class="text"
+                >Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se
+                sed do se eiusmod tempor incididunt ut labore et sa nes in
+                dolore si magna aliqua. Ut enim ad minim veniam, in qu is
+                nostrud e exercitation ullamco laboris nisi ut sen don nins
+                aliquip ex ea commodo consequat. Duis aute irure do dolor eu est
+                laborum. Sed ut perspic iatis unde omnis iste natus i error sit
+                don eu fugiat est nulla duis aute.<br />
+                Voluptatem accusantium doloremque laudantium, intota rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no
+                architecto beatae vitae dicta sunt explicabo men enim ipsam
+                volupt</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-item">
+        <div class="row workflow-item-content">
+          <div class="col-sm-6 workflow-text">
+            <span class="circle-2"></span>
+            <span class="circle-line-2" data-aos="zoom-in"></span>
+            <div class="year-2">2010</div>
+            <div class="main-text" data-aos="fade-right">
+              <span class="workflow-caption">Moving in</span>
+              <h2>NEW HOME</h2>
+              <span class="text"
+                >Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se
+                sed do se eiusmod tempor incididunt ut labore et sa nes in
+                dolore si magna aliqua. Ut enim ad minim veniam, in qu is
+                nostrud e exercitation ullamco laboris nisi ut sen don nins
+                aliquip ex ea commodo consequat. Duis aute irure do dolor eu est
+                laborum. Sed ut perspic iatis unde omnis iste natus i error sit
+                don eu fugiat est nulla duis aute.<br />
+                Voluptatem accusantium doloremque laudantium, intota rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no
+                architecto beatae vitae dicta sunt explicabo men enim ipsam
+                volupt</span
+              >
+            </div>
+          </div>
+          <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
+            <img
+              src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
+              class="img-fluid"
+              data-aos="fade-left"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="workflow-item">
+        <div class="row workflow-item-content">
+          <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
+            <img
+              src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
+              class="img-fluid"
+              data-aos="fade-right"
+            />
+          </div>
+          <div class="col-sm-6 workflow-text">
+            <span class="circle"></span>
+            <span class="circle-line" data-aos="zoom-in"></span>
+            <div class="year">2019</div>
+            <div class="main-text" data-aos="fade-left">
+              <span class="workflow-caption">Art & Science</span>
+              <h2>EVENTS</h2>
+              <span class="text"
+                >Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se
+                sed do se eiusmod tempor incididunt ut labore et sa nes in
+                dolore si magna aliqua. Ut enim ad minim veniam, in qu is
+                nostrud e exercitation ullamco laboris nisi ut sen don nins
+                aliquip ex ea commodo consequat. Duis aute irure do dolor eu est
+                laborum. Sed ut perspic iatis unde omnis iste natus i error sit
+                don eu fugiat est nulla duis aute.<br />
+                Voluptatem accusantium doloremque laudantium, intota rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no
+                architecto beatae vitae dicta sunt explicabo men enim ipsam
+                volupt</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <mat-expansion-panel hideToggle>
+      <div class="workflow position-relative">
+        <span class="alt-line"></span>
+        <span class="main-line"></span>
+        <div class="workflow-item">
+            <div class="row workflow-item-content">
+            <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
+              <img
+                src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
+                class="img-fluid"
+                data-aos="fade-right"
+              />
+            </div>
+            <div class="col-sm-6 workflow-text">
+              <span class="circle"></span>
+              <span class="circle-line"></span>
+              <div class="year">2001</div>
+              <div class="main-text" data-aos="fade-left">
+                <span class="workflow-caption">History of the Museum</span>
+                <h2>The Archive</h2>
+                <span class="text"
+                  >Lorem ipsum dolor sit amet, consectetur adipisicing et elit,
+                  se sed do se eiusmod tempor incididunt ut labore et sa nes in
+                  dolore si magna aliqua. Ut enim ad minim veniam, in qu is
+                  nostrud e exercitation ullamco laboris nisi ut sen don nins
+                  aliquip ex ea commodo consequat. Duis aute irure do dolor eu
+                  est laborum. Sed ut perspic iatis unde omnis iste natus i
+                  error sit don eu fugiat est nulla duis aute.<br />
+                  Voluptatem accusantium doloremque laudantium, intota rem
+                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                  no architecto beatae vitae dicta sunt explicabo men enim ipsam
+                  volupt</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="workflow-item">
+            <div class="row workflow-item-content">
+            <div class="col-sm-6 workflow-text">
+              <span class="circle-2"></span>
+              <span class="circle-line-2"></span>
+              <div class="year-2">2010</div>
+              <div class="main-text">
+                <span class="workflow-caption">Moving in</span>
+                <h2>NEW HOME</h2>
+                <span class="text"
+                  >Lorem ipsum dolor sit amet, consectetur adipisicing et elit,
+                  se sed do se eiusmod tempor incididunt ut labore et sa nes in
+                  dolore si magna aliqua. Ut enim ad minim veniam, in qu is
+                  nostrud e exercitation ullamco laboris nisi ut sen don nins
+                  aliquip ex ea commodo consequat. Duis aute irure do dolor eu
+                  est laborum. Sed ut perspic iatis unde omnis iste natus i
+                  error sit don eu fugiat est nulla duis aute.<br />
+                  Voluptatem accusantium doloremque laudantium, intota rem
+                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                  no architecto beatae vitae dicta sunt explicabo men enim ipsam
+                  volupt</span
+                >
+              </div>
+            </div>
+            <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
+              <img
+                src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="workflow-item">
+            <div class="row workflow-item-content">
+            <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
+              <img
+                src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-sm-6 workflow-text">
+              <span class="circle"></span>
+              <span class="circle-line"></span>
+              <div class="year">2019</div>
+              <div class="main-text">
+                <span class="workflow-caption">Art & Science</span>
+                <h2>EVENTS</h2>
+                <span class="text"
+                  >Lorem ipsum dolor sit amet, consectetur adipisicing et elit,
+                  se sed do se eiusmod tempor incididunt ut labore et sa nes in
+                  dolore si magna aliqua. Ut enim ad minim veniam, in qu is
+                  nostrud e exercitation ullamco laboris nisi ut sen don nins
+                  aliquip ex ea commodo consequat. Duis aute irure do dolor eu
+                  est laborum. Sed ut perspic iatis unde omnis iste natus i
+                  error sit don eu fugiat est nulla duis aute.<br />
+                  Voluptatem accusantium doloremque laudantium, intota rem
+                  aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                  no architecto beatae vitae dicta sunt explicabo men enim ipsam
+                  volupt</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <button class="expand-button btn">Xem thêm</button>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel> -->
   </div>
 
-  <div class="container">
+  <div class="container" data-aos="fade-up">
     <h1
-      class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center best-pictures-header"
+      class="d-flex justify-content-between align-items-center best-pictures-header"
     >
-      <hr
-        class="animate__animated animate__fadeInRight"
-        style="background-color: grey; width: 150px; margin-right: 2rem"
-      />
+      <hr style="background-color: grey; width: 150px; margin-right: 2rem" />
       Các tác phẩm nổi bật
-      <hr
-        class="animate__animated animate__fadeInLeft"
-        style="background-color: grey; width: 150px; margin-left: 2rem"
-      />
+      <hr style="background-color: grey; width: 150px; margin-left: 2rem" />
     </h1>
     <div class="best-pictures">
       <div class="row" style="height: 550px">
@@ -159,17 +399,22 @@
       [interval]="'50000000000'"
     >
       <mdb-carousel-item>
-        <div class="mask d-block w-100"></div>
+        <div class="mask d-block w-100" data-aos="fade-up"></div>
         <div
           class="edit-quote-icon"
           placement="bottom"
           ngbTooltip="Chỉnh sửa"
           *ngIf="!editQuote"
           (click)="onEditQuote()"
+          data-aos="fade-up"
         >
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </div>
-        <div class="carousel-caption reviews" *ngIf="!editQuote">
+        <div
+          class="carousel-caption reviews"
+          data-aos="fade-up"
+          *ngIf="!editQuote"
+        >
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +445,11 @@
           </p>
           <h6>{{ quoteAuthor }}</h6>
         </div>
-        <div class="carousel-caption reviews" *ngIf="editQuote">
+        <div
+          class="carousel-caption reviews"
+          data-aos="fade-up"
+          *ngIf="editQuote"
+        >
           <form
             class="form"
             #editQuoteForm="ngForm"
@@ -211,8 +460,7 @@
                 type="text"
                 rows="4"
                 name="quote"
-                ngModel
-                required
+                [(ngModel)]="quote"
               ></textarea>
               <label for="loginUser">
                 <i class="fa fa-user mr-1"></i> Danh ngôn yêu thích của
@@ -220,18 +468,12 @@
               >
             </div>
             <div class="input-group">
-              <input type="text" name="author" ngModel required />
+              <input type="text" name="author" [(ngModel)]="quoteAuthor" />
               <label for="loginPassword"
                 ><i class="fa fa-lock mr-1"></i> Tác giả</label
               >
             </div>
-            <button
-              type="submit"
-              [disabled]="!editQuoteForm.valid"
-              class="submit-btn mr-4"
-            >
-              Cập nhật
-            </button>
+            <button type="submit" class="submit-btn mr-4">Cập nhật</button>
             <button
               type="button"
               class="submit-btn"

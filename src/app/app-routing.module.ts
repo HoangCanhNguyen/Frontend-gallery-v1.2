@@ -15,7 +15,6 @@ import { ArtistProfileComponent } from './profile/artist-profile/artist-profile.
 import { VendorComponent } from './auth/vendor/vendor.component';
 import { ConsoleComponent } from './console/console.component';
 import { InformationComponent } from './console/information/information.component';
-import { BiographyComponent } from './console/biography/biography.component';
 import { ArtworksComponent } from './console/artworks/artworks.component';
 import { ArtistCollectorLoginComponent } from './console/artist-collector-login/artist-collector-login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -74,7 +73,6 @@ const routes: Routes = [
     children: [
       { path: '', component: ArtistCollectorLoginComponent },
       { path: 'info', component: InformationComponent },
-      { path: 'biography', component: BiographyComponent },
       { path: 'artworks', component: ArtworksComponent },
     ],
   },
@@ -87,4 +85,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
