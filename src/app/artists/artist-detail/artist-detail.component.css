@@ -102,6 +102,7 @@ h1.best-pictures-header {
 }
 .best-pictures img {
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
 }
 
 .circle-image {
