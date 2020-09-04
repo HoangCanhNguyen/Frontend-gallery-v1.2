@@ -65,6 +65,9 @@ label {
 .mat-drawer-side {
   border-right: none !important;
 }
+.mat-drawer-content {
+  overflow: visible !important;
+}
 
 /* style toggle sidebar button */
 .btn-collapsible {
@@ -73,6 +76,8 @@ label {
   top: 0;
   color: #d5a966;
   font-size: 2rem;
+  background-color: transparent;
+  border: none;
 }
 button.btn-collapsible:focus {
   outline: none !important;

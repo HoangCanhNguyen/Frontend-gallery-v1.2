@@ -19,21 +19,6 @@ img {
   max-height: 100%;
   transform-origin: 0 0;
 }
-.scale-image-on-slide {
-  animation-name: scaleAndTranslateY;
-  animation-duration: 10s;
-  transform-origin: left-top;
-  overflow: hidden;
-}
-@keyframes scaleAndTranslateY {
-  from {
-    transform: scale(1) translateY(0);
-  }
-
-  to {
-    transform: scale(1.05) translateY(-10%);
-  }
-}
 .cover-img {
   left: 0% !important;
   right: 0% !important;
