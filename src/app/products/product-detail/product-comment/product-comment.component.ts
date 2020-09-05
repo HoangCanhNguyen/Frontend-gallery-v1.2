@@ -1,6 +1,11 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MatAccordion } from '@angular/material/expansion';
 
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
@@ -9,13 +14,13 @@ import { CommentService } from '../../../shared/service/comment.service';
 
 import { Reply } from '../../../shared/interface/reply';
 import { CommentResponse } from '../../../shared/interface/commentRespone';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-product-comment',
   templateUrl: './product-comment.component.html',
   styleUrls: ['./product-comment.component.css'],
 })
 export class ProductCommentComponent implements OnInit {
-  @ViewChild(MatAccordion) accordion: MatAccordion;
   @Input() parent_id: any;
 
   currentRate = 5;
@@ -26,6 +31,8 @@ export class ProductCommentComponent implements OnInit {
   comment: CommentModule;
   reply: Reply;
   cmt_list: CommentResponse[] = [];
+
+  numCmt = new BehaviorSubject<number>(0)
 
   currentUser_avatar_url: string;
   currentUser_id: string;
@@ -47,6 +54,7 @@ export class ProductCommentComponent implements OnInit {
       .getComment({ pic_id: this.parent_id })
       .subscribe((res) => {
         this.cmt_list = res;
+        this.numCmt.next(this.cmt_list.length)
       });
 
     this.authService.currentUser.subscribe((user) => {

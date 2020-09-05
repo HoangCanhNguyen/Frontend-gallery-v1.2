@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
+import { CommentService } from 'src/app/shared/service/comment.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,9 +16,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   pic_category: any;
   sub: Subscription;
 
+  numComment: any
+
   constructor(
     private route: ActivatedRoute,
-    private picService: PicturesService
+    private picService: PicturesService,
+    private commentService: CommentService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +36,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       }
     );
     
+    this.commentService.getComment({ pic_id: this.id }).subscribe((res) => {
+      this.numComment = res.length
+    })
+
   }
 
   ngOnDestroy(): void {
