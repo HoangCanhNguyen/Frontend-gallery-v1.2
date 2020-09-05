@@ -120,53 +120,32 @@ p.stars-wrapper {
   font-size: 0.8rem;
 }
 
-/* a.view-more {
-  background-color: transparent !important;
-  border: 1px solid transparent !important;
-  position: relative;
-  width: auto;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out;
-  font-family: open sans;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 2rem;
-  letter-spacing: 0.07rem;
-  color: white;
-  padding: 8px 43px 10px;
-  cursor: pointer;
-  box-shadow: none !important;
-  outline: none !important;
-  text-align: center;
-  border-radius: 0 !important;
-}
-a.view-more svg {
+
+/* heart icon */
+.wish-list-icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  right: -3%;
+  top: -3%;
+  border-radius: 50%;
+  border: 1px solid #d2d1d2;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d3d3;
+  opacity: 0;
 }
-a.view-more svg rect {
-  fill: transparent;
-  stroke: white;
-  stroke-width: 3px;
-  transition: 2s;
-  stroke-dashoffset: 240%;
-  stroke-dasharray: 330% 25;
+.fa-heart-o {
+  font-size: 25px !important;
 }
-a.view-more:hover svg rect {
-  stroke: #ffd395;
+
+.picture-item:hover .wish-list-icon {
+  opacity: 1;
+  transition: all .3s ease-in-out;
 }
-a.view-more span {
-  color: white;
-  padding: 0;
-  margin: 0;
+
+.wish-list-icon:hover  .fa-heart-o{
+  color: red;
+  opacity: 0.8;
 }
-a.view-more:hover svg rect {
-  stroke-dashoffset: -110%;
-}
-a.view-more:hover {
-  transition: all 0.4s ease-in-out;
-}
-.view-more:hover span {
-  color: white;
-} */
