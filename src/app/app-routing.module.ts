@@ -64,18 +64,25 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'checkout', component: CheckoutComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
+
     ],
   },
-
   {
     path: 'console',
     component: ConsoleComponent,
     children: [
       { path: '', component: ArtistCollectorLoginComponent },
       { path: 'info', component: InformationComponent },
-      { path: 'artworks', component: ArtworksComponent },
-    ],
+      {
+        path: 'artworks', component: ArtworksComponent
+      },
+    ]
   },
+  {
+    path: 'console/artworks/:id/:category/:pic_name',
+    redirectTo: 'list/:id/:category/:pic_name',
+    pathMatch: 'full'
+  }
 
 ];
 
