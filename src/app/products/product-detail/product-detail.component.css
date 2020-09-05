@@ -285,3 +285,45 @@ div.your-cmt button {
   font-size: 0.9rem;
   font-family: "EB Garamond", serif;
 }
+
+/* heart icon */
+.wish-list-icon {
+  position: absolute;
+  top: -1%;
+  right: -1%;
+  border-radius: 50%;
+  border: 1px solid #d2d1d2;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d3d3;
+}
+.fa-heart-o {
+  font-size: 35px !important;
+}
+.wish-list-icon:hover .fa-heart-o {
+  color: red;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.wish-list-icon:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 1s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(15deg); }
+  10% { transform: translate(-1px, -2px) rotate(14deg); }
+  20% { transform: translate(-3px, 0px) rotate(13deg); }
+  30% { transform: translate(3px, 2px) rotate(12deg); }
+  40% { transform: translate(1px, -1px) rotate(10deg); }
+  50% { transform: translate(-1px, 2px) rotate(0deg); }
+
+}
