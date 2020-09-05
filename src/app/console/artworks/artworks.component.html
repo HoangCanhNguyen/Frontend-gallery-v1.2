@@ -105,7 +105,7 @@
     <i class="fa fa-plus mr-2" aria-hidden="true"></i> Thêm tác phẩm mới
   </button>
   <mdb-carousel class="slides px-5" [animation]="'slide'" [interval]="50000000">
-    <mdb-carousel-item *ngFor="let slide of pictureSlides; let i = index">
+    <mdb-carousel-item *ngFor="let slide of pictureSlides">
       <div
         class="artwork-item mb-5"
         *ngFor="let picture of slide; let picIndex = index"
@@ -156,7 +156,12 @@
               >
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
-              <button class="delete-icon" placement="bottom" ngbTooltip="Xóa">
+              <button
+                class="delete-icon"
+                placement="bottom"
+                ngbTooltip="Xóa"
+                (click)="openDeletePopup(picIndex)"
+              >
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </div>
@@ -223,7 +228,12 @@
               >
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
-              <button class="delete-icon" placement="bottom" ngbTooltip="Xóa">
+              <button
+                class="delete-icon"
+                placement="bottom"
+                ngbTooltip="Xóa"
+                (click)="openDeletePopup()"
+              >
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </div>
@@ -232,4 +242,15 @@
       </div>
     </mdb-carousel-item>
   </mdb-carousel>
+</div>
+
+<div class="delete-popup" *ngIf="showDeletePopup">
+  <div class="popup-content slowly-appear">
+    <h1>Bạn chắc chắn muốn xóa tác phẩm này?</h1>
+    <p>Bạn sẽ không thể khôi phục lại tác phẩm sau khi xóa</p>
+    <div class="action-button">
+      <button class="cancel-btn" (click)="closePopup()">Hủy bỏ</button>
+      <button class="delete-btn" (click)="deleteArtwork()">Xóa</button>
+    </div>
+  </div>
 </div>

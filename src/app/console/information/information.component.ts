@@ -32,6 +32,11 @@ export class InformationComponent implements OnInit {
 
     'Lorem ipsum dolor sit amet, consectetur adipisicing et elit, se sed do se eiusmod tempor incididunt ut labore et sa nes in dolore si magna aliqua. Ut enim ad minim veniam, in qu is nostrud e exercitation ullamco laboris nisi ut sen don nins aliquip ex ea commodo consequat. Duis aute irure do dolor eu est laborum. Sed ut perspic iatis unde omnis iste natus i error sit don eu fugiat est nulla duis aute.Voluptatem accusantium doloremque laudantium, intota rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi no architecto beatae vitae dicta sunt explicabo men enim ipsam volupt'
   ]
+  workflowImages = [
+    'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg',
+    'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg',
+    'https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg'
+  ]
 
 
   constructor() { }

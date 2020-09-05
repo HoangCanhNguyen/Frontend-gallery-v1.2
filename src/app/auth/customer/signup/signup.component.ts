@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
     public dialogRef: MatDialogRef<SignupComponent>,
     private authService: AuthenticateService,
     private snackbarService: SnackbarNotiService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
@@ -63,14 +63,14 @@ export class SignupComponent implements OnInit {
   //   }
   // }
   onSubmit(): void {
-      this.authService.onUserRegister(this.signUpForm).subscribe(
-        (res) => {
-          this.snackbarService.onStart('ĐĂNG KÝ');
-          this.dialogRef.close();
-        },
-        (err) => {
-          this.snackbarService.onError(err);
-        }
-      );
+    this.authService.onUserRegister(this.signUpForm).subscribe(
+      (res) => {
+        this.snackbarService.onStart('ĐĂNG KÝ');
+        this.dialogRef.close();
+      },
+      (err) => {
+        this.snackbarService.onError(err);
+      }
+    );
   }
 }

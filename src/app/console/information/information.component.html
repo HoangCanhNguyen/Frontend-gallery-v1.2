@@ -169,7 +169,7 @@
             <div class="row workflow-item-content">
               <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
                 <img
-                  src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
+                  [src]="workflowImages[0]"
                   class="img-fluid"
                   data-aos="fade-right"
                 />
@@ -196,46 +196,70 @@
               #editWorkflowForm1="ngForm"
               (ngSubmit)="onSaveEditedContent('workflow1', editWorkflowForm1)"
             >
-              <div class="input-group">
-                <input type="text" name="stage1" [(ngModel)]="stages[0]" />
-                <label
-                  ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
-                  sự kiện 1</label
-                >
-              </div>
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="minititle1"
-                  [(ngModel)]="workflowTitle1[0]"
-                />
-                <label>
-                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề nhỏ
-                  1</label
-                >
-              </div>
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="bigTitle1"
-                  [(ngModel)]="workflowTitle2[0]"
-                />
-                <label>
-                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
-                  Tiêu đề lớn 1</label
-                >
-              </div>
-              <div class="input-group">
-                <textarea
-                  type="text"
-                  name="des1"
-                  rows="5"
-                  [(ngModel)]="workflowDescription[0]"
-                ></textarea>
-                <label>
-                  <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô tả
-                  1</label
-                >
+              <div class="row">
+                <div class="col-sm-4">
+                  <img
+                    [src]="workflowImages[0]"
+                    class="img-fluid workflow-image"
+                    height="400px"
+                  />
+                  <div class="change-workflow-image">
+                    <label for="file-upload" class="btn upload-btn mt-3"
+                      ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
+                      Tải ảnh lên
+                    </label>
+                    <input
+                      #file
+                      id="file-upload"
+                      type="file"
+                      name="workflow-image-link"
+                      [(ngModel)]="workflowImages[0]"
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input type="text" name="stage1" [(ngModel)]="stages[0]" />
+                    <label
+                      ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
+                      Mốc sự kiện 1</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      name="minititle1"
+                      [(ngModel)]="workflowTitle1[0]"
+                    />
+                    <label>
+                      <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề
+                      nhỏ 1</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      name="bigTitle1"
+                      [(ngModel)]="workflowTitle2[0]"
+                    />
+                    <label>
+                      <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
+                      Tiêu đề lớn 1</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <textarea
+                      type="text"
+                      name="des1"
+                      rows="5"
+                      [(ngModel)]="workflowDescription[0]"
+                    ></textarea>
+                    <label>
+                      <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô
+                      tả 1</label
+                    >
+                  </div>
+                </div>
               </div>
 
               <div class="d-flex justify-content-center">
@@ -275,7 +299,7 @@
               </div>
               <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
                 <img
-                  src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
+                  [src]="workflowImages[1]"
                   class="img-fluid"
                   data-aos="fade-left"
                 />
@@ -292,46 +316,70 @@
               #editWorkflowForm2="ngForm"
               (ngSubmit)="onSaveEditedContent('workflow2', editWorkflowForm2)"
             >
-              <div class="input-group">
-                <input type="text" name="stage1" [(ngModel)]="stages[1]" />
-                <label
-                  ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
-                  sự kiện 2</label
-                >
-              </div>
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="minititle1"
-                  [(ngModel)]="workflowTitle1[1]"
-                />
-                <label>
-                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề nhỏ
-                  2</label
-                >
-              </div>
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="bigTitle1"
-                  [(ngModel)]="workflowTitle2[1]"
-                />
-                <label>
-                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
-                  Tiêu đề lớn 2</label
-                >
-              </div>
-              <div class="input-group">
-                <textarea
-                  type="text"
-                  name="des1"
-                  rows="5"
-                  [(ngModel)]="workflowDescription[1]"
-                ></textarea>
-                <label>
-                  <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô tả
-                  2</label
-                >
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input type="text" name="stage1" [(ngModel)]="stages[1]" />
+                    <label
+                      ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
+                      Mốc sự kiện 2</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      name="minititle1"
+                      [(ngModel)]="workflowTitle1[1]"
+                    />
+                    <label>
+                      <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề
+                      nhỏ 2</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      name="bigTitle1"
+                      [(ngModel)]="workflowTitle2[1]"
+                    />
+                    <label>
+                      <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
+                      Tiêu đề lớn 2</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <textarea
+                      type="text"
+                      name="des1"
+                      rows="5"
+                      [(ngModel)]="workflowDescription[1]"
+                    ></textarea>
+                    <label>
+                      <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô
+                      tả 2</label
+                    >
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <img
+                    [src]="workflowImages[1]"
+                    class="img-fluid workflow-image"
+                    height="400px"
+                  />
+                  <div class="change-workflow-image">
+                    <label for="file-upload" class="btn upload-btn mt-3"
+                      ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
+                      Tải ảnh lên
+                    </label>
+                    <input
+                      #file
+                      id="file-upload"
+                      type="file"
+                      name="workflow-image-link"
+                      [(ngModel)]="workflowImages[1]"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div class="d-flex justify-content-center">
@@ -361,7 +409,7 @@
             <div class="row workflow-item-content">
               <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
                 <img
-                  src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
+                  [src]="workflowImages[2]"
                   class="img-fluid"
                   data-aos="fade-right"
                 />
@@ -388,46 +436,70 @@
               #editWorkflowForm3="ngForm"
               (ngSubmit)="onSaveEditedContent('workflow3', editWorkflowForm3)"
             >
-              <div class="input-group">
-                <input type="text" name="stage1" [(ngModel)]="stages[2]" />
-                <label
-                  ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
-                  sự kiện 3</label
-                >
-              </div>
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="minititle1"
-                  [(ngModel)]="workflowTitle1[2]"
-                />
-                <label>
-                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề nhỏ
-                  3</label
-                >
-              </div>
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="bigTitle1"
-                  [(ngModel)]="workflowTitle2[2]"
-                />
-                <label>
-                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
-                  Tiêu đề lớn 3</label
-                >
-              </div>
-              <div class="input-group">
-                <textarea
-                  type="text"
-                  name="des1"
-                  rows="5"
-                  [(ngModel)]="workflowDescription[2]"
-                ></textarea>
-                <label>
-                  <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô tả
-                  3</label
-                >
+              <div class="row">
+                <div class="col-sm-4">
+                  <img
+                    [src]="workflowImages[2]"
+                    class="img-fluid workflow-image"
+                    height="400px"
+                  />
+                  <div class="change-workflow-image">
+                    <label for="file-upload" class="btn upload-btn mt-3"
+                      ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
+                      Tải ảnh lên
+                    </label>
+                    <input
+                      #file
+                      id="file-upload"
+                      type="file"
+                      name="workflow-image-link"
+                      [(ngModel)]="workflowImages[2]"
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="input-group">
+                    <input type="text" name="stage1" [(ngModel)]="stages[2]" />
+                    <label
+                      ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
+                      Mốc sự kiện 3</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      name="minititle1"
+                      [(ngModel)]="workflowTitle1[2]"
+                    />
+                    <label>
+                      <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề
+                      nhỏ 3</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      name="bigTitle1"
+                      [(ngModel)]="workflowTitle2[2]"
+                    />
+                    <label>
+                      <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
+                      Tiêu đề lớn 3</label
+                    >
+                  </div>
+                  <div class="input-group">
+                    <textarea
+                      type="text"
+                      name="des1"
+                      rows="5"
+                      [(ngModel)]="workflowDescription[2]"
+                    ></textarea>
+                    <label>
+                      <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô
+                      tả 3</label
+                    >
+                  </div>
+                </div>
               </div>
 
               <div class="d-flex justify-content-center">
