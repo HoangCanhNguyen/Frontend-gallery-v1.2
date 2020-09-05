@@ -108,7 +108,7 @@
         <div class="input-group">
           <textarea
             type="text"
-            rows="4"
+            rows="5"
             name="background"
             [(ngModel)]="background"
           ></textarea>
@@ -117,7 +117,7 @@
         <div class="input-group">
           <textarea
             type="text"
-            rows="4"
+            rows="5"
             name="pointOfView"
             [(ngModel)]="pointOfView"
           ></textarea>
@@ -126,7 +126,7 @@
         <div class="input-group">
           <textarea
             type="text"
-            rows="4"
+            rows="5"
             name="events"
             [(ngModel)]="events"
           ></textarea>
@@ -148,91 +148,54 @@
     </div>
 
     <div class="workflow-editable">
-      <div class="workflow position-relative" *ngIf="!editWorkflow">
-        <div
-          class="edit-description-icon"
-          style="right: 7%; top: 1.5%; z-index: 1"
-          placement="bottom"
-          ngbTooltip="Chỉnh sửa"
-          *ngIf="!editWorkflow"
-          (click)="editWorkflow = true"
-        >
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </div>
-        <span class="alt-line" data-aos="fade-down"></span>
+      <div class="workflow position-relative">
+        <span
+          class="alt-line"
+          *ngIf="!editWorkflow1 && !editWorkflow2 && !editWorkflow3"
+          data-aos="fade-down"
+        ></span>
         <span class="main-line"></span>
         <div class="workflow-item">
-          <div class="row workflow-item-content">
-            <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
-              <img
-                src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
-                class="img-fluid"
-                data-aos="fade-right"
-              />
+          <div class="position-relative" *ngIf="!editWorkflow1">
+            <div
+              class="edit-description-icon"
+              style="right: 7%; top: 5%; z-index: 1"
+              placement="bottom"
+              ngbTooltip="Chỉnh sửa"
+              (click)="editWorkflow1 = true"
+            >
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
-            <div class="col-sm-6 workflow-text">
-              <span class="circle"></span>
-              <span class="circle-line" data-aos="zoom-in"></span>
-              <div class="year">{{ stages[0] }}</div>
-              <div class="main-text" data-aos="fade-left">
-                <span class="workflow-caption">{{ workflowTitle1[0] }}</span>
-                <h2>{{ workflowTitle2[0] }}</h2>
-                <span class="text">{{ workflowDescription[0] }}</span>
+            <div class="row workflow-item-content">
+              <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
+                <img
+                  src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-1.jpg"
+                  class="img-fluid"
+                  data-aos="fade-right"
+                />
+              </div>
+              <div class="col-sm-6 workflow-text">
+                <span class="circle"></span>
+                <span class="circle-line" data-aos="zoom-in"></span>
+                <div class="year">{{ stages[0] }}</div>
+                <div class="main-text" data-aos="fade-left">
+                  <span class="workflow-caption">{{ workflowTitle1[0] }}</span>
+                  <h2>{{ workflowTitle2[0] }}</h2>
+                  <span class="text">{{ workflowDescription[0] }}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="workflow-item">
-          <div class="row workflow-item-content">
-            <div class="col-sm-6 workflow-text">
-              <span class="circle-2"></span>
-              <span class="circle-line-2" data-aos="zoom-in"></span>
-              <div class="year-2">{{ stages[1] }}</div>
-              <div class="main-text" data-aos="fade-right">
-                <span class="workflow-caption">{{ workflowTitle1[1] }}</span>
-                <h2>{{ workflowTitle2[1] }}</h2>
-                <span class="text">{{ workflowDescription[1] }}</span>
-              </div>
-            </div>
-            <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
-              <img
-                src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
-                class="img-fluid"
-                data-aos="fade-left"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="workflow-item">
-          <div class="row workflow-item-content">
-            <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
-              <img
-                src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
-                class="img-fluid"
-                data-aos="fade-right"
-              />
-            </div>
-            <div class="col-sm-6 workflow-text">
-              <span class="circle"></span>
-              <span class="circle-line" data-aos="zoom-in"></span>
-              <div class="year">{{ stages[2] }}</div>
-              <div class="main-text" data-aos="fade-left">
-                <span class="workflow-caption">{{ workflowTitle1[2] }}</span>
-                <h2>{{ workflowTitle2[2] }}</h2>
-                <span class="text">{{ workflowDescription[2] }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="edit-des-form py-5" data-aos="fade-up" *ngIf="editWorkflow">
-        <form
-          class="form editWorkflowForm"
-          #editWorkflowForm="ngForm"
-          (ngSubmit)="onSaveEditedContent('workflow', editWorkflowForm)"
-        >
-          <div class="row">
-            <div class="col-sm-4">
+          <div
+            class="edit-des-form py-5"
+            data-aos="fade-up"
+            *ngIf="editWorkflow1"
+          >
+            <form
+              class="form"
+              #editWorkflowForm1="ngForm"
+              (ngSubmit)="onSaveEditedContent('workflow1', editWorkflowForm1)"
+            >
               <div class="input-group">
                 <input type="text" name="stage1" [(ngModel)]="stages[0]" />
                 <label
@@ -266,7 +229,7 @@
                 <textarea
                   type="text"
                   name="des1"
-                  rows="4"
+                  rows="5"
                   [(ngModel)]="workflowDescription[0]"
                 ></textarea>
                 <label>
@@ -274,10 +237,63 @@
                   1</label
                 >
               </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+                <button
+                  type="button"
+                  class="submit-btn"
+                  (click)="editWorkflow1 = false"
+                >
+                  Hủy bỏ
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="workflow-item">
+          <div class="position-relative" *ngIf="!editWorkflow2">
+            <div
+              class="edit-description-icon"
+              style="left: 7%; top: 5%; z-index: 1"
+              placement="bottom"
+              ngbTooltip="Chỉnh sửa"
+              (click)="editWorkflow2 = true"
+            >
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
-            <div class="col-sm-4">
+            <div class="row workflow-item-content">
+              <div class="col-sm-6 workflow-text">
+                <span class="circle-2"></span>
+                <span class="circle-line-2" data-aos="zoom-in"></span>
+                <div class="year-2">{{ stages[1] }}</div>
+                <div class="main-text" data-aos="fade-right">
+                  <span class="workflow-caption">{{ workflowTitle1[1] }}</span>
+                  <h2>{{ workflowTitle2[1] }}</h2>
+                  <span class="text">{{ workflowDescription[1] }}</span>
+                </div>
+              </div>
+              <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
+                <img
+                  src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
+                  class="img-fluid"
+                  data-aos="fade-left"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="edit-des-form py-5"
+            data-aos="fade-up"
+            *ngIf="editWorkflow2"
+          >
+            <form
+              class="form"
+              #editWorkflowForm2="ngForm"
+              (ngSubmit)="onSaveEditedContent('workflow2', editWorkflowForm2)"
+            >
               <div class="input-group">
-                <input type="text" name="stage2" [(ngModel)]="stages[1]" />
+                <input type="text" name="stage1" [(ngModel)]="stages[1]" />
                 <label
                   ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
                   sự kiện 2</label
@@ -286,30 +302,30 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="minititle2"
+                  name="minititle1"
                   [(ngModel)]="workflowTitle1[1]"
                 />
                 <label>
-                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i>
-                  Tiêu đề nhỏ 2</label
+                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề nhỏ
+                  2</label
                 >
               </div>
               <div class="input-group">
                 <input
                   type="text"
-                  name="bigTitle2"
+                  name="bigTitle1"
                   [(ngModel)]="workflowTitle2[1]"
                 />
                 <label>
-                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i> Tiêu
-                  đề lớn 2</label
+                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
+                  Tiêu đề lớn 2</label
                 >
               </div>
               <div class="input-group">
                 <textarea
                   type="text"
-                  name="des2"
-                  rows="4"
+                  name="des1"
+                  rows="5"
                   [(ngModel)]="workflowDescription[1]"
                 ></textarea>
                 <label>
@@ -317,10 +333,63 @@
                   2</label
                 >
               </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+                <button
+                  type="button"
+                  class="submit-btn"
+                  (click)="editWorkflow2 = false"
+                >
+                  Hủy bỏ
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="workflow-item">
+          <div class="position-relative" *ngIf="!editWorkflow3">
+            <div
+              class="edit-description-icon"
+              style="right: 7%; top: 5%; z-index: 1"
+              placement="bottom"
+              ngbTooltip="Chỉnh sửa"
+              (click)="editWorkflow3 = true"
+            >
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
-            <div class="col-sm-4">
+            <div class="row workflow-item-content">
+              <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
+                <img
+                  src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-3.jpg"
+                  class="img-fluid"
+                  data-aos="fade-right"
+                />
+              </div>
+              <div class="col-sm-6 workflow-text">
+                <span class="circle"></span>
+                <span class="circle-line" data-aos="zoom-in"></span>
+                <div class="year">{{ stages[2] }}</div>
+                <div class="main-text" data-aos="fade-left">
+                  <span class="workflow-caption">{{ workflowTitle1[2] }}</span>
+                  <h2>{{ workflowTitle2[2] }}</h2>
+                  <span class="text">{{ workflowDescription[2] }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="edit-des-form py-5"
+            data-aos="fade-up"
+            *ngIf="editWorkflow3"
+          >
+            <form
+              class="form"
+              #editWorkflowForm3="ngForm"
+              (ngSubmit)="onSaveEditedContent('workflow3', editWorkflowForm3)"
+            >
               <div class="input-group">
-                <input type="text" name="stage3" [(ngModel)]="stages[2]" />
+                <input type="text" name="stage1" [(ngModel)]="stages[2]" />
                 <label
                   ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i> Mốc
                   sự kiện 3</label
@@ -329,30 +398,30 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="minititle3"
+                  name="minititle1"
                   [(ngModel)]="workflowTitle1[2]"
                 />
                 <label>
-                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i>
-                  Tiêu đề nhỏ 3</label
+                  <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề nhỏ
+                  3</label
                 >
               </div>
               <div class="input-group">
                 <input
                   type="text"
-                  name="bigTitle3"
+                  name="bigTitle1"
                   [(ngModel)]="workflowTitle2[2]"
                 />
                 <label>
-                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i> Tiêu
-                  đề lớn 3</label
+                  <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
+                  Tiêu đề lớn 3</label
                 >
               </div>
               <div class="input-group">
                 <textarea
                   type="text"
-                  name="des3"
-                  rows="4"
+                  name="des1"
+                  rows="5"
                   [(ngModel)]="workflowDescription[2]"
                 ></textarea>
                 <label>
@@ -360,28 +429,20 @@
                   3</label
                 >
               </div>
-            </div>
-            <div class="col-sm-12 text-center">
-              <p
-                class="text-center"
-                style="margin-bottom: 2.5rem; font-size: 1.3rem"
-              >
-                Hãy lựa chọn 3 sự kiện nổi bật nhất trong sự nghiệp nghệ thuật
-                của bạn
-              </p>
-            </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+                <button
+                  type="button"
+                  class="submit-btn"
+                  (click)="editWorkflow3 = false"
+                >
+                  Hủy bỏ
+                </button>
+              </div>
+            </form>
           </div>
-          <div class="d-flex justify-content-center">
-            <button type="submit" class="submit-btn mr-4">Cập nhật</button>
-            <button
-              type="button"
-              class="submit-btn"
-              (click)="editWorkflow = false"
-            >
-              Hủy bỏ
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -490,7 +551,7 @@
             <div class="input-group">
               <textarea
                 type="text"
-                rows="4"
+                rows="5"
                 name="quote"
                 [(ngModel)]="quote"
               ></textarea>

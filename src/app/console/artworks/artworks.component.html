@@ -41,10 +41,18 @@
     <div
       class="artwork-item"
       data-aos="fade-up"
-      *ngFor="let picture of picturesList | slice: 0:5"
+      *ngFor="
+        let picture of picturesList
+          | slice: picturesList.length - 5:picturesList.length
+      "
     >
       <div class="img-wrapper">
-        <img [src]="picture.imageLink" class="img-fluid" />
+        <img
+          [src]="picture.imageLink"
+          class="img-fluid"
+          [routerLink]="[picture.id, picture.category, picture.title]"
+          routerLinkActive="router-link-active"
+        />
       </div>
       <div class="info-wrapper">
         <h5 class="pic-title">{{ picture.title }}</h5>
@@ -67,6 +75,20 @@
               <span>$</span>
             </p>
           </div>
+          <div class="overlay-info">
+            <button
+              class="viewmore-icon"
+              placement="bottom"
+              ngbTooltip="Xem chi tiết"
+              [routerLink]="[picture.id, picture.category, picture.title]"
+              routerLinkActive="router-link-active"
+            >
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+            <button class="edit-icon" placement="bottom" ngbTooltip="Chỉnh sửa">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -86,11 +108,15 @@
     <mdb-carousel-item *ngFor="let slide of pictureSlides; let i = index">
       <div
         class="artwork-item mb-5"
-        id="artwork-item-special"
         *ngFor="let picture of slide; let picIndex = index"
       >
         <div class="img-wrapper">
-          <img [src]="picture.imageLink" class="img-fluid" />
+          <img
+            [src]="picture.imageLink"
+            class="img-fluid"
+            [routerLink]="[picture.id, picture.category, picture.title]"
+            routerLinkActive="router-link-active"
+          />
         </div>
         <div class="info-wrapper">
           <h5 class="pic-title">{{ picture.title }}</h5>
@@ -115,7 +141,16 @@
             </div>
             <div class="overlay-info">
               <button
-                class="edit-icon mr-2"
+                class="viewmore-icon"
+                placement="bottom"
+                ngbTooltip="Xem chi tiết"
+                [routerLink]="[picture.id, picture.category, picture.title]"
+                routerLinkActive="router-link-active"
+              >
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button
+                class="edit-icon"
                 placement="bottom"
                 ngbTooltip="Chỉnh sửa"
               >
@@ -144,11 +179,18 @@
     >
       <div
         class="artwork-item mb-5"
-        id="artwork-item-special"
         *ngFor="let picture of slide; let picIndex = index"
       >
-        <div class="img-wrapper">
-          <img [src]="picture.imageLink" class="img-fluid" />
+        <div class="img-wrapper position-relative">
+          <img
+            [src]="picture.imageLink"
+            class="img-fluid"
+            [routerLink]="[picture.id, picture.category, picture.title]"
+            routerLinkActive="router-link-active"
+          />
+          <div class="sold">
+            <h5>Đã bán</h5>
+          </div>
         </div>
         <div class="info-wrapper">
           <h5 class="pic-title">{{ picture.title }}</h5>
@@ -172,6 +214,15 @@
               </p>
             </div>
             <div class="overlay-info">
+              <button
+                class="viewmore-icon"
+                placement="bottom"
+                ngbTooltip="Xem chi tiết"
+                [routerLink]="[picture.id, picture.category, picture.title]"
+                routerLinkActive="router-link-active"
+              >
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
               <button class="delete-icon" placement="bottom" ngbTooltip="Xóa">
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>

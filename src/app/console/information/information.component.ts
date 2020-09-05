@@ -18,7 +18,10 @@ export class InformationComponent implements OnInit {
   pointOfView = "Brat's artistic reflection revolves around the collective unconscious. Each of his paintings and sculptures aims to give rise to intimate feelings and to bring the viewer to transpose his own vision of the world around him. Often depicting winged figures as in the series “Metamorphosis”, the artist's compositions draw a parallel between the world and the very existence of human beings and symbolize the allegorical transformation of the soul freed from all vanity."
   events = "The artist's committed works have earned him an exhibition in France, Switzerland, the United Kingdom, Poland, the United Arab Emirates and even Malaysia, China, Mexico and Belgium on the occasion of the Affordable Art Fair."
 
-  editWorkflow = false;
+  editWorkflow1 = false;
+  editWorkflow2 = false;
+  editWorkflow3 = false;
+
   stages = [2001, 2010, 2020];
   workflowTitle1 = ['History of the Museum', 'Moving in', 'Art & Science'];
   workflowTitle2 = ['The Archive', 'New Home', 'Event'];
@@ -42,8 +45,14 @@ export class InformationComponent implements OnInit {
       case 'des':
         this.editDescription = false;
         break;
-      case 'workflow':
-        this.editWorkflow = false;
+      case 'workflow1':
+        this.editWorkflow1 = false;
+        break;
+      case 'workflow2':
+        this.editWorkflow2 = false;
+        break;
+      case 'workflow3':
+        this.editWorkflow3 = false;
         break;
       case 'quote':
         this.editQuote = false;

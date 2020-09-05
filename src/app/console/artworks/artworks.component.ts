@@ -17,7 +17,7 @@ export class ArtworksComponent implements OnInit {
     this.pictureService.getData().subscribe((data) => {
       this.picturesList = data;
       this.pictureSlides = this.chunk(this.picturesList, 5);
-      console.log(this.pictureSlides);
+      console.log(this.pictureSlides[0][0]);
 
     });
 
