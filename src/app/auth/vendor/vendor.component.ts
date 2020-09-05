@@ -13,9 +13,4 @@ export class VendorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onOpenRegister(): void {
-    this.isOpened = !this.isOpened;
-  }
-
 }

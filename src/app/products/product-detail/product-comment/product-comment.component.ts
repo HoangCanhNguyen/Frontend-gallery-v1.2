@@ -1,6 +1,10 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MatAccordion } from '@angular/material/expansion';
 
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
@@ -15,7 +19,6 @@ import { CommentResponse } from '../../../shared/interface/commentRespone';
   styleUrls: ['./product-comment.component.css'],
 })
 export class ProductCommentComponent implements OnInit {
-  @ViewChild(MatAccordion) accordion: MatAccordion;
   @Input() parent_id: any;
 
   currentRate = 5;
@@ -26,6 +29,7 @@ export class ProductCommentComponent implements OnInit {
   comment: CommentModule;
   reply: Reply;
   cmt_list: CommentResponse[] = [];
+
 
   currentUser_avatar_url: string;
   currentUser_id: string;

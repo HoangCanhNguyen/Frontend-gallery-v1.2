@@ -145,9 +145,11 @@
 }
 
 .stepper-content {
-  font-size: 20px;
+  font-size: 40px;
   color: #000;
   margin-bottom: 10px;
+  margin-top: 3em;
+  text-align: center;
 }
 
 .three-steps {
