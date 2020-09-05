@@ -3,7 +3,6 @@ import {
   OnInit,
   Input,
   Output,
-  EventEmitter,
 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -14,7 +13,6 @@ import { CommentService } from '../../../shared/service/comment.service';
 
 import { Reply } from '../../../shared/interface/reply';
 import { CommentResponse } from '../../../shared/interface/commentRespone';
-import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-product-comment',
   templateUrl: './product-comment.component.html',
@@ -32,7 +30,6 @@ export class ProductCommentComponent implements OnInit {
   reply: Reply;
   cmt_list: CommentResponse[] = [];
 
-  numCmt = new BehaviorSubject<number>(0)
 
   currentUser_avatar_url: string;
   currentUser_id: string;
@@ -54,7 +51,6 @@ export class ProductCommentComponent implements OnInit {
       .getComment({ pic_id: this.parent_id })
       .subscribe((res) => {
         this.cmt_list = res;
-        this.numCmt.next(this.cmt_list.length)
       });
 
     this.authService.currentUser.subscribe((user) => {

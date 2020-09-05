@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription, from } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { CommentService } from 'src/app/shared/service/comment.service';
 
