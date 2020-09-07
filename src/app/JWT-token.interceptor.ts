@@ -13,7 +13,6 @@ export class HeadersInterceptor implements HttpInterceptor {
     }
  
     request = request.clone({headers: request.headers.set('Authorization', `Bearer ${JSON.parse(token)}`)});
- 
     return next.handle(request);
  
   }
