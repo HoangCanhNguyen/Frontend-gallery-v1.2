@@ -45,8 +45,6 @@ export class HeaderComponent implements OnInit {
       this.username = this.userInfo["username"];
       this.role = this.userInfo.role
       this.id = this.userInfo.id
-    console.log(this.role, this.username);
-
     });
 
     
@@ -69,7 +67,6 @@ export class HeaderComponent implements OnInit {
     },
     (err)=>{
       console.log(err);
-      
     })
     this.route.navigate(['home'])
   }
