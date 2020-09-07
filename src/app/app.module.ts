@@ -39,6 +39,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FirebaseOptionsToken } from 'angularfire2'
 import { environment } from '../environments/environment';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProductCommentComponent } from './products/product-detail/product-comment/product-comment.component';
@@ -138,6 +139,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDatepickerModule,
     MatNativeDateModule,
     { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+    { provide: FirebaseOptionsToken, useValue: environment.firebaseConfig }
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent],
