@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerComponent } from 'src/app/auth/customer/customer.component';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { UserModule } from 'src/app/shared/model/user.model';
+import { Router } from '@angular/router';
+import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +35,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     public matDialog: MatDialog,
     public authService: AuthenticateService,
-    private _snackBar: MatSnackBar,
+    private route: Router,
+    private snackBar: SnackbarNotiService
   ) { }
 
   ngOnInit(): void {
@@ -42,9 +45,11 @@ export class HeaderComponent implements OnInit {
       this.username = this.userInfo["username"];
       this.role = this.userInfo.role
       this.id = this.userInfo.id
+    console.log(this.role, this.username);
+
     });
 
-
+    
   }
 
   openCustomerModal(): void {
@@ -59,7 +64,14 @@ export class HeaderComponent implements OnInit {
   onSubmit(): void { }
 
   onLogOut(): void {
-    this.authService.onUserLogout()
+    this.authService.onUserLogout().subscribe((res) => {
+      this.snackBar.onSuccess("ĐĂNG XUẤT")
+    },
+    (err)=>{
+      console.log(err);
+      
+    })
+    this.route.navigate(['home'])
   }
 
 }

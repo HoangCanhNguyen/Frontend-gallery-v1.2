@@ -9,7 +9,7 @@ export class SnackbarNotiService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  onStart(mess: string) {
+  onSuccess(mess: string) {
     this._snackBar.open(mess, 'THÀNH CÔNG', {
       duration: 2500,
       horizontalPosition: 'start',

@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.onUserLogin(this.loginForm).subscribe(
       (res) => {
-        this.snackbarSerivce.onStart('ĐĂNG NHẬP');
+        this.snackbarSerivce.onSuccess('ĐĂNG NHẬP');
         this.dialogRef.close()
       },
       (err) => {
@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit {
   }
 
   google() {
-    this.authService.GoogleAuth();
+    // this.authService.GoogleAuth();
   }
 
   facebook() {
-    this.authService.FacebookAuth();
+    // this.authService.FacebookAuth();
   }
 }

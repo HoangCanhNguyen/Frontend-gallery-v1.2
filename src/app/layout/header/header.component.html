@@ -89,11 +89,19 @@
           <a
             mat-menu-item
             class="menu-items"
-            *ngIf="(role === 'user')"
+            *ngIf="(role == 'user')"
             [routerLink]="['/account/profile/user']"
             routerLinkActive="router-link-active"
             >Trang cá nhân</a
           >
+          <a
+          mat-menu-item
+          class="menu-items"
+          *ngIf="(role != 'user')"
+          [routerLink]="['/console']"
+          routerLinkActive="router-link-active"
+          >console</a
+        >
           <a mat-menu-item class="menu-items" (click)="onLogOut()">Đăng xuất</a>
         </mat-menu>
       </li>

@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     this.authService.onUserRegister(this.signUpForm).subscribe(
       (res) => {
-        this.snackbarService.onStart('ĐĂNG KÝ');
+        this.snackbarService.onSuccess('ĐĂNG KÝ');
         this.dialogRef.close();
       },
       (err) => {

@@ -19,6 +19,7 @@ import { ArtworksComponent } from './console/artworks/artworks.component';
 import { ArtistCollectorLoginComponent } from './console/artist-collector-login/artist-collector-login.component';
 import { LayoutComponent } from './layout/layout.component';
 
+import { AuthGuard } from 'src/app/shared/guard/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
@@ -56,6 +57,10 @@ const routes: Routes = [
           {
             path: 'user',
             component: BasicProfileComponent,
+            canActivate: [AuthGuard],
+            data: {
+              expectedRole: 'user',
+            },
           },
           { path: ':role/:id/:username', component: ArtistProfileComponent },
         ],
@@ -64,7 +69,6 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'checkout', component: CheckoutComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-
     ],
   },
   {
@@ -72,18 +76,29 @@ const routes: Routes = [
     component: ConsoleComponent,
     children: [
       { path: '', component: ArtistCollectorLoginComponent },
-      { path: 'info', component: InformationComponent },
       {
-        path: 'artworks', component: ArtworksComponent
+        path: 'info',
+        component: InformationComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: 'non_user',
+        },
       },
-    ]
+      {
+        path: 'artworks',
+        component: ArtworksComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: 'non_user',
+        },
+      },
+    ],
   },
   {
     path: 'console/artworks/:id/:category/:pic_name',
     redirectTo: 'list/:id/:category/:pic_name',
-    pathMatch: 'full'
-  }
-
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
@@ -92,4 +107,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
