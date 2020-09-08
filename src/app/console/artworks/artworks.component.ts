@@ -12,8 +12,7 @@ export class ArtworksComponent implements OnInit {
   picturesList: Picture[] = [];
   pictureSlides = [[]];
   showDeletePopup = false;
-  deletedArtrworkId = 0;
-  picturesAfterDeleted = new Subject<Picture[]>();
+  editedArtwork = new Subject<Picture>();
 
   constructor(
     private pictureService: PicturesService,
@@ -36,13 +35,11 @@ export class ArtworksComponent implements OnInit {
 
   openDeletePopup(picId: number) {
     this.showDeletePopup = true;
-    this.deletedArtrworkId = picId
   }
   closePopup() {
     this.showDeletePopup = false;
   }
   deleteArtwork() {
     this.showDeletePopup = false;
-    this.picturesList.splice(this.deletedArtrworkId, 1);
   }
 }

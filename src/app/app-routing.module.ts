@@ -20,6 +20,7 @@ import { ArtistCollectorLoginComponent } from './console/artist-collector-login/
 import { LayoutComponent } from './layout/layout.component';
 
 import { AuthGuard } from 'src/app/shared/guard/auth-guard.guard';
+import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwork.component';
 const routes: Routes = [
   {
     path: '',
@@ -92,6 +93,22 @@ const routes: Routes = [
           expectedRole: 'non_user',
         },
       },
+      {
+        path: 'artworks/new-artwork', component: EditArtworkComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: 'non_user',
+        },
+
+      },
+      {
+        path: 'artworks/:id/:category/:title/edit-artwork', component: EditArtworkComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: 'non_user',
+        },
+
+      }
     ],
   },
   {
@@ -107,4 +124,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

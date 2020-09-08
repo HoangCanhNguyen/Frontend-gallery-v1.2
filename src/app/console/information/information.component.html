@@ -105,37 +105,87 @@
         #editDescForm="ngForm"
         (ngSubmit)="onSaveEditedContent('des', editDescForm)"
       >
-        <div class="input-group">
+        <div
+          class="input-group"
+          [ngStyle]="{
+            'margin-bottom': bg.value?.length <= 150 ? '10px' : '30px'
+          }"
+        >
           <textarea
             type="text"
             rows="5"
             name="background"
+            minlength="150"
+            required
             [(ngModel)]="background"
+            #bg="ngModel"
+            [ngStyle]="{
+              'margin-bottom': bg.value?.length <= 150 ? '0px' : '30px'
+            }"
           ></textarea>
           <label> <i class="fa fa-user mr-1"></i> Tiểu sử</label>
         </div>
-        <div class="input-group">
+        <p class="text-hint" *ngIf="bg.value?.length <= 150">
+          Ít nhất 150 kí tự: {{ bg.value?.length }}/150
+        </p>
+        <div
+          class="input-group"
+          [ngStyle]="{
+            'margin-bottom': pov.value?.length <= 150 ? '10px' : '30px'
+          }"
+        >
           <textarea
             type="text"
             rows="5"
             name="pointOfView"
+            required
+            minlength="100"
             [(ngModel)]="pointOfView"
+            [ngStyle]="{
+              'margin-bottom': pov.value?.length <= 150 ? '0px' : '30px'
+            }"
+            #pov="ngModel"
           ></textarea>
+
           <label> <i class="fa fa-user mr-1"></i> Quan điểm nghệ thuật</label>
         </div>
-        <div class="input-group">
+        <p class="text-hint" *ngIf="pov.value?.length <= 150">
+          Ít nhất 150 kí tự: {{ pov.value?.length }}/150
+        </p>
+        <div
+          class="input-group"
+          [ngStyle]="{
+            'margin-bottom': bigEvents.value?.length <= 150 ? '10px' : '30px'
+          }"
+        >
           <textarea
             type="text"
             rows="5"
             name="events"
+            minlength="100"
+            required
             [(ngModel)]="events"
+            #bigEvents="ngModel"
+            [ngStyle]="{
+              'margin-bottom': bigEvents.value?.length <= 150 ? '0px' : '30px'
+            }"
           ></textarea>
+
           <label>
             <i class="fa fa-user mr-1"></i> Sự kiện nghệ thuật nổi bật</label
           >
         </div>
+        <p class="text-hint" *ngIf="bigEvents.value?.length <= 100">
+          Ít nhất 100 kí tự: {{ bigEvents.value?.length }}/100
+        </p>
         <div class="d-flex justify-content-center">
-          <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+          <button
+            type="submit"
+            class="submit-btn mr-4"
+            [disabled]="!editDescForm.valid"
+          >
+            Cập nhật
+          </button>
           <button
             type="button"
             class="submit-btn"
@@ -219,7 +269,12 @@
                 </div>
                 <div class="col-sm-8">
                   <div class="input-group">
-                    <input type="text" name="stage1" [(ngModel)]="stages[0]" />
+                    <input
+                      type="text"
+                      name="stage1"
+                      [(ngModel)]="stages[0]"
+                      required
+                    />
                     <label
                       ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
                       Mốc sự kiện 1</label
@@ -229,6 +284,7 @@
                     <input
                       type="text"
                       name="minititle1"
+                      required
                       [(ngModel)]="workflowTitle1[0]"
                     />
                     <label>
@@ -240,6 +296,7 @@
                     <input
                       type="text"
                       name="bigTitle1"
+                      required
                       [(ngModel)]="workflowTitle2[0]"
                     />
                     <label>
@@ -247,11 +304,20 @@
                       Tiêu đề lớn 1</label
                     >
                   </div>
-                  <div class="input-group">
+                  <div
+                    class="input-group"
+                    [ngStyle]="{
+                      'margin-bottom':
+                        workflowDes1.value?.length <= 150 ? '0px' : '30px'
+                    }"
+                  >
                     <textarea
                       type="text"
                       name="des1"
                       rows="5"
+                      minlength="150"
+                      required
+                      #workflowDes1="ngModel"
                       [(ngModel)]="workflowDescription[0]"
                     ></textarea>
                     <label>
@@ -259,11 +325,23 @@
                       tả 1</label
                     >
                   </div>
+                  <p
+                    class="text-hint"
+                    *ngIf="workflowDes1.value?.length <= 150"
+                  >
+                    Ít nhất 150 kí tự: {{ workflowDes1.value?.length }}/150
+                  </p>
                 </div>
               </div>
 
               <div class="d-flex justify-content-center">
-                <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+                <button
+                  type="submit"
+                  class="submit-btn mr-4"
+                  [disabled]="!editWorkflowForm1.valid"
+                >
+                  Cập nhật
+                </button>
                 <button
                   type="button"
                   class="submit-btn"
@@ -329,6 +407,7 @@
                     <input
                       type="text"
                       name="minititle1"
+                      required
                       [(ngModel)]="workflowTitle1[1]"
                     />
                     <label>
@@ -340,6 +419,7 @@
                     <input
                       type="text"
                       name="bigTitle1"
+                      required
                       [(ngModel)]="workflowTitle2[1]"
                     />
                     <label>
@@ -347,11 +427,20 @@
                       Tiêu đề lớn 2</label
                     >
                   </div>
-                  <div class="input-group">
+                  <div
+                    class="input-group"
+                    [ngStyle]="{
+                      'margin-bottom':
+                        workflowDes2.value?.length <= 150 ? '0px' : '30px'
+                    }"
+                  >
                     <textarea
                       type="text"
                       name="des1"
                       rows="5"
+                      minlength="150"
+                      #workflowDes2="ngModel"
+                      required
                       [(ngModel)]="workflowDescription[1]"
                     ></textarea>
                     <label>
@@ -359,6 +448,12 @@
                       tả 2</label
                     >
                   </div>
+                  <p
+                    class="text-hint"
+                    *ngIf="workflowDes2.value?.length <= 150"
+                  >
+                    Ít nhất 150 kí tự: {{ workflowDes2.value?.length }}/150
+                  </p>
                 </div>
                 <div class="col-sm-4">
                   <img
@@ -383,7 +478,13 @@
               </div>
 
               <div class="d-flex justify-content-center">
-                <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+                <button
+                  type="submit"
+                  class="submit-btn mr-4"
+                  [disabled]="!editWorkflowForm2.valid"
+                >
+                  Cập nhật
+                </button>
                 <button
                   type="button"
                   class="submit-btn"
@@ -459,7 +560,12 @@
                 </div>
                 <div class="col-sm-8">
                   <div class="input-group">
-                    <input type="text" name="stage1" [(ngModel)]="stages[2]" />
+                    <input
+                      type="text"
+                      name="stage1"
+                      required
+                      [(ngModel)]="stages[2]"
+                    />
                     <label
                       ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
                       Mốc sự kiện 3</label
@@ -469,6 +575,7 @@
                     <input
                       type="text"
                       name="minititle1"
+                      required
                       [(ngModel)]="workflowTitle1[2]"
                     />
                     <label>
@@ -480,6 +587,7 @@
                     <input
                       type="text"
                       name="bigTitle1"
+                      required
                       [(ngModel)]="workflowTitle2[2]"
                     />
                     <label>
@@ -487,11 +595,20 @@
                       Tiêu đề lớn 3</label
                     >
                   </div>
-                  <div class="input-group">
+                  <div
+                    class="input-group"
+                    [ngStyle]="{
+                      'margin-bottom':
+                        workflowDes3.value?.length <= 150 ? '0px' : '30px'
+                    }"
+                  >
                     <textarea
                       type="text"
                       name="des1"
                       rows="5"
+                      minlength="150"
+                      #workflowDes3="ngModel"
+                      required
                       [(ngModel)]="workflowDescription[2]"
                     ></textarea>
                     <label>
@@ -499,11 +616,23 @@
                       tả 3</label
                     >
                   </div>
+                  <p
+                    class="text-hint"
+                    *ngIf="workflowDes3.value?.length <= 150"
+                  >
+                    Ít nhất 150 kí tự: {{ workflowDes3.value?.length }}/150
+                  </p>
                 </div>
               </div>
 
               <div class="d-flex justify-content-center">
-                <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+                <button
+                  type="submit"
+                  class="submit-btn mr-4"
+                  [disabled]="!editWorkflowForm3.valid"
+                >
+                  Cập nhật
+                </button>
                 <button
                   type="button"
                   class="submit-btn"
@@ -625,20 +754,37 @@
                 type="text"
                 rows="5"
                 name="quote"
+                minlength="10"
+                required
                 [(ngModel)]="quote"
+                #favQuote="ngModel"
               ></textarea>
               <label for="loginUser">
                 <i class="fa fa-user mr-1"></i> Danh ngôn yêu thích của
                 bạn</label
               >
             </div>
+            <p class="text-hint" *ngIf="favQuote.value?.length <= 10">
+              Ít nhất 10 kí tự: {{ favQuote.value?.length }}/10
+            </p>
             <div class="input-group">
-              <input type="text" name="author" [(ngModel)]="quoteAuthor" />
+              <input
+                type="text"
+                name="author"
+                required
+                [(ngModel)]="quoteAuthor"
+              />
               <label for="loginPassword"
                 ><i class="fa fa-lock mr-1"></i> Tác giả</label
               >
             </div>
-            <button type="submit" class="submit-btn mr-4">Cập nhật</button>
+            <button
+              type="submit"
+              class="submit-btn mr-4"
+              [disabled]="!editQuoteForm.valid"
+            >
+              Cập nhật
+            </button>
             <button
               type="button"
               class="submit-btn"

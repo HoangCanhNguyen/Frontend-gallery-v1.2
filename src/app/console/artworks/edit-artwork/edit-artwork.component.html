@@ -1,0 +1,100 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="edit-des-form pb-5" data-aos="fade-up" *ngIf="editPic">
+      <form
+        class="form"
+        #editPicForm="ngForm"
+        (ngSubmit)="onSaveEditedContent(editPicForm)"
+      >
+        <div class="row">
+          <div class="col-sm-4 d-flex flex-column justify-content-center">
+            <img
+              [src]="picImageURL"
+              class="workflow-image"
+              height="400px"
+              width="100%"
+              *ngIf="editedArtwork"
+            />
+            <div class="change-workflow-image">
+              <label for="file-upload" class="btn upload-btn mt-3"
+                ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
+                Tải ảnh lên
+              </label>
+              <input
+                #file
+                id="file-upload"
+                type="file"
+                name="picImageURL"
+                ngModel
+              />
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input type="text" name="title" required [(ngModel)]="picTitle" />
+              <label> <i class="fa fa-user mr-1"></i> Tên tác phẩm</label>
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                name="artists"
+                required
+                [(ngModel)]="picArtist"
+              />
+              <label> <i class="fa fa-user mr-1"></i> Họa sĩ</label>
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                name="category"
+                required
+                [(ngModel)]="picCategory"
+              />
+              <label> <i class="fa fa-user mr-1"></i> Thể loại</label>
+            </div>
+            <div class="input-group">
+              <input type="text" name="price" required [(ngModel)]="picPrice" />
+              <label> <i class="fa fa-user mr-1"></i> Giá (triệu đồng)</label>
+            </div>
+            <div class="input-group" style="margin-bottom: 1rem">
+              <textarea
+                type="text"
+                name="des"
+                rows="5"
+                minlength="150"
+                required
+                [(ngModel)]="picDes"
+                style="margin-bottom: 0"
+                #description="ngModel"
+              ></textarea>
+              <label> <i class="fa fa-user mr-1"></i> Mô tả</label>
+            </div>
+            <p
+              style="font-size: 1.2rem; text-align: right; color: #796a37"
+              *ngIf="description.value?.length <= 150"
+            >
+              Ít nhất 150 kí tự: {{ description.value?.length }}/150
+            </p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            class="submit-btn mr-4"
+            [disabled]="!editPicForm.valid"
+          >
+            Cập nhật
+          </button>
+          <button
+            type="button"
+            class="submit-btn"
+            (click)="editPic = false"
+            [routerLink]="['/console/artworks']"
+          >
+            Hủy bỏ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@ h4 {
   margin: 0;
 }
 .container {
-  padding: 5rem 0;
+  padding: 9rem 0;
 }
 
 .mat-tab-group {
@@ -307,7 +307,7 @@ div.your-cmt button {
   color: red;
   opacity: 0.8;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .wish-list-icon:hover {
@@ -319,11 +319,22 @@ div.your-cmt button {
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(15deg); }
-  10% { transform: translate(-1px, -2px) rotate(14deg); }
-  20% { transform: translate(-3px, 0px) rotate(13deg); }
-  30% { transform: translate(3px, 2px) rotate(12deg); }
-  40% { transform: translate(1px, -1px) rotate(10deg); }
-  50% { transform: translate(-1px, 2px) rotate(0deg); }
-
+  0% {
+    transform: translate(1px, 1px) rotate(15deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(14deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(13deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(12deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(10deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(0deg);
+  }
 }

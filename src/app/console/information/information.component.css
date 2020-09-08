@@ -430,3 +430,11 @@ span.text {
   letter-spacing: 0;
   color: #5f5f5f;
 }
+
+/* style text hint */
+.text-hint {
+  font-size: 1rem;
+  text-align: right;
+  color: #796a37;
+  margin-bottom: 2rem;
+}
