@@ -73,7 +73,7 @@
               style="font-size: 1.2rem; text-align: right; color: #796a37"
               *ngIf="description.value?.length <= 150"
             >
-              Ít nhất 150 kí tự: {{ description.value?.length }}/150
+              Ít nhất 150 kí tự: {{ description.value?.length || 0 }}/150
             </p>
           </div>
         </div>

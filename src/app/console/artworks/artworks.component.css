@@ -161,8 +161,7 @@ p.stars-wrapper {
 }
 
 /* style delete and edit buttons */
-.overlay-info,
-.overlay-confirm-box {
+.overlay-info {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -173,6 +172,27 @@ p.stars-wrapper {
   opacity: 0;
   transform: translateY(20px);
 }
+
+/* style delete confirmation box */
+.artwork-item .overlay-confirm-box {
+  display: none;
+}
+.artwork-item.show-confirm-box .overlay-confirm-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  opacity: 1;
+  font-size: 1.245rem;
+  padding: 2rem 0;
+  color: #635137;
+}
+.artwork-item.show-confirm-box .info-wrapper {
+  display: none;
+}
+.artwork-item.show-confirm-box .overlay-btns {
+  display: none;
+}
 .artwork-item:hover .overlay-info {
   opacity: 1;
   transform: translateY(0);
@@ -180,6 +200,36 @@ p.stars-wrapper {
 .artwork-item:hover .price-stars {
   opacity: 0;
 }
+.action-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.action-button button {
+  border: none;
+  height: 40px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+.action-button button:focus {
+  outline: none;
+}
+button.cancel-btn {
+  margin-right: 1.5rem;
+  background-color: #7d7d7d;
+}
+button.delete-btn {
+  background-color: #4b4b4b;
+}
+.action-button button:hover {
+  background-color: #c9ab81;
+}
+
 .edit-icon,
 .delete-icon,
 .viewmore-icon {
@@ -247,82 +297,4 @@ button.add-new:hover {
 button.add-new:focus {
   outline: none !important;
   border: none !important;
-}
-
-/* style delete popup */
-.delete-popup {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 200;
-}
-.popup-content {
-  background-color: white;
-  position: absolute;
-  display: grid;
-  grid-template-rows: repeat(1fr, 3);
-  top: 20%;
-  left: 50%;
-  height: 300px;
-  width: 600px;
-  transform: translateX(-50%);
-  padding: 2.5rem;
-  border-radius: 10px;
-}
-.popup-content h1 {
-  font-size: 1.4rem;
-  font-family: "Open Sans" !important;
-  font-weight: bold;
-}
-.popup-content p {
-  font-size: 1rem;
-  font-family: "Open Sans" !important;
-}
-.action-button {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.action-button button {
-  border: none;
-  height: 40px;
-  padding: 1rem 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  color: white;
-  transition: all 0.4s ease-in-out;
-}
-.action-button button:focus {
-  outline: none;
-}
-button.cancel-btn {
-  margin-right: 1.5rem;
-  background-color: #7d7d7d;
-}
-button.delete-btn {
-  background-color: #4b4b4b;
-}
-.action-button button:hover {
-  background-color: #c9ab81;
-}
-
-.slowly-appear {
-  animation-name: popup;
-  animation-duration: 0.6s;
-  transform-origin: center;
-  overflow: hidden;
-}
-@keyframes popup {
-  from {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  50% {
-    opacity: 1;
-  }
 }

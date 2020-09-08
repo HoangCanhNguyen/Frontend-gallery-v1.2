@@ -93,7 +93,7 @@
             routerLinkActive="router-link-active"
           />
         </div>
-        <div class="info-wrapper" *ngIf="!showDeleteBox">
+        <div class="info-wrapper">
           <h5 class="pic-title">{{ picture.title }}</h5>
           <div class="pic-price-stars">
             <div class="price-stars">
@@ -151,11 +151,13 @@
             </div>
           </div>
         </div>
-        <div class="delete-confirm-box" *ngIf="showDeleteBox">
-          <p>Are you sure about this decision?</p>
-          <div class="confirm-btns">
-            <button class="btn btn-warning">Cancel</button>
-            <button class="btn btn-success">Delete</button>
+        <div class="overlay-confirm-box">
+          <p>Bạn chắc chắn muốn xóa tác phẩm này?</p>
+          <div class="action-button">
+            <button class="cancel-btn" (click)="closePopup(picIndex)">
+              Hủy bỏ
+            </button>
+            <button class="delete-btn" (click)="deleteArtwork()">Đồng ý</button>
           </div>
         </div>
       </div>
@@ -222,11 +224,20 @@
                 class="delete-icon"
                 placement="bottom"
                 ngbTooltip="Xóa"
-                (click)="openDeletePopup()"
+                (click)="openDeletePopup(picIndex, 'deleteSoldPic')"
               >
                 <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </div>
+          </div>
+        </div>
+        <div class="overlay-confirm-box">
+          <p>Bạn chắc chắn muốn xóa tác phẩm này?</p>
+          <div class="action-button">
+            <button class="cancel-btn" (click)="closePopup(picIndex, 'deleteSoldPic')">
+              Hủy bỏ
+            </button>
+            <button class="delete-btn" (click)="deleteArtwork()">Đồng ý</button>
           </div>
         </div>
       </div>

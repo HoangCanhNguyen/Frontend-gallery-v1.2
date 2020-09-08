@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot,
   UrlTree,
   Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import decode from 'jwt-decode';
 
 import { AuthenticateService } from '../service/authenticate.service';
@@ -18,8 +16,8 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthenticateService,
     private router: Router
-  ) {}
-  canActivate(route: ActivatedRouteSnapshot): boolean {
+  ) { }
+  canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree {
     const token = localStorage.getItem('access_token');
     if (token) {
       const tokenPayload = decode(token);
@@ -28,13 +26,13 @@ export class AuthGuard implements CanActivate {
         !this.authService.loginStatus() &&
         expectedRole !== tokenPayload.user_claims.role
       ) {
-        this.router.navigate(['home']);
         return false;
       } else {
         return true;
       }
     } else {
-      return false;
+      window.alert('Vui lòng đăng nhập/đăng kí để thực hiện chức năng này!')
+      return this.router.createUrlTree(['/home']);
     }
   }
 }

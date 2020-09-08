@@ -11,7 +11,6 @@ import { Subject } from 'rxjs';
 export class ArtworksComponent implements OnInit {
   picturesList: Picture[] = [];
   pictureSlides = [[]];
-  showDeleteBox = false;
   editedArtwork = new Subject<Picture>();
 
   constructor(
@@ -33,13 +32,31 @@ export class ArtworksComponent implements OnInit {
     return slide;
   }
 
-  openDeletePopup(picId: number) {
-    this.showDeleteBox = true;
+  openDeletePopup(picId: number, content: string) {
+
+    if (content === 'deleteSoldPic') {
+      const element2 = document.querySelectorAll('.latest-artworks-sold-container .carousel-item.active .artwork-item')[picId];
+      element2.classList.add('show-confirm-box');
+    } else {
+      const element1 = document.querySelectorAll('.all-artworks-container .carousel-item.active .artwork-item')[picId];
+      element1.classList.add('show-confirm-box');
+    }
+
   }
-  closePopup() {
-    this.showDeleteBox = false;
+  closePopup(picId: number, content: string) {
+
+    if (content === 'deleteSoldPic') {
+      const element2 = document.querySelectorAll('.latest-artworks-sold-container .carousel-item.active .artwork-item')[picId];
+      element2.classList.remove('show-confirm-box');
+
+    }
+    else {
+      const element1 = document.querySelectorAll('.all-artworks-container .carousel-item.active .artwork-item')[picId];
+      element1.classList.remove('show-confirm-box');
+    }
+
   }
   deleteArtwork() {
-    this.showDeleteBox = false;
+
   }
 }
