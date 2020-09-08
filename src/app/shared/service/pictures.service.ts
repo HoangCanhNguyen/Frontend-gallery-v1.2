@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { Picture } from '../model/picture.model';
 import { API_URL } from '../../env';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PicturesService {
-  picturesList: Picture[] = [];
+  editedPic = new Subject<Picture>();
 
   GET_PICTURE_URL = `${API_URL}/pictures`;
   GET_NEW_PIC_URL = `${API_URL}/newpics`;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -37,4 +37,5 @@ export class PicturesService {
       .get(this.GET_NEW_PIC_URL)
       .pipe(catchError(async (error) => new Error(error)));
   }
+
 }

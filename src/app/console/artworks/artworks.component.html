@@ -1,49 +1,12 @@
-<div
-  class="container-fluid p-0"
-  style="margin-bottom: 11rem; position: relative; background-color: white"
->
-  <div class="rounded-img circle-image">
-    <img
-      src="https://cdn.singulart.com/artists/pictures/cropped/artwork/base/artist_artwork_1647_ba964e906901ecde5a3fc4496de3d90f.jpeg"
-      class="rounded-circle"
-      width="230px"
-      height="250px"
-      style="
-        box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
-        border: 3px solid black;
-      "
-    />
-  </div>
-  <ngb-carousel
-    [showNavigationArrows]="false"
-    [showNavigationIndicators]="false"
-  >
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img
-          class="img-fluid"
-          src="https://cdn.singulart.com/artists/pictures/cropped/studio/base/artist_studio_1647_86d10186556c5e046c57e679ab7e736e.jpeg"
-        />
-      </div>
-      <div class="carousel-caption cover-img">
-        <h3>SƠN DẦU | VIỆT NAM</h3>
-        <h1>BÙI VĂN PHÁI</h1>
-        <p>Born in 1948</p>
-      </div>
-    </ng-template>
-  </ngb-carousel>
-</div>
-
 <div class="container-fluid position-relative py-5 lastest-artworks-container">
-  <span class="vertical-line"></span>
   <h1 class="text-center best-pictures-header mb-5">Tác phẩm mới nhất</h1>
   <div class="lastest-artworks-wrapper d-flex justify-content-center px-5">
     <div
       class="artwork-item"
-      data-aos="fade-up"
       *ngFor="
         let picture of picturesList
-          | slice: picturesList.length - 5:picturesList.length
+          | slice: picturesList.length - 5:picturesList.length;
+        let picId = index
       "
     >
       <div class="img-wrapper">
@@ -85,7 +48,18 @@
             >
               <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
-            <button class="edit-icon" placement="bottom" ngbTooltip="Chỉnh sửa">
+            <button
+              class="edit-icon"
+              placement="bottom"
+              ngbTooltip="Chỉnh sửa"
+              [routerLink]="[
+                picture.id,
+                picture.category,
+                picture.title,
+                'edit-artwork'
+              ]"
+              routerLinkActive="router-link-active"
+            >
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
           </div>
@@ -95,13 +69,14 @@
   </div>
 </div>
 
-<div
-  class="container-fluid position-relative pt-5 all-artworks-container"
-  data-aos="fade-up"
->
+<div class="container-fluid position-relative pt-5 all-artworks-container">
   <span class="vertical-line" style="top: -5%"></span>
   <h1 class="text-center best-pictures-header mb-5">Tất cả tác phẩm</h1>
-  <button class="add-new">
+  <button
+    class="add-new"
+    [routerLink]="['new-artwork']"
+    routerLinkActive="router-link-active"
+  >
     <i class="fa fa-plus mr-2" aria-hidden="true"></i> Thêm tác phẩm mới
   </button>
   <mdb-carousel class="slides px-5" [animation]="'slide'" [interval]="50000000">
@@ -153,6 +128,13 @@
                 class="edit-icon"
                 placement="bottom"
                 ngbTooltip="Chỉnh sửa"
+                [routerLink]="[
+                  picture.id,
+                  picture.category,
+                  picture.title,
+                  'edit-artwork'
+                ]"
+                routerLinkActive="router-link-active"
               >
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -174,7 +156,6 @@
 
 <div
   class="container-fluid position-relative py-5 latest-artworks-sold-container"
-  data-aos="fade-up"
 >
   <span class="vertical-line"></span>
   <h1 class="text-center best-pictures-header mb-5">Tác phẩm đã bán</h1>
