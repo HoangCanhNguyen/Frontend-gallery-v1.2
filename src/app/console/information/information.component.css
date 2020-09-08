@@ -252,7 +252,7 @@ input[type="file"] {
 .form .input-group input,
 .form .input-group textarea {
   width: 100%;
-  padding: 10px 0;
+  padding-top: 40px;
   font-size: 1rem;
   letter-spacing: 1px;
   margin-bottom: 30px;
@@ -272,10 +272,8 @@ input[type="file"] {
   transition: 0.3s ease-out;
 }
 .form .input-group input:focus + label,
-.form .input-group input:valid + label,
-.form .input-group textarea:focus + label,
-.form .input-group textarea:valid + label {
-  transform: translateY(-2.5rem) !important;
+.form .input-group textarea:focus + label {
+  transform: translateY(-1.5rem) !important;
   color: #796a37;
   font-size: 1.3rem;
 }
@@ -325,6 +323,9 @@ button:disabled {
   pointer-events: all !important;
 }
 
+.workflow-image-container {
+  align-self: center;
+}
 .alt-line {
   background-color: #4e4e4e;
   left: 50%;
