@@ -108,7 +108,7 @@
         <div
           class="input-group"
           [ngStyle]="{
-            'margin-bottom': bg.value?.length <= 150 ? '10px' : '30px'
+            'margin-bottom': bg.value?.length <= 150 ? '10px' : '20px'
           }"
         >
           <textarea
@@ -117,10 +117,10 @@
             name="background"
             minlength="150"
             required
-            [(ngModel)]="background"
+            [ngModel]="background"
             #bg="ngModel"
             [ngStyle]="{
-              'margin-bottom': bg.value?.length <= 150 ? '0px' : '30px'
+              'margin-bottom': bg.value?.length <= 150 ? '0px' : '20px'
             }"
           ></textarea>
           <label> <i class="fa fa-user mr-1"></i> Tiểu sử</label>
@@ -131,7 +131,7 @@
         <div
           class="input-group"
           [ngStyle]="{
-            'margin-bottom': pov.value?.length <= 150 ? '10px' : '30px'
+            'margin-bottom': pov.value?.length <= 150 ? '10px' : '20px'
           }"
         >
           <textarea
@@ -140,9 +140,9 @@
             name="pointOfView"
             required
             minlength="100"
-            [(ngModel)]="pointOfView"
+            [ngModel]="pointOfView"
             [ngStyle]="{
-              'margin-bottom': pov.value?.length <= 150 ? '0px' : '30px'
+              'margin-bottom': pov.value?.length <= 150 ? '0px' : '20px'
             }"
             #pov="ngModel"
           ></textarea>
@@ -155,7 +155,7 @@
         <div
           class="input-group"
           [ngStyle]="{
-            'margin-bottom': bigEvents.value?.length <= 150 ? '10px' : '30px'
+            'margin-bottom': bigEvents.value?.length <= 150 ? '10px' : '20px'
           }"
         >
           <textarea
@@ -164,10 +164,10 @@
             name="events"
             minlength="100"
             required
-            [(ngModel)]="events"
+            [ngModel]="events"
             #bigEvents="ngModel"
             [ngStyle]="{
-              'margin-bottom': bigEvents.value?.length <= 150 ? '0px' : '30px'
+              'margin-bottom': bigEvents.value?.length <= 150 ? '0px' : '20px'
             }"
           ></textarea>
 
@@ -262,8 +262,8 @@
                       #file
                       id="file-upload"
                       type="file"
-                      name="workflow-image-link"
-                      [(ngModel)]="workflowImages[0]"
+                      name="workflow-image-link-1"
+                      [ngModel]="workflowImages[0]"
                     />
                   </div>
                 </div>
@@ -272,7 +272,7 @@
                     <input
                       type="text"
                       name="stage1"
-                      [(ngModel)]="stages[0]"
+                      [ngModel]="stages[0]"
                       required
                     />
                     <label
@@ -285,7 +285,7 @@
                       type="text"
                       name="minititle1"
                       required
-                      [(ngModel)]="workflowTitle1[0]"
+                      [ngModel]="workflowTitle1[0]"
                     />
                     <label>
                       <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề
@@ -297,7 +297,7 @@
                       type="text"
                       name="bigTitle1"
                       required
-                      [(ngModel)]="workflowTitle2[0]"
+                      [ngModel]="workflowTitle2[0]"
                     />
                     <label>
                       <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
@@ -308,7 +308,7 @@
                     class="input-group"
                     [ngStyle]="{
                       'margin-bottom':
-                        workflowDes1.value?.length <= 150 ? '0px' : '30px'
+                        workflowDes1.value?.length <= 150 ? '0px' : '20px'
                     }"
                   >
                     <textarea
@@ -318,7 +318,7 @@
                       minlength="150"
                       required
                       #workflowDes1="ngModel"
-                      [(ngModel)]="workflowDescription[0]"
+                      [ngModel]="workflowDescription[0]"
                     ></textarea>
                     <label>
                       <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô
@@ -397,7 +397,7 @@
               <div class="row">
                 <div class="col-sm-8">
                   <div class="input-group">
-                    <input type="text" name="stage1" [(ngModel)]="stages[1]" />
+                    <input type="text" name="stage2" [ngModel]="stages[1]" />
                     <label
                       ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
                       Mốc sự kiện 2</label
@@ -406,9 +406,9 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="minititle1"
+                      name="minititle2"
                       required
-                      [(ngModel)]="workflowTitle1[1]"
+                      [ngModel]="workflowTitle1[1]"
                     />
                     <label>
                       <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề
@@ -418,9 +418,9 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="bigTitle1"
+                      name="bigTitle2"
                       required
-                      [(ngModel)]="workflowTitle2[1]"
+                      [ngModel]="workflowTitle2[1]"
                     />
                     <label>
                       <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
@@ -431,17 +431,17 @@
                     class="input-group"
                     [ngStyle]="{
                       'margin-bottom':
-                        workflowDes2.value?.length <= 150 ? '0px' : '30px'
+                        workflowDes2.value?.length <= 150 ? '0px' : '20px'
                     }"
                   >
                     <textarea
                       type="text"
-                      name="des1"
+                      name="des2"
                       rows="5"
                       minlength="150"
                       #workflowDes2="ngModel"
                       required
-                      [(ngModel)]="workflowDescription[1]"
+                      [ngModel]="workflowDescription[1]"
                     ></textarea>
                     <label>
                       <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô
@@ -470,8 +470,8 @@
                       #file
                       id="file-upload"
                       type="file"
-                      name="workflow-image-link"
-                      [(ngModel)]="workflowImages[1]"
+                      name="workflow-image-link-2"
+                      [ngModel]="workflowImages[1]"
                     />
                   </div>
                 </div>
@@ -553,8 +553,8 @@
                       #file
                       id="file-upload"
                       type="file"
-                      name="workflow-image-link"
-                      [(ngModel)]="workflowImages[2]"
+                      name="workflow-image-link-3"
+                      [ngModel]="workflowImages[2]"
                     />
                   </div>
                 </div>
@@ -562,9 +562,9 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="stage1"
+                      name="stage3"
                       required
-                      [(ngModel)]="stages[2]"
+                      [ngModel]="stages[2]"
                     />
                     <label
                       ><i class="mr-1 fa fa-calendar-o" aria-hidden="true"></i>
@@ -574,9 +574,9 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="minititle1"
+                      name="minititle3"
                       required
-                      [(ngModel)]="workflowTitle1[2]"
+                      [ngModel]="workflowTitle1[2]"
                     />
                     <label>
                       <i class="mr-1 fa fa-flag" aria-hidden="true"></i> Tiêu đề
@@ -586,9 +586,9 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="bigTitle1"
+                      name="bigTitle3"
                       required
-                      [(ngModel)]="workflowTitle2[2]"
+                      [ngModel]="workflowTitle2[2]"
                     />
                     <label>
                       <i class="mr-1 fa fa-bookmark-o" aria-hidden="true"></i>
@@ -599,17 +599,17 @@
                     class="input-group"
                     [ngStyle]="{
                       'margin-bottom':
-                        workflowDes3.value?.length <= 150 ? '0px' : '30px'
+                        workflowDes3.value?.length <= 150 ? '0px' : '20px'
                     }"
                   >
                     <textarea
                       type="text"
-                      name="des1"
+                      name="des3"
                       rows="5"
                       minlength="150"
                       #workflowDes3="ngModel"
                       required
-                      [(ngModel)]="workflowDescription[2]"
+                      [ngModel]="workflowDescription[2]"
                     ></textarea>
                     <label>
                       <i class="mr-1 fa fa-comments" aria-hidden="true"></i> Mô
@@ -756,23 +756,26 @@
                 name="quote"
                 minlength="10"
                 required
-                [(ngModel)]="quote"
+                [ngModel]="quote"
                 #favQuote="ngModel"
+                [ngStyle]="{
+                  'margin-bottom': favQuote.value?.length <= 10 ? '0px' : '30px'
+                }"
               ></textarea>
               <label for="loginUser">
                 <i class="fa fa-user mr-1"></i> Danh ngôn yêu thích của
                 bạn</label
               >
             </div>
-            <p class="text-hint" *ngIf="favQuote.value?.length <= 10">
+            <span class="text-hint" *ngIf="favQuote.value?.length <= 10">
               Ít nhất 10 kí tự: {{ favQuote.value?.length }}/10
-            </p>
+            </span>
             <div class="input-group">
               <input
                 type="text"
                 name="author"
                 required
-                [(ngModel)]="quoteAuthor"
+                [ngModel]="quoteAuthor"
               />
               <label for="loginPassword"
                 ><i class="fa fa-lock mr-1"></i> Tác giả</label

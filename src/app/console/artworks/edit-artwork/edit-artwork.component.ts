@@ -24,7 +24,7 @@ export class EditArtworkComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      let picId = params['id'];
+      const picId = params['id'];
       if (picId) {
         this.pictureService.getPicById({ "id": picId }).subscribe((picture) => {
           if (picture !== null) {

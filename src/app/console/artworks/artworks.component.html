@@ -93,7 +93,7 @@
             routerLinkActive="router-link-active"
           />
         </div>
-        <div class="info-wrapper">
+        <div class="info-wrapper" *ngIf="!showDeleteBox">
           <h5 class="pic-title">{{ picture.title }}</h5>
           <div class="pic-price-stars">
             <div class="price-stars">
@@ -115,38 +115,47 @@
               </p>
             </div>
             <div class="overlay-info">
-              <button
-                class="viewmore-icon"
-                placement="bottom"
-                ngbTooltip="Xem chi tiết"
-                [routerLink]="[picture.id, picture.category, picture.title]"
-                routerLinkActive="router-link-active"
-              >
-                <i class="fa fa-eye" aria-hidden="true"></i>
-              </button>
-              <button
-                class="edit-icon"
-                placement="bottom"
-                ngbTooltip="Chỉnh sửa"
-                [routerLink]="[
-                  picture.id,
-                  picture.category,
-                  picture.title,
-                  'edit-artwork'
-                ]"
-                routerLinkActive="router-link-active"
-              >
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </button>
-              <button
-                class="delete-icon"
-                placement="bottom"
-                ngbTooltip="Xóa"
-                (click)="openDeletePopup(picIndex)"
-              >
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              </button>
+              <div class="overlay-btns d-flex">
+                <button
+                  class="viewmore-icon"
+                  placement="bottom"
+                  ngbTooltip="Xem chi tiết"
+                  [routerLink]="[picture.id, picture.category, picture.title]"
+                  routerLinkActive="router-link-active"
+                >
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="edit-icon"
+                  placement="bottom"
+                  ngbTooltip="Chỉnh sửa"
+                  [routerLink]="[
+                    picture.id,
+                    picture.category,
+                    picture.title,
+                    'edit-artwork'
+                  ]"
+                  routerLinkActive="router-link-active"
+                >
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="delete-icon"
+                  placement="bottom"
+                  ngbTooltip="Xóa"
+                  (click)="openDeletePopup(picIndex)"
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="delete-confirm-box" *ngIf="showDeleteBox">
+          <p>Are you sure about this decision?</p>
+          <div class="confirm-btns">
+            <button class="btn btn-warning">Cancel</button>
+            <button class="btn btn-success">Delete</button>
           </div>
         </div>
       </div>
@@ -225,7 +234,7 @@
   </mdb-carousel>
 </div>
 
-<div class="delete-popup" *ngIf="showDeletePopup">
+<!-- <div class="delete-popup" *ngIf="showDeleteBox">
   <div class="popup-content slowly-appear">
     <h1>Bạn chắc chắn muốn xóa tác phẩm này?</h1>
     <p>Bạn sẽ không thể khôi phục lại tác phẩm sau khi xóa</p>
@@ -234,4 +243,4 @@
       <button class="delete-btn" (click)="deleteArtwork()">Xóa</button>
     </div>
   </div>
-</div>
+</div> -->

@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 export class ArtworksComponent implements OnInit {
   picturesList: Picture[] = [];
   pictureSlides = [[]];
-  showDeletePopup = false;
+  showDeleteBox = false;
   editedArtwork = new Subject<Picture>();
 
   constructor(
@@ -34,12 +34,12 @@ export class ArtworksComponent implements OnInit {
   }
 
   openDeletePopup(picId: number) {
-    this.showDeletePopup = true;
+    this.showDeleteBox = true;
   }
   closePopup() {
-    this.showDeletePopup = false;
+    this.showDeleteBox = false;
   }
   deleteArtwork() {
-    this.showDeletePopup = false;
+    this.showDeleteBox = false;
   }
 }

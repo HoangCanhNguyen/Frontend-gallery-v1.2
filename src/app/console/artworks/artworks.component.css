@@ -95,7 +95,7 @@ h5.pic-title {
 }
 .img-wrapper img {
   width: 100%;
-  height: 350px;
+  height: 400px;
   padding: 0.5rem;
   border: 4px solid black;
   display: block;
@@ -161,7 +161,8 @@ p.stars-wrapper {
 }
 
 /* style delete and edit buttons */
-.overlay-info {
+.overlay-info,
+.overlay-confirm-box {
   position: absolute;
   display: flex;
   justify-content: center;
