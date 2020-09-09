@@ -21,6 +21,10 @@ import { LayoutComponent } from './layout/layout.component';
 
 import { AuthGuard } from 'src/app/shared/guard/auth-guard.guard';
 import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwork.component';
+import { AdminComponent } from './admin/admin.component';
+import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
+import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
@@ -94,27 +98,36 @@ const routes: Routes = [
         },
       },
       {
-        path: 'artworks/new-artwork', component: EditArtworkComponent,
+        path: 'artworks/new-artwork',
+        component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
           expectedRole: 'non_user',
         },
-
       },
       {
-        path: 'artworks/:id/:category/:title/edit-artwork', component: EditArtworkComponent,
+        path: 'artworks/:id/:category/:title/edit-artwork',
+        component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
           expectedRole: 'non_user',
         },
-
-      }
+      },
     ],
   },
   {
     path: 'console/artworks/:id/:category/:pic_name',
     redirectTo: 'list/:id/:category/:pic_name',
     pathMatch: 'full',
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: 'account/manager', component: AccountManagerComponent },
+      { path: 'picture/manger', component: PictureManagerComponent },
+      { path: 'dashboard', component: DashboardComponent },
+    ],
   },
 ];
 
@@ -124,4 +137,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

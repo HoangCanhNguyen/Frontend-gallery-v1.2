@@ -1,0 +1,14 @@
+.admin-noti {
+  border-radius: 50%;
+  z-index: 1000;
+  bottom: 8%;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  background-color: #c9ab81;
+}
+
+.fa-bell {
+  font-size: 30px;
+  color: white;
+}

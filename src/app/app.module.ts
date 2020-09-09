@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,6 +68,10 @@ import { ArtistCollectorLoginComponent } from './console/artist-collector-login/
 import { LayoutComponent } from './layout/layout.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwork.component';
+import { AdminComponent } from './admin/admin.component';
+import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
+import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -103,6 +108,10 @@ import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwo
     ArtistCollectorLoginComponent,
     LayoutComponent,
     EditArtworkComponent,
+    AdminComponent,
+    PictureManagerComponent,
+    AccountManagerComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,7 +144,8 @@ import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwo
     AngularFireStorageModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule
   ],
   providers: [
     MatDatepickerModule,

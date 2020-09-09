@@ -1,0 +1,40 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="true" [fixedInViewport]="true">
+    <div class="sidebar">
+      <div class="profile_info">
+        <img
+          src="https://png.pngtree.com/png-vector/20190301/ourlarge/pngtree-vector-administration-icon-png-image_747092.jpg"
+          class="profile_image"
+        />
+        <h4>Admin Console</h4>
+      </div>
+      <a [routerLink]="['/']" routerLinkActive="router-link-active"
+        ><i class="fa fa-home" aria-hidden="true"></i>
+        <span>Trở về trang chủ</span></a
+      >
+      <a [routerLink] ="['./account/manager']" routerLinkActive="router-link-active"
+        ><i class="fa fa-picture-o" aria-hidden="true"></i>
+        <span>Quản lý tác phẩm</span></a
+      >
+      <a [routerLink] ="['./picture/manger']" routerLinkActive="router-link-active"
+        ><i class="fa fa-user" aria-hidden="true"></i>
+        <span>Quản lý người dùng</span></a
+      >
+      <a [routerLink] ="['./dashboard']" routerLinkActive="router-link-active"
+      ><i class="fa fa-bar-chart" aria-hidden="true"></i>
+      <span>Biểu đồ</span></a
+    >
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button
+      (click)="sidenav.toggle(); isOpened = !isOpened"
+      class="btn-collapsible position-fixed"
+    >
+      <i class="fa fa-bars" aria-hidden="true" *ngIf="!isOpened"></i>
+      <i class="fa fa-times" aria-hidden="true" *ngIf="isOpened"></i>
+    </button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
