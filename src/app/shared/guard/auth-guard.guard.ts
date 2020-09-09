@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate {
         !this.authService.loginStatus() &&
         expectedRole !== tokenPayload.user_claims.role
       ) {
+        this.router.navigate(['/home'])
         return false;
       } else {
         return true;
