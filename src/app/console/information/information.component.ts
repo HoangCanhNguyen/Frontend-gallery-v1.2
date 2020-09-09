@@ -49,18 +49,38 @@ export class InformationComponent implements OnInit {
     switch (content) {
       case 'des':
         this.editDescription = false;
+        this.background = form.value.background;
+        this.pointOfView = form.value.pointOfView;
+        this.events = form.value.events;
         break;
       case 'workflow1':
         this.editWorkflow1 = false;
+        this.stages[0] = form.value.stage1;
+        this.workflowTitle1[0] = form.value.bigTitle1;
+        this.workflowTitle2[0] = form.value.miniTitle1;
+        this.workflowDescription[0] = form.value.des1;
+        this.workflowImages[0] = form.value["workflow-image-link-1"]
         break;
       case 'workflow2':
         this.editWorkflow2 = false;
+        this.stages[1] = form.value.stage2;
+        this.workflowTitle1[1] = form.value.bigTitle2;
+        this.workflowTitle2[1] = form.value.miniTitle2;
+        this.workflowDescription[1] = form.value.des2;
+        this.workflowImages[1] = form.value["workflow-image-link-2"]
         break;
       case 'workflow3':
         this.editWorkflow3 = false;
+        this.stages[2] = form.value.stage3;
+        this.workflowTitle1[2] = form.value.bigTitle3;
+        this.workflowTitle2[2] = form.value.miniTitle3;
+        this.workflowDescription[2] = form.value.des3;
+        this.workflowImages[2] = form.value["workflow-image-link-3"]
         break;
       case 'quote':
         this.editQuote = false;
+        this.quote = form.value.quote;
+        this.quoteAuthor = form.value.author;
         break
     }
   }

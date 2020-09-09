@@ -247,35 +247,35 @@ input[type="file"] {
 
 .form .input-group {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .form .input-group input,
 .form .input-group textarea {
   width: 100%;
-  padding-top: 40px;
   font-size: 1rem;
   letter-spacing: 1px;
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
   border: none;
   border-bottom: 1px solid #937641;
   outline: none;
   background-color: transparent;
   color: inherit;
+  margin-top: 2rem;
 }
 .form .input-group label {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   font-size: 1.1rem;
   pointer-events: none;
   transition: 0.3s ease-out;
 }
 .form .input-group input:focus + label,
 .form .input-group textarea:focus + label {
-  transform: translateY(-1.5rem) !important;
+  transform: translateY(-1rem) !important;
   color: #796a37;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .submit-btn {
   border: none;
@@ -434,8 +434,11 @@ span.text {
 
 /* style text hint */
 .text-hint {
-  font-size: 1rem;
+  font-size: 1rem !important;
+  text-align: right !important;
+  color: #796a37 !important;
+}
+span.text-hint {
+  display: block;
   text-align: right;
-  color: #796a37;
-  margin-bottom: 2rem;
 }

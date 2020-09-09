@@ -158,12 +158,11 @@ form textarea:focus {
 
 .form .input-group {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .form .input-group input,
 .form .input-group textarea {
   width: 100%;
-  padding: 10px 0;
   font-size: 1rem;
   letter-spacing: 1px;
   margin-bottom: 30px;
@@ -172,12 +171,13 @@ form textarea:focus {
   outline: none;
   background-color: transparent;
   color: inherit;
+  margin-top: 2rem;
 }
 .form .input-group label {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   font-size: 1.1rem;
   pointer-events: none;
   transition: 0.3s ease-out;
@@ -186,7 +186,7 @@ form textarea:focus {
 .form .input-group input:valid + label,
 .form .input-group textarea:focus + label,
 .form .input-group textarea:valid + label {
-  transform: translateY(-2.5rem) !important;
+  transform: translateY(-1rem) !important;
   color: #796a37;
   font-size: 1.3rem;
 }
