@@ -17,13 +17,15 @@ export class UploadImageService {
   imageURLSubject = new Subject<any>();
   selectedFileSubject = new Subject<File>();
 
+  imageContentSubject = new Subject<string>();
+
   constructor(
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
     private useService: UserService,
   ) { }
 
-  preview(files) {
+  preview(files: FileList, content: string) {
     var reader = new FileReader();
     this.selectedFile = files[0];
     this.selectedFileSubject.next(this.selectedFile);
@@ -31,6 +33,7 @@ export class UploadImageService {
     reader.onload = (_event) => {
       this.imageURLSubject.next(reader.result);
     }
+    this.imageContentSubject.next(content)
   }
 
   uploadFile() {

@@ -5,7 +5,7 @@
   >
     <div class="rounded-img circle-image">
       <img
-        src="https://cdn.singulart.com/artists/pictures/cropped/artwork/base/artist_artwork_1647_ba964e906901ecde5a3fc4496de3d90f.jpeg"
+        [src]="vendorAvatarURL"
         class="rounded-circle"
         width="250px"
         height="250px"
@@ -19,15 +19,13 @@
         <label for="file-upload"
           ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
         </label>
-        <input #file id="file-upload" type="file" />
+        <input
+          #file
+          id="file-upload"
+          type="file"
+          (change)="preview(file.files, 'vendor-avatar')"
+        />
       </div>
-    </div>
-    <div class="change-bg">
-      <label for="file-upload" class="btn btn-light custom-file-upload mb-0"
-        ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
-        Chỉnh sửa ảnh bìa
-      </label>
-      <input #file id="file-upload" type="file" />
     </div>
     <ngb-carousel
       [showNavigationArrows]="false"
@@ -36,8 +34,23 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <img
-            src="https://cdn.singulart.com/artists/pictures/cropped/studio/base/artist_studio_1647_86d10186556c5e046c57e679ab7e736e.jpeg"
+            [src]="vendorCoverImageURL"
+            style="height: 500px; width: 100%; object-fit: cover"
           />
+          <div>
+            <label
+              for="file-upload-cover-image"
+              class="btn btn-light custom-file-upload mb-0"
+              ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
+              Chỉnh sửa ảnh bìa
+            </label>
+            <input
+              #file
+              id="file-upload-cover-image"
+              type="file"
+              (change)="preview(file.files, 'vendor-cover-image')"
+            />
+          </div>
         </div>
         <div class="carousel-caption cover-img">
           <h3>SƠN DẦU | VIỆT NAM</h3>
@@ -221,7 +234,7 @@
               <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
                 <img
                   [src]="workflowImages[0]"
-                  class="img-fluid"
+                  style="width: 100%; height: 700px; object-fit: cover"
                   data-aos="fade-right"
                 />
               </div>
@@ -250,21 +263,22 @@
               <div class="row">
                 <div class="col-sm-4 workflow-image-container">
                   <img
-                    [src]="workflowImages[0]"
-                    class="img-fluid workflow-image"
+                    [src]="workflowImagesForEditing[0]"
+                    class="w-100 workflow-image"
                     height="400px"
                   />
                   <div class="change-workflow-image">
-                    <label for="file-upload" class="btn upload-btn mt-3"
+                    <label
+                      for="file-upload-workflow-1"
+                      class="btn upload-btn mt-3"
                       ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
                       Tải ảnh lên
                     </label>
                     <input
                       #file
-                      id="file-upload"
+                      id="file-upload-workflow-1"
                       type="file"
-                      name="workflow-image-link-1"
-                      [ngModel]="workflowImages[0]"
+                      (change)="preview(file.files, 'workflow-1')"
                     />
                   </div>
                 </div>
@@ -284,7 +298,7 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="minititle1"
+                      name="miniTitle1"
                       required
                       [ngModel]="workflowTitle1[0]"
                     />
@@ -346,7 +360,7 @@
                 <button
                   type="button"
                   class="submit-btn"
-                  (click)="editWorkflow1 = false"
+                  (click)="editWorkflow1 = false; onCancelEditing()"
                 >
                   Hủy bỏ
                 </button>
@@ -379,7 +393,7 @@
               <div class="col-sm-6 pr-0 pl-5 pt-5 pb-5 workflow-image">
                 <img
                   [src]="workflowImages[1]"
-                  class="img-fluid"
+                  style="width: 100%; height: 700px; object-fit: cover"
                   data-aos="fade-left"
                 />
               </div>
@@ -407,7 +421,7 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="minititle2"
+                      name="miniTitle2"
                       required
                       [ngModel]="workflowTitle1[1]"
                     />
@@ -458,21 +472,22 @@
                 </div>
                 <div class="col-sm-4 workflow-image-container">
                   <img
-                    [src]="workflowImages[1]"
-                    class="img-fluid workflow-image"
+                    [src]="workflowImagesForEditing[1]"
+                    class="w-100 workflow-image"
                     height="400px"
                   />
                   <div class="change-workflow-image">
-                    <label for="file-upload" class="btn upload-btn mt-3"
+                    <label
+                      for="file-upload-workflow-2"
+                      class="btn upload-btn mt-3"
                       ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
                       Tải ảnh lên
                     </label>
                     <input
                       #file
-                      id="file-upload"
+                      id="file-upload-workflow-2"
                       type="file"
-                      name="workflow-image-link-2"
-                      [ngModel]="workflowImages[1]"
+                      (change)="preview(file.files, 'workflow-2')"
                     />
                   </div>
                 </div>
@@ -489,7 +504,7 @@
                 <button
                   type="button"
                   class="submit-btn"
-                  (click)="editWorkflow2 = false"
+                  (click)="editWorkflow2 = false; onCancelEditing()"
                 >
                   Hủy bỏ
                 </button>
@@ -512,7 +527,7 @@
               <div class="col-sm-6 pl-0 pr-5 pt-5 pb-5 workflow-image">
                 <img
                   [src]="workflowImages[2]"
-                  class="img-fluid"
+                  style="width: 100%; height: 700px; object-fit: cover"
                   data-aos="fade-right"
                 />
               </div>
@@ -541,21 +556,22 @@
               <div class="row">
                 <div class="col-sm-4 workflow-image-container">
                   <img
-                    [src]="workflowImages[2]"
-                    class="img-fluid workflow-image"
+                    [src]="workflowImagesForEditing[2]"
+                    class="w-100 workflow-image"
                     height="400px"
                   />
                   <div class="change-workflow-image">
-                    <label for="file-upload" class="btn upload-btn mt-3"
+                    <label
+                      for="file-upload-workflow-3"
+                      class="btn upload-btn mt-3"
                       ><i class="fa fa-camera mr-1" aria-hidden="true"></i>
                       Tải ảnh lên
                     </label>
                     <input
                       #file
-                      id="file-upload"
+                      id="file-upload-workflow-3"
                       type="file"
-                      name="workflow-image-link-3"
-                      [ngModel]="workflowImages[2]"
+                      (change)="preview(file.files, 'workflow-3')"
                     />
                   </div>
                 </div>
@@ -575,7 +591,7 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      name="minititle3"
+                      name="miniTitle3"
                       required
                       [ngModel]="workflowTitle1[2]"
                     />
@@ -637,7 +653,7 @@
                 <button
                   type="button"
                   class="submit-btn"
-                  (click)="editWorkflow3 = false"
+                  (click)="editWorkflow3 = false; onCancelEditing()"
                 >
                   Hủy bỏ
                 </button>
@@ -688,11 +704,7 @@
   </div>
 
   <div class="container py-5">
-    <mdb-carousel
-      class="review-wrapper"
-      [animation]="'slide'"
-      [interval]="'50000000000'"
-    >
+    <mdb-carousel class="review-wrapper">
       <mdb-carousel-item>
         <div class="mask d-block w-100" data-aos="fade-up"></div>
         <div

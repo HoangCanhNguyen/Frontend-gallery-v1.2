@@ -26,8 +26,6 @@ export class BasicProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthenticateService,
-    private storage: AngularFireStorage,
-    private useService: UserService,
     private uploadImageService: UploadImageService
   ) { }
 
@@ -37,12 +35,12 @@ export class BasicProfileComponent implements OnInit {
       this.imageURL = this.user.avatarURL
     });
 
-    this.uploadImageService.imageURLSubject.subscribe(res => {
-      this.imageURL = res;
-    })
-
-    this.uploadImageService.selectedFileSubject.subscribe(res => {
-      this.selectedFile = res;
+    this.uploadImageService.imageContentSubject.subscribe(content => {
+      if (content === 'avatar') {
+        this.uploadImageService.imageURLSubject.subscribe(res => {
+          this.imageURL = res;
+        })
+      }
     })
   }
 
@@ -50,8 +48,8 @@ export class BasicProfileComponent implements OnInit {
     console.log(form);
   }
 
-  preview(files) {
-    this.uploadImageService.preview(files);
+  preview(files: FileList, content: string) {
+    this.uploadImageService.preview(files, content);
   }
 
   uploadFile() {
@@ -61,3 +59,4 @@ export class BasicProfileComponent implements OnInit {
 interface ID {
   id: string;
 }
+

@@ -3,6 +3,7 @@ import { Picture } from 'src/app/shared/model/picture.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { NgForm } from '@angular/forms';
+import { UploadImageService } from 'src/app/shared/service/upload-image.service';
 
 @Component({
   selector: 'app-edit-artwork',
@@ -11,7 +12,6 @@ import { NgForm } from '@angular/forms';
 })
 export class EditArtworkComponent implements OnInit {
 
-  editedArtwork: Picture;
   editPic = true;
   picTitle = '';
   picArtist = '';
@@ -20,7 +20,12 @@ export class EditArtworkComponent implements OnInit {
   picDes = '';
   picImageURL = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private pictureService: PicturesService, private router: Router) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private pictureService: PicturesService,
+    private router: Router,
+    private uploadImageService: UploadImageService
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -28,24 +33,33 @@ export class EditArtworkComponent implements OnInit {
       if (picId) {
         this.pictureService.getPicById({ "id": picId }).subscribe((picture) => {
           if (picture !== null) {
-            this.editedArtwork = picture;
             this.picTitle = picture.title;
             this.picArtist = picture.artist;
             this.picPrice = picture.price;
             this.picCategory = picture.category;
             this.picDes = picture.description;
             this.picImageURL = picture.imageLink;
-            console.log(this.picTitle, this.picArtist, this.picCategory, this.picDes, this.picImageURL, this.picPrice)
           }
         });
       }
+    })
 
+    this.uploadImageService.imageContentSubject.subscribe(content => {
+      if (content === 'new-artwork') {
+        this.uploadImageService.imageURLSubject.subscribe(res => {
+          this.picImageURL = res;
+        })
+      }
     })
   }
 
   onSaveEditedContent(form: NgForm) {
     console.log(form.value);
+    this.uploadImageService.uploadFile();
     this.router.navigate(['/console/artworks'])
   }
 
+  preview(files: FileList, content: string) {
+    this.uploadImageService.preview(files, content);
+  }
 }
