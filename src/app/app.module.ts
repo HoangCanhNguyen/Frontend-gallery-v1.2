@@ -67,6 +67,10 @@ import { ArtistCollectorLoginComponent } from './console/artist-collector-login/
 import { LayoutComponent } from './layout/layout.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwork.component';
+import { AdminComponent } from './admin/admin.component';
+import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
+import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -103,6 +107,10 @@ import { EditArtworkComponent } from './console/artworks/edit-artwork/edit-artwo
     ArtistCollectorLoginComponent,
     LayoutComponent,
     EditArtworkComponent,
+    AdminComponent,
+    PictureManagerComponent,
+    AccountManagerComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

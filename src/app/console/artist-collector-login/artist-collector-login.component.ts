@@ -12,10 +12,20 @@ import { Router } from '@angular/router';
 export class ArtistCollectorLoginComponent implements OnInit {
 
   hide = true;
+  isArtist = false
 
   constructor(private authService: AuthenticateService, private snackbarSerivce: SnackbarNotiService, private route: Router) { }
 
   ngOnInit(): void {
+    this.authService.currentUser.subscribe(
+      (res) => {
+        if (res.role === "artist") {
+          this.isArtist = true
+        } else {
+          this.isArtist = false
+        }
+      }
+    )
   }
 
   onSubmitLogInForm(form: NgForm) {
