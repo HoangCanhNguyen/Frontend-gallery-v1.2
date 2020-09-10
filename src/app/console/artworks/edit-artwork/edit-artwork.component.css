@@ -134,12 +134,12 @@ form textarea:focus {
   position: relative;
   margin: auto;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   padding: 70px 60px 50px;
   background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   color: #b49871;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5); */
   overflow: visible;
 }
 .form::before {
@@ -150,7 +150,7 @@ form textarea:focus {
   width: 50%;
   height: 100%;
   background: rgba(255, 255, 255, 0.25);
-  transform: skewX(-26deg);
+  transform: skewX(-40deg);
   transform-origin: bottom left;
   border-radius: 10px;
   pointer-events: none;
@@ -163,7 +163,7 @@ form textarea:focus {
 .form .input-group input,
 .form .input-group textarea {
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.3rem;
   letter-spacing: 1px;
   margin-bottom: 30px;
   border: none;
@@ -178,7 +178,7 @@ form textarea:focus {
   top: 0;
   left: 0;
   padding: 5px 0;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   pointer-events: none;
   transition: 0.3s ease-out;
 }
@@ -207,6 +207,7 @@ img.workflow-image {
   border: 4px solid black;
   padding: 0.5rem;
   object-fit: cover;
+  max-height: 720px;
 }
 
 /* fix autocomplete behaviour */

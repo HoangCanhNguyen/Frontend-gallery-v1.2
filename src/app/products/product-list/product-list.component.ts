@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { PicturesService } from '../../shared/service/pictures.service';
 import { Picture } from 'src/app/shared/model/picture.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FilterService } from '../../shared/service/filter.service';
+import { PreloadService } from 'src/app/shared/service/preload.service';
+import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -25,14 +27,20 @@ export class ProductListComponent implements OnInit, OnDestroy {
     private pictureService: PicturesService,
     private filterService: FilterService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private preloadService: PreloadService
   ) { }
 
   ngOnInit(): void {
 
+    setTimeout(() => {
+      this.preloadService.show()
+    })
+
     this.pictureService.getData().subscribe((data) => {
       this.filteredList = data;
       this.picturesList = data;
+      this.preloadService.hide()
     });
 
     this.queryParamSub = this.route.queryParams.subscribe((params: Params) => {

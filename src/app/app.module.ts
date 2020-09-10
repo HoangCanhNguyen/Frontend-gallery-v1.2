@@ -3,15 +3,16 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { Ng5SliderModule } from 'ng5-slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +49,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
 import { ProductReplyComponent } from './products/product-detail/product-comment/product-reply/product-reply.component';
 import { FilterComponent } from './products/product-list/filter/filter.component';
-import { Ng5SliderModule } from 'ng5-slider';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
 import { ArtistListComponent } from './artists/artist-list/artist-list.component';
@@ -73,6 +73,7 @@ import { PictureManagerComponent } from './admin/picture-manager/picture-manager
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { OrdersComponent } from './console/orders/orders.component';
+import { PreloadComponent } from './preload/preload.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { OrdersComponent } from './console/orders/orders.component';
     AccountManagerComponent,
     DashboardComponent,
     OrdersComponent,
+    PreloadComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +132,6 @@ import { OrdersComponent } from './console/orders/orders.component';
     MatInputModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    MatCardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -138,7 +139,6 @@ import { OrdersComponent } from './console/orders/orders.component';
     MatExpansionModule,
     MatSelectModule,
     MatRippleModule,
-    Ng5SliderModule,
     NgbPaginationModule,
     MDBBootstrapModule.forRoot(),
     MatChipsModule,
@@ -146,7 +146,9 @@ import { OrdersComponent } from './console/orders/orders.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    Ng5SliderModule
   ],
   providers: [
     MatDatepickerModule,

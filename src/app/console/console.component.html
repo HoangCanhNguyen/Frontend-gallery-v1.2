@@ -51,6 +51,8 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
+    <app-preload *ngIf="showPreload"></app-preload>
+
     <button
       (click)="sidenav.toggle(); isOpened = !isOpened"
       class="btn-collapsible position-fixed"

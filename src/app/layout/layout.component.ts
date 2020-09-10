@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../shared/service/authenticate.service';
+import { PreloadService } from '../shared/service/preload.service'
 
 @Component({
   selector: 'app-layout',
@@ -8,8 +9,9 @@ import { AuthenticateService } from '../shared/service/authenticate.service';
 })
 export class LayoutComponent implements OnInit {
   isAdmin = false;
+  showPreload: boolean = false;
 
-  constructor(private authService: AuthenticateService) {}
+  constructor(private authService: AuthenticateService, private preloadService: PreloadService) { }
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe((vendor) => {
@@ -19,5 +21,9 @@ export class LayoutComponent implements OnInit {
         this.isAdmin = false;
       }
     });
+
+    this.preloadService.preloadSubject.subscribe((res => {
+      this.showPreload = res
+    }))
   }
 }
