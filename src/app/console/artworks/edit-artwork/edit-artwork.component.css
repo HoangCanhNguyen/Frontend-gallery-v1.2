@@ -183,9 +183,7 @@ form textarea:focus {
   transition: 0.3s ease-out;
 }
 .form .input-group input:focus + label,
-.form .input-group input:valid + label,
-.form .input-group textarea:focus + label,
-.form .input-group textarea:valid + label {
+.form .input-group textarea:focus + label {
   transform: translateY(-1rem) !important;
   color: #796a37;
   font-size: 1.3rem;

@@ -32,31 +32,31 @@ export class ArtworksComponent implements OnInit {
     return slide;
   }
 
-  openDeletePopup(picId: number, content: string) {
+  // openDeletePopup(picId: number, content: string) {
 
-    if (content === 'deleteSoldPic') {
-      const element2 = document.querySelectorAll('.latest-artworks-sold-container .carousel-item.active .artwork-item')[picId];
-      element2.classList.add('show-confirm-box');
-    } else {
-      const element1 = document.querySelectorAll('.all-artworks-container .carousel-item.active .artwork-item')[picId];
-      element1.classList.add('show-confirm-box');
-    }
+  //   if (content === 'deleteSoldPic') {
+  //     const element2 = document.querySelectorAll('.latest-artworks-sold-container .carousel-item.active .artwork-item')[picId];
+  //     element2.classList.add('show-confirm-box');
+  //   } else {
+  //     const element1 = document.querySelectorAll('.all-artworks-container .carousel-item.active .artwork-item')[picId];
+  //     element1.classList.add('show-confirm-box');
+  //   }
 
-  }
-  closePopup(picId: number, content: string) {
+  // }
+  // closePopup(picId: number, content: string) {
 
-    if (content === 'deleteSoldPic') {
-      const element2 = document.querySelectorAll('.latest-artworks-sold-container .carousel-item.active .artwork-item')[picId];
-      element2.classList.remove('show-confirm-box');
+  //   if (content === 'deleteSoldPic') {
+  //     const element2 = document.querySelectorAll('.latest-artworks-sold-container .carousel-item.active .artwork-item')[picId];
+  //     element2.classList.remove('show-confirm-box');
 
-    }
-    else {
-      const element1 = document.querySelectorAll('.all-artworks-container .carousel-item.active .artwork-item')[picId];
-      element1.classList.remove('show-confirm-box');
-    }
+  //   }
+  //   else {
+  //     const element1 = document.querySelectorAll('.all-artworks-container .carousel-item.active .artwork-item')[picId];
+  //     element1.classList.remove('show-confirm-box');
+  //   }
 
-  }
-  deleteArtwork() {
+  // }
+  // deleteArtwork() {
 
-  }
+  // }
 }

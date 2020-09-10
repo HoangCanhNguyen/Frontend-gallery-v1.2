@@ -72,7 +72,7 @@ import { AdminComponent } from './admin/admin.component';
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-
+import { OrdersComponent } from './console/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +112,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     PictureManagerComponent,
     AccountManagerComponent,
     DashboardComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

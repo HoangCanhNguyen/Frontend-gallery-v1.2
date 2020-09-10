@@ -25,7 +25,7 @@
             <mat-tab label="Tài khoản của tôi">
               <div class="d-flex acc-info" *ngIf="user">
                 <div class="col-sm-5 basic-info">
-                  <h4 class="text-center mb-4" style="color: #95989a;">
+                  <h4 class="text-center mb-4" style="color: #95989a">
                     Thông tin tài khoản
                   </h4>
                   <form>
@@ -71,30 +71,32 @@
                             width="100%"
                             height="250px"
                           />
-                          <div
-                            class="default-photo mb-4"
-                            *ngIf="!imageURL"
-                          >
+                          <div class="default-photo mb-4" *ngIf="!imageURL">
                             {{ user.username[0] | uppercase }}
                           </div>
                           <hr class="mb-0" *ngIf="!imageURL" />
                           <label
                             for="file-upload"
                             class="btn btn-light btn-block custom-file-upload mb-0"
-                            style="border-radius: 0%; border: none;"
+                            style="border-radius: 0%; border: none"
                           >
                             {{ !imageURL ? "Tải ảnh lên" : "Thay đổi" }}
                           </label>
-                          <input #file id="file-upload" type="file" (change) = "preview(file.files)"/>
+                          <input
+                            #file
+                            id="file-upload"
+                            type="file"
+                            (change)="preview(file.files, 'avatar')"
+                          />
                         </div>
                       </div>
                     </div>
                     <div class="form-group row d-flex justify-content-end pr-3">
                       <button
                         class="btn btn-light text-dark view-more"
-                        style="margin-top: 0.5rem; margin-bottom: 1rem;"
+                        style="margin-top: 0.5rem; margin-bottom: 1rem"
                         type="submit"
-                        (click)="uploadFile($event)"
+                        (click)="uploadFile()"
                       >
                         <svg height="52" width="110">
                           <rect height="52" width="110"></rect>
@@ -105,7 +107,7 @@
                   </form>
                 </div>
                 <div class="col-sm-7 shipping-info">
-                  <h4 class="text-center mb-4" style="color: #95989a;">
+                  <h4 class="text-center mb-4" style="color: #95989a">
                     Thông tin giao hàng
                   </h4>
                   <form
@@ -186,7 +188,7 @@
                     <div class="form-group row d-flex justify-content-end">
                       <button
                         class="btn btn-light text-dark view-more"
-                        style="margin-top: 0.5rem; margin-bottom: 1rem;"
+                        style="margin-top: 0.5rem; margin-bottom: 1rem"
                         type="submit"
                       >
                         <svg height="52" width="160">
@@ -204,9 +206,7 @@
                 <div class="info-icon">
                   <span>i</span>
                 </div>
-                <h4>
-                  Hiện tại bạn chưa thêm họa sĩ nào vào mục này
-                </h4>
+                <h4>Hiện tại bạn chưa thêm họa sĩ nào vào mục này</h4>
               </div>
             </mat-tab>
             <mat-tab label="Tác phẩm yêu thích">
@@ -214,9 +214,7 @@
                 <div class="info-icon">
                   <span>i</span>
                 </div>
-                <h4>
-                  Hiện tại bạn chưa thêm tác phẩm nào vào mục này
-                </h4>
+                <h4>Hiện tại bạn chưa thêm tác phẩm nào vào mục này</h4>
               </div>
             </mat-tab>
             <mat-tab label="Đơn hàng của tôi">
@@ -224,9 +222,7 @@
                 <div class="info-icon">
                   <span>i</span>
                 </div>
-                <h4>
-                  Hiện tại bạn chưa có đơn hàng nào
-                </h4>
+                <h4>Hiện tại bạn chưa có đơn hàng nào</h4>
               </div>
             </mat-tab>
           </mat-tab-group>
@@ -235,3 +231,4 @@
     </div>
   </div>
 </div>
+

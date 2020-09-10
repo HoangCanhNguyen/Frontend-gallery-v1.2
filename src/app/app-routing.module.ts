@@ -25,6 +25,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { OrdersComponent } from './console/orders/orders.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -98,8 +100,15 @@ const routes: Routes = [
         },
       },
       {
-        path: 'artworks/new-artwork',
-        component: EditArtworkComponent,
+        path: 'orders',
+        component: OrdersComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: 'non_user',
+        },
+      },
+      {
+        path: 'artworks/new-artwork', component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
           expectedRole: 'non_user',

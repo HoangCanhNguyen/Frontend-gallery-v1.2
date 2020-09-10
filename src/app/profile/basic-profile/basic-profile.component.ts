@@ -1,11 +1,11 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { UserService } from 'src/app/shared/service/user.service';
+import { UploadImageService } from 'src/app/shared/service/upload-image.service'
 
 @Component({
   selector: 'app-basic-profile',
@@ -18,7 +18,7 @@ export class BasicProfileComponent implements OnInit {
   id: ID;
 
   user: any = null;
-  imagePath: string;
+  // imagePath: string;
   imageURL: any = null;
 
   selectedFile: File = null;
@@ -26,55 +26,37 @@ export class BasicProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthenticateService,
-    private storage: AngularFireStorage,
-    private useService: UserService
-  ) {}
+    private uploadImageService: UploadImageService
+  ) { }
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe((res) => {
       this.user = res;
       this.imageURL = this.user.avatarURL
     });
+
+    this.uploadImageService.imageContentSubject.subscribe(content => {
+      if (content === 'avatar') {
+        this.uploadImageService.imageURLSubject.subscribe(res => {
+          this.imageURL = res;
+        })
+      }
+    })
   }
 
   onSubmitShippingForm(form: NgForm): void {
     console.log(form);
   }
 
-  preview(files) {
-    var reader = new FileReader();
-    this.selectedFile = files[0];
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
-      this.imageURL = reader.result;
-    };
+  preview(files: FileList, content: string) {
+    this.uploadImageService.preview(files, content);
   }
 
-  protected uploadFile(file) {
-    const n = Date.now();
-    const filePath = `UserAvatar/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, this.selectedFile);
-
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url) => {
-            if (url) {
-              console.log(url);
-              this.useService.onUploadAvatar({"avatarURL": url}).subscribe((res) => {
-                this.authService.onGetUserInfo()
-              })
-            }
-          });
-        })
-      )
-      .subscribe();
+  uploadFile() {
+    this.uploadImageService.uploadFile();
   }
 }
 interface ID {
   id: string;
 }
+

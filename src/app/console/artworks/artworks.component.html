@@ -2,7 +2,7 @@
   <h1 class="text-center best-pictures-header mb-5">Tác phẩm mới nhất</h1>
   <div class="lastest-artworks-wrapper d-flex justify-content-center px-5">
     <div
-      class="artwork-item"
+      class="artwork-item show-overlay"
       *ngFor="
         let picture of picturesList
           | slice: picturesList.length - 5:picturesList.length;
@@ -82,7 +82,7 @@
   <mdb-carousel class="slides px-5" [animation]="'slide'" [interval]="50000000">
     <mdb-carousel-item *ngFor="let slide of pictureSlides">
       <div
-        class="artwork-item mb-5"
+        class="artwork-item show-overlay mb-5"
         *ngFor="let picture of slide; let picIndex = index"
       >
         <div class="img-wrapper">
@@ -139,27 +139,27 @@
                 >
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
-                <button
+                <!-- <button
                   class="delete-icon"
                   placement="bottom"
                   ngbTooltip="Xóa"
                   (click)="openDeletePopup(picIndex)"
                 >
                   <i class="fa fa-trash" aria-hidden="true"></i>
-                </button>
+                </button> -->
               </div>
             </div>
           </div>
         </div>
-        <div class="overlay-confirm-box">
-          <p>Bạn chắc chắn muốn xóa tác phẩm này?</p>
+        <!-- <div class="overlay-confirm-box">
+          <p class="text-center">Bạn chắc chắn muốn xóa tác phẩm này?</p>
           <div class="action-button">
             <button class="cancel-btn" (click)="closePopup(picIndex)">
               Hủy bỏ
             </button>
             <button class="delete-btn" (click)="deleteArtwork()">Đồng ý</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </mdb-carousel-item>
   </mdb-carousel>
@@ -220,26 +220,29 @@
               >
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
-              <button
+              <!-- <button
                 class="delete-icon"
                 placement="bottom"
                 ngbTooltip="Xóa"
                 (click)="openDeletePopup(picIndex, 'deleteSoldPic')"
               >
                 <i class="fa fa-trash" aria-hidden="true"></i>
-              </button>
+              </button> -->
             </div>
           </div>
         </div>
-        <div class="overlay-confirm-box">
-          <p>Bạn chắc chắn muốn xóa tác phẩm này?</p>
+        <!-- <div class="overlay-confirm-box">
+          <p class="text-center">Bạn chắc chắn muốn xóa tác phẩm này?</p>
           <div class="action-button">
-            <button class="cancel-btn" (click)="closePopup(picIndex, 'deleteSoldPic')">
+            <button
+              class="cancel-btn"
+              (click)="closePopup(picIndex, 'deleteSoldPic')"
+            >
               Hủy bỏ
             </button>
             <button class="delete-btn" (click)="deleteArtwork()">Đồng ý</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </mdb-carousel-item>
   </mdb-carousel>

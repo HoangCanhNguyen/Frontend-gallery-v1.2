@@ -10,10 +10,10 @@
           <div class="col-sm-4 d-flex flex-column justify-content-center">
             <img
               [src]="picImageURL"
-              class="workflow-image"
+              class="workflow-image img-fluid"
               height="400px"
               width="100%"
-              *ngIf="editedArtwork"
+              *ngIf="picImageURL !== ''"
             />
             <div class="change-workflow-image">
               <label for="file-upload" class="btn upload-btn mt-3"
@@ -24,6 +24,7 @@
                 #file
                 id="file-upload"
                 type="file"
+                (change)="preview(file.files, 'new-artwork')"
                 name="picImageURL"
                 ngModel
               />
@@ -32,7 +33,10 @@
           <div class="col-sm-8">
             <div class="input-group">
               <input type="text" name="title" required [(ngModel)]="picTitle" />
-              <label> <i class="fa fa-user mr-1"></i> Tên tác phẩm</label>
+              <label>
+                <i class="fa fa-bookmark" aria-hidden="true"></i> Tên tác
+                phẩm</label
+              >
             </div>
             <div class="input-group">
               <input
@@ -50,11 +54,16 @@
                 required
                 [(ngModel)]="picCategory"
               />
-              <label> <i class="fa fa-user mr-1"></i> Thể loại</label>
+              <label>
+                <i class="fa fa-list-ul" aria-hidden="true"></i> Thể loại</label
+              >
             </div>
             <div class="input-group">
               <input type="text" name="price" required [(ngModel)]="picPrice" />
-              <label> <i class="fa fa-user mr-1"></i> Giá (triệu đồng)</label>
+              <label>
+                <i class="fa fa-usd" aria-hidden="true"></i> Giá (triệu
+                đồng)</label
+              >
             </div>
             <div class="input-group" style="margin-bottom: 1rem">
               <textarea
@@ -67,7 +76,9 @@
                 style="margin-bottom: 0"
                 #description="ngModel"
               ></textarea>
-              <label> <i class="fa fa-user mr-1"></i> Mô tả</label>
+              <label>
+                <i class="fa fa-pencil" aria-hidden="true"></i> Mô tả</label
+              >
             </div>
             <p
               style="font-size: 1.2rem; text-align: right; color: #796a37"

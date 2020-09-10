@@ -37,19 +37,16 @@
         [routerLink]="['/console/artworks']"
         routerLinkActive="router-link-active"
         [class.disabled]="!isLogedIn"
-        ><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+        ><i class="fa fa-list-ul" aria-hidden="true"></i>
         <span>Quản lý tác phẩm</span></a
-      >
-      <!-- <a [routerLink]="['/console/info']" routerLinkActive="router-link-active"
-        ><i class="fa fa-user-circle" aria-hidden="true"></i>
-        <span>Chỉnh sửa trang cá nhân</span></a
       >
       <a
-        [routerLink]="['/console/artworks']"
+        [routerLink]="['/console/orders']"
         routerLinkActive="router-link-active"
+        [class.disabled]="!isLogedIn"
         ><i class="fa fa-shopping-basket" aria-hidden="true"></i>
-        <span>Quản lý tác phẩm</span></a
-      > -->
+        <span>Quản lý đơn hàng</span></a
+      >
     </div>
   </mat-sidenav>
 
