@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+}
+
+.example-container {
+  overflow: auto;
+}
+
+.container-fluid {
+  min-height: 100vh;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+}

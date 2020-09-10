@@ -13,6 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { Ng5SliderModule } from 'ng5-slider';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -148,7 +149,8 @@ import { PreloadComponent } from './preload/preload.component';
     MatSidenavModule,
     MatTableModule,
     MatCardModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    MatPaginatorModule
   ],
   providers: [
     MatDatepickerModule,
