@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../shared/service/authenticate.service';
 import { Router } from '@angular/router';
 import { SnackbarNotiService } from '../shared/service/snackbar-noti.service';
+import { PreloadService } from '../shared/service/preload.service';
 
 @Component({
   selector: 'app-console',
@@ -9,8 +10,17 @@ import { SnackbarNotiService } from '../shared/service/snackbar-noti.service';
   styleUrls: ['./console.component.css']
 })
 export class ConsoleComponent implements OnInit {
+  
   isOpened = true;
-  constructor(private authService: AuthenticateService,private route: Router, private snackBar: SnackbarNotiService) { }
+
+  showPreload: boolean = false;
+
+  constructor(
+    private authService: AuthenticateService,
+    private route: Router,
+    private snackBar: SnackbarNotiService,
+    private preloadService: PreloadService
+  ) { }
 
   isLogedIn = false
 
@@ -20,6 +30,10 @@ export class ConsoleComponent implements OnInit {
         this.isLogedIn = vendorStatus
       }
     )
+
+    this.preloadService.preloadSubject.subscribe((res => {
+      this.showPreload = res
+    }))
   }
 
   onLogoutVendor() {

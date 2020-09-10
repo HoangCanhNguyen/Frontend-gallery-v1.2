@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { Picture } from 'src/app/shared/model/picture.model';
 import { Subject } from 'rxjs';
+import { PreloadService } from 'src/app/shared/service/preload.service';
 
 @Component({
   selector: 'app-artworks',
@@ -15,12 +16,19 @@ export class ArtworksComponent implements OnInit {
 
   constructor(
     private pictureService: PicturesService,
+    private preloadService: PreloadService
   ) { }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.preloadService.show()
+    })
+
     this.pictureService.getData().subscribe((data) => {
       this.picturesList = data;
       this.pictureSlides = this.chunk(this.picturesList, 5);
+      this.preloadService.hide();
     });
   }
 
