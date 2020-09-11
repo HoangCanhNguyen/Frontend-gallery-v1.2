@@ -1,26 +1,51 @@
-<div class="container-fluid px-5 ">
+<!-- <h1 class="notification is-info">Your feed</h1>
+<div class="columns">
+  <div class="column is-7">
+    <div *ngFor="let feed of unconfirmedRegistration">
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img
+                src="https://bulma.io/images/placeholders/128x128.png"
+                alt="Image"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{ feed.id }}</strong>
+                <small>{{ feed.username }}</small> <br />
+                {{ feed.email }}
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container-fluid px-5">
   <h1 text-center best-pictures-header mb-5>Quản lý tài khoản tranh việt</h1>
   <div class="example-container mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
-      <!-- Position Column -->
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>No.</th>
         <td mat-cell *matCellDef="let element">{{ element.id }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">{{ element.username }}</td>
       </ng-container>
 
-      <!-- Weight Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let element">{{ element.email }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="role">
         <th mat-header-cell *matHeaderCellDef>Role</th>
         <td mat-cell *matCellDef="let element">{{ element.role }}</td>
@@ -29,6 +54,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[1, 3, 5]" showFirstLastButtons></mat-paginator>
+    <mat-paginator
+      [pageSizeOptions]="[1, 3, 5]"
+      showFirstLastButtons
+    ></mat-paginator>
   </div>
 </div>
