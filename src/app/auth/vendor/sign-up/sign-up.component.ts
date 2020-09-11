@@ -12,18 +12,20 @@ export class SignUpComponent implements OnInit {
   hide = true;
   selectedIndex = 0;
 
+  basicInfo: any
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onSubmitBasicInfoForm(form: NgForm): void {
-    console.log(form.value);
+    this.basicInfo = form.value
     this.selectedIndex = this.selectedIndex + 1;
     this.verified = !this.verified;
   }
 
   onSubmitProfessionalInfoForm(form: NgForm): void {
-    console.log(form);
+    console.log(form.value);
   }
 }

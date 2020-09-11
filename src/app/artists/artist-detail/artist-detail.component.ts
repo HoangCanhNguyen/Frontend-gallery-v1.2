@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ArtistService } from 'src/app/shared/service/artist.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,16 +13,14 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
   artist_name: string;
   artist_id: any;
   artist_info: any;
-  constructor(private route: ActivatedRoute, private artistService: ArtistService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params: Params) => {
       this.artist_id = params.artist_id;
       this.artist_name = params.artist_name;
     });
-    this.artistService.getArtistById({ id: this.artist_id }).subscribe(artist => {
-      this.artist_info = artist;
-    });
+
   }
 
   ngOnDestroy(): void {
