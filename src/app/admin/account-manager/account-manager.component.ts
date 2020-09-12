@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ import { RegisterNoti } from 'src/app/shared/model/register-noti.model';
 })
 export class AccountManagerComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('searchBox') searchBox: ElementRef
 
   displayedColumns = ['position', 'name', 'email', 'role'];
   dataSource = new MatTableDataSource<Account>();
@@ -24,18 +25,22 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   headers = ['#', 'User Name', 'Email', 'Role', 'Status', 'Action'];
   mockData = [
     { id: 1, name: 'Spiderman', email: 'tuananhngyen218@gmail.com', role: 'User', status: 'Pending Email' },
-    { id: 2, name: 'Thor', email: 'thor@gmail.com', role: 'Artist', status: 'Pending Email' },
+    { id: 2, name: 'Thor', email: 'thor@gmail.com', role: 'Artist', status: 'Pending Approval' },
     { id: 3, name: 'Hulk', email: 'hulk@gmail.com', role: 'User', status: 'Approved' },
     { id: 4, name: 'Tony Stark', email: 'tony@gmail.com', role: 'Collector', status: 'Pending Approval' },
     { id: 5, name: 'Captain America', email: 'captain@gmail.com', role: 'User', status: 'Denied' },
     { id: 6, name: 'Natasha', email: 'natasha@gmail.com', role: 'Artist', status: 'Approved' },
   ]
 
+  filteredData = this.mockData;
+
   tabs = [
-    { name: 'All users', active: true },
-    { name: 'Pending email users', active: false },
-    { name: 'Pending approval users', active: false }
-  ]
+    { name: 'All users', active: true, filterContent: 'all' },
+    { name: 'Pending email users', active: false, filterContent: 'pending email' },
+    { name: 'Pending approval users', active: false, filterContent: 'pending approval' }
+  ];
+
+  dropdownMenu = true;
 
   constructor(
     private userService: UserService,
@@ -76,13 +81,51 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onActive(tab, id: number) {
+  tabActivated(tab, id: number) {
     tab.active = true
     const inactiveTabs = this.tabs.filter((obj, index) => index !== id);
     inactiveTabs.forEach(tab => {
       tab.active = false
     })
   }
+
+  filteredByDropdownMenu(dropdownType: string, content: string) {
+    if (content === 'all') {
+      this.filteredData = this.mockData;
+      return
+    }
+    switch (dropdownType) {
+      case 'role':
+        this.filteredData = this.mockData.filter(value => {
+          return value.role.toLowerCase() === content.toLowerCase()
+        })
+        break;
+      case 'status':
+        this.filteredData = this.mockData.filter(value => {
+          return value.status.toLowerCase() === content.toLowerCase()
+        })
+        break;
+    }
+  }
+
+  filteredBySearchBox() {
+    if (this.searchBox.nativeElement.value !== '') {
+      this.filteredData = this.mockData.filter(value => value.email.toLowerCase().includes(this.searchBox.nativeElement.value
+        .toLowerCase()) || value.name.toLowerCase().includes(this.searchBox.nativeElement.value.toLowerCase()))
+    } else {
+      this.filteredData = this.mockData
+    }
+
+  }
+
+  showDropdown(id: number) {
+    if (id === 0) {
+      this.dropdownMenu = true;
+    } else {
+      this.dropdownMenu = false
+    }
+  }
+
 }
 
 export interface Account {

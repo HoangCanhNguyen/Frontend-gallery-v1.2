@@ -40,7 +40,11 @@
       <li
         class="list-group-item"
         *ngFor="let tab of tabs; let id = index"
-        (click)="onActive(tab, id)"
+        (click)="
+          tabActivated(tab, id);
+          filteredByDropdownMenu('status', tab.filterContent);
+          showDropdown(id)
+        "
         [ngClass]="{ active: tab.active }"
       >
         {{ tab.name }}
@@ -48,9 +52,11 @@
     </ul>
     <div class="search-box">
       <input
+        #searchBox
         class="search-txt"
         type="text"
         placeholder="Search by name and email"
+        (keyup)="filteredBySearchBox()"
       />
       <button class="search-btn">
         <i class="fa fa-search" aria-hidden="true"></i>
@@ -64,18 +70,59 @@
         <td class="stt">#</td>
         <td class="username">User name</td>
         <td class="email">Email address</td>
-        <td class="role">
-          Role <i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+        <td
+          class="role position-relative"
+          [ngStyle]="{ cursor: dropdownMenu ? 'pointer' : 'default' }"
+        >
+          Role
+          <i
+            class="fa fa-caret-down ml-2"
+            aria-hidden="true"
+            *ngIf="dropdownMenu"
+          ></i>
+          <div class="dropdown-content" id="role-dropdown" *ngIf="dropdownMenu">
+            <a (click)="filteredByDropdownMenu('role', 'Collector')"
+              >Collector</a
+            >
+            <a (click)="filteredByDropdownMenu('role', 'Artist')">Artist</a>
+            <a (click)="filteredByDropdownMenu('role', 'User')">User</a>
+            <a (click)="filteredByDropdownMenu('role', 'all')">Show all</a>
+          </div>
         </td>
-        <td class="status">
-          Status <i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+        <td
+          class="status position-relative"
+          [ngStyle]="{ cursor: dropdownMenu ? 'pointer' : 'default' }"
+        >
+          Status
+          <i
+            class="fa fa-caret-down ml-2"
+            aria-hidden="true"
+            *ngIf="dropdownMenu"
+          ></i>
+          <div
+            class="dropdown-content"
+            id="status-dropdown"
+            *ngIf="dropdownMenu"
+          >
+            <a (click)="filteredByDropdownMenu('status', 'Pending Approval')"
+              >Pending Approval</a
+            >
+            <a (click)="filteredByDropdownMenu('status', 'Pending Email')"
+              >Pending Email</a
+            >
+            <a (click)="filteredByDropdownMenu('status', 'Approved')"
+              >Approved</a
+            >
+            <a (click)="filteredByDropdownMenu('status', 'Denied')">Denied</a>
+            <a (click)="filteredByDropdownMenu('status', 'all')">Show all</a>
+          </div>
         </td>
         <td class="action">Action</td>
       </tr>
     </tbody>
   </table>
 
-  <div class="tables-wrapper" *ngFor="let data of mockData">
+  <div class="tables-wrapper" *ngFor="let data of filteredData">
     <table class="data-table">
       <tbody>
         <tr>
