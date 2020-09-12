@@ -1,5 +1,5 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container pb-0">
+<div class="jumbotron jumbotron-fluid" *ngIf="pic_info && contentLoaded">
+  <div class="container" [ngClass]="{ 'pb-0': !pic_info }">
     <div class="row tabs-detail-product">
       <mat-tab-group
         mat-align-tabs="center"

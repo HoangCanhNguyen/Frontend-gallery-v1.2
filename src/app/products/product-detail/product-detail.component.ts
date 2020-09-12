@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
@@ -10,28 +10,30 @@ import { PreloadService } from 'src/app/shared/service/preload.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
-  pic_info: any;
+export class ProductDetailComponent implements OnInit, OnDestroy, AfterViewInit {
+  pic_info: any = null;
   id: any;
   pic_name: any;
   pic_category: any;
   sub: Subscription;
 
-  numComment: any
+  numComment: any = null;
+
+  contentLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
     private picService: PicturesService,
     private commentService: CommentService,
     private preloadService: PreloadService
-  ) { }
-
-  ngOnInit(): void {
-
+  ) {
     setTimeout(() => {
       this.preloadService.show()
     })
 
+  }
+
+  ngOnInit(): void {
 
     this.sub = this.route.params.subscribe((params: Params) => {
       this.id = params.id;
@@ -41,14 +43,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.pic_info = this.picService.getPicById({ "id": this.id }).subscribe(
       (res) => {
         this.pic_info = res;
-        this.preloadService.hide()
+        this.contentLoaded = true;
+        this.preloadService.hide();
       }
     );
 
-    this.commentService.getComment({ pic_id: this.id }).subscribe((res) => {
-      this.numComment = res.length
-    })
+  }
 
+  ngAfterViewInit() {
+    this.commentService.getComment({ pic_id: this.id }).subscribe((res) => {
+      this.numComment = res.length;
+    })
   }
 
   ngOnDestroy(): void {
