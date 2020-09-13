@@ -12,24 +12,32 @@ import { RegisterNoti } from 'src/app/shared/model/register-noti.model';
   templateUrl: './account-manager.component.html',
   styleUrls: ['./account-manager.component.css'],
 })
-export class AccountManagerComponent implements OnInit, AfterViewInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+export class AccountManagerComponent implements OnInit {
   @ViewChild('searchBox') searchBox: ElementRef
-
-  displayedColumns = ['position', 'name', 'email', 'role'];
-  dataSource = new MatTableDataSource<Account>();
 
   unconfirmedRegistration: RegisterNoti[] = [];
   registerSubcription: Subscription;
 
   headers = ['#', 'User Name', 'Email', 'Role', 'Status', 'Action'];
   mockData = [
-    { id: 1, name: 'Spiderman', email: 'tuananhngyen218@gmail.com', role: 'User', status: 'Pending Email' },
-    { id: 2, name: 'Thor', email: 'thor@gmail.com', role: 'Artist', status: 'Pending Approval' },
-    { id: 3, name: 'Hulk', email: 'hulk@gmail.com', role: 'User', status: 'Approved' },
-    { id: 4, name: 'Tony Stark', email: 'tony@gmail.com', role: 'Collector', status: 'Pending Approval' },
-    { id: 5, name: 'Captain America', email: 'captain@gmail.com', role: 'User', status: 'Denied' },
-    { id: 6, name: 'Natasha', email: 'natasha@gmail.com', role: 'Artist', status: 'Approved' },
+    { name: 'Spiderman', email: 'spiderman@gmail.com', role: 'User', status: 'Pending Email' },
+    { name: 'Thor', email: 'thor@gmail.com', role: 'Artist', status: 'Pending Approval' },
+    { name: 'Hulk', email: 'hulk@gmail.com', role: 'User', status: 'Approved' },
+    { name: 'Tony Stark', email: 'tony@gmail.com', role: 'Collector', status: 'Pending Approval' },
+    { name: 'Captain America', email: 'captain_america@gmail.com', role: 'User', status: 'Denied' },
+    { name: 'Natasha', email: 'natasha@gmail.com', role: 'Artist', status: 'Approved' },
+    { name: 'Superman', email: 'superman@gmail.com', role: 'User', status: 'Pending Email' },
+    { name: 'Banner', email: 'banner@gmail.com', role: 'Artist', status: 'Pending Approval' },
+    { name: 'Black Widow', email: 'black_widow@gmail.com', role: 'User', status: 'Approved' },
+    { name: 'Vision', email: 'vision@gmail.com', role: 'Collector', status: 'Pending Approval' },
+    { name: 'Groot', email: 'groot@gmail.com', role: 'User', status: 'Denied' },
+    { name: 'Loki', email: 'loki@gmail.com', role: 'Artist', status: 'Approved' },
+    { name: 'Drax', email: 'drax@gmail.com', role: 'User', status: 'Pending Email' },
+    { name: 'Captain Marvel', email: 'captain_marvel@gmail.com', role: 'Artist', status: 'Pending Approval' },
+    { name: 'Black Panther', email: 'panther@gmail.com', role: 'User', status: 'Approved' },
+    { name: 'Ant Man', email: 'ant_man@gmail.com', role: 'Collector', status: 'Pending Approval' },
+    { name: 'Winter Soldier', email: 'winter_soldier@gmail.com', role: 'User', status: 'Denied' },
+    { name: 'Doctor Strange', email: 'doctor_strange@gmail.com', role: 'Artist', status: 'Approved' },
   ]
 
   filteredData = this.mockData;
@@ -40,10 +48,14 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
     { name: 'Pending approval users', active: false, filterContent: 'pending approval' }
   ];
 
+  searchContent: string = null
+
   dropdownMenu = true;
 
+  page = 1;
+  pageSize = 4;
+
   constructor(
-    private userService: UserService,
     private _pusherService: PusherService
   ) { }
 
@@ -53,13 +65,6 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
       .subscribe((registration) => {
         this.unconfirmedRegistration.push(registration);
       });
-  }
-
-  ngAfterViewInit(): void {
-    this.userService.onGetAllAccount().subscribe((res) => {
-      this.dataSource = res;
-    });
-    this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy(): void {
@@ -92,8 +97,10 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   filteredByDropdownMenu(dropdownType: string, content: string) {
     if (content === 'all') {
       this.filteredData = this.mockData;
+      this.searchContent = null;
       return
     }
+    this.searchContent = content
     switch (dropdownType) {
       case 'role':
         this.filteredData = this.mockData.filter(value => {
@@ -111,7 +118,8 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
   filteredBySearchBox() {
     if (this.searchBox.nativeElement.value !== '') {
       this.filteredData = this.mockData.filter(value => value.email.toLowerCase().includes(this.searchBox.nativeElement.value
-        .toLowerCase()) || value.name.toLowerCase().includes(this.searchBox.nativeElement.value.toLowerCase()))
+        .toLowerCase()) || value.name.toLowerCase().includes(this.searchBox.nativeElement.value.toLowerCase()));
+      this.searchContent = this.searchBox.nativeElement.value
     } else {
       this.filteredData = this.mockData
     }
@@ -125,7 +133,6 @@ export class AccountManagerComponent implements OnInit, AfterViewInit {
       this.dropdownMenu = false
     }
   }
-
 }
 
 export interface Account {

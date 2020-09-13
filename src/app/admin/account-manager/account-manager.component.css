@@ -1,6 +1,6 @@
 .container-fluid {
   padding: 4rem 5rem !important;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 /* style table */
@@ -128,9 +128,6 @@ li.list-group-item.active {
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
-.search-btn:hover {
-  font-size: 1.8rem;
-}
 .search-txt {
   border: none;
   background-color: transparent;
@@ -165,7 +162,6 @@ li.list-group-item.active {
 .dropdown-content#status-dropdown {
   width: 230px;
 }
-
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -174,13 +170,45 @@ li.list-group-item.active {
   text-transform: capitalize;
   font-weight: 400;
 }
-
 .dropdown-content a:hover {
   background-color: #c9ab81;
   color: white;
 }
-
 .table-header .role:hover .dropdown-content,
 .table-header .status:hover .dropdown-content {
   display: block;
+}
+
+/* style paginator */
+::ng-deep ngb-pagination a.page-link {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  font-size: 1.3rem !important;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif !important;
+}
+::ng-deep .pagination .page-item.active .page-link {
+  background-color: #c9ab81 !important;
+  color: white !important;
+}
+
+/* style the result */
+p.result {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  color: #d5a770;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.highlight {
+  font-weight: 500;
+  font-size: 1.5rem;
 }

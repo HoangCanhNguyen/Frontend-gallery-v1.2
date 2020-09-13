@@ -23,6 +23,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   searchedContent: string = null;
 
+  dataFetched = false;
+
   constructor(
     private pictureService: PicturesService,
     private filterService: FilterService,
@@ -40,6 +42,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.pictureService.getData().subscribe((data) => {
       this.filteredList = data;
       this.picturesList = data;
+      this.dataFetched = true;
       this.preloadService.hide()
     });
 
