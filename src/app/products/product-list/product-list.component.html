@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" *ngIf="picturesList && dataFetched">
   <div
     class="container-fluid"
     style="padding-top: 11rem; padding-bottom: 5rem; max-width: 70%"
@@ -50,10 +50,9 @@
         </div>
         <ngb-pagination
           class="d-flex justify-content-center"
-          [pageSize]="30"
-          [collectionSize]="80"
+          [pageSize]="pageSize"
+          [collectionSize]="filteredList.length"
           [(page)]="page"
-          [boundaryLinks]="true"
           (click)="ScrollOnTop()"
         ></ngb-pagination>
       </div>
