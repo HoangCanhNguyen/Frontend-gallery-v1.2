@@ -22,4 +22,5 @@ export class UserService {
   onGetAllAccount(): Observable<any> {
     return this.httpClient.get(this.ADMIN_GET_ALL_ACCOUNT_INFO_URL)
   }
+
 }
