@@ -23,9 +23,7 @@ export class PusherService {
           data.username,
           data.email,
           data.role,
-          data.tel,
-          data.activated,
-          data.admin_confirmation
+          data.status
         )
       );
     });

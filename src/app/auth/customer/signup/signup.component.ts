@@ -37,7 +37,6 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
       ]),
-      role: new FormControl('user', Validators.required),
     });
   }
 

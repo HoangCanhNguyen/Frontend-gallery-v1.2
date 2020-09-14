@@ -13,7 +13,7 @@
         "
         [ngClass]="{ active: tab.active }"
       >
-        {{ tab.name }}
+        {{ tab.username }}
       </li>
     </ul>
     <div class="search-box">
@@ -33,7 +33,7 @@
   <table class="data-table">
     <tbody>
       <tr class="table-header">
-        <td class="stt">#</td>
+        <td class="stt">No.</td>
         <td class="username">User name</td>
         <td class="email">Email address</td>
         <td
@@ -99,10 +99,10 @@
     <table class="data-table">
       <tbody>
         <tr>
-          <td class="stt">{{ id + 1 }}</td>
-          <td class="username">{{ data.name }}</td>
+          <td class="stt">{{ data.id }}</td>
+          <td class="username">{{ data.username }}</td>
           <td class="email">{{ data.email }}</td>
-          <td class="role">{{ data.role }}</td>
+          <td class="role">{{ data.role | uppercase }}</td>
           <td class="status">
             <button
               class="status-btn"
@@ -112,26 +112,28 @@
             </button>
           </td>
 
-          <td *ngIf="data.status === 'Approved'">
+          <td *ngIf="data.status === 'approved'">
             <button placement="bottom" ngbTooltip="Edit" class="edit-icon">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </button>
-            <button placement="bottom" ngbTooltip="Delete" class="delete-icon">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-          </td>
-          <td *ngIf="data.status === 'Denied'">
-            <button placement="bottom" ngbTooltip="Delete" class="delete-icon">
+            <button placement="bottom" ngbTooltip="Delete" class="delete-icon" (click)="onDeleteUser()">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
           </td>
           <td
-            *ngIf="
-              data.status === 'Pending Email' ||
-              data.status === 'Pending Approval'
-            "
+            *ngIf="data.status === 'pending email' || data.status === 'denied'"
           >
-            <button placement="bottom" ngbTooltip="Approve" class="edit-icon">
+            <button placement="bottom" ngbTooltip="Delete" class="delete-icon">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+          </td>
+          <td *ngIf="data.status === 'pending approval'">
+            <button
+              placement="bottom"
+              ngbTooltip="Approve"
+              class="edit-icon"
+              (click)="onApproveUser(data)"
+            >
               <i class="fa fa-check-square-o" aria-hidden="true"></i>
             </button>
             <button placement="bottom" ngbTooltip="Deny" class="delete-icon">

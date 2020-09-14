@@ -16,11 +16,11 @@ export class AuthenticateService {
   USER_LOGIN_URL = `${API_URL}/user/login`;
   USER_LOGOUT_URL = `${API_URL}/user/logout`;
 
+  VENDOR_REGISTER_URL = `${API_URL}/vendor/register`;
   VENDOR_LOGIN_URL = `${API_URL}/vendor/login`;
   VENDOR_LOGOUT_URL = `${API_URL}/vendor/logout`;
 
-  GET_USER_ID_URL = `${API_URL}/user`;
-  GET_USER_INFO = `${API_URL}/info`;
+  GET_USER_INFO = `${API_URL}/user`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -47,6 +47,7 @@ export class AuthenticateService {
   onUserRegister(userInfo): Observable<any> {
     return this.httpClient.post(this.USER_REGISTER_URL, userInfo.value);
   }
+  
 
   onUserLogin(userInfo): Observable<any> {
     return this.httpClient
@@ -76,6 +77,10 @@ export class AuthenticateService {
         this.isAuthenticated = false;
       })
     );
+  }
+
+  onVendorRegister(vendorInfo): Observable<any> {
+    return this.httpClient.post(this.VENDOR_REGISTER_URL, vendorInfo.value);
   }
 
   onVendorLogin(vendorInfo): Observable<any> {

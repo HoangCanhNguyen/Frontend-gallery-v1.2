@@ -71,12 +71,12 @@
                   matInput
                   placeholder="0943598888"
                   ngModel
-                  name="phoneNumber"
+                  name="tel"
                   required
-                  #phoneNumber="ngModel"
+                  #tel="ngModel"
                 />
                 <mat-icon matSuffix>phone</mat-icon>
-                <mat-error *ngIf="phoneNumber.errors?.required"
+                <mat-error *ngIf="tel.errors?.required"
                   >Trường bắt buộc</mat-error
                 >
               </mat-form-field>
@@ -110,7 +110,7 @@
                   matInput
                   placeholder="bí mật"
                   ngModel
-                  name="password"
+                  name="raw_password"
                   required
                   minlength="6"
                   #password="ngModel"
@@ -134,12 +134,27 @@
                   >Mật khẩu của bạn cần có ít nhất 6 kí tự</mat-error
                 >
               </mat-form-field>
+              <mat-form-field>
+                <mat-label>Họa sĩ/Nhà sưu tầm</mat-label>
+                <input
+                  matInput
+                  placeholder="nDaniel"
+                  ngModel
+                  name="role"
+                  required
+                  #role="ngModel"
+                />
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error *ngIf="role.errors?.required"
+                  >Trường bắt buộc</mat-error
+                >
+              </mat-form-field>
               <button
                 type="submit"
                 class="btn btn-warning mt-4 text-white next-step"
                 [disabled]="basicInfoForm.invalid"
               >
-                Bước tiếp theo
+                TẠO TÀI KHOẢN
               </button>
             </form>
           </mat-tab>
@@ -228,7 +243,7 @@
                 class="btn btn-warning mt-4 text-white next-step"
                 [disabled]="professionalInfoForm.invalid"
               >
-                Tạo tài khoản
+                NỘP THÔNG TIN
               </button>
             </form>
           </mat-tab>
