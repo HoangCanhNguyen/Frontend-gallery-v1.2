@@ -64,8 +64,8 @@ export class EditArtworkComponent implements OnInit {
 
   onSaveEditedContent(form: NgForm) {
     console.log(form.value);
-    this.uploadImageService.uploadFile();
-    this.router.navigate(['/console/artworks'])
+    // this.uploadImageService.uploadAvatar();
+    // this.router.navigate(['/console/artworks'])
   }
 
   preview(files: FileList, content: string) {

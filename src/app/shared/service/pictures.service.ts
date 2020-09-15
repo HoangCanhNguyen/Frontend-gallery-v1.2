@@ -13,14 +13,9 @@ export class PicturesService {
 
   GET_PICTURE_URL = `${API_URL}/pictures`;
   GET_NEW_PIC_URL = `${API_URL}/newpics`;
-  constructor(private httpClient: HttpClient) { }
+  CREATE_NEW_PIC_URL = `${API_URL}/picture/create`;
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    }),
-  };
+  constructor(private httpClient: HttpClient) {}
 
   getData(): Observable<any> {
     return this.httpClient
@@ -38,4 +33,7 @@ export class PicturesService {
       .pipe(catchError(async (error) => new Error(error)));
   }
 
+  onCreatePic(data): Observable<any> {
+    return this.httpClient.post(this.CREATE_NEW_PIC_URL, data);
+  }
 }

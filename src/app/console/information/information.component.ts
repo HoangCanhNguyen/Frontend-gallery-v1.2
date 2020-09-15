@@ -74,11 +74,11 @@ export class InformationComponent implements OnInit {
           break;
         case 'vendor-avatar':
           this.vendorAvatarURL = res;
-          this.uploadImageService.uploadFile();
+          this.uploadImageService.uploadAvatar();
           break;
         case 'vendor-cover-image':
           this.vendorCoverImageURL = res;
-          this.uploadImageService.uploadFile();
+          this.uploadImageService.uploadAvatar();
           break;
       }
     })
@@ -94,7 +94,7 @@ export class InformationComponent implements OnInit {
     })
 
     if (this.imageContent) {
-      this.uploadImageService.uploadFile();
+      this.uploadImageService.uploadAvatar();
     }
 
     switch (content) {

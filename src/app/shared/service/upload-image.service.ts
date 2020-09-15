@@ -4,12 +4,12 @@ import { finalize } from 'rxjs/operators';
 import { AuthenticateService } from './authenticate.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { UserService } from './user.service';
+import { PicturesService } from './pictures.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UploadImageService {
-
   selectedFile: File;
 
   downloadURL: Observable<string>;
@@ -23,7 +23,8 @@ export class UploadImageService {
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
     private useService: UserService,
-  ) { }
+    private _picService: PicturesService
+  ) {}
 
   preview(files: FileList, content: string) {
     var reader = new FileReader();
@@ -32,11 +33,11 @@ export class UploadImageService {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imageURLSubject.next(reader.result);
-    }
-    this.imageContentSubject.next(content)
+    };
+    this.imageContentSubject.next(content);
   }
 
-  uploadFile() {
+  uploadAvatar() {
     const n = Date.now();
     const filePath = `UserAvatar/${n}`;
     const fileRef = this.storage.ref(filePath);
@@ -50,9 +51,33 @@ export class UploadImageService {
           this.downloadURL.subscribe((url) => {
             if (url) {
               console.log(url);
-              this.useService.onUploadAvatar({ "avatarURL": url }).subscribe((res) => {
-                this.authService.onGetUserInfo()
-              })
+              this.useService
+                .onUploadAvatar({ avatarURL: url })
+                .subscribe((res) => {
+                  this.authService.onGetUserInfo();
+                });
+            }
+          });
+        })
+      )
+      .subscribe();
+  }
+
+  uploadPicture(data) {
+    const n = Date.now();
+    const filePath = `Picture/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, this.selectedFile);
+
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe((url) => {
+            if (url) {
+              console.log(url);
+              this._picService.onCreatePic(data).subscribe();
             }
           });
         })

@@ -53,7 +53,7 @@ export class BasicProfileComponent implements OnInit {
   }
 
   uploadFile() {
-    this.uploadImageService.uploadFile();
+    this.uploadImageService.uploadAvatar();
   }
 }
 interface ID {
