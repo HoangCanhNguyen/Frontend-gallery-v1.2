@@ -19,6 +19,10 @@ img {
   max-height: 100%;
   transform-origin: 0 0;
 }
+.view {
+  background-position: center;
+  background-size: cover;
+}
 .cover-img {
   left: 0% !important;
   right: 0% !important;
@@ -43,6 +47,7 @@ img {
 .cover-img h1,
 .cover-img h3 {
   font-family: "EB Garamond", serif;
+  max-width: 95%;
 }
 .cover-img h1 {
   letter-spacing: 0.8rem;
@@ -136,7 +141,6 @@ a.view-more:hover {
 .news {
   text-transform: uppercase;
   font-weight: 400;
-  padding: 8px;
   font-size: 1.5em;
   background: #f8f8f8;
   font-family: "EB Garamond", serif;
@@ -146,14 +150,14 @@ a.view-more:hover {
 
 .news-headers {
   text-align: center;
-  width: 100%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   line-height: 0.1em;
-  margin: 50px 20px;
+  margin: 50px -5px;
 }
 
 .news-post img {
   max-height: 33em;
+  object-fit: cover;
 }
 
 .news-headers span:hover {
@@ -234,4 +238,76 @@ a.view-more:hover {
   transform: translate(0px, -5px);
   transform: translate(3px, -3px);
   cursor: pointer;
+}
+
+@media (max-width: 1600px) {
+  hr {
+    display: none;
+  }
+}
+@media (max-width: 1100px) {
+  .cover-img h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .container.section-news,
+  h1.news-headers {
+    max-width: none;
+    width: 90%;
+  }
+
+  h1.news-headers {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+
+  .news {
+    padding: 0 1em;
+  }
+
+  .content-header {
+    bottom: 15em;
+    left: 0.5em;
+    right: 2.5em;
+    padding: 0;
+  }
+
+  .post-info {
+    margin: 1rem 0.5rem;
+  }
+
+  .post-title {
+    font-size: 1.15rem;
+    margin: 0 0.5rem 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-header {
+    bottom: 9em;
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+  }
+
+  .news-post + .news-post {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 586px) {
+  .content-header {
+    bottom: 11em;
+  }
+  .cover-img h1 {
+    line-height: 3rem;
+  }
+  h1.news-headers {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    border-bottom: none;
+  }
 }

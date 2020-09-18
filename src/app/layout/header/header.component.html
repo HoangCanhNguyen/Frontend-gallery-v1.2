@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<!-- <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand">
     <img
       src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-light.png"
@@ -10,15 +10,7 @@
       style="cursor: pointer"
     />
   </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <button class="navbar-toggler" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -61,7 +53,7 @@
           (click)="openCustomerModal()"
           ><i
             class="fa fa-user-o"
-            aria-hidden="true"
+           
             style="color: #c9ab81; font-size: 2rem; padding-bottom: 10px"
           ></i>
         </a>
@@ -80,31 +72,146 @@
         >
 
         <mat-menu #menu="matMenu" class="menu">
-          <a
-            mat-menu-item
-            class="menu-items"
-            href="https://tranhviet.shop/"
+          <a mat-menu-item class="menu-items" href="https://tranhviet.shop/"
             >TRANH VIET</a
           >
           <a
             mat-menu-item
             class="menu-items"
-            *ngIf="(role == 'user')"
+            *ngIf="role == 'user'"
             [routerLink]="['/account/profile/user']"
             routerLinkActive="router-link-active"
             >Trang cá nhân</a
           >
           <a
-          mat-menu-item
-          class="menu-items"
-          *ngIf="(role != 'user')"
-          [routerLink]="['/console/info']"
-          routerLinkActive="router-link-active"
-          >console</a
-        >
+            mat-menu-item
+            class="menu-items"
+            *ngIf="role != 'user'"
+            [routerLink]="['/console/info']"
+            routerLinkActive="router-link-active"
+            >console</a
+          >
           <a mat-menu-item class="menu-items" (click)="onLogOut()">Đăng xuất</a>
         </mat-menu>
       </li>
     </ul>
   </div>
+</nav> -->
+
+<nav>
+  <input type="checkbox" id="check" />
+  <label for="check">
+    <i class="fa fa-bars" id="open"></i>
+    <i class="fa fa-times" id="close"></i>
+  </label>
+
+  <img
+    src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/logo-light.png"
+    [routerLink]="['/home']"
+    routerLinkActive="router-link-active"
+    style="cursor: pointer"
+  />
+
+  <ul>
+    <li [routerLink]="['/home']" routerLinkActive="router-link-active">
+      <a class="hover-effect">Trang chủ </a>
+      <i class="fa fa-home show-icon"></i>
+    </li>
+    <li [routerLink]="['/list']" routerLinkActive="router-link-active">
+      <a class="hover-effect">Tác Phẩm </a>
+      <i class="fa fa-list-ul show-icon"></i>
+    </li>
+    <li [routerLink]="['/artists']">
+      <a class="hover-effect">Họa sĩ </a>
+      <i class="fa fa-users show-icon"></i>
+    </li>
+    <li>
+      <a class="hover-effect">Diễn đàn </a>
+      <i class="fa fa-comments-o show-icon"></i>
+    </li>
+    <li>
+      <a class="hover-effect">Danh sách yêu thích </a>
+      <i class="fa fa-heart show-icon"></i>
+    </li>
+    <li
+      *ngIf="!username"
+      class="ml-auto"
+      id="show-account-icon"
+      (click)="openCustomerModal()"
+    >
+      <a mat-button
+        ><i
+          class="fa fa-user-o"
+          style="color: #c9ab81; font-size: 2rem; padding-bottom: 10px"
+        ></i>
+      </a>
+    </li>
+    <li *ngIf="!username" id="hide-account-icon" (click)="openCustomerModal()">
+      <a class="hover-effect">Đăng nhập/Đăng kí </a>
+      <i class="fa fa-sign-in show-icon"></i>
+    </li>
+    <li
+      *ngIf="username"
+      class="ml-auto mr-5 account-management"
+      style="border-bottom: none"
+    >
+      <a
+        class="hover-effect"
+        (click)="showAccountDropdown = !showAccountDropdown"
+        >{{ username }}
+        <i class="fa fa-caret-down ml-2"></i>
+        <div
+          class="dropdown-content"
+          [ngClass]="{ active: showAccountDropdown }"
+        >
+          <a href="https://tranhviet.shop/">TRANH VIET</a>
+          <a
+            *ngIf="role == 'user'"
+            [routerLink]="['/account/profile/user']"
+            routerLinkActive="router-link-active"
+            >Trang cá nhân</a
+          >
+          <a
+            *ngIf="role != 'user'"
+            [routerLink]="['/console/info']"
+            routerLinkActive="router-link-active"
+            >console</a
+          >
+          <a (click)="onLogOut()">Đăng xuất</a>
+        </div>
+      </a>
+      <i
+        class="fa fa-chevron-down show-icon"
+        *ngIf="!showResponsiveAccDropdown"
+        (click)="showResponsiveAccDropdown = !showResponsiveAccDropdown"
+      ></i>
+      <i
+        class="fa fa-chevron-up show-icon"
+        *ngIf="showResponsiveAccDropdown"
+        (click)="showResponsiveAccDropdown = !showResponsiveAccDropdown"
+      ></i>
+    </li>
+    <li
+      *ngIf="username && showResponsiveAccDropdown"
+      style="line-height: 3.5rem"
+    >
+      <div class="account-dropdown">
+        <a href="https://tranhviet.shop/">TRANH VIET</a>
+        <a
+          *ngIf="role == 'user'"
+          [routerLink]="['/account/profile/user']"
+          routerLinkActive="router-link-active"
+          >Trang cá nhân</a
+        >
+        <a
+          *ngIf="role != 'user'"
+          [routerLink]="['/console/info']"
+          routerLinkActive="router-link-active"
+          >console</a
+        >
+        <a (click)="onLogOut()">Đăng xuất</a>
+      </div>
+    </li>
+  </ul>
+  <div class="overlay"></div>
 </nav>
