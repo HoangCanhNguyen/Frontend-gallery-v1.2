@@ -1,74 +1,74 @@
 import { Component, OnInit } from '@angular/core';
-import { Picture } from 'src/app/shared/model/picture.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { PicturesService } from 'src/app/shared/service/pictures.service';
-import { NgForm } from '@angular/forms';
 import { UploadImageService } from 'src/app/shared/service/upload-image.service';
 import { PreloadService } from 'src/app/shared/service/preload.service';
-
+import { Picture } from 'src/app/shared/model/picture.model';
 @Component({
   selector: 'app-edit-artwork',
   templateUrl: './edit-artwork.component.html',
-  styleUrls: ['./edit-artwork.component.css']
+  styleUrls: ['./edit-artwork.component.css'],
 })
 export class EditArtworkComponent implements OnInit {
+  editForm: FormGroup;
+  picture: Picture;
 
-  editPic = true;
-  picTitle = '';
-  picArtist = '';
-  picPrice = '';
-  picCategory = '';
-  picDes = '';
-  picImageURL = '';
-
+  isEdit: boolean = false;
+  picId: number;
   constructor(
     private activatedRoute: ActivatedRoute,
     private pictureService: PicturesService,
-    private router: Router,
-    private uploadImageService: UploadImageService,
+    private uploadService: UploadImageService,
     private preloadService: PreloadService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.editForm = new FormGroup({
+      title: new FormControl(),
+      artist: new FormControl(),
+      price: new FormControl(),
+      imageURL: new FormControl(),
+      category: new FormControl(),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.minLength(150),
+      ]),
+    });
 
+    this.activatedRoute.params.subscribe((params) => {
+      this.isEdit = true;
+      this.picId = params['id'];
 
-    this.activatedRoute.params.subscribe(params => {
-      const picId = params['id'];
-      if (picId) {
+      if (this.picId) {
         setTimeout(() => {
-          this.preloadService.show()
-        })
+          this.preloadService.show();
+        });
 
-        this.pictureService.getPicById({ "id": picId }).subscribe((picture) => {
-          if (picture !== null) {
-            this.picTitle = picture.title;
-            this.picArtist = picture.artist;
-            this.picPrice = picture.price;
-            this.picCategory = picture.category;
-            this.picDes = picture.description;
-            this.picImageURL = picture.imageLink;
-            this.preloadService.hide()
-          }
+        this.pictureService.getPicById({ id: this.picId }).subscribe((pic) => {
+          this.picture = {
+            title: pic.title,
+            id: pic.id,
+            artist: pic.artist,
+            price: pic.price,
+            category: pic.category,
+            description: pic.description,
+            imageURL: pic.imageURL,
+          };
+          this.preloadService.hide();
         });
       }
-    })
-
-    this.uploadImageService.imageContentSubject.subscribe(content => {
-      if (content === 'new-artwork') {
-        this.uploadImageService.imageURLSubject.subscribe(res => {
-          this.picImageURL = res;
-        })
-      }
-    })
+    });
+  }
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
   }
 
-  onSaveEditedContent(form: NgForm) {
-    console.log(form.value);
-    // this.uploadImageService.uploadAvatar();
-    // this.router.navigate(['/console/artworks'])
-  }
+  onSubmit() {}
 
-  preview(files: FileList, content: string) {
-    this.uploadImageService.preview(files, content);
+  preview(files: FileList) {
+    this.uploadService.preview(files, 'content');
   }
 }

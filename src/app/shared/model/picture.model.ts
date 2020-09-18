@@ -4,8 +4,9 @@ export class Picture {
     public id: string,
     public artist: string,
     public category: string,
-    public imageLink: string,
+    public imageURL: string,
     public price: string,
-    public description: string
-  ) { }
+    public description: string,
+    public edited?: boolean
+  ) {}
 }

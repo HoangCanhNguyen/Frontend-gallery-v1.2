@@ -88,7 +88,7 @@ const routes: Routes = [
         component: InformationComponent,
         canActivate: [AuthGuard],
         data: {
-          expectedRole: 'non_user',
+          expectedRole: 'vendor',
         },
       },
       {
@@ -96,7 +96,7 @@ const routes: Routes = [
         component: ArtworksComponent,
         canActivate: [AuthGuard],
         data: {
-          expectedRole: 'non_user',
+          expectedRole: 'vendor',
         },
       },
       {
@@ -104,14 +104,14 @@ const routes: Routes = [
         component: OrdersComponent,
         canActivate: [AuthGuard],
         data: {
-          expectedRole: 'non_user',
+          expectedRole: 'vendor',
         },
       },
       {
         path: 'artworks/new-artwork', component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
-          expectedRole: 'non_user',
+          expectedRole: 'vendor',
         },
       },
       {
@@ -119,7 +119,7 @@ const routes: Routes = [
         component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
-          expectedRole: 'non_user',
+          expectedRole: 'vendor',
         },
       },
     ],

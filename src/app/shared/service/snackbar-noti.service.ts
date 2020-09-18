@@ -18,8 +18,6 @@ export class SnackbarNotiService {
   }
 
   onError(err) {
-    console.log(err);
-    
     this._snackBar.open(err.error.msg, 'KHÔNG THÀNH CÔNG', {
       duration: 2500,
       horizontalPosition: 'start',

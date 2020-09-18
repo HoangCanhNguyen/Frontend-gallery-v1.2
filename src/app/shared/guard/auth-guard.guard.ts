@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     private authService: AuthenticateService,
     private router: Router
   ) { }
-  canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = localStorage.getItem('access_token');
     if (token) {
       const tokenPayload = decode(token);
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
       }
     } else {
       window.alert('Vui lòng đăng nhập/đăng kí để thực hiện chức năng này!')
-      return this.router.createUrlTree(['/home']);
+      this.router.navigate(['/home']);
     }
   }
 }

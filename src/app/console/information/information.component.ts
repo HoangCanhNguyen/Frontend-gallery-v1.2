@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { stringify } from '@angular/compiler/src/util';
 import { UploadImageService } from 'src/app/shared/service/upload-image.service';
 import { Subscription } from 'rxjs';
+import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 
 @Component({
   selector: 'app-information',
@@ -50,9 +51,10 @@ export class InformationComponent implements OnInit {
   ]
 
   imageContent: string = null;
+  current_user: any
 
   constructor(
-    private uploadImageService: UploadImageService
+    private uploadImageService: UploadImageService,
   ) { }
 
   ngOnInit(): void {
@@ -82,6 +84,7 @@ export class InformationComponent implements OnInit {
           break;
       }
     })
+
   }
 
   onSaveEditedContent(content: string, form: NgForm) {
