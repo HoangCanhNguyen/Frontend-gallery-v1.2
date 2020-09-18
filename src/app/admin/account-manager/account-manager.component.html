@@ -116,7 +116,12 @@
             <button placement="bottom" ngbTooltip="Edit" class="edit-icon">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </button>
-            <button placement="bottom" ngbTooltip="Delete" class="delete-icon" (click)="onDeleteUser()">
+            <button
+              placement="bottom"
+              ngbTooltip="Delete"
+              class="delete-icon"
+              (click)="onDeleteUser()"
+            >
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
           </td>
@@ -151,7 +156,7 @@
       [pageSize]="pageSize"
       [collectionSize]="filteredData.length"
       class="d-flex justify-content-end"
-      style="margin-top: 2rem; margin-right: 5rem"
+      style="margin: 2rem 5rem 0; z-index: -1"
     >
     </ngb-pagination>
     <p class="result" *ngIf="searchContent">

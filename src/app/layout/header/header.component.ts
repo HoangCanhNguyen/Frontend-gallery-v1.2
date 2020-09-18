@@ -26,6 +26,9 @@ export class HeaderComponent implements OnInit {
   showModal: boolean;
   role: string;
 
+  showAccountDropdown = false;
+  showResponsiveAccDropdown = false;
+
   isLoggedIn = false;
   user: UserModule;
   userInfo: any;
@@ -47,7 +50,7 @@ export class HeaderComponent implements OnInit {
       this.id = this.userInfo.id
     });
 
-    
+
   }
 
   openCustomerModal(): void {
@@ -65,9 +68,9 @@ export class HeaderComponent implements OnInit {
     this.authService.onUserLogout().subscribe((res) => {
       this.snackBar.onSuccess("ĐĂNG XUẤT")
     },
-    (err)=>{
-      console.log(err);
-    })
+      (err) => {
+        console.log(err);
+      })
     this.route.navigate(['home'])
   }
 
