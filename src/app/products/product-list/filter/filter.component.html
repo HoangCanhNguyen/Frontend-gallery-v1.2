@@ -4,20 +4,19 @@
     <input
       matInput
       name="search-bar"
-      [(ngModel)] = "searchText"
+      [(ngModel)]="searchText"
       placeholder="Theo tên hoặc thể loại"
       (ngModelChange)="change()"
+      autocomplete="off"
     />
     <mat-icon matSuffix>
-      <button class="btn" style="font-size: 1.5rem;">
-        search
-      </button>
+      <button class="btn" style="font-size: 1.5rem">search</button>
     </mat-icon>
   </mat-form-field>
 </form>
 <br />
 
-<div class="title">Tìm theo chủ đề </div>
+<div class="title">Tìm theo chủ đề</div>
 <div class="list-group">
   <button
     class="list-group-item"
@@ -53,7 +52,7 @@
   </mat-expansion-panel>
 </div>
 <br />
-<hr style="opacity: 0;" />
+<hr style="opacity: 0" />
 
 <form [formGroup]="sliderForm" (ngSubmit)="onSearchByPrice()">
   <div class="title">Tìm theo giá</div>
@@ -73,7 +72,7 @@
   </button>
 </form>
 <br />
-<hr style="opacity: 0;" />
+<hr style="opacity: 0" />
 
 <div class="title">Tìm theo họa sĩ</div>
 <div class="list-group">
