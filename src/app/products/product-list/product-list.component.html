@@ -4,7 +4,7 @@
     style="padding-top: 11rem; padding-bottom: 5rem; max-width: 70%"
   >
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-12 col-md-8">
         <div class="row">
           <div class="col-sm-12">
             <h1
@@ -38,6 +38,7 @@
               </mat-chip>
             </mat-chip-list>
           </div>
+
           <app-product-item
             *ngFor="
               let picture of filteredList
@@ -45,7 +46,6 @@
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
             "
             [picture]="picture"
-            style="width: 33%"
           ></app-product-item>
         </div>
         <ngb-pagination
@@ -56,7 +56,7 @@
           (click)="ScrollOnTop()"
         ></ngb-pagination>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-12 col-md-4">
         <h1 style="opacity: 0; margin-bottom: 5rem">Search Bar</h1>
         <app-filter
           (searchTextChange)="searchParent = $event.value"

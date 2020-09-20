@@ -154,3 +154,61 @@ p.stars-wrapper {
   background-color: #c9ab81;
   opacity: 0.8;
 }
+
+@media (min-width: 300px) {
+  .img-wrapper {
+    height: 350px;
+  }
+  .img-wrapper {
+    margin-bottom: 2.5rem;
+  }
+  .info-wrapper h5 {
+    height: auto !important;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 500px) {
+  .img-wrapper {
+    height: 450px;
+  }
+  .info-wrapper h5 {
+    font-size: 1.2rem;
+  }
+  a.view-more2 {
+    font-size: 0.8rem;
+    padding: 8px 15px 10px;
+  }
+  a.view-more2 svg,
+  a.view-more2 rect {
+    width: 110px !important;
+  }
+  .overlay-info {
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 768px) {
+  .img-wrapper {
+    height: 550px;
+  }
+  .info-wrapper h5 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .img-wrapper {
+    height: 350px;
+  }
+}
+@media (min-width: 1600px) {
+  .img-wrapper {
+    height: 350px;
+  }
+}
+@media (min-width: 1700px) {
+  .img-wrapper {
+    height: 400px;
+  }
+}

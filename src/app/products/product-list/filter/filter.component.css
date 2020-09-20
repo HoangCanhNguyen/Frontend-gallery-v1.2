@@ -23,7 +23,7 @@
   color: #525252;
   padding-left: 0;
   font-family: "EB Garamond", serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.15rem;
 }
 .list-group {
@@ -34,7 +34,7 @@
   background-color: transparent !important;
   text-align: left;
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 .list-group-item:hover {
   color: #c9ab81;

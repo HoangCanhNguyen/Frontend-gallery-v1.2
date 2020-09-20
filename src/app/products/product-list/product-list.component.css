@@ -78,3 +78,49 @@ p.search-result {
 ::ng-deep .mat-chip-container .mat-chip-list-wrapper {
   margin: 0 !important;
 }
+
+@media (min-width: 300px) {
+  app-product-item {
+    width: 100% !important;
+  }
+
+  h1.search-content {
+    font-size: 1.3rem;
+    justify-content: center !important;
+  }
+  h1.search-content hr {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  app-product-item {
+    width: 100% !important;
+  }
+
+  h1.search-content {
+    font-size: 1.5rem;
+    justify-content: center !important;
+  }
+  h1.search-content hr {
+    display: none;
+  }
+  .container-fluid {
+    max-width: 90% !important;
+  }
+}
+
+@media (min-width: 1000px) {
+  app-product-item {
+    width: 50% !important;
+  }
+  .container-fluid {
+    max-width: 80% !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  app-product-item {
+    width: 33% !important;
+  }
+}
