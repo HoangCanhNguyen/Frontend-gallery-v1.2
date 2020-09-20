@@ -6,6 +6,7 @@ import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { UploadImageService } from 'src/app/shared/service/upload-image.service';
 import { PreloadService } from 'src/app/shared/service/preload.service';
 import { Picture } from 'src/app/shared/model/picture.model';
+import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
 @Component({
   selector: 'app-edit-artwork',
   templateUrl: './edit-artwork.component.html',
@@ -17,11 +18,14 @@ export class EditArtworkComponent implements OnInit {
 
   isEdit: boolean = false;
   picId: number;
+  previewURL: string = '';
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private pictureService: PicturesService,
     private uploadService: UploadImageService,
-    private preloadService: PreloadService
+    private preloadService: PreloadService,
+    private _snackBar: SnackbarNotiService
   ) {}
 
   ngOnInit(): void {
@@ -38,10 +42,10 @@ export class EditArtworkComponent implements OnInit {
     });
 
     this.activatedRoute.params.subscribe((params) => {
-      this.isEdit = true;
       this.picId = params['id'];
 
       if (this.picId) {
+        this.isEdit = true;
         setTimeout(() => {
           this.preloadService.show();
         });
@@ -57,18 +61,30 @@ export class EditArtworkComponent implements OnInit {
             imageURL: pic.imageURL,
           };
           this.preloadService.hide();
+          this.previewURL = this.picture.imageURL;
         });
+      } else {
+        this.picture = {
+          title: '',
+          artist: '',
+          price: '',
+          category: '',
+          description: '',
+          imageURL: '',
+        };
       }
     });
   }
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-  }
 
-  onSubmit() {}
+  onSubmit() {
+    // this.uploadService.onUploadPicture(this.editForm.value);
+    this.pictureService.onCreatePic(this.editForm.value)
+  }
 
   preview(files: FileList) {
     this.uploadService.preview(files, 'content');
+    this.uploadService.imageURLSubject.subscribe((url) => {
+      this.previewURL = url;
+    });
   }
 }

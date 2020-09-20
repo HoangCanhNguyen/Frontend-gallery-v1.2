@@ -4,7 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { AuthenticateService } from './authenticate.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { UserService } from './user.service';
-import { PicturesService } from './pictures.service';
+import { Picture } from '../model/picture.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +13,16 @@ export class UploadImageService {
   selectedFile: File;
 
   downloadURL: Observable<string>;
-
   imageURLSubject = new Subject<any>();
   selectedFileSubject = new Subject<File>();
-
   imageContentSubject = new Subject<string>();
+
+  firebase_image_url: string;
 
   constructor(
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
     private useService: UserService,
-    private _picService: PicturesService
   ) {}
 
   preview(files: FileList, content: string) {
@@ -63,25 +62,34 @@ export class UploadImageService {
       .subscribe();
   }
 
-  uploadPicture(data) {
+  onUploadPicture(data) {
     const n = Date.now();
     const filePath = `Picture/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, this.selectedFile);
 
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url) => {
-            if (url) {
-              console.log(url);
-              this._picService.onCreatePic(data).subscribe();
-            }
-          });
-        })
-      )
-      .subscribe();
+    var uploadTask = new Promise((resolve, reject) => {
+      task
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe(
+              (url) => {
+                data.imageURL = url;
+                if (url) {
+                  this.firebase_image_url = url;
+                  resolve();
+                }
+              },
+              (err) => {
+                reject();
+              }
+            );
+          })
+        )
+        .subscribe();
+    });
+    return uploadTask;
   }
 }
