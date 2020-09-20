@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class VendorService {
   ADMIN_GET_PENDING_ACCOUNT = `${API_URL}/admin/account/pending`;
   ADMIN_DELETE_USER = `${API_URL}/user/test`
+  VENDOR_INFORMATION_CREATION_URL = `${API_URL}/vendor/information/create`
+
   constructor(private httpClient: HttpClient) {}
 
   onGetPendingAccount(): Observable<any> {
@@ -23,4 +25,7 @@ export class VendorService {
     return this.httpClient.delete(this.ADMIN_DELETE_USER + '/'+ id)
   }
 
+  onSubmitInformation(data):Observable<any> {
+    return this.httpClient.post(this.VENDOR_INFORMATION_CREATION_URL, data)
+  }
 }

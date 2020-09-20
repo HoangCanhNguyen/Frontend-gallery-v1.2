@@ -1,19 +1,15 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="jumbotron">
-    <div class="edit-des-form" data-aos="fade-up" *ngIf="editPic">
-      <form
-        class="form"
-        #editPicForm="ngForm"
-        (ngSubmit)="onSaveEditedContent(editPicForm)"
-      >
+    <div class="edit-des-form" data-aos="fade-up">
+      <form class="form" (ngSubmit)="onSubmit()" [formGroup]="editForm">
         <div class="row">
           <div class="col-sm-4 d-flex flex-column justify-content-center">
             <img
-              [src]="picImageURL"
+              *ngIf="previewURL != ''"
+              src="{{ previewURL }}"
               class="workflow-image img-fluid"
               height="400px"
               width="100%"
-              *ngIf="picImageURL !== ''"
             />
             <div class="change-workflow-image">
               <label for="file-upload" class="btn upload-btn mt-3"
@@ -24,42 +20,31 @@
                 #file
                 id="file-upload"
                 type="file"
-                (change)="preview(file.files, 'new-artwork')"
-                name="picImageURL"
-                ngModel
+                (change)="preview(file.files)"
+                formControlName="imageURL"
               />
             </div>
           </div>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" name="title" required [(ngModel)]="picTitle" />
+              <input type="text" formControlName="title" [(ngModel)]="picture.title"/>
               <label>
                 <i class="fa fa-bookmark" aria-hidden="true"></i> Tên tác
                 phẩm</label
               >
             </div>
             <div class="input-group">
-              <input
-                type="text"
-                name="artists"
-                required
-                [(ngModel)]="picArtist"
-              />
+              <input type="text" formControlName="artist" [(ngModel)]="picture.artist"/>
               <label> <i class="fa fa-user mr-1"></i> Họa sĩ</label>
             </div>
             <div class="input-group">
-              <input
-                type="text"
-                name="category"
-                required
-                [(ngModel)]="picCategory"
-              />
+              <input type="text" formControlName="category" [(ngModel)]="picture.category"/>
               <label>
                 <i class="fa fa-list-ul" aria-hidden="true"></i> Thể loại</label
               >
             </div>
             <div class="input-group">
-              <input type="text" name="price" required [(ngModel)]="picPrice" />
+              <input type="text" formControlName="price" [(ngModel)]="picture.price"/>
               <label>
                 <i class="fa fa-usd" aria-hidden="true"></i> Giá (triệu
                 đồng)</label
@@ -68,13 +53,10 @@
             <div class="input-group" style="margin-bottom: 1rem">
               <textarea
                 type="text"
-                name="des"
                 rows="5"
-                minlength="150"
-                required
-                [(ngModel)]="picDes"
+                formControlName="description"
                 style="margin-bottom: 0"
-                #description="ngModel"
+                [(ngModel)] = "picture.description"
               ></textarea>
               <label>
                 <i class="fa fa-pencil" aria-hidden="true"></i> Mô tả</label
@@ -82,22 +64,17 @@
             </div>
             <p
               style="font-size: 1.2rem; text-align: right; color: #796a37"
-              *ngIf="description.value?.length <= 150"
+              *ngIf="editForm.controls.description.value?.length <= 150"
             >
-              Ít nhất 150 kí tự: {{ description.value?.length || 0 }}/150
+              Ít nhất 150 kí tự:
+              {{ editForm.controls.description.value?.length || 0 }}/150
             </p>
             <div class="d-flex justify-content-center">
-              <button
-                type="submit"
-                class="submit-btn mr-4"
-                [disabled]="!editPicForm.valid"
-              >
-                Cập nhật
-              </button>
+              <button type="submit" class="submit-btn mr-4" *ngIf="isEdit">Cập nhật</button>
+              <button type="submit" class="submit-btn mr-4" *ngIf="!isEdit">Tạo sản phẩm</button>
               <button
                 type="button"
                 class="submit-btn"
-                (click)="editPic = false"
                 [routerLink]="['/console/artworks']"
               >
                 Hủy bỏ

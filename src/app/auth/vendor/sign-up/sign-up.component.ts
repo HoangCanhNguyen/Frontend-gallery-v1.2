@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
+import { VendorService } from 'src/app/shared/service/vendor.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,30 +11,60 @@ import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.servic
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-  verified = true;
-  hide = true;
-  selectedIndex = 0;
+  verified: boolean = true;
+  hide: boolean = true;
+  selectedIndex: number = 0;
+  vendor_email: string;
 
-  basicInfo: any;
+  professional_form: ProfessionalForm;
 
-  constructor(private authService: AuthenticateService, private snackBar: SnackbarNotiService) {}
+  constructor(
+    private authService: AuthenticateService,
+    private snackBar: SnackbarNotiService,
+    private _vendorService: VendorService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   onSubmitBasicInfoForm(form: NgForm): void {
-    this.selectedIndex = this.selectedIndex + 1;
-    this.verified = !this.verified;
+    this.vendor_email = form.value.email;
     this.authService.onVendorRegister(form).subscribe(
       (res) => {
-        this.snackBar.onSuccess("Đăng ký")
+        this.selectedIndex = this.selectedIndex + 1;
+        this.verified = !this.verified;
+        this.snackBar.onSuccess('Đăng ký');
       },
       (err) => {
-        console.log(err);
+        this.snackBar.onError(err);
       }
     );
   }
 
   onSubmitProfessionalInfoForm(form: NgForm): void {
-    console.log(form.value);
+    const data = form.value;
+    this.professional_form = {
+      email: this.vendor_email,
+      fullname: data.fullname,
+      artForm: data.artForm,
+      category: data.category,
+      facebookLink: data.facebookLink,
+      selfIntroduction: data.selfIntroduction,
+    };
+    this._vendorService
+      .onSubmitInformation(this.professional_form)
+      .subscribe((res) => {
+        this.snackBar.onSuccess("Nộp đơn")
+        this.router.navigate(['/home'])
+      });
   }
+}
+
+interface ProfessionalForm {
+  email?: string;
+  fullname?: string;
+  artForm?: string;
+  category?: string;
+  facebookLink?: string;
+  selfIntroduction?: string;
 }

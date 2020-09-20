@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { stringify } from '@angular/compiler/src/util';
 import { UploadImageService } from 'src/app/shared/service/upload-image.service';
 import { Subscription } from 'rxjs';
+import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 
 @Component({
   selector: 'app-information',
@@ -50,9 +51,10 @@ export class InformationComponent implements OnInit {
   ]
 
   imageContent: string = null;
+  current_user: any
 
   constructor(
-    private uploadImageService: UploadImageService
+    private uploadImageService: UploadImageService,
   ) { }
 
   ngOnInit(): void {
@@ -74,14 +76,15 @@ export class InformationComponent implements OnInit {
           break;
         case 'vendor-avatar':
           this.vendorAvatarURL = res;
-          this.uploadImageService.uploadFile();
+          this.uploadImageService.uploadAvatar();
           break;
         case 'vendor-cover-image':
           this.vendorCoverImageURL = res;
-          this.uploadImageService.uploadFile();
+          this.uploadImageService.uploadAvatar();
           break;
       }
     })
+
   }
 
   onSaveEditedContent(content: string, form: NgForm) {
@@ -94,7 +97,7 @@ export class InformationComponent implements OnInit {
     })
 
     if (this.imageContent) {
-      this.uploadImageService.uploadFile();
+      this.uploadImageService.uploadAvatar();
     }
 
     switch (content) {
