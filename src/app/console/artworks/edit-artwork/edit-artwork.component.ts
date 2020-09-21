@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PicturesService } from 'src/app/shared/service/pictures.service';
@@ -25,22 +25,11 @@ export class EditArtworkComponent implements OnInit {
     private pictureService: PicturesService,
     private uploadService: UploadImageService,
     private preloadService: PreloadService,
-    private _snackBar: SnackbarNotiService
+    private _snackBar: SnackbarNotiService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
-    this.editForm = new FormGroup({
-      title: new FormControl(),
-      artist: new FormControl(),
-      price: new FormControl(),
-      imageURL: new FormControl(),
-      category: new FormControl(),
-      description: new FormControl('', [
-        Validators.required,
-        Validators.minLength(150),
-      ]),
-    });
-
     this.activatedRoute.params.subscribe((params) => {
       this.picId = params['id'];
 
@@ -60,8 +49,8 @@ export class EditArtworkComponent implements OnInit {
             description: pic.description,
             imageURL: pic.imageURL,
           };
-          this.preloadService.hide();
           this.previewURL = this.picture.imageURL;
+          this.preloadService.hide();
         });
       } else {
         this.picture = {
@@ -72,13 +61,21 @@ export class EditArtworkComponent implements OnInit {
           description: '',
           imageURL: '',
         };
+        this.picId = 0;
       }
     });
-  }
-
-  onSubmit() {
-    // this.uploadService.onUploadPicture(this.editForm.value);
-    this.pictureService.onCreatePic(this.editForm.value)
+    this.editForm = new FormGroup({
+      id: new FormControl(this.picId.toString()),
+      title: new FormControl(),
+      artist: new FormControl(),
+      price: new FormControl(),
+      imageURL: new FormControl(),
+      category: new FormControl(),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.minLength(150),
+      ]),
+    });
   }
 
   preview(files: FileList) {
@@ -86,5 +83,41 @@ export class EditArtworkComponent implements OnInit {
     this.uploadService.imageURLSubject.subscribe((url) => {
       this.previewURL = url;
     });
+  }
+
+  onSubmit() {
+    if (!this.isEdit) {
+      this.uploadService.onUpload(this.editForm.value, 'Picture').then(() => {
+        this.pictureService.onCreatePic(this.editForm.value).subscribe(() => {
+          this._snackBar.onSuccess('TẠO SẢN PHẨM');
+          this._router.navigate(['/console/artworks']);
+        });
+      });
+    } else {
+      this.uploadService.imageURLSubject.subscribe(
+        (url) => {
+          this.previewURL = url
+        }
+      )
+      if (this.previewURL) {
+        console.log('co anh');
+        this.uploadService
+          .onUpload(this.editForm.value, 'Picture')
+          .then(() => {
+            this.pictureService
+              .onEditPic(this.editForm.value)
+              .subscribe(() => {
+                this._snackBar.onSuccess('CẬP NHẬT');
+                this._router.navigate(['/console/artworks']);
+              });
+          });
+      } else {
+        console.log('ko anh');
+        this.pictureService.onEditPic(this.editForm.value).subscribe(() => {
+          this._snackBar.onSuccess('CẬP NHẬT');
+          this._router.navigate(['/console/artworks']);
+        });
+      }
+    }
   }
 }
