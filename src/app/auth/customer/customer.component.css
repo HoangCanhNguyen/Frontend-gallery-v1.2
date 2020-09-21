@@ -175,12 +175,18 @@ hr {
     height: auto !important;
     max-width: none !important;
     width: auto !important;
-    margin: 10rem 7rem !important;
+    margin: 10rem !important;
   }
 }
 
 @media (min-width: 1400px) {
   ::ng-deep .cdk-overlay-pane[style] {
     margin: 10rem 20rem !important;
+  }
+}
+
+@media (min-width: 1700px) {
+  ::ng-deep .cdk-overlay-pane[style] {
+    margin: 10rem 30rem !important;
   }
 }
