@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { CommentService } from 'src/app/shared/service/comment.service';
@@ -23,6 +23,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterViewInit 
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private picService: PicturesService,
     private commentService: CommentService,
     private preloadService: PreloadService
@@ -34,7 +35,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterViewInit 
   }
 
   ngOnInit(): void {
-
     this.sub = this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.pic_category = params.pic_category;
@@ -47,7 +47,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterViewInit 
         this.preloadService.hide();
       }
     );
-
   }
 
   ngAfterViewInit() {

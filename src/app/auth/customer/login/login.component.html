@@ -1,4 +1,16 @@
 <div class="container-fluid">
+  <i
+    class="fa fa-times dialog-closer"
+    style="
+      color: #c9ab81;
+      font-size: 2rem;
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+      z-index: 2;
+    "
+    (click)="close()"
+  ></i>
   <div class="user-icon">
     <img
       src="https://image.flaticon.com/icons/png/512/224/224609.png"
@@ -42,11 +54,9 @@
   <div class="forget-password">
     <a class="sign-up">Bạn quên mật khẩu?</a>
   </div>
-  <hr style="border-color: #eeeeee !important;" />
-  <div class="message">
-    Bạn chưa có tài khoản?
-  </div>
-  <div class="button">
+  <hr style="border-color: #eeeeee !important" />
+  <div class="message">Bạn chưa có tài khoản?</div>
+  <div class="button mb-4">
     <a class="sign-up" (click)="onOpenSignUp()">Đăng ký ngay</a>
   </div>
 </div>
