@@ -11,12 +11,15 @@ import { UploadImageService } from './upload-image.service';
 })
 export class PicturesService {
   editedPic = new Subject<Picture>();
+  firebase_upload_url: string;
 
   GET_PICTURE_URL = `${API_URL}/pictures`;
-  CREATE_NEW_PIC_URL = `${API_URL}/picture/create`;
-  EDIT_PIC_URL = `${API_URL}/picture/update`;
+  PIC_URL = `${API_URL}/picture/method`;
 
-  constructor(private httpClient: HttpClient, private uploadService: UploadImageService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private uploadService: UploadImageService
+  ) {}
 
   getData(): Observable<any> {
     return this.httpClient
@@ -28,16 +31,11 @@ export class PicturesService {
     return this.httpClient.post(this.GET_PICTURE_URL, id);
   }
 
-  onCreatePic(data){
-    this.uploadService.onUploadPicture(data).then(
-      () => {
-        this.httpClient.post(this.CREATE_NEW_PIC_URL, data)        
-      }
-    )
-    // return this.httpClient.post(this.CREATE_NEW_PIC_URL, data);
+  onCreatePic(data): Observable<any> {
+    return this.httpClient.post(this.PIC_URL, data);
   }
 
   onEditPic(data): Observable<any> {
-    return this.httpClient.put(this.EDIT_PIC_URL, data);
+    return this.httpClient.put(this.PIC_URL, data);
   }
 }

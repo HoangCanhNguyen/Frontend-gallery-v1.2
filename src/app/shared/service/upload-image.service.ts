@@ -17,12 +17,10 @@ export class UploadImageService {
   selectedFileSubject = new Subject<File>();
   imageContentSubject = new Subject<string>();
 
-  firebase_image_url: string;
-
   constructor(
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
-    private useService: UserService,
+    private useService: UserService
   ) {}
 
   preview(files: FileList, content: string) {
@@ -62,9 +60,9 @@ export class UploadImageService {
       .subscribe();
   }
 
-  onUploadPicture(data) {
+  onUpload(data, location: string) {
     const n = Date.now();
-    const filePath = `Picture/${n}`;
+    const filePath = `${location}/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, this.selectedFile);
 
@@ -77,10 +75,7 @@ export class UploadImageService {
             this.downloadURL.subscribe(
               (url) => {
                 data.imageURL = url;
-                if (url) {
-                  this.firebase_image_url = url;
-                  resolve();
-                }
+                resolve();
               },
               (err) => {
                 reject();
