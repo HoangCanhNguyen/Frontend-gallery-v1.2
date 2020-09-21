@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     public dialogRef: MatDialogRef<LoginComponent>,
     private authService: AuthenticateService,
     private snackbarSerivce: SnackbarNotiService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,13 +29,7 @@ export class LoginComponent implements OnInit {
 
   onOpenSignUp(): void {
     this.dialogRef.close()
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.id = 'modal-component';
-    dialogConfig.height = '87vh';
-    dialogConfig.width = '30vw';
-    dialogConfig.id = 'signup'
-    dialogConfig.position = { top: '100px' };
-    const modalDialog = this.matDialog.open(SignupComponent, dialogConfig);
+    const modalDialog = this.matDialog.open(SignupComponent);
   }
 
   onSubmit() {
@@ -56,5 +50,9 @@ export class LoginComponent implements OnInit {
 
   facebook() {
     // this.authService.FacebookAuth();
+  }
+
+  close() {
+    this.dialogRef.close()
   }
 }

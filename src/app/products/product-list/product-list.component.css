@@ -99,7 +99,7 @@ p.search-result {
   }
 
   h1.search-content {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     justify-content: center !important;
   }
   h1.search-content hr {
@@ -113,6 +113,13 @@ p.search-result {
 @media (min-width: 1000px) {
   app-product-item {
     width: 50% !important;
+  }
+  h1.search-content {
+    font-size: 1.8rem;
+    justify-content: space-around !important;
+  }
+  h1.search-content hr {
+    display: block;
   }
   .container-fluid {
     max-width: 80% !important;

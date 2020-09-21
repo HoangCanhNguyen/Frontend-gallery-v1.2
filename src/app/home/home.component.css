@@ -240,21 +240,77 @@ a.view-more:hover {
   cursor: pointer;
 }
 
-@media (max-width: 1600px) {
+@media (min-width: 300px) {
+  .cover-img h1 {
+    line-height: 2.5rem;
+    font-size: 1.8rem;
+    justify-content: center !important;
+  }
+  .content-header {
+    bottom: 12rem;
+  }
+  h1.news-headers {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    border-bottom: none;
+  }
+
+  .news-post {
+    margin-bottom: 3rem;
+  }
   hr {
     display: none;
   }
 }
-@media (max-width: 1100px) {
+
+@media (min-width: 500px) {
+  .content-header {
+    bottom: 11rem;
+  }
   .cover-img h1 {
+    line-height: 4.5rem;
     font-size: 3rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .cover-img h1 {
+    line-height: 5rem;
+    font-size: 2.5rem;
   }
 
+  .content-header {
+    bottom: 19rem;
+    min-width: 10rem;
+    left: 0.5rem;
+    right: 3rem;
+  }
+
+  .post-info {
+    margin: 0.75rem 0;
+  }
+
+  .post-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .cover-img h1 {
+    font-size: 3.5rem !important;
+  }
+  .content-header {
+    bottom: 15em;
+    left: 0.5em;
+    right: 4em;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
   .container.section-news,
   h1.news-headers {
-    max-width: none;
+    min-width: none;
     width: 90%;
   }
 
@@ -268,9 +324,9 @@ a.view-more:hover {
   }
 
   .content-header {
-    bottom: 15em;
+    bottom: 14em;
     left: 0.5em;
-    right: 2.5em;
+    right: 5em;
     padding: 0;
   }
 
@@ -284,30 +340,45 @@ a.view-more:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1230px) {
   .content-header {
-    bottom: 9em;
-  }
-
-  .post-title {
-    font-size: 1.4rem;
-  }
-
-  .news-post + .news-post {
-    padding-top: 3rem;
+    bottom: 13em;
+    left: 0.5em;
+    right: 5em;
+    padding: 0;
   }
 }
 
-@media (max-width: 586px) {
-  .content-header {
-    bottom: 11em;
+@media (min-width: 1400px) {
+  hr {
+    display: block;
+    width: 100px !important;
+  }
+  hr.horizontal-line-left {
+    margin-right: 3rem;
+  }
+  hr.horizontal-line-right {
+    margin-left: 3rem;
   }
   .cover-img h1 {
-    line-height: 3rem;
+    font-size: 3.5rem;
   }
-  h1.news-headers {
-    font-size: 2rem;
-    line-height: 2.5rem;
-    border-bottom: none;
+}
+
+@media (min-width: 1500px) {
+  hr {
+    width: 120px;
+  }
+  .cover-img h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1650px) {
+  hr {
+    width: 150px;
+  }
+  .cover-img h1 {
+    font-size: 4.5rem;
   }
 }

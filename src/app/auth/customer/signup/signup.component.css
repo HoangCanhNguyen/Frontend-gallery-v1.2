@@ -25,7 +25,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: none;
   -webkit-text-fill-color: inherit;
-  -webkit-box-shadow: none;
+  box-shadow: none;
   transition: background-color 5000s ease-in-out 0s;
 }
 button:focus {
@@ -82,14 +82,10 @@ hr {
   border-color: #ddd8d8;
   border-style: solid none none;
   border-width: 1px 0px 0px;
-  margin-left: 8.5em;
-  max-width: 25em;
   color: #333333;
   font-size: 14px;
   font-weight: 300;
   gap: normal;
-  line-height: 20px;
-  text-align: center;
 }
 
 .message {

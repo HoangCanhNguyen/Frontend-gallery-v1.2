@@ -41,15 +41,8 @@ export class SignupComponent implements OnInit {
   }
 
   onOpenlogin(): void {
-    console.log('hello');
     this.dialogRef.close();
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.id = 'modal-component';
-    dialogConfig.height = '68vh';
-    dialogConfig.width = '25vw';
-    dialogConfig.id = 'login';
-    dialogConfig.position = { top: '140px' };
-    const modalDialog = this.matDialog.open(LoginComponent, dialogConfig);
+    const modalDialog = this.matDialog.open(LoginComponent);
   }
 
   // verifyPassword(): void {
@@ -71,5 +64,9 @@ export class SignupComponent implements OnInit {
         this.snackbarService.onError(err);
       }
     );
+  }
+
+  close() {
+    this.dialogRef.close()
   }
 }

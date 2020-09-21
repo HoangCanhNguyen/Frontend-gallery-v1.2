@@ -1,4 +1,16 @@
 <div class="container-fluid">
+  <i
+    class="fa fa-times dialog-closer"
+    style="
+      color: #c9ab81;
+      font-size: 2rem;
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+      z-index: 2;
+    "
+    (click)="close()"
+  ></i>
   <div class="user-icon">
     <img
       src="https://cdn.iconscout.com/icon/free/png-256/user-face-side-ui-man-avatar-interface-1-13251.png"
@@ -50,10 +62,8 @@
     </section>
     <button class="btn primary" type="submit">Tạo tài khoản</button>
   </form>
-  <hr style="border-color: #eeeeee !important;" />
-  <div class="message">
-    Bạn đã có tài khoản?
-  </div>
+  <hr style="border-color: #eeeeee !important" />
+  <div class="message">Bạn đã có tài khoản?</div>
   <div class="button mb-4">
     <a class="sign-up" (click)="onOpenlogin()">Đăng nhập</a>
   </div>

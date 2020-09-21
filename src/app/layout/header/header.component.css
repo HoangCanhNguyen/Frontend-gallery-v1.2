@@ -274,3 +274,9 @@ label #close {
     padding: 0 0.5rem;
   }
 }
+
+@media (max-width: 400px) {
+  nav ul {
+    width: 100%;
+  }
+}
