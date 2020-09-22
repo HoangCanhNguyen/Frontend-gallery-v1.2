@@ -46,8 +46,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.preloadService.hide()
     });
 
-    console.log(this.route.children);
-
     this.queryParamSub = this.route.queryParams.subscribe((params: Params) => {
       const searchedByCate = params.category;
       const searchedByArtist = params.artist;
