@@ -51,12 +51,23 @@
                   margin-top: 2rem;
                   font-size: 1.3rem;
                 "
+                *ngIf="pic_info.description === undefined"
               >
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco lab oris
                 nisi ut.
               </p>
+              <p
+              style="
+                font-family: EB Garamond, serif;
+                margin-top: 2rem;
+                font-size: 1.3rem;
+              "
+              *ngIf="pic_info.description !== undefined"
+            >
+              {{pic_info.description}}
+            </p>
               <a
                 class="btn btn-light text-dark view-more"
                 style="z-index: 1000; margin-top: 2rem; margin-bottom: 2.5rem"

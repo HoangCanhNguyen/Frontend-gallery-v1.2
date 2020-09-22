@@ -69,7 +69,7 @@ export class EditArtworkComponent implements OnInit {
       title: new FormControl(),
       artist: new FormControl(),
       price: new FormControl(),
-      imageURL: new FormControl(),
+      imageURL: new FormControl(''),
       category: new FormControl(),
       description: new FormControl('', [
         Validators.required,
@@ -94,25 +94,17 @@ export class EditArtworkComponent implements OnInit {
         });
       });
     } else {
-      this.uploadService.imageURLSubject.subscribe(
-        (url) => {
-          this.previewURL = url
-        }
-      )
-      if (this.previewURL) {
-        console.log('co anh');
-        this.uploadService
-          .onUpload(this.editForm.value, 'Picture')
-          .then(() => {
-            this.pictureService
-              .onEditPic(this.editForm.value)
-              .subscribe(() => {
-                this._snackBar.onSuccess('CẬP NHẬT');
-                this._router.navigate(['/console/artworks']);
-              });
+      this.uploadService.imageURLSubject.subscribe((url) => {
+        this.previewURL = url;
+      });
+      if (this.previewURL !== this.picture.imageURL) {
+        this.uploadService.onUpload(this.editForm.value, 'Picture').then(() => {
+          this.pictureService.onEditPic(this.editForm.value).subscribe(() => {
+            this._snackBar.onSuccess('CẬP NHẬT');
+            this._router.navigate(['/console/artworks']);
           });
+        });
       } else {
-        console.log('ko anh');
         this.pictureService.onEditPic(this.editForm.value).subscribe(() => {
           this._snackBar.onSuccess('CẬP NHẬT');
           this._router.navigate(['/console/artworks']);
