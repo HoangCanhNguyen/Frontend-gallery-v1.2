@@ -4,8 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistListComponent } from './artists/artist-list/artist-list.component';
 import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
@@ -77,8 +75,6 @@ const routes: Routes = [
         ],
       },
       { path: 'vendor/register', component: VendorComponent },
-      { path: 'cart', component: CartComponent },
-      { path: 'checkout', component: CheckoutComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
