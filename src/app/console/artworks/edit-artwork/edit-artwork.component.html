@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="jumbotron">
-    <div class="edit-des-form" data-aos="fade-up">
+    <div class="edit-des-form">
       <form class="form" (ngSubmit)="onSubmit()" [formGroup]="editForm">
         <div class="row">
           <div class="col-sm-4 d-flex flex-column justify-content-center">
@@ -27,24 +27,40 @@
           </div>
           <div class="col-sm-8">
             <div class="input-group">
-              <input type="text" formControlName="title" [(ngModel)]="picture.title"/>
+              <input
+                type="text"
+                formControlName="title"
+                [(ngModel)]="picture.title"
+              />
               <label>
                 <i class="fa fa-bookmark" aria-hidden="true"></i> Tên tác
                 phẩm</label
               >
             </div>
             <div class="input-group">
-              <input type="text" formControlName="artist" [(ngModel)]="picture.artist"/>
+              <input
+                type="text"
+                formControlName="artist"
+                [(ngModel)]="picture.artist"
+              />
               <label> <i class="fa fa-user mr-1"></i> Họa sĩ</label>
             </div>
             <div class="input-group">
-              <input type="text" formControlName="category" [(ngModel)]="picture.category"/>
+              <input
+                type="text"
+                formControlName="category"
+                [(ngModel)]="picture.category"
+              />
               <label>
                 <i class="fa fa-list-ul" aria-hidden="true"></i> Thể loại</label
               >
             </div>
             <div class="input-group">
-              <input type="text" formControlName="price" [(ngModel)]="picture.price"/>
+              <input
+                type="text"
+                formControlName="price"
+                [(ngModel)]="picture.price"
+              />
               <label>
                 <i class="fa fa-usd" aria-hidden="true"></i> Giá (triệu
                 đồng)</label
@@ -56,7 +72,7 @@
                 rows="5"
                 formControlName="description"
                 style="margin-bottom: 0"
-                [(ngModel)] = "picture.description"
+                [(ngModel)]="picture.description"
               ></textarea>
               <label>
                 <i class="fa fa-pencil" aria-hidden="true"></i> Mô tả</label
@@ -70,8 +86,12 @@
               {{ editForm.controls.description.value?.length || 0 }}/150
             </p>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="submit-btn mr-4" *ngIf="isEdit">Cập nhật</button>
-              <button type="submit" class="submit-btn mr-4" *ngIf="!isEdit">Tạo sản phẩm</button>
+              <button type="submit" class="submit-btn mr-4" *ngIf="isEdit">
+                Cập nhật
+              </button>
+              <button type="submit" class="submit-btn mr-4" *ngIf="!isEdit">
+                Tạo sản phẩm
+              </button>
               <button
                 type="button"
                 class="submit-btn"

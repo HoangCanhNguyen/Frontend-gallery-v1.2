@@ -1,5 +1,8 @@
 <mdb-carousel
+  #carousel
   class="home-page-carousel carousel carousel-fade"
+  (touchstart)="swipe($event, 'start')"
+  (touchend)="swipe($event, 'end')"
   [animation]="'fade'"
   [interval]="'5000'"
 >
@@ -117,17 +120,28 @@
 </mdb-carousel>
 
 <div class="jumbotron m-0 p-0">
-  <div class="container section-news" data-aos="fade-up">
-    <div class="row" style="position: relative">
+  <div class="container-fluid section-news px-0">
+    <div class="row" style="position: relative; width: 100%">
       <span class="tranh-viet-news">Tranh việt news</span>
-      <h1 class="news-headers col-md-12 col-sm-12 col-12">
+      <h1
+        class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center news-headers w-100"
+        style="margin-bottom: 5rem"
+      >
+        <hr
+          class="animate__animated animate__fadeInRight"
+          style="background-color: grey; width: 150px; margin-right: -2rem"
+        />
         <span class="news"> tin tức </span>
+        <hr
+          class="animate__animated animate__fadeInLeft"
+          style="background-color: grey; width: 150px; margin-left: -2rem"
+        />
       </h1>
       <br />
     </div>
 
-    <div class="row">
-      <div class="col-sm-12 col-md-4 news-post">
+    <div class="row justify-content-center m-0">
+      <div class="col-sm-12 col-lg-2 news-post">
         <img
           src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/main-blog-list-img-1.jpg"
         />
@@ -152,7 +166,7 @@
           <span style="color: #383737">View more</span>
         </a>
       </div>
-      <div class="col-sm-12 col-md-4 news-post">
+      <div class="col-sm-12 col-lg-2 news-post">
         <img
           src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/main-blog-list-img-2.jpg"
         />
@@ -177,9 +191,59 @@
           <span style="color: #383737">View more</span>
         </a>
       </div>
-      <div class="col-sm-12 col-md-4 news-post">
+      <div class="col-sm-12 col-lg-2 news-post">
         <img
           src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/main-blog-list-img-3.jpg"
+        />
+        <div class="post-content">
+          <div class="content-header">
+            <div class="post-info">September 15, 2019</div>
+            <h5 class="post-title">November in the museum</h5>
+          </div>
+          <p class="post-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
+            soluta quod natus, velit sit iure inventore veniam rerum
+            reprehenderit quia fugiat omnis saepe alias, vitae magnam voluptates
+            repudiandae officiis laudantium.
+          </p>
+        </div>
+        <a
+          class="btn btn-light text-dark animate__animated animate__delay-1s view-more news-button"
+        >
+          <svg height="40" width="100">
+            <rect height="40" width="100"></rect>
+          </svg>
+          <span style="color: #383737">View more</span>
+        </a>
+      </div>
+      <div class="col-sm-12 col-lg-2 news-post">
+        <img
+          src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/h1-time-line-img-2.jpg"
+        />
+        <div class="post-content">
+          <div class="content-header">
+            <div class="post-info">September 15, 2019</div>
+            <h5 class="post-title">November in the museum</h5>
+          </div>
+          <p class="post-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
+            soluta quod natus, velit sit iure inventore veniam rerum
+            reprehenderit quia fugiat omnis saepe alias, vitae magnam voluptates
+            repudiandae officiis laudantium.
+          </p>
+        </div>
+        <a
+          class="btn btn-light text-dark animate__animated animate__delay-1s view-more news-button"
+        >
+          <svg height="40" width="100">
+            <rect height="40" width="100"></rect>
+          </svg>
+          <span style="color: #383737">View more</span>
+        </a>
+      </div>
+      <div class="col-sm-12 col-lg-2 news-post">
+        <img
+          src="https://musea.qodeinteractive.com/wp-content/uploads/2019/09/show-slider-img-2.jpg"
         />
         <div class="post-content">
           <div class="content-header">

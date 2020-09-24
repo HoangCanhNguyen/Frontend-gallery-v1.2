@@ -25,7 +25,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { OrdersComponent } from './console/orders/orders.component';
+import { ProductsResolverService } from './shared/service/products-resolver.service'
 
 const routes: Routes = [
   {
@@ -42,7 +42,11 @@ const routes: Routes = [
         path: 'list',
         component: ProductsComponent,
         children: [
-          { path: '', component: ProductListComponent },
+          {
+            path: '', component: ProductListComponent, resolve: {
+              pictureResolver: ProductsResolverService
+            }
+          },
           {
             path: ':id/:category/:pic_name',
             component: ProductDetailComponent,
@@ -100,14 +104,6 @@ const routes: Routes = [
         },
       },
       {
-        path: 'orders',
-        component: OrdersComponent,
-        canActivate: [AuthGuard],
-        data: {
-          expectedRole: 'vendor',
-        },
-      },
-      {
         path: 'artworks/new-artwork', component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
@@ -146,4 +142,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

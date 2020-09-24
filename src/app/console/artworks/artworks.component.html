@@ -1,6 +1,6 @@
 <div class="container-fluid position-relative py-5 lastest-artworks-container">
   <h1 class="text-center best-pictures-header mb-5">Tác phẩm mới nhất</h1>
-  <div class="lastest-artworks-wrapper d-flex justify-content-center px-5">
+  <div class="lastest-artworks-wrapper d-flex px-5">
     <div
       class="artwork-item show-overlay"
       *ngFor="
@@ -220,41 +220,10 @@
               >
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </button>
-              <!-- <button
-                class="delete-icon"
-                placement="bottom"
-                ngbTooltip="Xóa"
-                (click)="openDeletePopup(picIndex, 'deleteSoldPic')"
-              >
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              </button> -->
             </div>
           </div>
         </div>
-        <!-- <div class="overlay-confirm-box">
-          <p class="text-center">Bạn chắc chắn muốn xóa tác phẩm này?</p>
-          <div class="action-button">
-            <button
-              class="cancel-btn"
-              (click)="closePopup(picIndex, 'deleteSoldPic')"
-            >
-              Hủy bỏ
-            </button>
-            <button class="delete-btn" (click)="deleteArtwork()">Đồng ý</button>
-          </div>
-        </div> -->
       </div>
     </mdb-carousel-item>
   </mdb-carousel>
 </div>
-
-<!-- <div class="delete-popup" *ngIf="showDeleteBox">
-  <div class="popup-content slowly-appear">
-    <h1>Bạn chắc chắn muốn xóa tác phẩm này?</h1>
-    <p>Bạn sẽ không thể khôi phục lại tác phẩm sau khi xóa</p>
-    <div class="action-button">
-      <button class="cancel-btn" (click)="closePopup()">Hủy bỏ</button>
-      <button class="delete-btn" (click)="deleteArtwork()">Xóa</button>
-    </div>
-  </div>
-</div> -->
