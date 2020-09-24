@@ -149,7 +149,7 @@ hr {
     height: auto !important;
     max-width: none !important;
     width: auto !important;
-    margin: 10rem 2rem !important;
+    /* margin: 10rem 2rem !important; */
   }
 
   ::ng-deep .mat-dialog-container {
@@ -166,7 +166,7 @@ hr {
     height: auto !important;
     max-width: none !important;
     width: auto !important;
-    margin: 10rem 5rem !important;
+    /* margin: 10rem 5rem !important; */
   }
 }
 
@@ -175,10 +175,10 @@ hr {
     height: auto !important;
     max-width: none !important;
     width: auto !important;
-    margin: 10rem !important;
+    /* margin: 10rem !important; */
   }
 }
-
+/* 
 @media (min-width: 1400px) {
   ::ng-deep .cdk-overlay-pane[style] {
     margin: 10rem 20rem !important;
@@ -189,4 +189,4 @@ hr {
   ::ng-deep .cdk-overlay-pane[style] {
     margin: 10rem 30rem !important;
   }
-}
+} */
