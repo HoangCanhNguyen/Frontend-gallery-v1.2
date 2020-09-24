@@ -62,11 +62,7 @@
   </div>
 
   <div class="container position-relative p-0">
-    <div
-      class="desc position-relative pb-5"
-      data-aos="fade-up"
-      *ngIf="!editDescription"
-    >
+    <div class="desc position-relative pb-5" *ngIf="!editDescription">
       <div
         class="edit-description-icon"
         placement="bottom"
@@ -113,7 +109,7 @@
         </div>
       </div>
     </div>
-    <div class="edit-des-form pb-5" data-aos="fade-up" *ngIf="editDescription">
+    <div class="edit-des-form pb-5" *ngIf="editDescription">
       <form
         class="form"
         #editDescForm="ngForm"
@@ -216,7 +212,6 @@
         <span
           class="alt-line"
           *ngIf="!editWorkflow1 && !editWorkflow2 && !editWorkflow3"
-          data-aos="fade-down"
         ></span>
         <span class="main-line"></span>
         <div class="workflow-item">
@@ -235,14 +230,13 @@
                 <img
                   [src]="workflowImages[0]"
                   style="width: 100%; height: 700px; object-fit: cover"
-                  data-aos="fade-right"
                 />
               </div>
               <div class="col-sm-6 workflow-text">
                 <span class="circle"></span>
-                <span class="circle-line" data-aos="zoom-in"></span>
+                <span class="circle-line"></span>
                 <div class="year">{{ stages[0] }}</div>
-                <div class="main-text" data-aos="fade-left">
+                <div class="main-text">
                   <span class="workflow-caption">{{ workflowTitle1[0] }}</span>
                   <h2>{{ workflowTitle2[0] }}</h2>
                   <span class="text">{{ workflowDescription[0] }}</span>
@@ -250,11 +244,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="edit-des-form py-5"
-            data-aos="fade-up"
-            *ngIf="editWorkflow1"
-          >
+          <div class="edit-des-form py-5" *ngIf="editWorkflow1">
             <form
               class="form"
               #editWorkflowForm1="ngForm"
@@ -382,9 +372,9 @@
             <div class="row workflow-item-content">
               <div class="col-sm-6 workflow-text">
                 <span class="circle-2"></span>
-                <span class="circle-line-2" data-aos="zoom-in"></span>
+                <span class="circle-line-2"></span>
                 <div class="year-2">{{ stages[1] }}</div>
-                <div class="main-text" data-aos="fade-right">
+                <div class="main-text">
                   <span class="workflow-caption">{{ workflowTitle1[1] }}</span>
                   <h2>{{ workflowTitle2[1] }}</h2>
                   <span class="text">{{ workflowDescription[1] }}</span>
@@ -394,16 +384,11 @@
                 <img
                   [src]="workflowImages[1]"
                   style="width: 100%; height: 700px; object-fit: cover"
-                  data-aos="fade-left"
                 />
               </div>
             </div>
           </div>
-          <div
-            class="edit-des-form py-5"
-            data-aos="fade-up"
-            *ngIf="editWorkflow2"
-          >
+          <div class="edit-des-form py-5" *ngIf="editWorkflow2">
             <form
               class="form"
               #editWorkflowForm2="ngForm"
@@ -528,14 +513,13 @@
                 <img
                   [src]="workflowImages[2]"
                   style="width: 100%; height: 700px; object-fit: cover"
-                  data-aos="fade-right"
                 />
               </div>
               <div class="col-sm-6 workflow-text">
                 <span class="circle"></span>
-                <span class="circle-line" data-aos="zoom-in"></span>
+                <span class="circle-line"></span>
                 <div class="year">{{ stages[2] }}</div>
-                <div class="main-text" data-aos="fade-left">
+                <div class="main-text">
                   <span class="workflow-caption">{{ workflowTitle1[2] }}</span>
                   <h2>{{ workflowTitle2[2] }}</h2>
                   <span class="text">{{ workflowDescription[2] }}</span>
@@ -543,11 +527,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="edit-des-form py-5"
-            data-aos="fade-up"
-            *ngIf="editWorkflow3"
-          >
+          <div class="edit-des-form py-5" *ngIf="editWorkflow3">
             <form
               class="form"
               #editWorkflowForm3="ngForm"
@@ -665,7 +645,7 @@
     </div>
   </div>
 
-  <div class="container" data-aos="fade-up">
+  <div class="container">
     <h1
       class="d-flex justify-content-between align-items-center best-pictures-header"
     >
@@ -706,22 +686,17 @@
   <div class="container py-5">
     <mdb-carousel class="review-wrapper">
       <mdb-carousel-item>
-        <div class="mask d-block w-100" data-aos="fade-up"></div>
+        <div class="mask d-block w-100"></div>
         <div
           class="edit-quote-icon"
           placement="bottom"
           ngbTooltip="Chỉnh sửa"
           *ngIf="!editQuote"
           (click)="editQuote = true"
-          data-aos="fade-up"
         >
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </div>
-        <div
-          class="carousel-caption reviews"
-          data-aos="fade-up"
-          *ngIf="!editQuote"
-        >
+        <div class="carousel-caption reviews" *ngIf="!editQuote">
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -752,11 +727,7 @@
           </p>
           <h6>{{ quoteAuthor }}</h6>
         </div>
-        <div
-          class="carousel-caption reviews"
-          data-aos="fade-up"
-          *ngIf="editQuote"
-        >
+        <div class="carousel-caption reviews" *ngIf="editQuote">
           <form
             class="form"
             #editQuoteForm="ngForm"

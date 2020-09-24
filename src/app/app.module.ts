@@ -13,7 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { Ng5SliderModule } from 'ng5-slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -73,8 +73,8 @@ import { AdminComponent } from './admin/admin.component';
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { OrdersComponent } from './console/orders/orders.component';
 import { PreloadComponent } from './preload/preload.component';
+
 
 @NgModule({
   declarations: [
@@ -114,8 +114,7 @@ import { PreloadComponent } from './preload/preload.component';
     PictureManagerComponent,
     AccountManagerComponent,
     DashboardComponent,
-    OrdersComponent,
-    PreloadComponent,
+    PreloadComponent
   ],
   imports: [
     BrowserModule,
@@ -156,7 +155,7 @@ import { PreloadComponent } from './preload/preload.component';
     MatDatepickerModule,
     MatNativeDateModule,
     { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
-    { provide: FirebaseOptionsToken, useValue: environment.firebaseConfig }
+    { provide: FirebaseOptionsToken, useValue: environment.firebaseConfig },
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, SignupComponent],

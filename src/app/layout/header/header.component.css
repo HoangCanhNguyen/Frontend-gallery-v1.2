@@ -12,7 +12,7 @@
 }
 
 ::ng-deep mdb-carousel .carousel-indicators {
-  display: none;
+  z-index: 2;
 }
 
 nav {

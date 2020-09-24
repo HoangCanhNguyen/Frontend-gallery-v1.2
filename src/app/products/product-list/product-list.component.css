@@ -75,6 +75,11 @@ p.search-result {
   color: #525252;
   font-size: 1.2rem;
 }
+
+::ng-deep .ng5-slider .ng5-slider-pointer {
+  z-index: 1 !important;
+}
+
 ::ng-deep .mat-chip-container .mat-chip-list-wrapper {
   margin: 0 !important;
 }

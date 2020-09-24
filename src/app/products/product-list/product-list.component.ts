@@ -39,12 +39,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.preloadService.show()
     })
 
-    this.pictureService.getData().subscribe((data) => {
-      this.filteredList = data;
-      this.picturesList = data;
-      this.dataFetched = true;
-      this.preloadService.hide()
-    });
+    // this.pictureService.getData().subscribe((data) => {
+    //   this.filteredList = data;
+    //   this.picturesList = data;
+    //   this.dataFetched = true;
+    //   this.preloadService.hide()
+    // });
+
+    this.route.params.subscribe(() => {
+      this.picturesList = this.route.snapshot.data.pictureResolver;
+      this.filteredList = this.route.snapshot.data.pictureResolver;
+    })
 
     this.queryParamSub = this.route.queryParams.subscribe((params: Params) => {
       const searchedByCate = params.category;
