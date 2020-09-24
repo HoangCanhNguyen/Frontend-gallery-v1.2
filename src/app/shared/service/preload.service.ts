@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PreloadService {
 
-  preloadSubject = new BehaviorSubject<boolean>(false);
+  preloadSubject = new Subject<boolean>();
 
   constructor() { }
 
