@@ -1,5 +1,5 @@
-<div class="jumbotron jumbotron-fluid" *ngIf="pic_info && contentLoaded">
-  <div class="container" [ngClass]="{ 'pb-0': !pic_info }">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
     <div class="row tabs-detail-product">
       <mat-tab-group
         mat-align-tabs="center"
@@ -59,15 +59,15 @@
                 nisi ut.
               </p>
               <p
-              style="
-                font-family: EB Garamond, serif;
-                margin-top: 2rem;
-                font-size: 1.3rem;
-              "
-              *ngIf="pic_info.description !== undefined"
-            >
-              {{pic_info.description}}
-            </p>
+                style="
+                  font-family: EB Garamond, serif;
+                  margin-top: 2rem;
+                  font-size: 1.3rem;
+                "
+                *ngIf="pic_info.description !== undefined"
+              >
+                {{ pic_info.description }}
+              </p>
               <a
                 class="btn btn-light text-dark view-more"
                 style="z-index: 1000; margin-top: 2rem; margin-bottom: 2.5rem"

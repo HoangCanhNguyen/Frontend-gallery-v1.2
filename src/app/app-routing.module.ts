@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistListComponent } from './artists/artist-list/artist-list.component';
 import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
@@ -22,7 +19,6 @@ import { AdminComponent } from './admin/admin.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { ProductsResolverService } from './shared/service/products-resolver.service';
 import { SignUpComponent } from './console/sign-up/sign-up.component';
 
 const routes: Routes = [
@@ -38,20 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        component: ProductsComponent,
-        children: [
-          {
-            path: '',
-            component: ProductListComponent,
-            resolve: {
-              pictureResolver: ProductsResolverService,
-            },
-          },
-          {
-            path: ':id/:category/:pic_name',
-            component: ProductDetailComponent,
-          },
-        ],
+        loadChildren: './products/products.module#ProductsModule'
       },
       {
         path: 'artists',
@@ -144,8 +127,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

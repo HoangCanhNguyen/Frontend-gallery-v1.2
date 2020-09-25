@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../shared/service/authenticate.service';
 import { Router } from '@angular/router';
 import { SnackbarNotiService } from '../shared/service/snackbar-noti.service';
-import { PreloadService } from '../shared/service/preload.service';
 
 @Component({
   selector: 'app-console',
@@ -10,16 +9,13 @@ import { PreloadService } from '../shared/service/preload.service';
   styleUrls: ['./console.component.css']
 })
 export class ConsoleComponent implements OnInit {
-  
-  isOpened = true;
 
-  showPreload: boolean = false;
+  isOpened = true;
 
   constructor(
     private authService: AuthenticateService,
     private route: Router,
     private snackBar: SnackbarNotiService,
-    private preloadService: PreloadService
   ) { }
 
   isLogedIn = false
@@ -30,10 +26,6 @@ export class ConsoleComponent implements OnInit {
         this.isLogedIn = vendorStatus
       }
     )
-
-    this.preloadService.preloadSubject.subscribe((res => {
-      this.showPreload = res
-    }))
   }
 
   onLogoutVendor() {
@@ -41,7 +33,7 @@ export class ConsoleComponent implements OnInit {
       (succ) => {
         this.snackBar.onSuccess("ĐĂNG XUẤT")
         this.route.navigate(['console'])
-      } 
+      }
     )
   }
 

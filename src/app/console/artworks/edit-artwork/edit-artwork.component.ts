@@ -4,7 +4,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { UploadImageService } from 'src/app/shared/service/upload-image.service';
-import { PreloadService } from 'src/app/shared/service/preload.service';
 import { Picture } from 'src/app/shared/model/picture.model';
 import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.service';
 @Component({
@@ -24,10 +23,9 @@ export class EditArtworkComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private pictureService: PicturesService,
     private uploadService: UploadImageService,
-    private preloadService: PreloadService,
     private _snackBar: SnackbarNotiService,
     private _router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -35,10 +33,6 @@ export class EditArtworkComponent implements OnInit {
 
       if (this.picId) {
         this.isEdit = true;
-        setTimeout(() => {
-          this.preloadService.show();
-        });
-
         this.pictureService.getPicById({ id: this.picId }).subscribe((pic) => {
           this.picture = {
             title: pic.title,
@@ -50,7 +44,6 @@ export class EditArtworkComponent implements OnInit {
             imageURL: pic.imageURL,
           };
           this.previewURL = this.picture.imageURL;
-          this.preloadService.hide();
         });
       } else {
         this.picture = {
