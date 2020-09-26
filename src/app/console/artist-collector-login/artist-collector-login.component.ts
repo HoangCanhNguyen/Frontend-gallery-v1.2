@@ -35,7 +35,7 @@ export class ArtistCollectorLoginComponent implements OnInit {
         this.route.navigate(['/console/info'])
       },
       (err) => {
-        this.snackbarSerivce.onError(err)
+        this.snackbarSerivce.onServerError(err)
       }
     )
   }

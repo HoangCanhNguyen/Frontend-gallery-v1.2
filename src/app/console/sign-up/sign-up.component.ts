@@ -36,7 +36,7 @@ export class SignUpComponent implements OnInit {
         this.snackBar.onSuccess('Đăng ký');
       },
       (err) => {
-        this.snackBar.onError(err);
+        this.snackBar.onServerError(err);
       }
     );
   }

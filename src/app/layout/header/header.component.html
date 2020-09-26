@@ -37,7 +37,9 @@
       *ngIf="!username"
       class="ml-auto"
       id="show-account-icon"
-      
+      (click)="onOpenModal()"
+      data-toggle="modal"
+      data-target="#exampleModalCenter"
     >
       <a mat-button
         ><i
@@ -46,8 +48,14 @@
         ></i>
       </a>
     </li>
-    <li *ngIf="!username" id="hide-account-icon" >
-      <a class="hover-effect">Đăng nhập/Đăng kí </a>
+    <li *ngIf="!username" id="hide-account-icon">
+      <a
+        class="hover-effect"
+        (click)="onOpenModal()"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+        >Đăng nhập/Đăng kí
+      </a>
       <i class="fa fa-sign-in show-icon"></i>
     </li>
     <li
@@ -115,3 +123,4 @@
   </ul>
   <div class="overlay"></div>
 </nav>
+<app-auth [modal]="modalType"></app-auth>

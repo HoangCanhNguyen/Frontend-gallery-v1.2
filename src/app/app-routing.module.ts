@@ -10,7 +10,6 @@ import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.com
 import { ProfileComponent } from './profile/profile.component';
 import { BasicProfileComponent } from './profile/basic-profile/basic-profile.component';
 import { ArtistProfileComponent } from './profile/artist-profile/artist-profile.component';
-import { VendorComponent } from './auth/vendor/vendor.component';
 import { ConsoleComponent } from './console/console.component';
 import { InformationComponent } from './console/information/information.component';
 import { ArtworksComponent } from './console/artworks/artworks.component';
@@ -23,7 +22,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { ProductsResolverService } from './shared/service/products-resolver.service'
+import { ProductsResolverService } from './shared/service/products-resolver.service';
+import { SignUpComponent } from './console/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -41,9 +41,11 @@ const routes: Routes = [
         component: ProductsComponent,
         children: [
           {
-            path: '', component: ProductListComponent, resolve: {
-              pictureResolver: ProductsResolverService
-            }
+            path: '',
+            component: ProductListComponent,
+            resolve: {
+              pictureResolver: ProductsResolverService,
+            },
           },
           {
             path: ':id/:category/:pic_name',
@@ -74,7 +76,6 @@ const routes: Routes = [
           { path: ':role/:id/:username', component: ArtistProfileComponent },
         ],
       },
-      { path: 'vendor/register', component: VendorComponent },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
@@ -100,7 +101,8 @@ const routes: Routes = [
         },
       },
       {
-        path: 'artworks/new-artwork', component: EditArtworkComponent,
+        path: 'artworks/new-artwork',
+        component: EditArtworkComponent,
         canActivate: [AuthGuard],
         data: {
           expectedRole: 'vendor',
@@ -109,6 +111,14 @@ const routes: Routes = [
       {
         path: 'artworks/:id/:category/:title/edit-artwork',
         component: EditArtworkComponent,
+        canActivate: [AuthGuard],
+        data: {
+          expectedRole: 'vendor',
+        },
+      },
+      {
+        path: 'vendor/signup',
+        component: SignUpComponent,
         canActivate: [AuthGuard],
         data: {
           expectedRole: 'vendor',
@@ -138,4 +148,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
