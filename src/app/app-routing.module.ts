@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        loadChildren: './products/products.module#ProductsModule'
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       {
         path: 'artists',

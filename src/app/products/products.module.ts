@@ -21,7 +21,7 @@ import { ProductCommentComponent } from './product-detail/product-comment/produc
 import { ProductReplyComponent } from './product-detail/product-comment/product-reply/product-reply.component';
 import { FilterComponent } from './product-list/filter/filter.component';
 
-import { PictureFilterPipe } from '../products/product-list/filter.pipe';
+import { PictureFilterPipe } from './product-list/filter.pipe';
 import { ProductsResolverService } from '../shared/service/products-resolver.service';
 
 const productRoutes: Routes = [
