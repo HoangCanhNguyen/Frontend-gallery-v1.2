@@ -12,9 +12,13 @@ export class AuthComponent implements OnInit {
   @Input() modal: string;
 
   Form: FormGroup;
-  @ViewChild('loginModal') loginModal: ElementRef
+  modalType: string;
+  @ViewChild('loginModal') loginModal: ElementRef;
 
-  constructor(private _auth: AuthenticateService, private _snackBar: SnackbarNotiService) {}
+  constructor(
+    private _auth: AuthenticateService,
+    private _snackBar: SnackbarNotiService
+  ) {}
 
   ngOnInit(): void {
     this.Form = new FormGroup({
@@ -29,12 +33,16 @@ export class AuthComponent implements OnInit {
   onSubmit() {
     this._auth.onUserLogin(this.Form).subscribe(
       (res) => {
-        this._snackBar.onSuccess("ĐĂNG NHẬP")
-        this.loginModal.nativeElement.click()
+        this._snackBar.onSuccess('ĐĂNG NHẬP');
+        this.loginModal.nativeElement.click();
       },
       (err) => {
-        this._snackBar.onLoginError()
+        this._snackBar.onLoginError();
       }
     );
+  }
+
+  onOpenSignUp() {
+    this.modalType = 'sign-up-modal';
   }
 }

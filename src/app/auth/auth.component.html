@@ -34,7 +34,16 @@
       <a class="forget-password">Bạn quên mật khẩu?</a>
       <div class="or-signup"><span>hoặc</span></div>
       <div class="form-footer">Bạn không có tài khoản?</div>
-      <a class="sign-up">Đăng ký ngay</a>
+      <a
+        class="sign-up"
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+        (click)="onOpenSignUp()"
+        >Đăng ký ngay</a
+      >
     </div>
   </div>
 </div>
+<app-sign-up [signUpModal]="modalType"></app-sign-up>

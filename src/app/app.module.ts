@@ -96,7 +96,7 @@ import { AuthComponent } from './auth/auth.component';
     AccountManagerComponent,
     DashboardComponent,
     PreloadComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
