@@ -1,0 +1,81 @@
+.modal {
+  font-family: "EB Garamond" !important;
+}
+h5 {
+  margin: 5%;
+  font-weight: 500;
+  font-size: 21px;
+}
+.modal-content {
+  text-align: center;
+  width: 57%;
+  margin-left: 20%;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0;
+}
+input {
+  width: 85%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 12px;
+}
+
+.icon {
+  margin: 0 0 3% 7%;
+}
+
+.btn {
+  color: #fffaf0;
+}
+
+.btn-facebook {
+  background-color: #29487d;
+}
+
+.btn-google {
+  background-color: #ea4335;
+  margin-left: 3%;
+}
+
+.login-with {
+  margin-right: 5%;
+  padding: 1% 0;
+}
+
+.field {
+  margin: 5% 0 5% 0;
+}
+
+.btn-signin {
+  padding: 1% 25%;
+  background-color: #d5a770;
+}
+.btn-signin:hover {
+  background-color: #d19961;
+}
+a {
+  color: #007bff !important;
+  text-decoration: none;
+  margin: 3% 0 1% 0;
+}
+a:hover {
+  color: #0056b3 !important;
+}
+
+.or-signup {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  max-width: 85%;
+  margin-left: 7%;
+}
+.or-signup span {
+  background: #fff;
+  padding: 0 10px;
+}
+.sign-up {
+  margin: 0 0 2% 0 !important;
+}

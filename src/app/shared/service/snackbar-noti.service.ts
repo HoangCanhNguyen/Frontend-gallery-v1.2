@@ -9,16 +9,8 @@ export class SnackbarNotiService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  onSuccess(mess: string) {
-    this._snackBar.open(mess, 'THÀNH CÔNG', {
-      duration: 2500,
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    });
-  }
-
-  onError(err) {
-    this._snackBar.open(err.error.msg, 'KHÔNG THÀNH CÔNG', {
+  onSuccess(msg: string) {
+    this._snackBar.open(msg, 'THÀNH CÔNG', {
       duration: 2500,
       horizontalPosition: 'start',
       verticalPosition: 'bottom',
@@ -32,4 +24,21 @@ export class SnackbarNotiService {
       verticalPosition: 'bottom',
     });
   }
+  
+  onError() {
+    this._snackBar.open('ĐÃ XẢY RA LỖI', 'KHÔNG THÀNH CÔNG', {
+      duration: 2500,
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
+  }
+
+  onServerError(err) {
+    this._snackBar.open(err.error.msg, 'KHÔNG THÀNH CÔNG', {
+      duration: 2500,
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+    });
+  }
+
 }

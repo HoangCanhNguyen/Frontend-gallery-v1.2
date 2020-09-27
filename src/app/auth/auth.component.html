@@ -1,0 +1,40 @@
+<div
+  class="modal fade"
+  id="{{ modal }}"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenter"
+  aria-hidden="true"
+  #loginModal
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <h5>ĐĂNG NHẬP</h5>
+      <div class="icon row">
+        <button class="btn btn-facebook col-md-5 col-sm-5 col-5 login-with">
+          Facebook
+        </button>
+        <button class="btn btn-google col-md-5 col-sm-5 col-5 login-with">
+          Google
+        </button>
+      </div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="Form" autocomplete="on">
+        <div class="field">
+          <input type="email" placeholder="Email" formControlName="email" />
+        </div>
+        <div class="field">
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="raw_password"
+          />
+        </div>
+        <button type="submit" class="btn btn-signin">ĐĂNG NHẬP</button>
+      </form>
+      <a class="forget-password">Bạn quên mật khẩu?</a>
+      <div class="or-signup"><span>hoặc</span></div>
+      <div class="form-footer">Bạn không có tài khoản?</div>
+      <a class="sign-up">Đăng ký ngay</a>
+    </div>
+  </div>
+</div>

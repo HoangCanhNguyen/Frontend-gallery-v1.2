@@ -66,8 +66,7 @@ import { ArtistInfoComponent } from './artists/artist-list/artist-info/artist-in
 import { ProfileComponent } from './profile/profile.component';
 import { BasicProfileComponent } from './profile/basic-profile/basic-profile.component';
 import { ArtistProfileComponent } from './profile/artist-profile/artist-profile.component';
-import { VendorComponent } from './auth/vendor/vendor.component';
-import { SignUpComponent } from './auth/vendor/sign-up/sign-up.component';
+import { SignUpComponent } from './console/sign-up/sign-up.component';
 import { ConsoleComponent } from './console/console.component';
 import { InformationComponent } from './console/information/information.component';
 import { ArtworksComponent } from './console/artworks/artworks.component';
@@ -79,6 +78,7 @@ import { PictureManagerComponent } from './admin/picture-manager/picture-manager
 import { AccountManagerComponent } from './admin/account-manager/account-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PreloadComponent } from './preload/preload.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -102,7 +102,6 @@ import { PreloadComponent } from './preload/preload.component';
     ProfileComponent,
     BasicProfileComponent,
     ArtistProfileComponent,
-    VendorComponent,
     SignUpComponent,
     ConsoleComponent,
     InformationComponent,
@@ -114,7 +113,8 @@ import { PreloadComponent } from './preload/preload.component';
     PictureManagerComponent,
     AccountManagerComponent,
     DashboardComponent,
-    PreloadComponent
+    PreloadComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

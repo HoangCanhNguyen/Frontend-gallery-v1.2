@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
 import { UserModule } from 'src/app/shared/model/user.model';
 import { Router } from '@angular/router';
@@ -13,48 +10,47 @@ import { SnackbarNotiService } from 'src/app/shared/service/snackbar-noti.servic
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  fixed_top_class = true;
-  sticky_class = false;
-  fixedNav = false;
-  carouselHeight = 0;
-
-  showModal: boolean;
-  role: string;
-
-  showAccountDropdown = false;
-  showResponsiveAccDropdown = false;
-
-  isLoggedIn = false;
-  user: UserModule;
   userInfo: any;
   username: string;
-  id: any;
+  id: string;
+  role: string;
+  modalType: string;
+
+  showAccountDropdown: boolean = false;
+  showResponsiveAccDropdown: boolean = false;
 
   constructor(
     public authService: AuthenticateService,
     private route: Router,
     private snackBar: SnackbarNotiService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe((data) => {
       this.userInfo = data;
-      this.username = this.userInfo["username"];
-      this.role = this.userInfo.role
-      this.id = this.userInfo.id
+      this.username = this.userInfo['username'];
+      this.role = this.userInfo.role;
+      this.id = this.userInfo.id;
     });
   }
 
-  onSubmit(): void { }
+  onSubmit(): void {}
 
-  onLogOut(): void {
-    this.authService.onUserLogout().subscribe((res) => {
-      this.snackBar.onSuccess("ĐĂNG XUẤT")
-    },
-      (err) => {
-        console.log(err);
-      })
-    this.route.navigate(['home'])
+  onOpenModal() {
+    this.modalType = 'exampleModalCenter';
+    console.log("hello");
+    
   }
-
+  
+  onLogOut(): void {
+    this.authService.onUserLogout().subscribe(
+      (res) => {
+        this.snackBar.onSuccess('ĐĂNG XUẤT');
+      },
+      (err) => {
+        this.snackBar.onError();
+      }
+    );
+    this.route.navigate(['home']);
+  }
 }

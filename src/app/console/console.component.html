@@ -40,6 +40,13 @@
         ><i class="fa fa-list-ul" aria-hidden="true"></i>
         <span>Quản lý tác phẩm</span></a
       >
+      <a
+      [routerLink]="['/console/artworks']"
+      routerLinkActive="router-link-active"
+      [class.disabled]="!isLogedIn"
+      ><i class="fa fa-list-ul" aria-hidden="true"></i>
+      <span>Quản lý tác phẩm</span></a
+    >
     </div>
   </mat-sidenav>
 
