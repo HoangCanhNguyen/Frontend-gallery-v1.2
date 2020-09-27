@@ -8,6 +8,10 @@ h6,
 span {
   font-family: "EB Garamond" !important;
 }
+
+:host {
+  display: block;
+}
 .picture-item {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
@@ -17,7 +21,7 @@ span {
 }
 .img-wrapper {
   width: 100%;
-  height: 420px;
+  height: 450px;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -138,24 +142,19 @@ p.stars-wrapper {
   justify-content: center;
   align-items: center;
   background-color: #d3d3d3;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.3s ease-in-out;
 }
 .fa-heart-o {
   font-size: 25px !important;
 }
 
-.picture-item:hover .wish-list-icon {
-  opacity: 1;
-}
-
 .wish-list-icon:hover {
   color: white;
   background-color: #c9ab81;
-  opacity: 0.8;
 }
 
-@media (min-width: 300px) {
+/* @media (min-width: 300px) {
   .img-wrapper {
     height: 350px;
   }
@@ -211,4 +210,4 @@ p.stars-wrapper {
   .img-wrapper {
     height: 400px;
   }
-}
+} */

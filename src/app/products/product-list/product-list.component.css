@@ -84,7 +84,7 @@ p.search-result {
   margin: 0 !important;
 }
 
-@media (min-width: 300px) {
+/* @media (min-width: 300px) {
   app-product-item {
     width: 100% !important;
   }
@@ -135,4 +135,4 @@ p.search-result {
   app-product-item {
     width: 33% !important;
   }
-}
+} */

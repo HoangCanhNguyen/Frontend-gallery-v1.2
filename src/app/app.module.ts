@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Third party libraries
@@ -43,22 +44,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { HeadersInterceptor } from 'src/app/JWT-token.interceptor';
 
-// Pipe
-import { PictureFilterPipe } from 'src/app/products/product-list/filter.pipe';
-
 //Project Component
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductsComponent } from './products/products.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { ProductItemComponent } from './products/product-list/product-item/product-item.component';
-import { ProductCommentComponent } from './products/product-detail/product-comment/product-comment.component';
-import { ProductReplyComponent } from './products/product-detail/product-comment/product-reply/product-reply.component';
-import { FilterComponent } from './products/product-list/filter/filter.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistDetailComponent } from './artists/artist-detail/artist-detail.component';
 import { ArtistListComponent } from './artists/artist-list/artist-list.component';
@@ -80,21 +71,12 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PreloadComponent } from './preload/preload.component';
 import { AuthComponent } from './auth/auth.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
     HomeComponent,
-    ProductDetailComponent,
-    ProductListComponent,
-    ProductItemComponent,
     HeaderComponent,
     FooterComponent,
-    ProductCommentComponent,
-    ProductReplyComponent,
-    FilterComponent,
-    PictureFilterPipe,
     ArtistsComponent,
     ArtistDetailComponent,
     ArtistListComponent,
@@ -158,4 +140,4 @@ import { AuthComponent } from './auth/auth.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
