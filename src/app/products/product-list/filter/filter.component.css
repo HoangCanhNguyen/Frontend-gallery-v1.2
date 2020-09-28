@@ -35,6 +35,8 @@
   text-align: left;
   font-style: italic;
   font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
 }
 .list-group-item:hover {
   color: #c9ab81;

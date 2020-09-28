@@ -1,24 +1,30 @@
 <div class="jumbotron jumbotron-fluid">
-  <div class="container" style="padding: 11rem 0 5rem 0">
+  <div class="container-fluid" style="padding: 11rem 10rem 5rem 10rem">
+    <h1
+      class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center search-content"
+    >
+      <hr
+        class="animate__animated animate__fadeInRight"
+        style="background-color: grey; width: 100px; margin-right: 2rem"
+      />
+      {{ searchedContent ? searchedContent : "Tất cả tác phẩm" }}
+      <hr
+        class="animate__animated animate__fadeInLeft"
+        style="background-color: grey; width: 100px; margin-left: 2rem"
+      />
+    </h1>
+    <p class="search-result">{{ filteredList.length }} tác phẩm</p>
+
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 col-md-3">
+        <h1 style="opacity: 0; margin-bottom: 3rem">Search Bar</h1>
+        <app-filter
+          (searchTextChange)="searchParent = $event.value"
+        ></app-filter>
+      </div>
+
+      <div class="col-sm-12 col-md-9">
         <div class="row">
-          <div class="col-sm-12">
-            <h1
-              class="animate__animated animate__fadeInUp d-flex justify-content-between align-items-center search-content"
-            >
-              <hr
-                class="animate__animated animate__fadeInRight"
-                style="background-color: grey; width: 100px; margin-right: 2rem"
-              />
-              {{ searchedContent ? searchedContent : "Tất cả tác phẩm" }}
-              <hr
-                class="animate__animated animate__fadeInLeft"
-                style="background-color: grey; width: 100px; margin-left: 2rem"
-              />
-            </h1>
-            <p class="search-result">{{ filteredList.length }} tác phẩm</p>
-          </div>
           <div class="col-sm-12 mb-5">
             <mat-chip-list
               aria-label="Fish selection"
@@ -36,35 +42,32 @@
             </mat-chip-list>
           </div>
 
-          <div class="row">
-            <div
-              class="col-sm-12 col-md-6 col-lg-4"
-              *ngFor="
-                let picture of filteredList
-                  | picturefilter: searchParent
-                  | slice
-                    : (page - 1) * pageSize
-                    : (page - 1) * pageSize + pageSize
-              "
-            >
-              <app-product-item [picture]="picture"></app-product-item>
+          <div class="col-sm-12">
+            <div class="row">
+              <div
+                class="col-sm-12 col-md-6 col-lg-4"
+                *ngFor="
+                  let picture of filteredList
+                    | picturefilter: searchParent
+                    | slice
+                      : (page - 1) * pageSize
+                      : (page - 1) * pageSize + pageSize
+                "
+              >
+                <app-product-item [picture]="picture"></app-product-item>
+              </div>
             </div>
           </div>
         </div>
-        <ngb-pagination
-          class="d-flex justify-content-center"
-          [pageSize]="pageSize"
-          [collectionSize]="filteredList.length"
-          [(page)]="page"
-          (click)="ScrollOnTop()"
-        ></ngb-pagination>
-      </div>
-      <div class="col-sm-12">
-        <h1 style="opacity: 0; margin-bottom: 5rem">Search Bar</h1>
-        <app-filter
-          (searchTextChange)="searchParent = $event.value"
-        ></app-filter>
       </div>
     </div>
+
+    <ngb-pagination
+      class="d-flex justify-content-center"
+      [pageSize]="pageSize"
+      [collectionSize]="filteredList.length"
+      [(page)]="page"
+      (click)="ScrollOnTop()"
+    ></ngb-pagination>
   </div>
 </div>

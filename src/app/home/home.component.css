@@ -153,19 +153,10 @@ a.view-more:hover {
   margin: 50px -5px;
 }
 
-.news-post img {
-  max-height: 33em;
-  object-fit: cover;
-}
-
 .news-headers span:hover {
   cursor: pointer;
   color: #c9ab81;
   transition: all 0.4s ease-in-out;
-}
-
-.news-post img {
-  max-height: 33em;
 }
 
 .content-header {
@@ -228,9 +219,10 @@ a.view-more:hover {
 }
 
 .news-post img {
-  height: 450px;
+  height: 600px;
   transition: transform 0.5s, filter 3s ease;
   filter: brightness(100%);
+  object-fit: cover;
 }
 .news-post:hover img {
   filter: brightness(100%);
@@ -307,12 +299,6 @@ a.view-more:hover {
 }
 
 @media (min-width: 1024px) {
-  /* .container.section-news,
-  h1.news-headers {
-    min-width: none;
-    width: 90%;
-  } */
-
   h1.news-headers {
     font-size: 3rem;
     line-height: 3.5rem;
@@ -341,7 +327,7 @@ a.view-more:hover {
 
 @media (min-width: 1230px) {
   .content-header {
-    bottom: 13em;
+    bottom: 10em;
     left: 0.5em;
     right: 5em;
     padding: 0;
