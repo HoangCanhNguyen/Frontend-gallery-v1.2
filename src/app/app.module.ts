@@ -70,6 +70,7 @@ import { AccountManagerComponent } from './admin/account-manager/account-manager
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PreloadComponent } from './preload/preload.component';
 import { AuthComponent } from './auth/auth.component';
+import { UserSignUpComponent } from './auth/user-sign-up/user-sign-up.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { AuthComponent } from './auth/auth.component';
     DashboardComponent,
     PreloadComponent,
     AuthComponent,
+    UserSignUpComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+.modal {
+  font-family: "EB Garamond" !important;
+}
+h5 {
+  margin: 5%;
+  font-weight: 500;
+  font-size: 21px;
+}
+.modal-content {
+  text-align: center;
+  width: 57%;
+  margin-left: 20%;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0;
+}
+input {
+  width: 85%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 12px;
+}
+
+.icon {
+  margin: 0 0 3% 7%;
+}
+
+.btn {
+  color: #fffaf0;
+}
+.field {
+  margin: 5% 0 5% 0;
+}
+.btn-signup {
+  padding: 1% 30%;
+  background-color: #d5a770;
+  margin-bottom: 5%;
+}
+
+.btn-signup:hover {
+  background-color: #d19961;
+}

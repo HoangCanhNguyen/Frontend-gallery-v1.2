@@ -43,6 +43,7 @@ export class AuthComponent implements OnInit {
   }
 
   onOpenSignUp() {
+    this.loginModal.nativeElement.click();
     this.modalType = 'sign-up-modal';
   }
 }

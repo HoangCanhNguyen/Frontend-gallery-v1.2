@@ -38,8 +38,6 @@ export class HeaderComponent implements OnInit {
 
   onOpenModal() {
     this.modalType = 'exampleModalCenter';
-    console.log("hello");
-    
   }
   
   onLogOut(): void {

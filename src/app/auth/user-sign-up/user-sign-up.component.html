@@ -1,0 +1,32 @@
+<div
+  class="modal fade"
+  id="{{ signUpModal }}"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="sign-up-modal"
+  aria-hidden="true"
+  #signUpModalElement
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <h5>ĐĂNG KÝ</h5>
+      <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm" autocomplete="on">
+        <div class="field">
+          <input type="email" placeholder="Email" formControlName="email" />
+        </div>
+        <div class="field">
+          <input placeholder="Username" formControlName="username" />
+        </div>
+        <div class="field">
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="raw_password"
+          />
+        </div>
+        <button type="submit" class="btn btn-signup">ĐĂNG KÝ</button>
+      </form>
+    </div>
+  </div>
+</div>
