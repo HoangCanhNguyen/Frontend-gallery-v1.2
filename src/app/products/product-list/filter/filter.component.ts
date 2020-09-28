@@ -18,15 +18,17 @@ import { FilterService } from '../../../shared/service/filter.service';
   styleUrls: ['./filter.component.css'],
 })
 export class FilterComponent implements OnInit, OnDestroy {
+
   categoriesFetchedFromDatabase: string[] = [];
   categoriesList: string[] = [];
-  artistsFetchedFromDatabase: string[] = [];
-  artistsList: string[] = [];
+  counts = {};
+  countsArray = [];
+
+  // num_category_array: Category[] = []
 
   picturesSub: Subscription;
 
   showMoreCate = false;
-  showMoreArtist = false;
 
   @Input() searchText: string;
   @Output() searchTextChange = new EventEmitter();
@@ -48,24 +50,23 @@ export class FilterComponent implements OnInit, OnDestroy {
   constructor(
     private pictureService: PicturesService,
     private filterService: FilterService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.picturesSub = this.pictureService.getData().subscribe((pictures) => {
       for (const picture of pictures) {
         this.categoriesFetchedFromDatabase.push(picture.category);
-        this.artistsFetchedFromDatabase.push(picture.artist);
       }
+
       this.categoriesList = this.categoriesFetchedFromDatabase.filter(
         (item, index) => {
           return this.categoriesFetchedFromDatabase.indexOf(item) === index;
         }
       );
-      this.artistsList = this.artistsFetchedFromDatabase.filter(
-        (item, index) => {
-          return this.artistsFetchedFromDatabase.indexOf(item) === index;
-        }
-      );
+
+      this.categoriesFetchedFromDatabase.forEach(category => { this.counts[category] = (this.counts[category] || 0) + 1; });
+      this.countsArray = Object.values(this.counts);
+
     });
   }
 
@@ -83,10 +84,12 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.showMoreCate = !this.showMoreCate;
   }
 
-  onShowMoreArtist(): void {
-    this.showMoreArtist = !this.showMoreArtist;
-  }
   ngOnDestroy(): void {
     this.picturesSub.unsubscribe();
   }
 }
+
+// interface Category {
+//   category: string,
+//   amount: string
+// }

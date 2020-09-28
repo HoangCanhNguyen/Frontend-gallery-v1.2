@@ -25,7 +25,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   dataFetched = false;
 
   constructor(
-    private pictureService: PicturesService,
     private filterService: FilterService,
     private route: ActivatedRoute,
     private router: Router,
@@ -39,18 +38,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     this.queryParamSub = this.route.queryParams.subscribe((params: Params) => {
       const searchedByCate = params.category;
-      const searchedByArtist = params.artist;
       if (searchedByCate) {
         this.searchedContent = searchedByCate;
         this.filteredList = this.picturesList.filter((value) => {
           return value.category === searchedByCate;
         });
-      } else if (searchedByArtist) {
-        this.searchedContent = searchedByArtist;
-        this.filteredList = this.picturesList.filter((value) => {
-          return value.artist === searchedByArtist;
-        });
-      } else {
+      }
+      else {
         this.searchedContent = null;
         this.filteredList = this.picturesList;
       }

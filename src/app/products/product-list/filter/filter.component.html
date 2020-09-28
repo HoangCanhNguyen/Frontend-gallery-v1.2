@@ -20,42 +20,20 @@
 <div class="list-group">
   <button
     class="list-group-item"
-    *ngFor="let category of categoriesList | slice: 0:5"
+    *ngFor="let category of categoriesList; let i = index"
     [routerLink]="['/list']"
     routerLinkActive="router-link-active"
     [queryParams]="{ category: category }"
   >
     {{ category | titlecase }}
+    <span *ngIf="countsArray[i]">({{ countsArray[i] }})</span>
   </button>
-  <mat-expansion-panel hideToggle *ngIf="categoriesList.length >= 5">
-    <div class="list-group">
-      <button
-        class="list-group-item"
-        *ngFor="let category of categoriesList | slice: 5:categoriesList.length"
-        [routerLink]="['/list']"
-        routerLinkActive="router-link-active"
-        [queryParams]="{ category: category }"
-      >
-        {{ category | titlecase }}
-      </button>
-    </div>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <button
-          class="list-group-item expand-button"
-          (click)="onShowMoreCate()"
-        >
-          {{ !showMoreCate ? "Xem thêm" : "Thu gọn" }}
-        </button>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
 </div>
 <br />
 <hr style="opacity: 0" />
 
 <form [formGroup]="sliderForm" (ngSubmit)="onSearchByPrice()">
-  <div class="title">Tìm theo giá</div>
+  <div class="title">Lọc theo giá</div>
   <hr />
   <ng5-slider [options]="options" formControlName="sliderControl"></ng5-slider>
   <div class="price-filter my-3">
@@ -68,45 +46,8 @@
     <svg height="40" width="120">
       <rect height="40" width="120"></rect>
     </svg>
-    <span>LỌC</span>
+    <span style="font-family: 'Eb Garamond'">LỌC</span>
   </button>
 </form>
 <br />
 <hr style="opacity: 0" />
-
-<div class="title">Tìm theo họa sĩ</div>
-<div class="list-group">
-  <button
-    class="list-group-item"
-    *ngFor="let artist of artistsList | slice: 0:5"
-    [routerLink]="['/list']"
-    routerLinkActive="router-link-active"
-    [queryParams]="{ artist: artist }"
-  >
-    {{ artist | titlecase }}
-  </button>
-  <mat-expansion-panel hideToggle *ngIf="artistsList.length >= 5">
-    <div class="list-group">
-      <button
-        type="button"
-        class="list-group-item"
-        *ngFor="let artist of artistsList | slice: 5:artistsList.length"
-        [routerLink]="['/list']"
-        routerLinkActive="router-link-active"
-        [queryParams]="{ artist: artist }"
-      >
-        {{ artist | titlecase }}
-      </button>
-    </div>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <button
-          class="list-group-item expand-button"
-          (click)="onShowMoreArtist()"
-        >
-          {{ !showMoreArtist ? "Xem thêm" : "Thu gọn" }}
-        </button>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-  </mat-expansion-panel>
-</div>
