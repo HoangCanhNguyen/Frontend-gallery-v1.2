@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VendorService } from 'src/app/shared/service/vendor.service';
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _vendorService: VendorService) { }
 
   artist_list: any = [];
 
@@ -256,6 +257,13 @@ export class ArtistListComponent implements OnInit {
     ];
 
   ngOnInit(): void {
+    this._vendorService.onGetVendorList().subscribe(
+      res => {
+       this.artist_list = res
+        console.log(this.artist_list);
+        
+      }
+    )
   }
 
 }

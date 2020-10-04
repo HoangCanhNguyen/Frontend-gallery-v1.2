@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Location } from '@angular/common'
 
 import { PicturesService } from 'src/app/shared/service/pictures.service';
 import { UploadImageService } from 'src/app/shared/service/upload-image.service';
@@ -24,7 +25,8 @@ export class EditArtworkComponent implements OnInit {
     private pictureService: PicturesService,
     private uploadService: UploadImageService,
     private _snackBar: SnackbarNotiService,
-    private _router: Router
+    private _router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit(): void {
@@ -94,15 +96,19 @@ export class EditArtworkComponent implements OnInit {
         this.uploadService.onUpload(this.editForm.value, 'Picture').then(() => {
           this.pictureService.onEditPic(this.editForm.value).subscribe(() => {
             this._snackBar.onSuccess('CẬP NHẬT');
-            this._router.navigate(['/console/artworks']);
+            this._location.back()
           });
         });
       } else {
         this.pictureService.onEditPic(this.editForm.value).subscribe(() => {
           this._snackBar.onSuccess('CẬP NHẬT');
-          this._router.navigate(['/console/artworks']);
+          this._location.back()
         });
       }
     }
+  }
+
+  cancel() {
+    this._location.back()
   }
 }

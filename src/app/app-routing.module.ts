@@ -34,7 +34,8 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+        loadChildren: () =>
+          import('./products/products.module').then((m) => m.ProductsModule),
       },
       {
         path: 'artists',
@@ -76,6 +77,10 @@ const routes: Routes = [
         },
       },
       {
+        path: 'vendor/signup',
+        component: SignUpComponent,
+      },
+      {
         path: 'artworks',
         component: ArtworksComponent,
         canActivate: [AuthGuard],
@@ -94,14 +99,6 @@ const routes: Routes = [
       {
         path: 'artworks/:id/:category/:title/edit-artwork',
         component: EditArtworkComponent,
-        canActivate: [AuthGuard],
-        data: {
-          expectedRole: 'vendor',
-        },
-      },
-      {
-        path: 'vendor/signup',
-        component: SignUpComponent,
         canActivate: [AuthGuard],
         data: {
           expectedRole: 'vendor',
@@ -131,4 +128,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

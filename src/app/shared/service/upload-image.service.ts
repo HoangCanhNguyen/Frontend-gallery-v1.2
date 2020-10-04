@@ -60,6 +60,40 @@ export class UploadImageService {
       .subscribe();
   }
 
+  onUploadAvatar(img: File) {
+    const n = Date.now();
+    const filePath = `UserAvatar/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, img);
+
+    var uploadAvatar = new Promise((resolve, reject) => {
+      task
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            this.downloadURL = fileRef.getDownloadURL();
+            this.downloadURL.subscribe(
+              (url) => {
+                if (url) {
+                  this.useService
+                    .onUploadAvatar({ avatarURL: url })
+                    .subscribe((res) => {
+                      this.authService.onGetUserInfo();
+                      resolve(url);
+                    });
+                }
+              },
+              (err) => {
+                reject();
+              }
+            );
+          })
+        )
+        .subscribe();
+    });
+    return uploadAvatar
+  }
+
   onUpload(data, location: string) {
     const n = Date.now();
     const filePath = `${location}/${n}`;

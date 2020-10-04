@@ -33,7 +33,6 @@ export class AuthGuard implements CanActivate {
       }
     } else {
       window.alert('Vui lòng đăng nhập/đăng kí để thực hiện chức năng này!')
-      this.router.navigate(['/home']);
     }
   }
 }

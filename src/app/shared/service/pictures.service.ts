@@ -15,6 +15,7 @@ export class PicturesService {
 
   GET_PICTURE_URL = `${API_URL}/pictures`;
   PIC_URL = `${API_URL}/picture/method`;
+  GET_PICTURE_BY_ARTIST = `${API_URL}/picture`
 
   constructor(
     private httpClient: HttpClient,
@@ -37,5 +38,9 @@ export class PicturesService {
 
   onEditPic(data): Observable<any> {
     return this.httpClient.put(this.PIC_URL, data);
+  }
+
+  onGetPicByArtist(artist: string): Observable<any> {
+    return this.httpClient.get(this.GET_PICTURE_BY_ARTIST +'/' + artist)
   }
 }
