@@ -13,6 +13,13 @@
         <span>Trở về trang chủ</span></a
       >
       <a
+        [routerLink]="['/console/vendor/signup']"
+        routerLinkActive="router-link-active"
+        *ngIf="!isLogedIn"
+        ><i class="fa fa-list-ul" aria-hidden="true"></i>
+        <span>Đăng ký tài khoản</span></a
+      >
+      <a
         [routerLink]="['/console']"
         routerLinkActive="router-link-active"
         *ngIf="!isLogedIn"
@@ -26,10 +33,7 @@
         ><i class="fa fa-sign-out" aria-hidden="true"></i
         ><span>Đăng xuất</span></a
       >
-      <a
-        [routerLink]="['/console/info']"
-        routerLinkActive="router-link-active"
-        [class.disabled]="!isLogedIn"
+      <a (click)="onNavigateToArtistDetail()" [class.disabled]="!isLogedIn"
         ><i class="fa fa-user-circle" aria-hidden="true"></i>
         <span>Chỉnh sửa trang cá nhân</span></a
       >
@@ -40,13 +44,6 @@
         ><i class="fa fa-list-ul" aria-hidden="true"></i>
         <span>Quản lý tác phẩm</span></a
       >
-      <a
-      [routerLink]="['/console/artworks']"
-      routerLinkActive="router-link-active"
-      [class.disabled]="!isLogedIn"
-      ><i class="fa fa-list-ul" aria-hidden="true"></i>
-      <span>Quản lý tác phẩm</span></a
-    >
     </div>
   </mat-sidenav>
 
