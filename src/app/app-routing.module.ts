@@ -20,6 +20,8 @@ import { AccountManagerComponent } from './admin/account-manager/account-manager
 import { PictureManagerComponent } from './admin/picture-manager/picture-manager.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SignUpComponent } from './console/sign-up/sign-up.component';
+import { ProductsResolverService } from './shared/service/products-resolver.service';
+import { ArtistPicsResolverService } from './shared/service/artist-pics-resolver.service';
 
 const routes: Routes = [
   {
@@ -41,8 +43,19 @@ const routes: Routes = [
         path: 'artists',
         component: ArtistsComponent,
         children: [
-          { path: '', component: ArtistListComponent },
-          { path: ':artist_id/:artist_name', component: ArtistDetailComponent },
+          {
+            path: '', component: ArtistListComponent,
+            resolve: {
+              vendorResolver: ProductsResolverService
+            }
+          },
+          {
+            path: ':artist_id/:artist_name', component: ArtistDetailComponent,
+            resolve: {
+              vendorDetailsResolver: ProductsResolverService,
+              vendorPicsResolver: ArtistPicsResolverService
+            }
+          },
         ],
       },
       {
@@ -128,4 +141,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

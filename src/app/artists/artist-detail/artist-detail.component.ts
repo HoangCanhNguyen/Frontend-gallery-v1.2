@@ -13,7 +13,6 @@ import { PicturesService } from 'src/app/shared/service/pictures.service';
 })
 export class ArtistDetailComponent implements OnInit, OnDestroy {
   sub: Subscription;
-  VendorDetailSub: Subscription;
 
   artist_name: string;
   _id: string;
@@ -23,35 +22,22 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private _vendorService: VendorService,
     private _uploadService: UploadImageService,
     private _snackBar: SnackbarNotiService,
-    private _picService: PicturesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params: Params) => {
-      this._id = params.artist_id;
       this.artist_name = params.artist_name;
-    });
-    console.log(this.pic_list);
-    
-
-    this.VendorDetailSub = this._vendorService
-      .onGetVendorDetail(this._id)
-      .subscribe((res) => {
-        this.vendor = res;
-        if (this.vendor.role == 'collector') {
-          this.vendor.role = 'Nhà sư tầm';
-        } else {
-          this.vendor.role = 'Họa sĩ';
-        }
-      });
-    this._picService.onGetPicByArtist(this.artist_name).subscribe((res) => {
-      this.pic_list = res
-      console.log(this.pic_list);
-      
-    });
+      this.vendor = this.route.snapshot.data.vendorDetailsResolver;
+      if (this.vendor.role == 'collector') {
+        this.vendor.role = 'Nhà sư tầm';
+      } else {
+        this.vendor.role = 'Họa sĩ';
+      };
+      this.pic_list = this.route.snapshot.data.vendorPicsResolver
+    })
+      ;
   }
 
   onUploadAvatar(event) {
@@ -67,10 +53,9 @@ export class ArtistDetailComponent implements OnInit, OnDestroy {
     // Called once, before the instance is destroyed.
     // Add 'implements OnDestroy' to the class.
     this.sub.unsubscribe();
-    this.VendorDetailSub.unsubscribe();
   }
 }
-interface imageResponse{
+interface imageResponse {
   id: string,
   imageURL: string,
   title: string,

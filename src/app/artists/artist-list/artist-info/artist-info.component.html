@@ -1,11 +1,13 @@
 <div class="col-md-4 artist-card">
   <mat-card class="example-card">
-    <mat-card-header [routerLink] = "[artist.id, artist.fullname]">
+    <mat-card-header [routerLink]="[artist.id, artist.fullname]">
       <div
         mat-card-avatar
         class="example-header-image"
         style="
-          background-image: url('https://cdn.singulart.com/artists/pictures/cropped/profile/thumb/artist_profile_2493_0cbb55358150ed6b54bfb9cd9e9ba067.jpeg');
+          background-image: url('{{ artist.avatarURL }}');
+          background-position: center;
+          background-size: cover;
         "
       ></div>
       <mat-card-title>{{ artist.fullname }}</mat-card-title>
@@ -15,11 +17,14 @@
       <mat-chip>PAINTER</mat-chip>
       <mat-chip>DARFMAN</mat-chip>
     </mat-chip-list>
-    <img [routerLink] = "[artist.id, artist.fullname]"
+    <img
+      [routerLink]="[artist.id, artist.fullname]"
       mat-card-image
       src="https://singulart-website-prod.s3.eu-central-1.amazonaws.com/artworks/v2/cropped/522/main/500w/165431_0b3f4272505a2f5e4dcf947785028f2a.jpeg"
       alt="Photo of a Shiba Inu"
     />
   </mat-card>
-  <span class="overlay" [routerLink] = "[artist.id, artist.fullname]">Xem thông tin chi tiết</span>
+  <span class="overlay" [routerLink]="[artist.id, artist.fullname]"
+    >Xem thông tin chi tiết</span
+  >
 </div>
