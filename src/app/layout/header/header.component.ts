@@ -17,13 +17,14 @@ export class HeaderComponent implements OnInit {
   modalType: string;
 
   showAccountDropdown: boolean = false;
+  showNoti = false;
   showResponsiveAccDropdown: boolean = false;
 
   constructor(
     public authService: AuthenticateService,
     private route: Router,
     private snackBar: SnackbarNotiService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe((data) => {
@@ -34,12 +35,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {}
+  onSubmit(): void { }
 
   onOpenModal() {
     this.modalType = 'exampleModalCenter';
   }
-  
+
   onLogOut(): void {
     this.authService.onUserLogout().subscribe(
       (res) => {
