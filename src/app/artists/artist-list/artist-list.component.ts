@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { VendorService } from 'src/app/shared/service/vendor.service';
 @Component({
   selector: 'app-artist-list',
@@ -7,7 +8,7 @@ import { VendorService } from 'src/app/shared/service/vendor.service';
 })
 export class ArtistListComponent implements OnInit {
 
-  constructor(private _vendorService: VendorService) { }
+  constructor(private route: ActivatedRoute) { }
 
   artist_list: any = [];
 
@@ -257,13 +258,9 @@ export class ArtistListComponent implements OnInit {
     ];
 
   ngOnInit(): void {
-    this._vendorService.onGetVendorList().subscribe(
-      res => {
-       this.artist_list = res
-        console.log(this.artist_list);
-        
-      }
-    )
+    this.route.params.subscribe(() => {
+      this.artist_list = this.route.snapshot.data.vendorResolver
+    });
   }
 
 }
