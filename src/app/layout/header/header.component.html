@@ -13,23 +13,34 @@
   />
 
   <ul>
-    <li [routerLink]="['/home']" routerLinkActive="router-link-active">
+    <li
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+      (click)="showAccountDropdown = false; showNoti = false"
+    >
       <a class="hover-effect">Trang chủ </a>
       <i class="fa fa-home show-icon"></i>
     </li>
-    <li [routerLink]="['/list']" routerLinkActive="router-link-active">
+    <li
+      [routerLink]="['/list']"
+      routerLinkActive="router-link-active"
+      (click)="showAccountDropdown = false; showNoti = false"
+    >
       <a class="hover-effect">Tác Phẩm </a>
       <i class="fa fa-list-ul show-icon"></i>
     </li>
-    <li [routerLink]="['/artists']">
+    <li
+      [routerLink]="['/artists']"
+      (click)="showAccountDropdown = false; showNoti = false"
+    >
       <a class="hover-effect">Họa sĩ </a>
       <i class="fa fa-users show-icon"></i>
     </li>
-    <li>
-      <a class="hover-effect" >Diễn đàn </a>
+    <li (click)="showAccountDropdown = false; showNoti = false">
+      <a class="hover-effect">Diễn đàn </a>
       <i class="fa fa-comments-o show-icon"></i>
     </li>
-    <li>
+    <li (click)="showAccountDropdown = false; showNoti = false">
       <a class="hover-effect">Danh sách yêu thích </a>
       <i class="fa fa-heart show-icon"></i>
     </li>
@@ -58,16 +69,81 @@
       </a>
       <i class="fa fa-sign-in show-icon"></i>
     </li>
+
     <li
       *ngIf="username"
-      class="ml-auto mr-5 account-management"
+      class="ml-auto mr-5 account-management d-flex"
       style="border-bottom: none"
     >
+      <span
+        *ngIf="role != 'user'"
+        class="text-white welcome-user"
+        [routerLink]="['/console/info']"
+      >
+        {{ username | titlecase }}</span
+      >
+      <span
+        *ngIf="role == 'user'"
+        class="text-white welcome-user"
+        [routerLink]="['/account/profile/user']"
+        (click)="showAccountDropdown = false; showNoti = false"
+      >
+        {{ username | titlecase }}</span
+      >
       <a
-        class="hover-effect"
-        (click)="showAccountDropdown = !showAccountDropdown"
-        >{{ username }}
-        <i class="fa fa-caret-down ml-2"></i>
+        class="bell-icon"
+        (click)="showNoti = !showNoti; showAccountDropdown = false"
+        ><i class="fa fa-bell-o" aria-hidden="true"></i
+        ><span class="badge badge-warning">3</span>
+        <div class="notifications" [ngClass]="{ active: showNoti }">
+          <a
+            class="noti-content"
+            routerLink="list/5/tranh%20sơn%20mài/Kết%20nạp%20Đảng%20ở%20Điện%20Biên%20Phủ"
+          >
+            <div class="avatar">Đ</div>
+            <div>
+              <span class="commenter">Tiến Đạt</span> đã bình luận về bức tranh
+              <span class="pic-title">Kết nạp Đảng ở Điện Biên Phủ</span> của
+              bạn
+              <br />
+              <span class="time">30 phút trước</span>
+            </div>
+          </a>
+          <a
+            class="noti-content"
+            routerLink="list/5/tranh%20sơn%20mài/Kết%20nạp%20Đảng%20ở%20Điện%20Biên%20Phủ"
+          >
+            <div class="avatar">C</div>
+            <div>
+              <span class="commenter">Hoàng Cảnh</span> đã bình luận về bức
+              tranh
+              <span class="pic-title">Kết nạp Đảng ở Điện Biên Phủ</span> của
+              bạn
+              <br />
+              <span class="time">40 phút trước</span>
+            </div>
+          </a>
+          <a
+            class="noti-content"
+            routerLink="list/5/tranh%20sơn%20mài/Kết%20nạp%20Đảng%20ở%20Điện%20Biên%20Phủ"
+          >
+            <div class="avatar">TA</div>
+            <div>
+              <span class="commenter">Tuấn Anh</span> đã bình luận về bức tranh
+              <span class="pic-title">Kết nạp Đảng ở Điện Biên Phủ</span> của
+              bạn
+              <br />
+              <span class="time">50 phút trước</span>
+            </div>
+          </a>
+        </div></a
+      >
+      <a
+        class="user-icon"
+        style="position: relative"
+        (click)="showAccountDropdown = !showAccountDropdown; showNoti = false"
+      >
+        <i class="fa fa-caret-down ml-2" style="font-size: 1.5rem"></i>
         <div
           class="dropdown-content"
           [ngClass]="{ active: showAccountDropdown }"
