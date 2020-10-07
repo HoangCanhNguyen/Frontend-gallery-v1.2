@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { AuthenticateService } from 'src/app/shared/service/authenticate.service';
@@ -13,6 +8,8 @@ import { CommentService } from '../../../shared/service/comment.service';
 
 import { Reply } from '../../../shared/interface/reply';
 import { CommentResponse } from '../../../shared/interface/commentRespone';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-product-comment',
   templateUrl: './product-comment.component.html',
@@ -21,25 +18,29 @@ import { CommentResponse } from '../../../shared/interface/commentRespone';
 export class ProductCommentComponent implements OnInit {
   @Input() parent_id: any;
 
-  currentRate = 5;
-  isComment = false;
-  isReply = false;
-
+  sub: Subscription;
   commentForm: FormGroup;
+
+  currentRate: number = 5;
+  isComment: boolean = false;
+  isReply: boolean = false;
+  loginStatus: boolean = false;
+
   comment: CommentModule;
   reply: Reply;
   cmt_list: CommentResponse[] = [];
 
-
   currentUser_avatar_url: string;
   currentUser_id: string;
   username: string;
-  loginStatus = false;
+  role: string;
+  creator_name: string;
 
   constructor(
     private authService: AuthenticateService,
     private snackbarService: SnackbarNotiService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -58,7 +59,12 @@ export class ProductCommentComponent implements OnInit {
         this.username = '';
       } else {
         this.username = user.username;
+        this.role = user.role;
       }
+    });
+
+    this.sub = this.route.params.subscribe(() => {
+      this.creator_name = this.route.snapshot.data.pictureByIdResolver.creator_name;
     });
   }
 
@@ -77,20 +83,22 @@ export class ProductCommentComponent implements OnInit {
     });
 
     this.comment = {
+      creator_name: this.creator_name,
       username: this.username,
       pic_id: this.parent_id,
       content: this.commentForm.get('content').value,
       user_id: this.currentUser_id,
       star: this.currentRate.toString(),
       avatarURL: this.currentUser_avatar_url,
+      created_at: new Date().toLocaleString(),
     };
   }
 
   onSetReply(cmt_id) {
     return (this.reply = {
-      cmt_id: (this.cmt_list.length - cmt_id - 1).toString(),
+      cmt_id: (this.cmt_list.length - cmt_id).toString(),
       pic_id: this.parent_id,
-      user_id: '0',
+      user_id: this.currentUser_id,
     });
   }
 
@@ -101,5 +109,11 @@ export class ProductCommentComponent implements OnInit {
       this.commentForm.reset();
       this.isComment = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.sub.unsubscribe();
   }
 }

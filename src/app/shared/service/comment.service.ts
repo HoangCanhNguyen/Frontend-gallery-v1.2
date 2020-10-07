@@ -9,9 +9,9 @@ import { catchError } from 'rxjs/operators';
 })
 export class CommentService {
   COMMENT_URL = `${API_URL}/comments`;
-  COMMENT_CREATION_URL = `${API_URL}/comment/create`
+  COMMENT_CREATION_URL = `${API_URL}/comment/create`;
 
-
+  GET_NOTI_COMMENT_URL = `${API_URL}/notification/comment/`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,20 +23,28 @@ export class CommentService {
   constructor(private httpClient: HttpClient) {}
 
   onCreateComment(cmt): Observable<any> {
-    return this.httpClient.post(this.COMMENT_CREATION_URL, cmt, this.httpOptions);
-  }
-
-  getComment(pic_id): Observable<any> {
     return this.httpClient.post(
-      this.COMMENT_URL,
-      pic_id,
+      this.COMMENT_CREATION_URL,
+      cmt,
       this.httpOptions
-    ).pipe(
-      catchError((error) => {
-        return Observable.throw(error);
-      })
     );
   }
 
+  getComment(pic_id): Observable<any> {
+    return this.httpClient
+      .post(this.COMMENT_URL, pic_id, this.httpOptions)
+      .pipe(
+        catchError((error) => {
+          return Observable.throw(error);
+        })
+      );
+  }
 
+  getCommentNotification(_id: string): Observable<any> {
+    return this.httpClient.get(this.GET_NOTI_COMMENT_URL + _id);
+  }
+
+  getCommentById(_id): Observable<any> {
+    return this.httpClient.get(this.COMMENT_URL + '/' + _id);
+  }
 }

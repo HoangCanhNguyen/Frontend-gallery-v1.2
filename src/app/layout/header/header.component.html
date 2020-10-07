@@ -92,48 +92,23 @@
       >
       <a
         class="bell-icon"
-        (click)="showNoti = !showNoti; showAccountDropdown = false"
+        (click)="onOpenNoti()"
         ><i class="fa fa-bell-o" aria-hidden="true"></i
-        ><span class="badge badge-warning">3</span>
-        <div class="notifications" [ngClass]="{ active: showNoti }">
-          <a
-            class="noti-content"
-            routerLink="list/5/tranh%20sơn%20mài/Kết%20nạp%20Đảng%20ở%20Điện%20Biên%20Phủ"
-          >
-            <div class="avatar">Đ</div>
-            <div>
-              <span class="commenter">Tiến Đạt</span> đã bình luận về bức tranh
-              <span class="pic-title">Kết nạp Đảng ở Điện Biên Phủ</span> của
-              bạn
+        ><span class="badge badge-warning">{{ new_noti }}</span>
+        <div class="notifications" [ngClass]="{ active: showNoti }" *ngIf="comment_noti_list != '' || reply_noti_list != '' ">
+          <a class="noti-content" *ngFor="let noti of comment_noti_list">
+            <div
+              class="avatar"
+              [routerLink]="['/list', noti.pic_id, noti.pic_category, noti.pic_title]"
+            >
+              <!-- {{ noti.commenter_username[0] | uppercase }} -->
+            </div>
+            <div [routerLink]="['/list', noti.pic_id, noti.pic_category , noti.pic_title]">
+              <span class="commenter">{{ noti.commenter_username }}</span> đã
+              bình luận về bức tranh
+              <span class="pic-title">{{ noti.pic_title }}</span> của bạn
               <br />
               <span class="time">30 phút trước</span>
-            </div>
-          </a>
-          <a
-            class="noti-content"
-            routerLink="list/5/tranh%20sơn%20mài/Kết%20nạp%20Đảng%20ở%20Điện%20Biên%20Phủ"
-          >
-            <div class="avatar">C</div>
-            <div>
-              <span class="commenter">Hoàng Cảnh</span> đã bình luận về bức
-              tranh
-              <span class="pic-title">Kết nạp Đảng ở Điện Biên Phủ</span> của
-              bạn
-              <br />
-              <span class="time">40 phút trước</span>
-            </div>
-          </a>
-          <a
-            class="noti-content"
-            routerLink="list/5/tranh%20sơn%20mài/Kết%20nạp%20Đảng%20ở%20Điện%20Biên%20Phủ"
-          >
-            <div class="avatar">TA</div>
-            <div>
-              <span class="commenter">Tuấn Anh</span> đã bình luận về bức tranh
-              <span class="pic-title">Kết nạp Đảng ở Điện Biên Phủ</span> của
-              bạn
-              <br />
-              <span class="time">50 phút trước</span>
             </div>
           </a>
         </div></a
